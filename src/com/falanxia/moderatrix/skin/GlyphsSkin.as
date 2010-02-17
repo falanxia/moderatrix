@@ -42,16 +42,16 @@ package com.falanxia.moderatrix.skin {
 		public function GlyphsSkin(id:String = null) {
 			super(SkinType.GLYPHS, id);
 
-			_glyphOutSkin = new ImageSkin(id + '#glyphOut');
-			_glyphHoverSkin = new ImageSkin(id + '#glyphHover');
-			_glyphFocusSkin = new ImageSkin(id + '#glyphFocus');
+			_glyphOutSkin = new ImageSkin(id + "#glyphOut");
+			_glyphHoverSkin = new ImageSkin(id + "#glyphHover");
+			_glyphFocusSkin = new ImageSkin(id + "#glyphFocus");
 		}
 
 
 
 		/** @todo Comment */
 		public function getAssetsFromAtlas(source:BitmapData):void {
-			if(source.width % 3 != 0) throw new Error('Width has to be multiple of 3');
+			if(source.width % 3 != 0) throw new Error("Width has to be multiple of 3");
 
 			_assetSize.width = source.width / 3;
 			_assetSize.height = source.height;

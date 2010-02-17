@@ -57,7 +57,7 @@ package com.falanxia.moderatrix.globals {
 		/** @todo Comment */
 		public static function assetToSkin(asset:Asset):* {
 			if(asset.config.widget == null) {
-				throw new Error('Asset is null');
+				throw new Error("Asset is null");
 			}
 
 			else {

@@ -41,11 +41,11 @@ package com.falanxia.moderatrix.skin {
 		public function GlyphLabelButtonSkin(id:String = null) {
 			super(SkinType.GLYPH_BUTTON, id);
 
-			_buttonSkin = new ButtonSkin(id + '#button');
-			_glyphsSkin = new GlyphsSkin(id + '#glyphs');
-			_labelOutSkin = new LabelSkin(id + '#labelOut');
-			_labelHoverSkin = new LabelSkin(id + '#labelHover');
-			_labelFocusSkin = new LabelSkin(id + '#labelFocus');
+			_buttonSkin = new ButtonSkin(id + "#button");
+			_glyphsSkin = new GlyphsSkin(id + "#glyphs");
+			_labelOutSkin = new LabelSkin(id + "#labelOut");
+			_labelHoverSkin = new LabelSkin(id + "#labelHover");
+			_labelFocusSkin = new LabelSkin(id + "#labelFocus");
 		}
 
 

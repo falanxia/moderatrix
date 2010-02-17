@@ -23,6 +23,7 @@
 package com.falanxia.moderatrix.globals {
 	import com.falanxia.emitor.Asset;
 	import com.falanxia.emitor.globals.AssetManager;
+	import com.falanxia.utilitaris.helpers.printf;
 
 
 
@@ -31,7 +32,7 @@ package com.falanxia.moderatrix.globals {
 		var asset:Asset = AssetManager.getAsset(id);
 
 		if(asset == null) {
-			throw new Error('Asset "' + id + '" is not defined in skin');
+			throw new Error(printf("Asset \"%s\" is not defined in skin", id));
 		}
 
 		return SkinManager.assetToSkin(asset);

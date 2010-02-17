@@ -30,12 +30,12 @@ package com.falanxia.moderatrix.constants {
 
 
 		/** @todo Comment */
-		public static const NONE:String = 'none';
+		public static const NONE:String = "none";
 
 		/** @todo Comment */
-		public static const HOVER:String = 'hover';
+		public static const HOVER:String = "hover";
 
 		/** @todo Comment */
-		public static const ALWAYS:String = 'always';
+		public static const ALWAYS:String = "always";
 	}
 }

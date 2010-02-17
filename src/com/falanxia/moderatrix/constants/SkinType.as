@@ -29,37 +29,37 @@ package com.falanxia.moderatrix.constants {
 
 
 		/** @todo Comment */
-		public static const CONTAINER:String = 'container';
+		public static const CONTAINER:String = "Container";
 
 		/** @todo Comment */
-		public static const BAR:String = 'bar';
+		public static const BAR:String = "Bar";
 
 		/** @todo Comment */
-		public static const IMAGE:String = 'image';
+		public static const IMAGE:String = "Image";
 
 		/** @todo Comment */
-		public static const GLYPHS:String = 'glyphs';
+		public static const GLYPHS:String = "Glyphs";
 
 		/** @todo Comment */
-		public static const BUTTON:String = 'button';
+		public static const BUTTON:String = "Button";
 
 		/** @todo Comment */
-		public static const LABEL:String = 'label';
+		public static const LABEL:String = "Label";
 
 		/** @todo Comment */
-		public static const LABEL_BUTTON:String = 'label_button';
+		public static const LABEL_BUTTON:String = "LabelButton";
 
 		/** @todo Comment */
-		public static const GLYPH_BUTTON:String = 'glyph_button';
+		public static const GLYPH_BUTTON:String = "GlyphButton";
 
 		/** @todo Comment */
-		public static const GLYPH_LABEL_BUTTON:String = 'glyph_label_button';
+		public static const GLYPH_LABEL_BUTTON:String = "GlyphLabelButton";
 
 		/** @todo Comment */
-		public static const CHECK_BUTTON:String = 'check_button';
+		public static const CHECK_BUTTON:String = "CheckButton";
 
 		/** @todo Comment */
-		public static const INPUT_BAR:String = 'input_bar';
+		public static const INPUT_BAR:String = "InputBar";
 
 	}
 }

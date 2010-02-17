@@ -84,7 +84,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) super(c, parent);
-			else throw new Error('No skin defined');
+			else throw new Error("No skin defined");
 
 			_skin = skin;
 		}

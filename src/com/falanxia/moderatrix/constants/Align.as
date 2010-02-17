@@ -30,18 +30,18 @@ package com.falanxia.moderatrix.constants {
 
 
 		/** @todo Comment */
-		public static const LEFT:String = 'left';
+		public static const LEFT:String = "left";
 
 		/** @todo Comment */
-		public static const RIGHT:String = 'right';
+		public static const RIGHT:String = "right";
 
 		/** @todo Comment */
-		public static const TOP:String = 'top';
+		public static const TOP:String = "top";
 
 		/** @todo Comment */
-		public static const BOTTOM:String = 'bottom';
+		public static const BOTTOM:String = "bottom";
 
 		/** @todo Comment */
-		public static const CENTER:String = 'center';
+		public static const CENTER:String = "center";
 	}
 }

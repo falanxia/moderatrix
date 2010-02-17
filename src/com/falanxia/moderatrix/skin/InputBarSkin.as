@@ -38,8 +38,8 @@ package com.falanxia.moderatrix.skin {
 		public function InputBarSkin(id:String = null) {
 			super(SkinType.INPUT_BAR, id);
 
-			_barSkin = new BarSkin(id + '#bar');
-			_labelSkin = new LabelSkin(id + '#label');
+			_barSkin = new BarSkin(id + "#bar");
+			_labelSkin = new LabelSkin(id + "#label");
 		}
 
 

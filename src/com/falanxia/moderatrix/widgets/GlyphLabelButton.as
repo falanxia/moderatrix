@@ -53,7 +53,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = '', parent:DisplayObjectContainer = null,
+		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                                 debugLevel:String = null) {
 			var c:Object;
 
@@ -66,9 +66,9 @@ package com.falanxia.moderatrix.widgets {
 			_glyphOut = new Image(skin.glyphsSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
 			_glyphHover = new Image(skin.glyphsSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
 			_glyphFocus = new Image(skin.glyphsSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
-			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, '', this, dl);
-			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, '', this, dl);
-			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, '', this, dl);
+			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
 			_button.debugColor = SkinManager.debugColor;
 			_glyphOut.debugColor = SkinManager.debugColor;
 			_glyphHover.debugColor = SkinManager.debugColor;
@@ -93,7 +93,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) super(c, parent);
-			else throw new Error('No skin defined');
+			else throw new Error("No skin defined");
 
 			_skin = skin;
 		}

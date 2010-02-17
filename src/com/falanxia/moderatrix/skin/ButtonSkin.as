@@ -68,7 +68,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function getAssetsFromAtlas(source:BitmapData):void {
-			if(source.width % 4 != 0) throw new Error('Width has to be multiple of 4');
+			if(source.width % 4 != 0) throw new Error("Width has to be multiple of 4");
 
 			_assetSize.width = source.width / 4;
 			_assetSize.height = source.height;

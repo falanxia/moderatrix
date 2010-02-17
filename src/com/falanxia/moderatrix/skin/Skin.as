@@ -51,7 +51,7 @@ package com.falanxia.moderatrix.skin {
 
 			if(_id == null) {
 				var rs:String = StringUtils.randomString();
-				_id = type + ':skin:' + rs;
+				_id = type + ":skin:" + rs;
 			}
 		}
 
@@ -141,7 +141,7 @@ package com.falanxia.moderatrix.skin {
 
 			else if(source.width != _assetSize.width || source.height != _assetSize.height) {
 				// size mismatch
-				throw new Error('Sizes have to match');
+				throw new Error("Sizes have to match");
 			}
 		}
 	}

@@ -38,8 +38,8 @@ package com.falanxia.moderatrix.skin {
 		public function CheckButtonSkin(id:String = null) {
 			super(SkinType.CHECK_BUTTON, id);
 
-			_buttonOffSkin = new ButtonSkin(id + '#buttonOff');
-			_buttonOnSkin = new ButtonSkin(id + '#buttonOn');
+			_buttonOffSkin = new ButtonSkin(id + "#buttonOff");
+			_buttonOnSkin = new ButtonSkin(id + "#buttonOn");
 		}
 
 

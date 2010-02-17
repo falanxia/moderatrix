@@ -24,6 +24,8 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.constants.Align;
 	import com.falanxia.moderatrix.constants.SkinType;
 
+	import com.falanxia.utilitaris.helpers.printf;
+
 	import flash.filters.BitmapFilter;
 	import flash.filters.DropShadowFilter;
 
@@ -152,7 +154,7 @@ package com.falanxia.moderatrix.skin {
 			_oldMarginRight = _marginRight;
 
 			// TODO: This is the way how to speed up skins, apply it everywhere
-			for(var i:String in source) if(i != 'filters') this['_' + i] = source[i];
+			for(var i:String in source) if(i != "filters") this["_" + i] = source[i];
 
 			// TODO: Add this functionality to all skins where it's needed
 			if(source.filters != undefined && source.filters is Array) {
@@ -164,7 +166,7 @@ package com.falanxia.moderatrix.skin {
 						// it's an Object, we need to convert it first
 						try {
 							switch(f.filter) {
-								case 'dropShadow' :
+								case "DropShadow" :
 									var dsDistance:Number = (f.distance == undefined) ? 1 : f.distance;
 									var dsAngle:Number = (f.angle == undefined) ? 45 : f.angle;
 									var dsColor:Number = (f.color == undefined) ? 0x000000 : f.color;
@@ -183,7 +185,7 @@ package com.falanxia.moderatrix.skin {
 							}
 						}
 						catch(err:Error) {
-							throw new Error('Error converting filters Object to native filters (' + err.message + ')');
+							throw new Error(printf("Error converting filters Object to native filters (%s)", err.message));
 						}
 					}
 				}

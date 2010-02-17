@@ -31,46 +31,46 @@ package com.falanxia.moderatrix.events {
 
 
 		/** @todo Comment */
-		public static const DRAG_OVER:String = 'button_drag_over';
+		public static const DRAG_OVER:String = "ButtonDragOver";
 
 		/** @todo Comment */
-		public static const DRAG_OUT:String = 'button_drag_out';
+		public static const DRAG_OUT:String = "ButtonDragOut";
 
 		/** @todo Comment */
-		public static const DRAG_CONFIRM:String = 'button_drag_confirm';
+		public static const DRAG_CONFIRM:String = "ButtonDragConfirm";
 
 		/** @todo Comment */
-		public static const HOVER_IN:String = 'button_hover_in';
+		public static const HOVER_IN:String = "ButtonHoverIn";
 
 		/** @todo Comment */
-		public static const HOVER_OUT:String = 'button_hover_out';
+		public static const HOVER_OUT:String = "ButtonHoverOut";
 
 		/** @todo Comment */
-		public static const FOCUS_IN:String = 'button_focus_in';
+		public static const FOCUS_IN:String = "ButtonFocusIn";
 
 		/** @todo Comment */
-		public static const RELEASE_INSIDE:String = 'button_release_inside';
+		public static const RELEASE_INSIDE:String = "ButtonReleaseInside";
 
 		/** @todo Comment */
-		public static const RELEASE_OUTSIDE:String = 'button_release_outside';
+		public static const RELEASE_OUTSIDE:String = "ButtonReleaseOutside";
 
 		/** @todo Comment */
-		public static const HOVER_IN_TWEEN:String = 'button_hover_in_tween';
+		public static const HOVER_IN_TWEEN:String = "ButtonHoverInTween";
 
 		/** @todo Comment */
-		public static const HOVER_OUT_TWEEN:String = 'button_hover_out_tween';
+		public static const HOVER_OUT_TWEEN:String = "ButtonHoverOutTween";
 
 		/** @todo Comment */
-		public static const FOCUS_IN_TWEEN:String = 'button_focus_in_tween';
+		public static const FOCUS_IN_TWEEN:String = "ButtonFocusInTween";
 
 		/** @todo Comment */
-		public static const DRAG_CONFIRMED_TWEEN:String = 'button_drag_confirmed_tween';
+		public static const DRAG_CONFIRMED_TWEEN:String = "ButtonDragConfirmedTween";
 
 		/** @todo Comment */
-		public static const RELEASED_INSIDE_TWEEN:String = 'button_released_inside_tween';
+		public static const RELEASED_INSIDE_TWEEN:String = "ButtonReleasedInsideTween";
 
 		/** @todo Comment */
-		public static const RELEASED_OUTSIDE_TWEEN:String = 'button_released_outside_tween';
+		public static const RELEASED_OUTSIDE_TWEEN:String = "ButtonReleasedOutsideTween";
 
 
 
@@ -90,7 +90,7 @@ package com.falanxia.moderatrix.events {
 
 		/** @todo Comment */
 		public override function toString():String {
-			return formatToString('ButtonEvent', 'type', 'bubbles', 'cancelable');
+			return formatToString("ButtonEvent", "type", "bubbles", "cancelable");
 		}
 	}
 }

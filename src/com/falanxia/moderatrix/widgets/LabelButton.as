@@ -50,7 +50,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = '', parent:DisplayObjectContainer = null,
+		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
 			var c:Object;
 
@@ -60,9 +60,9 @@ package com.falanxia.moderatrix.widgets {
 			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
-			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, '', this, dl);
-			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, '', this, dl);
-			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, '', this, dl);
+			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
 			_button.debugColor = SkinManager.debugColor;
 			_labelOut.debugColor = SkinManager.debugColor;
 			_labelHover.debugColor = SkinManager.debugColor;
@@ -84,7 +84,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) super(c, parent);
-			else throw new Error('No skin defined');
+			else throw new Error("No skin defined");
 
 			_skin = skin;
 		}

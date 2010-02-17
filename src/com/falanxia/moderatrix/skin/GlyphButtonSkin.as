@@ -38,8 +38,8 @@ package com.falanxia.moderatrix.skin {
 		public function GlyphButtonSkin(id:String = null) {
 			super(SkinType.GLYPH_BUTTON, id);
 
-			_buttonSkin = new ButtonSkin(id + '#button');
-			_glyphsSkin = new GlyphsSkin(id + '#glyphs');
+			_buttonSkin = new ButtonSkin(id + "#button");
+			_glyphsSkin = new GlyphsSkin(id + "#glyphs");
 		}
 
 

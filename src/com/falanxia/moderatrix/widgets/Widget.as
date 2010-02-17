@@ -50,7 +50,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public static const DRAW:String = 'draw';
+		public static const DRAW:String = "draw";
 
 		/** @todo Comment */
 		public static var initialDebugLevel:String;

@@ -55,7 +55,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function Label(skin:LabelSkin, config:Object = null, text:String = '', parent:DisplayObjectContainer = null,
+		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                      debugLevel:String = null) {
 			var c:Object;
 
@@ -64,7 +64,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error('No skin defined');
+			else throw new Error("No skin defined");
 
 			_isWidthOverriden = (c.width != undefined);
 			_isHeightOverriden = (c.height != undefined);
@@ -185,7 +185,7 @@ package com.falanxia.moderatrix.widgets {
 			_textField.sharpness = _skin.sharpness;
 			_textField.thickness = _skin.thickness;
 			_textField.alpha = _skin.alpha;
-			_textField.embedFonts = (_skin.font != '');
+			_textField.embedFonts = (_skin.font != "");
 
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
@@ -210,10 +210,10 @@ package com.falanxia.moderatrix.widgets {
 				_textField.defaultTextFormat = _textFormat;
 
 				if(v != null) {
-					if(v == '') {
+					if(v == "") {
 						// fix alignment problem when empty string was applied to the html enabled TextField
 						// noinspection ReuseOfLocalVariableJS
-						v = '&nbsp;';
+						v = "&nbsp;";
 					}
 
 					_textField.htmlText = v;

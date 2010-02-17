@@ -27,6 +27,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.ButtonSkin;
 	import com.falanxia.utilitaris.display.QSprite;
+	import com.falanxia.utilitaris.helpers.printf;
 	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
@@ -65,7 +66,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error('No skin defined');
+			else throw new Error("No skin defined");
 
 			this.skin = skin;
 
@@ -188,7 +189,7 @@ package com.falanxia.moderatrix.widgets {
 					break;
 
 				default:
-					throw new Error('Unknown mouse status (' + value + ')');
+					throw new Error(printf("Unknown mouse status (%s)", value));
 			}
 		}
 

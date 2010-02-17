@@ -29,13 +29,13 @@ package com.falanxia.moderatrix.constants {
 
 
 		/** @todo Comment */
-		public static const OUT:String = 'out';
+		public static const OUT:String = "out";
 
 		/** @todo Comment */
-		public static const HOVER:String = 'hover';
+		public static const HOVER:String = "hover";
 
 		/** @todo Comment */
-		public static const FOCUS:String = 'focus';
+		public static const FOCUS:String = "focus";
 
 	}
 }

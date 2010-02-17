@@ -54,7 +54,7 @@ package com.falanxia.moderatrix.widgets {
 			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
 
 			_bar = new Bar(skin.barSkin, {}, this, dl);
-			_label = new Label(skin.labelSkin, {}, '', this, dl);
+			_label = new Label(skin.labelSkin, {}, "", this, dl);
 
 			_bar.debugColor = SkinManager.debugColor;
 			_label.debugColor = SkinManager.debugColor;
@@ -69,7 +69,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) super(c, parent);
-			else throw new Error('No skin defined');
+			else throw new Error("No skin defined");
 
 			_skin = skin;
 		}
