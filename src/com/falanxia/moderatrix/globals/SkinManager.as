@@ -69,7 +69,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.CONTAINER:
 						skin = new ContainerSkin();
 
-						var containerSkin:ContainerSkin = skin as ContainerSkin;
+						var containerSkin:ContainerSkin = ContainerSkin(skin);
 
 						containerSkin.parseConfig(config);
 
@@ -78,7 +78,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.BAR:
 						skin = new BarSkin();
 
-						var barSkin:BarSkin = skin as BarSkin;
+						var barSkin:BarSkin = BarSkin(skin);
 						var barSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
 						barSkin.getAssetsFromAtlas(barSkinBD);
@@ -89,7 +89,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.IMAGE:
 						skin = new ImageSkin();
 
-						var imageSkin:ImageSkin = skin as ImageSkin;
+						var imageSkin:ImageSkin = ImageSkin(skin);
 						var imageSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
 						imageSkin.getAssetsFromAtlas(imageSkinBD);
@@ -100,7 +100,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.BUTTON:
 						skin = new ButtonSkin();
 
-						var buttonSkin:ButtonSkin = skin as ButtonSkin;
+						var buttonSkin:ButtonSkin = ButtonSkin(skin);
 						var buttonSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
 						buttonSkin.getAssetsFromAtlas(buttonSkinBD);
@@ -111,7 +111,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.LABEL:
 						skin = new LabelSkin();
 
-						var labelSkin:LabelSkin = skin as LabelSkin;
+						var labelSkin:LabelSkin = LabelSkin(skin);
 
 						labelSkin.parseConfig(config);
 
@@ -120,7 +120,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.LABEL_BUTTON:
 						skin = new LabelButtonSkin();
 
-						var labelButtonSkin:LabelButtonSkin = skin as LabelButtonSkin;
+						var labelButtonSkin:LabelButtonSkin = LabelButtonSkin(skin);
 						var labelButtonSkinBD:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
 
 						labelButtonSkin.buttonSkin.getAssetsFromAtlas(labelButtonSkinBD);
@@ -131,7 +131,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.GLYPH_BUTTON:
 						skin = new GlyphButtonSkin();
 
-						var glyphButtonSkin:GlyphButtonSkin = skin as GlyphButtonSkin;
+						var glyphButtonSkin:GlyphButtonSkin = GlyphButtonSkin(skin);
 						var glyphButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
 						var glyphButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
 
@@ -144,7 +144,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.GLYPH_LABEL_BUTTON:
 						skin = new GlyphLabelButtonSkin();
 
-						var glyphLabelButtonSkin:GlyphLabelButtonSkin = skin as GlyphLabelButtonSkin;
+						var glyphLabelButtonSkin:GlyphLabelButtonSkin = GlyphLabelButtonSkin(skin);
 						var glyphLabelButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
 						var glyphLabelButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
 
@@ -157,7 +157,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.CHECK_BUTTON:
 						skin = new CheckButtonSkin();
 
-						var checkButtonSkin:CheckButtonSkin = skin as CheckButtonSkin;
+						var checkButtonSkin:CheckButtonSkin = CheckButtonSkin(skin);
 						var checkButtonSkinBD1:BitmapData = asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData;
 						var checkButtonSkinBD2:BitmapData = asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData;
 
@@ -170,7 +170,7 @@ package com.falanxia.moderatrix.globals {
 					case SkinType.INPUT_BAR:
 						skin = new InputBarSkin();
 
-						var inputBarSkin:InputBarSkin = skin as InputBarSkin;
+						var inputBarSkin:InputBarSkin = InputBarSkin(skin);
 						var inputBarSkinBD:BitmapData = asset.getChunkByURL(config.bar.image).bitmap.bitmapData;
 
 						inputBarSkin.barSkin.getAssetsFromAtlas(inputBarSkinBD);

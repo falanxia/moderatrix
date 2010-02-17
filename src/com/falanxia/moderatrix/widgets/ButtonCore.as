@@ -93,7 +93,7 @@ package com.falanxia.moderatrix.widgets {
 		public static function releaseAll():void {
 			for each(var b:* in _allWidgets) {
 				if(b is ButtonCore) {
-					(b as ButtonCore).forceRelease();
+					ButtonCore(b).forceRelease();
 				}
 			}
 		}
@@ -133,7 +133,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public function set skin(skin:ButtonSkin):void {
-			_skin = skin as ButtonSkin;
+			_skin = ButtonSkin(skin);
 
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
