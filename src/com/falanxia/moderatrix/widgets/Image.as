@@ -24,9 +24,9 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.constants.DebugLevel;
 	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.skin.ImageSkin;
+	import com.falanxia.utilitaris.display.QBitmap;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.Bitmap;
 	import flash.display.DisplayObjectContainer;
 	import flash.geom.Rectangle;
 
@@ -37,7 +37,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected var _skin:ImageSkin;
-		protected var _imageBM:Bitmap;
+		protected var _imageBM:QBitmap;
 
 
 
@@ -75,8 +75,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_skin != null) {
 				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft, _size.height - _skin.paddingTop);
 
-				_imageBM.x = rect.x;
-				_imageBM.y = rect.y;
+				_imageBM.positionAndSize = rect;
 
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
 					if(!_size.isEmpty()) DisplayUtils.strokeBounds(_debugSpr, rect, _debugColor, 5);
@@ -112,7 +111,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function get bitmap():Bitmap {
+		public function get bitmap():QBitmap {
 			return _imageBM;
 		}
 
@@ -137,7 +136,7 @@ package com.falanxia.moderatrix.widgets {
 		override protected function _addChildren():void {
 			super._addChildren();
 
-			_imageBM = new Bitmap();
+			_imageBM = new QBitmap();
 
 			DisplayUtils.addChildren(_contentSpr, _imageBM);
 		}
