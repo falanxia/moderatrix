@@ -72,12 +72,12 @@ package com.falanxia.moderatrix.widgets {
 			this.useHandCursor = true;
 			this.focusRect = false;
 
-			_button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, _onButtonHoverInTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, _onButtonHoverOutTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.FOCUS_IN_TWEEN, _onButtonFocusInTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, _onButtonDragConfirmedTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, _onButtonReleasedInsideTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, _onButtonReleasedOutsideTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween, false, 0, true);
 
 			if(c.width == undefined) c.width = skin.buttonSkin.assetSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.assetSize.height;
@@ -93,12 +93,12 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public function destroy():void {
-			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, _onButtonHoverInTween);
-			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, _onButtonHoverOutTween);
-			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, _onButtonFocusInTween);
-			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, _onButtonDragConfirmedTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, _onButtonReleasedInsideTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, _onButtonReleasedOutsideTween);
+			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
 			DisplayUtils.removeChildren(this, _button, _glyphOut, _glyphHover, _glyphFocus);
 
@@ -319,7 +319,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onButtonHoverInTween(event:ButtonEvent):void {
+		private function onButtonHoverInTween(event:ButtonEvent):void {
 			new TweenMax(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenMax(_glyphFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
@@ -328,7 +328,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onButtonHoverOutTween(event:ButtonEvent):void {
+		private function onButtonHoverOutTween(event:ButtonEvent):void {
 			new TweenMax(_glyphOut, _skin.buttonSkin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenMax(_glyphHover, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphFocus, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -337,7 +337,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onButtonFocusInTween(event:ButtonEvent):void {
+		private function onButtonFocusInTween(event:ButtonEvent):void {
 			new TweenMax(_glyphOut, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphHover, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphFocus, _skin.buttonSkin.focusInDuration, {alpha:1, ease:Sine.easeOut});
@@ -346,7 +346,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onButtonDragConfirmedTween(event:ButtonEvent):void {
+		private function onButtonDragConfirmedTween(event:ButtonEvent):void {
 			new TweenMax(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenMax(_glyphFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
@@ -355,7 +355,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onButtonReleasedInsideTween(event:ButtonEvent):void {
+		private function onButtonReleasedInsideTween(event:ButtonEvent):void {
 			new TweenMax(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenMax(_glyphFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -364,7 +364,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onButtonReleasedOutsideTween(event:ButtonEvent):void {
+		private function onButtonReleasedOutsideTween(event:ButtonEvent):void {
 			new TweenMax(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenMax(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenMax(_glyphFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});

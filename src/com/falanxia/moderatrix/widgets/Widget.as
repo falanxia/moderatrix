@@ -55,17 +55,18 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		public static var initialDebugLevel:String;
 
-		protected static const _DEBUG_PADDING:Number = 4;
+		protected static const DEBUG_PADDING:Number = 4;
 
-		protected static var _allWidgets:Array;
+		protected static var allWidgets:Array;
 
-		protected var _allIdx:uint;
 		protected var _config:Object;
 		protected var _size:Rectangle = new Rectangle(0, 0, 0, 0);
 		protected var _debugLevel:String;
 		protected var _debugColor:RGBA;
-		protected var _debugSpr:QSprite;
-		protected var _contentSpr:QSprite;
+
+		protected var allIdx:uint;
+		protected var debugSpr:QSprite;
+		protected var contentSpr:QSprite;
 
 
 
@@ -85,13 +86,13 @@ package com.falanxia.moderatrix.widgets {
 
 			if(parent != null) parent.addChild(this);
 
-			if(_allWidgets == null) _allWidgets = new Array();
+			if(allWidgets == null) allWidgets = new Array();
 
-			_allWidgets.push(this);
+			allWidgets.push(this);
 
-			_allIdx = _allWidgets.length - 1;
+			allIdx = allWidgets.length - 1;
 
-			_init();
+			init();
 
 			if(debugLevel == null) {
 				if(initialDebugLevel != null) {
@@ -105,7 +106,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public function destroy():void {
-			_removeChildren();
+			removeChildren();
 		}
 
 
@@ -122,9 +123,9 @@ package com.falanxia.moderatrix.widgets {
 		public function draw():void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
 				if(!_size.isEmpty()) {
-					DisplayUtils.clear(_debugSpr);
-					DisplayUtils.drawRect(_debugSpr, _size, _debugColor);
-					DisplayUtils.strokeBounds(_debugSpr, _size, _debugColor, 5);
+					DisplayUtils.clear(debugSpr);
+					DisplayUtils.drawRect(debugSpr, _size, _debugColor);
+					DisplayUtils.strokeBounds(debugSpr, _size, _debugColor, 5);
 				}
 			}
 
@@ -137,8 +138,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function addChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
-			if(_contentSpr == null) out = super.addChild(child);
-			else out = _contentSpr.addChild(child);
+			if(contentSpr == null) out = super.addChild(child);
+			else out = contentSpr.addChild(child);
 
 			return out;
 		}
@@ -150,9 +151,9 @@ package com.falanxia.moderatrix.widgets {
 			var out:DisplayObject;
 
 			try {
-				if(_contentSpr == null && super.contains(child)) out = super.removeChild(child);
+				if(contentSpr == null && super.contains(child)) out = super.removeChild(child);
 				else {
-					if(_contentSpr.contains(child)) out = _contentSpr.removeChild(child);
+					if(contentSpr.contains(child)) out = contentSpr.removeChild(child);
 				}
 			}
 			catch(err:Error) {
@@ -168,8 +169,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function contains(child:DisplayObject):Boolean {
 			var out:Boolean;
 
-			if(_contentSpr == null) out = super.contains(child);
-			else out = _contentSpr.contains(child);
+			if(contentSpr == null) out = super.contains(child);
+			else out = contentSpr.contains(child);
 
 			return out;
 		}
@@ -178,8 +179,8 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override public function swapChildrenAt(index1:int, index2:int):void {
-			if(_contentSpr == null) super.swapChildrenAt(index1, index2);
-			else _contentSpr.swapChildrenAt(index1, index2);
+			if(contentSpr == null) super.swapChildrenAt(index1, index2);
+			else contentSpr.swapChildrenAt(index1, index2);
 		}
 
 
@@ -188,8 +189,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function getChildByName(name:String):DisplayObject {
 			var out:DisplayObject;
 
-			if(_contentSpr == null) out = super.getChildByName(name);
-			else out = _contentSpr.getChildByName(name);
+			if(contentSpr == null) out = super.getChildByName(name);
+			else out = contentSpr.getChildByName(name);
 
 			return out;
 		}
@@ -200,8 +201,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function removeChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(_contentSpr == null) out = super.removeChildAt(index);
-			else out = _contentSpr.removeChildAt(index);
+			if(contentSpr == null) out = super.removeChildAt(index);
+			else out = contentSpr.removeChildAt(index);
 
 			return out;
 		}
@@ -212,8 +213,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function getChildIndex(child:DisplayObject):int {
 			var out:int;
 
-			if(_contentSpr == null) out = super.getChildIndex(child);
-			else out = _contentSpr.getChildIndex(child);
+			if(contentSpr == null) out = super.getChildIndex(child);
+			else out = contentSpr.getChildIndex(child);
 
 			return out;
 		}
@@ -224,8 +225,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(_contentSpr == null) out = super.addChildAt(child, index);
-			else out = _contentSpr.addChildAt(child, index);
+			if(contentSpr == null) out = super.addChildAt(child, index);
+			else out = contentSpr.addChildAt(child, index);
 
 			return out;
 		}
@@ -234,8 +235,8 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
-			if(_contentSpr == null) super.swapChildren(child1, child2);
-			else _contentSpr.swapChildren(child1, child2);
+			if(contentSpr == null) super.swapChildren(child1, child2);
+			else contentSpr.swapChildren(child1, child2);
 		}
 
 
@@ -244,8 +245,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function getChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(_contentSpr == null) out = super.getChildAt(index);
-			else _contentSpr.getChildAt(index);
+			if(contentSpr == null) out = super.getChildAt(index);
+			else contentSpr.getChildAt(index);
 
 			return out;
 		}
@@ -254,8 +255,8 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override public function setChildIndex(child:DisplayObject, index:int):void {
-			if(_contentSpr == null) super.setChildIndex(child, index);
-			else _contentSpr.setChildIndex(child, index);
+			if(contentSpr == null) super.setChildIndex(child, index);
+			else contentSpr.setChildIndex(child, index);
 		}
 
 
@@ -266,7 +267,7 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		override public function set width(w:Number):void {
 			_size.width = Math.round(w);
-			_invalidate();
+			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 
@@ -282,7 +283,7 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		override public function set height(h:Number):void {
 			_size.height = Math.round(h);
-			_invalidate();
+			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 
@@ -308,7 +309,7 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		override public function set size(rect:Rectangle):void {
 			_size = rect;
-			_invalidate();
+			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 
@@ -316,7 +317,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public static function set allDebugLevel(value:String):void {
-			for each(var i:IWidget in _allWidgets) {
+			for each(var i:IWidget in allWidgets) {
 				if(i != null) i.debugLevel = value;
 			}
 		}
@@ -347,16 +348,16 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		public function set debugLevel(value:String):void {
 			if(value == DebugLevel.ALWAYS) {
-				_debugSpr.visible = true;
+				debugSpr.visible = true;
 
-				this.removeEventListener(MouseEvent.ROLL_OVER, _onDebugOver);
-				this.removeEventListener(MouseEvent.ROLL_OUT, _onDebugOut);
+				this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 			else {
-				_debugSpr.visible = false;
+				debugSpr.visible = false;
 
-				this.addEventListener(MouseEvent.ROLL_OVER, _onDebugOver, false, 0, true);
-				this.addEventListener(MouseEvent.ROLL_OUT, _onDebugOut, false, 0, true);
+				this.addEventListener(MouseEvent.ROLL_OVER, onDebugOver, false, 0, true);
+				this.addEventListener(MouseEvent.ROLL_OUT, onDebugOut, false, 0, true);
 			}
 
 			_debugLevel = value;
@@ -390,38 +391,38 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		protected function _init():void {
-			_addChildren();
-			_invalidate();
+		protected function init():void {
+			addChildren();
+			invalidate();
 		}
 
 
 
 		/** @todo Comment */
-		protected function _addChildren():void {
+		protected function addChildren():void {
 			// FIXME: For some reason _debugSpr is below _contentSpr
 
-			_contentSpr = new QSprite({mouseEnabled:false}, this);
-			_debugSpr = new QSprite({mouseEnabled:false, mouseChildren:false}, this);
+			contentSpr = new QSprite({mouseEnabled:false}, this);
+			debugSpr = new QSprite({mouseEnabled:false, mouseChildren:false}, this);
 		}
 
 
 
 		/** @todo Comment */
-		protected function _removeChildren():void {
-			this.removeEventListener(MouseEvent.ROLL_OVER, _onDebugOver);
-			this.removeEventListener(MouseEvent.ROLL_OUT, _onDebugOut);
+		protected function removeChildren():void {
+			this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+			this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 
-			_allWidgets[_allIdx] = null;
+			allWidgets[allIdx] = null;
 
-			DisplayUtils.removeChildren(this, _contentSpr, _debugSpr);
+			DisplayUtils.removeChildren(this, contentSpr, debugSpr);
 		}
 
 
 
 		/** @todo Comment */
-		protected function _invalidate():void {
-			addEventListener(Event.ENTER_FRAME, _onInvalidate, false, 0, true);
+		protected function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
 
 
@@ -430,22 +431,22 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		protected function _onDebugOver(event:MouseEvent):void {
-			_debugSpr.visible = true;
+		protected function onDebugOver(event:MouseEvent):void {
+			debugSpr.visible = true;
 		}
 
 
 
 		/** @todo Comment */
-		protected function _onDebugOut(event:MouseEvent):void {
-			_debugSpr.visible = false;
+		protected function onDebugOut(event:MouseEvent):void {
+			debugSpr.visible = false;
 		}
 
 
 
 		/** @todo Comment */
-		private function _onInvalidate(event:Event):void {
-			removeEventListener(Event.ENTER_FRAME, _onInvalidate);
+		private function onInvalidate(event:Event):void {
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			draw();
 		}

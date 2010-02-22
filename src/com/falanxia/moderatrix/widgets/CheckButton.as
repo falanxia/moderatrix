@@ -67,8 +67,8 @@ package com.falanxia.moderatrix.widgets {
 			this.isMorphHeightEnabled = false;
 			this.isMorphWidthEnabled = false;
 
-			_buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, _onToggle, false, 0, true);
-			_buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, _onToggle, false, 0, true);
+			_buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle, false, 0, true);
+			_buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle, false, 0, true);
 
 			if(c.width == undefined) c.width = skin.buttonOffSkin.assetSize.width;
 			if(c.height == undefined) c.height = skin.buttonOffSkin.assetSize.height;
@@ -84,7 +84,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public function destroy():void {
-			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, _onToggle);
+			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 
 			DisplayUtils.removeChildren(this, _buttonOff, _buttonOn);
 
@@ -287,7 +287,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function _onToggle(event:ButtonEvent):void {
+		private function onToggle(event:ButtonEvent):void {
 			isChecked = !isChecked;
 		}
 	}

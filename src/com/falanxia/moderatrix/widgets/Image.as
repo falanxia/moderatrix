@@ -37,7 +37,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected var _skin:ImageSkin;
-		protected var _imageBM:QBitmap;
+
+		protected var imageBM:QBitmap;
 
 
 
@@ -75,10 +76,10 @@ package com.falanxia.moderatrix.widgets {
 			if(_skin != null) {
 				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft, _size.height - _skin.paddingTop);
 
-				_imageBM.positionAndSize = rect;
+				imageBM.positionAndSize = rect;
 
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(_debugSpr, rect, _debugColor, 5);
+					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}
 		}
@@ -102,8 +103,8 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			_imageBM.bitmapData = _skin.imageBD;
-			_imageBM.smoothing = true;
+			imageBM.bitmapData = _skin.imageBD;
+			imageBM.smoothing = true;
 
 			draw();
 		}
@@ -112,7 +113,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public function get bitmap():QBitmap {
-			return _imageBM;
+			return imageBM;
 		}
 
 
@@ -121,8 +122,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _init():void {
-			super._init();
+		override protected function init():void {
+			super.init();
 
 			isMorphWidthEnabled = false;
 			isMorphHeightEnabled = false;
@@ -133,21 +134,21 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _addChildren():void {
-			super._addChildren();
+		override protected function addChildren():void {
+			super.addChildren();
 
-			_imageBM = new QBitmap();
+			imageBM = new QBitmap();
 
-			DisplayUtils.addChildren(_contentSpr, _imageBM);
+			DisplayUtils.addChildren(contentSpr, imageBM);
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _removeChildren():void {
-			super._removeChildren();
+		override protected function removeChildren():void {
+			super.removeChildren();
 
-			DisplayUtils.removeChildren(_contentSpr, _imageBM);
+			DisplayUtils.removeChildren(contentSpr, imageBM);
 		}
 	}
 }

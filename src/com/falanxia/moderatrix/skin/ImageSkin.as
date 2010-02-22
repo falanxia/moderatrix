@@ -35,8 +35,8 @@ package com.falanxia.moderatrix.skin {
 		protected var _paddingLeft:Number;
 		protected var _imageBD:BitmapData;
 
-		private var _oldPaddingTop:Number;
-		private var _oldPaddingLeft:Number;
+		private var oldPaddingTop:Number;
+		private var oldPaddingLeft:Number;
 
 
 
@@ -66,8 +66,8 @@ package com.falanxia.moderatrix.skin {
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
-			_oldPaddingTop = _paddingTop;
-			_oldPaddingLeft = _paddingLeft;
+			oldPaddingTop = _paddingTop;
+			oldPaddingLeft = _paddingLeft;
 
 			if(source.paddingTop != undefined) _paddingTop = source.paddingTop;
 			if(source.paddingLeft != undefined) _paddingLeft = source.paddingLeft;
@@ -79,8 +79,8 @@ package com.falanxia.moderatrix.skin {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_paddingTop = _oldPaddingTop;
-			_paddingLeft = _oldPaddingLeft;
+			_paddingTop = oldPaddingTop;
+			_paddingLeft = oldPaddingLeft;
 		}
 
 
@@ -118,7 +118,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function set imageBD(source:BitmapData):void {
-			_checkSize(source);
+			checkSize(source);
 			_imageBD = source;
 		}
 

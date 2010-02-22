@@ -40,7 +40,7 @@ package com.falanxia.moderatrix.skin {
 		protected var _assetSize:Rectangle = new Rectangle(0, 0, 0, 0);
 		protected var _data:Object = new Object();
 
-		private var _oldData:Object;
+		private var oldData:Object;
 
 
 
@@ -59,7 +59,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function parseConfig(source:Object):void {
-			_oldData = _data;
+			oldData = _data;
 
 			if(source._data != undefined) {
 				_data = source._data;
@@ -70,7 +70,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function revertConfig():void {
-			_data = _oldData;
+			_data = oldData;
 		}
 
 
@@ -117,7 +117,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/** @todo Comment */
-		protected function _getSkinSize(source:MovieClip, frame:*):void {
+		protected function getSkinSize(source:MovieClip, frame:*):void {
 			// it's needed to duplicate this MovieClip as there was some weird bug:
 			// when used source.gotoAndStop(frame) on one of next lines,
 			// all future getChildByName() on this source failed.
@@ -132,7 +132,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/** @todo Comment */
-		protected function _checkSize(source:BitmapData):void {
+		protected function checkSize(source:BitmapData):void {
 			if(_assetSize.width == 0 && _assetSize.height == 0) {
 				// size is not specified, set initial values
 				_assetSize.width = source.width;

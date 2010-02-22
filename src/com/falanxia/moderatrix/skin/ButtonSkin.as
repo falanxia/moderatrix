@@ -42,10 +42,10 @@ package com.falanxia.moderatrix.skin {
 		protected var _hoverBD:BitmapData;
 		protected var _focusBD:BitmapData;
 
-		private var _oldHoverInDuration:Number;
-		private var _oldHoverOutDuration:Number;
-		private var _oldFocusInDuration:Number;
-		private var _oldFocusOutDuration:Number;
+		private var oldHoverInDuration:Number;
+		private var oldHoverOutDuration:Number;
+		private var oldFocusInDuration:Number;
+		private var oldFocusOutDuration:Number;
 
 
 
@@ -85,10 +85,10 @@ package com.falanxia.moderatrix.skin {
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
-			_oldHoverInDuration = _hoverInDuration;
-			_oldHoverOutDuration = _hoverOutDuration;
-			_oldFocusInDuration = _focusInDuration;
-			_oldFocusOutDuration = _focusOutDuration;
+			oldHoverInDuration = _hoverInDuration;
+			oldHoverOutDuration = _hoverOutDuration;
+			oldFocusInDuration = _focusInDuration;
+			oldFocusOutDuration = _focusOutDuration;
 
 			if(source.hoverInDuration != undefined) _hoverInDuration = source.hoverInDuration;
 			if(source.hoverOutDuration != undefined) _hoverOutDuration = source.hoverOutDuration;
@@ -102,10 +102,10 @@ package com.falanxia.moderatrix.skin {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_hoverInDuration = _oldHoverInDuration;
-			_hoverOutDuration = _oldHoverOutDuration;
-			_focusInDuration = _oldFocusInDuration;
-			_focusOutDuration = _oldFocusOutDuration;
+			_hoverInDuration = oldHoverInDuration;
+			_hoverOutDuration = oldHoverOutDuration;
+			_focusInDuration = oldFocusInDuration;
+			_focusOutDuration = oldFocusOutDuration;
 		}
 
 
@@ -171,7 +171,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function set outBD(source:BitmapData):void {
-			_checkSize(source);
+			checkSize(source);
 			_outBD = source;
 		}
 
@@ -186,7 +186,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function set hoverBD(source:BitmapData):void {
-			_checkSize(source);
+			checkSize(source);
 			_hoverBD = source;
 		}
 
@@ -201,7 +201,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function set focusBD(source:BitmapData):void {
-			_checkSize(source);
+			checkSize(source);
 			_focusBD = source;
 		}
 
@@ -216,7 +216,7 @@ package com.falanxia.moderatrix.skin {
 
 		/** @todo Comment */
 		public function set guideBD(source:BitmapData):void {
-			_checkSize(source);
+			checkSize(source);
 			_guideBD = source;
 		}
 

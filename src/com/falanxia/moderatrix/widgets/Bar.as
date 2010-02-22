@@ -37,7 +37,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected var _skin:BarSkin;
-		protected var _bodySBS:ScaleBitmapSprite;
+
+		protected var bodySBS:ScaleBitmapSprite;
 
 
 
@@ -71,16 +72,16 @@ package com.falanxia.moderatrix.widgets {
 				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight, _size.height - _skin.paddingTop - _skin.paddingBottom);
 
 				if(_size.width != 0 && !isNaN(_size.width)) {
-					_bodySBS.width = rect.width;
-					_bodySBS.x = rect.x;
+					bodySBS.width = rect.width;
+					bodySBS.x = rect.x;
 				}
 				if(_size.height != 0 && !isNaN(_size.height)) {
-					_bodySBS.height = rect.height;
-					_bodySBS.y = rect.y;
+					bodySBS.height = rect.height;
+					bodySBS.y = rect.y;
 				}
 
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(_debugSpr, rect, _debugColor, 5);
+					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}
 		}
@@ -104,7 +105,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			_bodySBS.setData()(_skin.backBD, _skin.guideBD.getColorBoundsRect(0x00FF0000, 0x00000000, false));
+			bodySBS.setData()(_skin.backBD, _skin.guideBD.getColorBoundsRect(0x00FF0000, 0x00000000, false));
 
 			draw();
 		}
@@ -129,8 +130,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _init():void {
-			super._init();
+		override protected function init():void {
+			super.init();
 
 			isMorphWidthEnabled = true;
 			isMorphHeightEnabled = true;
@@ -141,21 +142,21 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _addChildren():void {
-			super._addChildren();
+		override protected function addChildren():void {
+			super.addChildren();
 
-			_bodySBS = new ScaleBitmapSprite();
+			bodySBS = new ScaleBitmapSprite();
 
-			DisplayUtils.addChildren(_contentSpr, _bodySBS);
+			DisplayUtils.addChildren(contentSpr, bodySBS);
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _removeChildren():void {
-			super._removeChildren();
+		override protected function removeChildren():void {
+			super.removeChildren();
 
-			DisplayUtils.removeChildren(_contentSpr, _bodySBS);
+			DisplayUtils.removeChildren(contentSpr, bodySBS);
 		}
 	}
 }

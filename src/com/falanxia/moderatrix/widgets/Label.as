@@ -101,7 +101,7 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(_debugSpr, rect, _debugColor, 5);
+					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}
 		}
@@ -304,8 +304,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _init():void {
-			super._init();
+		override protected function init():void {
+			super.init();
 
 			_textFormat = new TextFormat();
 
@@ -318,19 +318,19 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _addChildren():void {
-			super._addChildren();
+		override protected function addChildren():void {
+			super.addChildren();
 
-			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel == DebugLevel.ALWAYS)}, _contentSpr);
+			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel == DebugLevel.ALWAYS)}, contentSpr);
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _removeChildren():void {
-			super._removeChildren();
+		override protected function removeChildren():void {
+			super.removeChildren();
 
-			DisplayUtils.removeChildren(_contentSpr, _textField);
+			DisplayUtils.removeChildren(contentSpr, _textField);
 		}
 
 
@@ -339,8 +339,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _onDebugOver(event:MouseEvent):void {
-			super._onDebugOver(event);
+		override protected function onDebugOver(event:MouseEvent):void {
+			super.onDebugOver(event);
 
 			if(_debugLevel == DebugLevel.HOVER) {
 				_textField.border = true;
@@ -350,8 +350,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _onDebugOut(event:MouseEvent):void {
-			super._onDebugOut(event);
+		override protected function onDebugOut(event:MouseEvent):void {
+			super.onDebugOut(event);
 
 			if(_debugLevel == DebugLevel.HOVER) {
 				_textField.border = false;

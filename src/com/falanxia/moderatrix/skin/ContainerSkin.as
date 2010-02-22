@@ -37,12 +37,12 @@ package com.falanxia.moderatrix.skin {
 		protected var _paddingLeft:Number;
 		protected var _paddingRight:Number;
 
-		private var _oldHAlign:String;
-		private var _oldVAlign:String;
-		private var _oldPaddingTop:Number;
-		private var _oldPaddingBottom:Number;
-		private var _oldPaddingLeft:Number;
-		private var _oldPaddingRight:Number;
+		private var oldHAlign:String;
+		private var oldVAlign:String;
+		private var oldPaddingTop:Number;
+		private var oldPaddingBottom:Number;
+		private var oldPaddingLeft:Number;
+		private var oldPaddingRight:Number;
 
 
 
@@ -64,12 +64,12 @@ package com.falanxia.moderatrix.skin {
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
-			_oldHAlign = _hAlign;
-			_oldVAlign = _vAlign;
-			_oldPaddingTop = _paddingTop;
-			_oldPaddingBottom = _paddingBottom;
-			_oldPaddingLeft = _paddingLeft;
-			_oldPaddingRight = _paddingRight;
+			oldHAlign = _hAlign;
+			oldVAlign = _vAlign;
+			oldPaddingTop = _paddingTop;
+			oldPaddingBottom = _paddingBottom;
+			oldPaddingLeft = _paddingLeft;
+			oldPaddingRight = _paddingRight;
 
 			if(source.hAlign != undefined) _hAlign = source.hAlign;
 			if(source.vAlign != undefined) _vAlign = source.vAlign;
@@ -85,12 +85,12 @@ package com.falanxia.moderatrix.skin {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_hAlign = _oldHAlign;
-			_vAlign = _oldVAlign;
-			_paddingTop = _oldPaddingTop;
-			_paddingBottom = _oldPaddingBottom;
-			_paddingLeft = _oldPaddingLeft;
-			_paddingRight = _oldPaddingRight;
+			_hAlign = oldHAlign;
+			_vAlign = oldVAlign;
+			_paddingTop = oldPaddingTop;
+			_paddingBottom = oldPaddingBottom;
+			_paddingLeft = oldPaddingLeft;
+			_paddingRight = oldPaddingRight;
 		}
 
 

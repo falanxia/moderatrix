@@ -38,9 +38,9 @@ package com.falanxia.moderatrix.widgets {
 	public class ScaleButton extends ButtonCore implements IWidget {
 
 
-		private var _outSBS:ScaleBitmapSprite;
-		private var _hoverSBS:ScaleBitmapSprite;
-		private var _focusSBS:ScaleBitmapSprite;
+		private var outSBS:ScaleBitmapSprite;
+		private var hoverSBS:ScaleBitmapSprite;
+		private var focusSBS:ScaleBitmapSprite;
 
 
 
@@ -69,17 +69,17 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_size.width != 0) {
-				_outSBS.width = _size.width;
-				_hoverSBS.width = _size.width;
-				_focusSBS.width = _size.width;
+				outSBS.width = _size.width;
+				hoverSBS.width = _size.width;
+				focusSBS.width = _size.width;
 			}
 			if(_size.height != 0) {
-				_outSBS.height = _size.height;
-				_hoverSBS.height = _size.height;
-				_focusSBS.height = _size.height;
+				outSBS.height = _size.height;
+				hoverSBS.height = _size.height;
+				focusSBS.height = _size.height;
 			}
 
-			_activeSpr.size = size;
+			activeSpr.size = size;
 		}
 
 
@@ -95,10 +95,10 @@ package com.falanxia.moderatrix.widgets {
 
 			// TODO: Outer rect
 
-			_outSBS.setData(_skin.outBD, rect);
-			_outSBS.setData(_skin.outBD, rect);
-			_hoverSBS.setData(_skin.hoverBD, rect);
-			_focusSBS.setData(_skin.focusBD, rect);
+			outSBS.setData(_skin.outBD, rect);
+			outSBS.setData(_skin.outBD, rect);
+			hoverSBS.setData(_skin.hoverBD, rect);
+			focusSBS.setData(_skin.focusBD, rect);
 
 			draw();
 		}
@@ -109,8 +109,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _init():void {
-			super._init();
+		override protected function init():void {
+			super.init();
 
 			isMorphWidthEnabled = true;
 			isMorphHeightEnabled = true;
@@ -121,96 +121,96 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function _addChildren():void {
-			super._addChildren();
+		override protected function addChildren():void {
+			super.addChildren();
 
-			_outSBS = new ScaleBitmapSprite();
-			_hoverSBS = new ScaleBitmapSprite();
-			_focusSBS = new ScaleBitmapSprite();
+			outSBS = new ScaleBitmapSprite();
+			hoverSBS = new ScaleBitmapSprite();
+			focusSBS = new ScaleBitmapSprite();
 
-			_hoverSBS.alpha = 0;
-			_focusSBS.alpha = 0;
+			hoverSBS.alpha = 0;
+			focusSBS.alpha = 0;
 
-			_outSBS.mouseEnabled = false;
-			_hoverSBS.mouseEnabled = false;
-			_focusSBS.mouseEnabled = false;
+			outSBS.mouseEnabled = false;
+			hoverSBS.mouseEnabled = false;
+			focusSBS.mouseEnabled = false;
 
-			DisplayUtils.addChildren(_contentSpr, _outSBS, _hoverSBS, _focusSBS);
+			DisplayUtils.addChildren(contentSpr, outSBS, hoverSBS, focusSBS);
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _removeChildren():void {
-			super._removeChildren();
+		override protected function removeChildren():void {
+			super.removeChildren();
 
-			DisplayUtils.removeChildren(_contentSpr, _outSBS, _hoverSBS, _focusSBS);
+			DisplayUtils.removeChildren(contentSpr, outSBS, hoverSBS, focusSBS);
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _hoverInTween():void {
-			new TweenMax(_outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(_focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+		override protected function hoverInTween():void {
+			new TweenMax(outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 
-			super._hoverInTween();
+			super.hoverInTween();
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _hoverOutTween():void {
-			new TweenMax(_outSBS, _skin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(_hoverSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_focusSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+		override protected function hoverOutTween():void {
+			new TweenMax(outSBS, _skin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(hoverSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(focusSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
 
-			super._hoverOutTween();
+			super.hoverOutTween();
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _focusInTween():void {
-			new TweenMax(_outSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_hoverSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_focusSBS, _skin.focusInDuration, {alpha:1, ease:Sine.easeOut});
+		override protected function focusInTween():void {
+			new TweenMax(outSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(focusSBS, _skin.focusInDuration, {alpha:1, ease:Sine.easeOut});
 
-			super._focusInTween();
+			super.focusInTween();
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _dragConfirmedTween():void {
-			new TweenMax(_outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(_focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+		override protected function dragConfirmedTween():void {
+			new TweenMax(outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 
-			super._dragConfirmedTween();
+			super.dragConfirmedTween();
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _releasedInsideTween():void {
-			new TweenMax(_outSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_hoverSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(_focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+		override protected function releasedInsideTween():void {
+			new TweenMax(outSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 
-			super._releasedInsideTween();
+			super.releasedInsideTween();
 		}
 
 
 
 		/** @todo Comment */
-		override protected function _releasedOutsideTween():void {
-			new TweenMax(_outSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(_hoverSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(_focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+		override protected function releasedOutsideTween():void {
+			new TweenMax(outSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(hoverSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 
-			super._releasedOutsideTween();
+			super.releasedOutsideTween();
 		}
 	}
 }
