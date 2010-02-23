@@ -33,7 +33,9 @@ package com.falanxia.moderatrix.widgets {
 
 	import de.dev_lab.logging.Logger;
 
+	import flash.display.BitmapData;
 	import flash.display.DisplayObjectContainer;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
 
@@ -43,9 +45,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected var _skin:AtlasSkin;
+		protected var _index:uint = 0;
 
 		protected var imageBM:QBitmap;
-		protected var _index:uint = 0;
 
 
 
@@ -75,14 +77,15 @@ package com.falanxia.moderatrix.widgets {
 		override public function draw():void {
 			super.draw();
 
-			var w:uint = _skin.assetSize.width;
-			var h:uint = _skin.assetSize.height;
-			var rect:Rectangle = new Rectangle(_index * w, 0, w, h);
-			imageBM.bitmapData = BitmapUtils.crop(_skin.imageBD, rect);
+			var assetSize:Rectangle = _skin.assetSize;
+			var w:uint = assetSize.width;
+			var rect:Rectangle = new Rectangle(_index * w, 0, w, assetSize.height);
+
+			imageBM.bitmapData.copyPixels(_skin.imageBD, rect, new Point(0, 0));
 
 			if(_skin != null) {
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
+					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, assetSize.width, assetSize.height), _debugColor, 5);
 				}
 			}
 		}
@@ -106,7 +109,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			imageBM.bitmapData = _skin.imageBD;
+			imageBM.bitmapData = new BitmapData(_skin.assetSize.width, _skin.assetSize.height);
 			imageBM.smoothing = true;
 
 			draw();
@@ -123,12 +126,14 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		public function set index(value:uint):void {
-			if(value > this.length) {
-				throw new Error(printf('Atlas index too high (%d), only %d indexes available', value, this.length));
-			}
-			else {
-				_index = value;
-				draw();
+			if(value != index) {
+				if(value > this.length) {
+					throw new Error(printf('Atlas index too high (%d), only %d indexes available', value, this.length));
+				}
+				else {
+					_index = value;
+					draw();
+				}
 			}
 		}
 
