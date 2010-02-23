@@ -28,10 +28,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.skin.AtlasSkin;
 	import com.falanxia.utilitaris.display.QBitmap;
 	import com.falanxia.utilitaris.helpers.printf;
-	import com.falanxia.utilitaris.utils.BitmapUtils;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
-
-	import de.dev_lab.logging.Logger;
 
 	import flash.display.BitmapData;
 	import flash.display.DisplayObjectContainer;
@@ -45,7 +42,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected var _skin:AtlasSkin;
-		protected var _index:uint = 0;
+		protected var _phase:uint = 0;
 
 		protected var imageBM:QBitmap;
 
@@ -79,7 +76,7 @@ package com.falanxia.moderatrix.widgets {
 
 			var assetSize:Rectangle = _skin.assetSize;
 			var w:uint = assetSize.width;
-			var rect:Rectangle = new Rectangle(_index * w, 0, w, assetSize.height);
+			var rect:Rectangle = new Rectangle(_phase * w, 0, w, assetSize.height);
 
 			imageBM.bitmapData.copyPixels(_skin.imageBD, rect, new Point(0, 0));
 
@@ -125,13 +122,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function set index(value:uint):void {
-			if(value != index) {
+		public function set phase(value:uint):void {
+			if(value != phase) {
 				if(value > this.length) {
-					throw new Error(printf('Atlas index too high (%d), only %d indexes available', value, this.length));
+					throw new Error(printf('Atlas phase too high (%d), only %d phases available', value, this.length));
 				}
 				else {
-					_index = value;
+					_phase = value;
 					draw();
 				}
 			}
@@ -140,8 +137,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function get index():uint {
-			return _index;
+		public function get phase():uint {
+			return _phase;
 		}
 
 
