@@ -25,6 +25,7 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.emitor.Asset;
 	import com.falanxia.moderatrix.constants.DebugLevel;
 	import com.falanxia.moderatrix.constants.SkinType;
+	import com.falanxia.moderatrix.skin.AtlasSkin;
 	import com.falanxia.moderatrix.skin.BarSkin;
 	import com.falanxia.moderatrix.skin.ButtonSkin;
 	import com.falanxia.moderatrix.skin.CheckButtonSkin;
@@ -94,6 +95,17 @@ package com.falanxia.moderatrix.globals {
 
 						imageSkin.getAssetsFromAtlas(imageSkinBD);
 						imageSkin.parseConfig(config);
+
+						break;
+
+					case SkinType.ATLAS:
+						skin = new AtlasSkin();
+
+						var atlasSkin:AtlasSkin = AtlasSkin(skin);
+						var atlasSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
+
+						atlasSkin.getAssetsFromAtlas(atlasSkinBD);
+						atlasSkin.parseConfig(config);
 
 						break;
 

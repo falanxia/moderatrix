@@ -38,6 +38,9 @@ package com.falanxia.moderatrix.constants {
 		public static const IMAGE:String = "Image";
 
 		/** @todo Comment */
+		public static const ATLAS:String = "Atlas";
+
+		/** @todo Comment */
 		public static const GLYPHS:String = "Glyphs";
 
 		/** @todo Comment */
