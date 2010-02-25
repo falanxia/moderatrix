@@ -25,6 +25,7 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.utilitaris.utils.BitmapUtils;
 
 	import flash.display.BitmapData;
+	import flash.geom.Rectangle;
 
 
 
@@ -68,8 +69,8 @@ package com.falanxia.moderatrix.skin {
 			_assetSize.width = source.width / 2;
 			_assetSize.height = source.height;
 
-			_guideBD = BitmapUtils.crop(source, _assetSize);
-			_backBD = BitmapUtils.crop(source, _assetSize);
+			_guideBD = BitmapUtils.crop(source, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
+			_backBD = BitmapUtils.crop(source, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
 		}
 
 
