@@ -26,7 +26,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.skin.ButtonSkin;
 	import com.falanxia.utilitaris.display.ScaleBitmapSprite;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
-	import com.greensock.TweenMax;
+	import com.greensock.TweenLite;
 	import com.greensock.easing.Sine;
 
 	import flash.display.DisplayObjectContainer;
@@ -151,9 +151,9 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override protected function hoverInTween():void {
-			new TweenMax(outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.hoverInTween();
 		}
@@ -162,9 +162,9 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override protected function hoverOutTween():void {
-			new TweenMax(outSBS, _skin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(hoverSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(focusSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(outSBS, _skin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(hoverSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(focusSBS, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.hoverOutTween();
 		}
@@ -173,9 +173,9 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override protected function focusInTween():void {
-			new TweenMax(outSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(hoverSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(focusSBS, _skin.focusInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(outSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(hoverSBS, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(focusSBS, _skin.focusInDuration, {alpha:1, ease:Sine.easeOut});
 
 			super.focusInTween();
 		}
@@ -184,9 +184,9 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override protected function dragConfirmedTween():void {
-			new TweenMax(outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(outSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(hoverSBS, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(focusSBS, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.dragConfirmedTween();
 		}
@@ -195,9 +195,9 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override protected function releasedInsideTween():void {
-			new TweenMax(outSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(hoverSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(outSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(hoverSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.releasedInsideTween();
 		}
@@ -206,9 +206,9 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		override protected function releasedOutsideTween():void {
-			new TweenMax(outSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenMax(hoverSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenMax(focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(outSBS, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(hoverSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(focusSBS, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.releasedOutsideTween();
 		}
