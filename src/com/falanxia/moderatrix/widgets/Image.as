@@ -158,14 +158,5 @@ package com.falanxia.moderatrix.widgets {
 
 			DisplayUtils.addChildren(contentSpr, imageBM);
 		}
-
-
-
-		/** @todo Comment */
-		override protected function removeChildren():void {
-			super.removeChildren();
-
-			DisplayUtils.removeChildren(contentSpr, imageBM);
-		}
 	}
 }

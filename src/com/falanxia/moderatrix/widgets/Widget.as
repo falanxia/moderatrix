@@ -428,7 +428,8 @@ package com.falanxia.moderatrix.widgets {
 
 			allWidgets[allIdx] = null;
 
-			DisplayUtils.removeChildren(this, contentSpr, debugSpr);
+			if(contentSpr != null && this.contains(contentSpr)) this.removeChild(contentSpr);
+			if(debugSpr != null && this.contains(debugSpr)) this.removeChild(debugSpr);
 		}
 
 
