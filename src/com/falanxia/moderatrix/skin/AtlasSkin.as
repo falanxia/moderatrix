@@ -44,6 +44,10 @@ package com.falanxia.moderatrix.skin {
 			_imageBD = new BitmapData(1, 1, true, 0x00000000);
 		}
 
+		override public function destroy():void {
+			super.destroy();
+			_imageBD = null;
+		}
 
 
 		/** @todo Comment */

@@ -104,9 +104,22 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
-		public function destroy():void {
+		/**
+		 * Destroys the Widget instance and frees it for GC
+		 * TODO:Check removeChild()...
+		 */
+		override public function destroy():void {
+			super.destroy();
 			removeChildren();
+			_config = null;
+			_size = null;
+			_debugColor = null;
+
+			debugSpr.destroy();
+			debugSpr = null;
+
+			contentSpr.destroy();
+			contentSpr = null;
 		}
 
 

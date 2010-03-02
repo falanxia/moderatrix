@@ -92,7 +92,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		public function destroy():void {
+		override public function destroy():void {
+			super.destroy();
+
 			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
 			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);

@@ -55,6 +55,19 @@ package com.falanxia.moderatrix.skin {
 			}
 		}
 
+		/**
+		 * Destroyx Skin instance and frees it for GC
+		 */
+		public function destroy():void {
+
+			_id = null;
+			_type = null;
+			_assetSize = null;
+			_data = null;
+			oldData = null;
+
+		}
+
 
 
 		/** @todo Comment */
