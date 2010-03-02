@@ -82,14 +82,23 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
-		public function destroy():void {
-			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+		/**
+		 * Destroys {@code CheckButton} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
 
-			DisplayUtils.removeChildren(this, _buttonOff, _buttonOn);
+			forceRelease();
+			removeChildren();
 
+			_skin.destroy();
 			_buttonOff.destroy();
 			_buttonOn.destroy();
+
+			_skin = null;
+			_buttonOff = null;
+			_buttonOn = null;
+			_debugLevel = null;
 		}
 
 
@@ -279,6 +288,21 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		public function get buttonOn():StaticButton {
 			return _buttonOn;
+		}
+
+
+
+		/* ★ PRIVATE METHODS ★ */
+
+
+		/**
+		 * Remove children.
+		 */
+		private function removeChildren():void {
+			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			_buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+
+			DisplayUtils.removeChildren(this, _buttonOff, _buttonOn);
 		}
 
 

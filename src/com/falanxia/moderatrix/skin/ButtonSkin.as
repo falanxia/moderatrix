@@ -66,6 +66,25 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code ButtonSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_guideBD.dispose();
+			_outBD.dispose();
+			_hoverBD.dispose();
+			_focusBD.dispose();
+
+			_guideBD = null;
+			_outBD = null;
+			_hoverBD = null;
+			_focusBD = null;
+		}
+
+
+
 		/** @todo Comment */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			if(source.width % 4 != 0) throw new Error("Width has to be multiple of 4");

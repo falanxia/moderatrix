@@ -76,6 +76,25 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
+		 * Destroys {@code Label} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			removeChildren();
+
+			_skin.destroy();
+			_textField.destroy();
+
+			_skin = null;
+			_textField = null;
+			_textFormat = null;
+			_vAlign = null;
+		}
+
+
+
+		/**
 		 * @todo Comment
 		 * @todo Optmimize
 		 */

@@ -68,13 +68,16 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys Atlas instance and frees it for GC
+		 * Destroys {@code Atlas} instance and frees it for GC.
 		 */
-		public override function destroy():void {
+		override public function destroy():void {
 			super.destroy();
+
 			_skin.destroy();
+			imageBM.destroy();
+
 			_skin = null;
-			imageBM = null;		
+			imageBM = null;
 		}
 
 

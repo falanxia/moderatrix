@@ -89,6 +89,23 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
+		 * Destroys {@code Container} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			removeChildren();
+
+			_skin.destroy();
+			innerSpr.destroy();
+
+			_skin = null;
+			innerSpr = null;
+		}
+
+
+
+		/**
 		 * Redraw stuff.
 		 * @todo Optimize
 		 */

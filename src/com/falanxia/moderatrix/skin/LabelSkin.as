@@ -121,6 +121,27 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code LabelSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_hAlign = null;
+			_vAlign = null;
+			_font = null;
+			_url = null;
+			_filters = null;
+
+			oldHAlign = null;
+			oldVAlign = null;
+			oldFont = null;
+			oldURL = null;
+			oldFilters = null;
+		}
+
+
+
 		/** @todo Comment */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);

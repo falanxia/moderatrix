@@ -67,6 +67,23 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
+		 * Destroys {@code Image} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			removeChildren();
+
+			_skin.destroy();
+			imageBM.destroy();
+
+			_skin = null;
+			imageBM = null;
+		}
+
+
+
+		/**
 		 * @todo Comment
 		 * @todo Optimize
 		 */

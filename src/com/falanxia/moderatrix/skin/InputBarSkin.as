@@ -44,6 +44,21 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code InputBarSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_barSkin.destroy();
+			_labelSkin.destroy();
+
+			_barSkin = null;
+			_labelSkin = null;
+		}
+
+
+
 		/** @todo Comment */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);

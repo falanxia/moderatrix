@@ -59,7 +59,6 @@ package com.falanxia.moderatrix.widgets {
 			_bar.debugColor = SkinManager.debugColor;
 			_label.debugColor = SkinManager.debugColor;
 			_label.isInput = true;
-			//_label.focusRect = false;
 
 			this.isMorphHeightEnabled = true;
 			this.isMorphWidthEnabled = false;
@@ -76,12 +75,22 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
-		public function destroy():void {
-			DisplayUtils.removeChildren(this, _bar, _label);
+		/**
+		 * Destroys {@code InputBar} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
 
+			removeChildren();
+
+			_skin.destroy();
 			_bar.destroy();
 			_label.destroy();
+
+			_skin = null;
+			_bar = null;
+			_label = null;
+			_debugLevel = null;
 		}
 
 
@@ -234,6 +243,18 @@ package com.falanxia.moderatrix.widgets {
 			_label.skin = _skin.labelSkin;
 
 			draw();
+		}
+
+
+
+		/* ★ PRIVATE METHODS ★ */
+
+
+		/**
+		 * Remove children.
+		 */
+		private function removeChildren():void {
+			DisplayUtils.removeChildren(this, _bar, _label);
 		}
 	}
 }

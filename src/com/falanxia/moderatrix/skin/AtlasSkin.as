@@ -44,10 +44,19 @@ package com.falanxia.moderatrix.skin {
 			_imageBD = new BitmapData(1, 1, true, 0x00000000);
 		}
 
+
+
+		/**
+		 * Destroys the {@code AtlasSkin} instance and frees it for GC.
+		 */
 		override public function destroy():void {
 			super.destroy();
+
+			_imageBD.dispose();
+
 			_imageBD = null;
 		}
+
 
 
 		/** @todo Comment */

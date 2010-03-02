@@ -62,6 +62,21 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code BarSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_guideBD.dispose();
+			_backBD.dispose();
+
+			_guideBD = null;
+			_backBD = null;
+		}
+
+
+
 		/** @todo Comment */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			if(source.width % 2 != 0) throw new Error("Width has to be multiple of 2");

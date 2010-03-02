@@ -100,17 +100,16 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
-		public function destroy():void {
-			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
-			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
-			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
-			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+		/**
+		 * Destroys {@code GlyphLabelButton} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
 
-			DisplayUtils.removeChildren(this, _button, _glyphOut, _glyphHover, _glyphFocus, _labelOut, _labelHover, _labelFocus);
+			forceRelease();
+			removeChildren();
 
+			_skin.destroy();
 			_button.destroy();
 			_glyphOut.destroy();
 			_glyphHover.destroy();
@@ -118,6 +117,16 @@ package com.falanxia.moderatrix.widgets {
 			_labelOut.destroy();
 			_labelHover.destroy();
 			_labelFocus.destroy();
+
+			_skin = null;
+			_button = null;
+			_glyphOut = null;
+			_glyphHover = null;
+			_glyphFocus = null;
+			_labelOut = null;
+			_labelHover = null;
+			_labelFocus = null;
+			_debugLevel = null;
 		}
 
 
@@ -420,6 +429,25 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		public function get button():ScaleButton {
 			return _button;
+		}
+
+
+
+		/* ★ PRIVATE METHODS ★ */
+
+
+		/**
+		 * Remove children.
+		 */
+		private function removeChildren():void {
+			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+
+			DisplayUtils.removeChildren(this, _button, _glyphOut, _glyphHover, _glyphFocus, _labelOut, _labelHover, _labelFocus);
 		}
 
 

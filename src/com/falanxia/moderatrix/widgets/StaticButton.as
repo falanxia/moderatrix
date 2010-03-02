@@ -56,6 +56,26 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Destroys {@code StaticButton} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			forceRelease();
+			removeChildren();
+
+			outBM.destroy();
+			hoverBM.destroy();
+			focusBM.destroy();
+
+			outBM = null;
+			hoverBM = null;
+			focusBM = null;
+		}
+
+
+
 		/** @todo Comment */
 		override public function draw():void {
 			super.draw();
@@ -107,7 +127,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * Remove children.
+		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

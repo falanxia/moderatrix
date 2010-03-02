@@ -76,6 +76,27 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Destroys {@code ButtonCore} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			forceRelease();
+			removeChildren();
+
+			if(stage != null) stage.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
+
+			_skin.destroy();
+			activeSpr.destroy();
+
+			_skin = null;
+			activeSpr = null;
+			_mouseStatus = null;
+		}
+
+
+
 		/** @todo Comment */
 		public function forceRelease():void {
 			if(_mouseStatus == MouseStatus.FOCUS) {
@@ -239,6 +260,7 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_IN, onFocusIn);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
+			activeSpr.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 
 			DisplayUtils.removeChildren(contentSpr, activeSpr);
 		}

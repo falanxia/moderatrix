@@ -91,23 +91,27 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * Destroys {@code LabelButton} instance and frees it for GC.
+		 */
 		override public function destroy():void {
 			super.destroy();
 
-			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
-			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
-			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
-			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+			forceRelease();
+			removeChildren();
 
-			DisplayUtils.removeChildren(this, _button, _labelOut, _labelHover, _labelFocus);
-
+			_skin.destroy();
 			_button.destroy();
 			_labelOut.destroy();
 			_labelHover.destroy();
 			_labelFocus.destroy();
+
+			_skin = null;
+			_button = null;
+			_labelOut = null;
+			_labelHover = null;
+			_labelFocus = null;
+			_debugLevel = null;
 		}
 
 
@@ -354,7 +358,27 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/* ★ PRIVATE METHODS ★ */
+
+
+		/**
+		 * Remove children.
+		 */
+		private function removeChildren():void {
+			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+
+			DisplayUtils.removeChildren(this, _button, _labelOut, _labelHover, _labelFocus);
+		}
+
+
+
 		/* ★ EVENT LISTENERS ★ */
+
 
 		/** @todo Comment */
 		private function onButtonHoverInTween(event:ButtonEvent):void {

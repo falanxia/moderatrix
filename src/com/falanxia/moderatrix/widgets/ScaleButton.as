@@ -62,6 +62,26 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
+		 * Destroys {@code ScaleButton} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			forceRelease();
+			removeChildren();
+
+			outSBS.destroy();
+			hoverSBS.destroy();
+			focusSBS.destroy();
+
+			outSBS = null;
+			hoverSBS = null;
+			focusSBS = null;
+		}
+
+
+
+		/**
 		 * @todo Comment
 		 * @todo Optimize
 		 */
@@ -140,7 +160,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * Remove children.
+		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

@@ -60,6 +60,21 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code ContainerSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_hAlign = null;
+			_vAlign = null;
+
+			oldHAlign = null;
+			oldVAlign = null;
+		}
+
+
+
 		/** @todo Comment */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);

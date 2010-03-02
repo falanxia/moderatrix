@@ -52,6 +52,19 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code ImageSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_imageBD.dispose();
+
+			_imageBD = null;
+		}
+
+
+
 		/** @todo Comment */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			_assetSize.width = source.width;

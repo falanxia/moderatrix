@@ -50,6 +50,27 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Destroys the {@code GlyphLabelButtonSkin} instance and frees it for GC.
+		 */
+		override public function destroy():void {
+			super.destroy();
+
+			_buttonSkin.destroy();
+			_glyphsSkin.destroy();
+			_labelOutSkin.destroy();
+			_labelHoverSkin.destroy();
+			_labelFocusSkin.destroy();
+
+			_buttonSkin = null;
+			_glyphsSkin = null;
+			_labelOutSkin = null;
+			_labelHoverSkin = null;
+			_labelFocusSkin = null;
+		}
+
+
+
 		/** @todo Comment */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
