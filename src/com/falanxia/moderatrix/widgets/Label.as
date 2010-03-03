@@ -83,7 +83,6 @@ package com.falanxia.moderatrix.widgets {
 
 			removeChildren();
 
-			_skin.destroy();
 			_textField.destroy();
 
 			_skin = null;

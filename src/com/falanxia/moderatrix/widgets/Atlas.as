@@ -73,7 +73,6 @@ package com.falanxia.moderatrix.widgets {
 		override public function destroy():void {
 			super.destroy();
 
-			_skin.destroy();
 			imageBM.destroy();
 
 			_skin = null;

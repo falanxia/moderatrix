@@ -74,7 +74,6 @@ package com.falanxia.moderatrix.widgets {
 
 			removeChildren();
 
-			_skin.destroy();
 			imageBM.destroy();
 
 			_skin = null;

@@ -87,7 +87,6 @@ package com.falanxia.moderatrix.widgets {
 
 			if(stage != null) stage.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 
-			_skin.destroy();
 			activeSpr.destroy();
 
 			_skin = null;

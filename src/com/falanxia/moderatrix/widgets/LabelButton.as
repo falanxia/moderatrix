@@ -100,7 +100,6 @@ package com.falanxia.moderatrix.widgets {
 			forceRelease();
 			removeChildren();
 
-			_skin.destroy();
 			_button.destroy();
 			_labelOut.destroy();
 			_labelHover.destroy();

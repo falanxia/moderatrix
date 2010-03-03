@@ -91,7 +91,6 @@ package com.falanxia.moderatrix.widgets {
 			forceRelease();
 			removeChildren();
 
-			_skin.destroy();
 			_buttonOff.destroy();
 			_buttonOn.destroy();
 

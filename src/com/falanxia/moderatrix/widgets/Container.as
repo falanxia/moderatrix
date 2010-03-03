@@ -96,7 +96,6 @@ package com.falanxia.moderatrix.widgets {
 
 			removeChildren();
 
-			_skin.destroy();
 			innerSpr.destroy();
 
 			_skin = null;
