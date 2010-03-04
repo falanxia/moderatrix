@@ -421,14 +421,18 @@ package com.falanxia.moderatrix.widgets {
 
 		/** @todo Comment */
 		private function onFocusIn(event:FocusEvent):void {
-			onOver();
+			if(_areEventsEnabled) {
+				onOver();
+			}
 		}
 
 
 
 		/** @todo Comment */
 		private function onFocusOut(event:FocusEvent):void {
-			onOut();
+			if(_areEventsEnabled) {
+				onOut();
+			}
 		}
 
 
@@ -436,7 +440,9 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		private function onKeyDown(event:KeyboardEvent):void {
 			// FIXME: Look for all events, like when mouse draggin is on etc.
-			if(event.keyCode == 32 || event.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+			if(_areEventsEnabled) {
+				if(event.keyCode == 32 || event.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+			}
 		}
 	}
 }
