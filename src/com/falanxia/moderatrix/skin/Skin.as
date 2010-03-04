@@ -65,7 +65,7 @@ package com.falanxia.moderatrix.skin {
 			_type = null;
 			_assetSize = null;
 			_data = null;
-			
+
 			oldData = null;
 		}
 

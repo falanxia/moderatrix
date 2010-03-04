@@ -53,7 +53,7 @@ package com.falanxia.moderatrix.skin {
 			super.destroy();
 
 			_imageBD.dispose();
-			
+
 			_imageBD = null;
 		}
 
