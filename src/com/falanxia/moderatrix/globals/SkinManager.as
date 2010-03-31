@@ -150,7 +150,7 @@ package com.falanxia.moderatrix.globals {
 						var glyphButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
 
 						glyphButtonSkin.buttonSkin.getAssetsFromAtlas(glyphButtonSkinBD1);
-						glyphButtonSkin.glyphsSkin.getAssetsFromAtlas(glyphButtonSkinBD2);
+						glyphButtonSkin.glyphSkin.getAssetsFromAtlas(glyphButtonSkinBD2);
 						glyphButtonSkin.parseConfig(config);
 
 						break;
@@ -163,7 +163,7 @@ package com.falanxia.moderatrix.globals {
 						var glyphLabelButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
 
 						glyphLabelButtonSkin.buttonSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD1);
-						glyphLabelButtonSkin.glyphsSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD2);
+						glyphLabelButtonSkin.glyphSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD2);
 						glyphLabelButtonSkin.parseConfig(config);
 
 						break;

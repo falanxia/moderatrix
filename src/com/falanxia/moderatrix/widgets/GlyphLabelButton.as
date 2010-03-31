@@ -65,9 +65,9 @@ package com.falanxia.moderatrix.widgets {
 			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
-			_glyphOut = new Image(skin.glyphsSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
-			_glyphHover = new Image(skin.glyphsSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
-			_glyphFocus = new Image(skin.glyphsSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphOut = new Image(skin.glyphSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphHover = new Image(skin.glyphSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphFocus = new Image(skin.glyphSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
 			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dl);
 			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
 			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
@@ -218,9 +218,9 @@ package com.falanxia.moderatrix.widgets {
 			_skin.labelFocusSkin.hAlign = Align.LEFT;
 
 			_button.skin = _skin.buttonSkin;
-			_glyphOut.skin = _skin.glyphsSkin.glyphOutSkin;
-			_glyphHover.skin = _skin.glyphsSkin.glyphHoverSkin;
-			_glyphFocus.skin = _skin.glyphsSkin.glyphFocusSkin;
+			_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
+			_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
+			_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
 			_labelOut.skin = _skin.labelOutSkin;
 			_labelHover.skin = _skin.labelHoverSkin;
 			_labelFocus.skin = _skin.labelFocusSkin;

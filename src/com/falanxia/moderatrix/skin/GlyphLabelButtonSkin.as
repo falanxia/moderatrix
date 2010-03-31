@@ -32,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		protected var _buttonSkin:ButtonSkin;
-		protected var _glyphsSkin:GlyphsSkin;
+		protected var _glyphSkin:GlyphSkin;
 		protected var _labelOutSkin:LabelSkin;
 		protected var _labelHoverSkin:LabelSkin;
 		protected var _labelFocusSkin:LabelSkin;
@@ -44,7 +44,7 @@ package com.falanxia.moderatrix.skin {
 			super(SkinType.GLYPH_BUTTON, id);
 
 			_buttonSkin = new ButtonSkin(id + "#button");
-			_glyphsSkin = new GlyphsSkin(id + "#glyphs");
+			_glyphSkin = new GlyphSkin(id + "#glyphs");
 			_labelOutSkin = new LabelSkin(id + "#labelOut");
 			_labelHoverSkin = new LabelSkin(id + "#labelHover");
 			_labelFocusSkin = new LabelSkin(id + "#labelFocus");
@@ -59,13 +59,13 @@ package com.falanxia.moderatrix.skin {
 			super.destroy();
 
 			_buttonSkin.destroy();
-			_glyphsSkin.destroy();
+			_glyphSkin.destroy();
 			_labelOutSkin.destroy();
 			_labelHoverSkin.destroy();
 			_labelFocusSkin.destroy();
 
 			_buttonSkin = null;
-			_glyphsSkin = null;
+			_glyphSkin = null;
 			_labelOutSkin = null;
 			_labelHoverSkin = null;
 			_labelFocusSkin = null;
@@ -78,7 +78,7 @@ package com.falanxia.moderatrix.skin {
 			super.parseConfig(source);
 
 			if(source.button != undefined) _buttonSkin.parseConfig(source.button);
-			if(source.glyphs != undefined) _glyphsSkin.parseConfig(source.glyphs);
+			if(source.glyphs != undefined) _glyphSkin.parseConfig(source.glyphs);
 			if(source.labelOut != undefined) _labelOutSkin.parseConfig(source.labelOut);
 			if(source.labelHover != undefined) _labelHoverSkin.parseConfig(source.labelHover);
 			if(source.labelFocus != undefined) _labelFocusSkin.parseConfig(source.labelFocus);
@@ -91,7 +91,7 @@ package com.falanxia.moderatrix.skin {
 			super.revertConfig();
 
 			_buttonSkin.revertConfig();
-			_glyphsSkin.revertConfig();
+			_glyphSkin.revertConfig();
 			_labelOutSkin.revertConfig();
 			_labelHoverSkin.revertConfig();
 			_labelFocusSkin.revertConfig();
@@ -117,15 +117,15 @@ package com.falanxia.moderatrix.skin {
 
 
 		/** @todo Comment */
-		public function get glyphsSkin():GlyphsSkin {
-			return _glyphsSkin;
+		public function get glyphSkin():GlyphSkin {
+			return _glyphSkin;
 		}
 
 
 
 		/** @todo Comment */
-		public function set glyphsSkin(source:GlyphsSkin):void {
-			_glyphsSkin = source;
+		public function set glyphSkin(source:GlyphSkin):void {
+			_glyphSkin = source;
 		}
 
 

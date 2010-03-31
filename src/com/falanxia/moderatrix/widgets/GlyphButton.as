@@ -61,9 +61,9 @@ package com.falanxia.moderatrix.widgets {
 			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
-			_glyphOut = new Image(skin.glyphsSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
-			_glyphHover = new Image(skin.glyphsSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
-			_glyphFocus = new Image(skin.glyphsSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphOut = new Image(skin.glyphSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphHover = new Image(skin.glyphSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphFocus = new Image(skin.glyphSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
 			_button.debugColor = SkinManager.debugColor;
 			_glyphOut.debugColor = SkinManager.debugColor;
 			_glyphHover.debugColor = SkinManager.debugColor;
@@ -183,9 +183,9 @@ package com.falanxia.moderatrix.widgets {
 			_skin = skin;
 
 			_button.skin = _skin.buttonSkin;
-			_glyphOut.skin = _skin.glyphsSkin.glyphOutSkin;
-			_glyphHover.skin = _skin.glyphsSkin.glyphHoverSkin;
-			_glyphFocus.skin = _skin.glyphsSkin.glyphFocusSkin;
+			_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
+			_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
+			_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
 
 			draw();
 		}

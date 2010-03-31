@@ -27,11 +27,12 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.utilitaris.utils.BitmapUtils;
 
 	import flash.display.BitmapData;
+	import flash.geom.Rectangle;
 
 
 
 	/** @todo Comment */
-	public class GlyphsSkin extends Skin {
+	public class GlyphSkin extends Skin {
 
 
 		protected var _glyphOutSkin:ImageSkin;
@@ -41,7 +42,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/** @todo Comment */
-		public function GlyphsSkin(id:String = null) {
+		public function GlyphSkin(id:String = null) {
 			super(SkinType.GLYPHS, id);
 
 			_glyphOutSkin = new ImageSkin(id + "#glyphOut");
@@ -52,7 +53,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys the {@code GlyphsSkin} instance and frees it for GC.
+		 * Destroys the {@code GlyphSkin} instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -75,9 +76,9 @@ package com.falanxia.moderatrix.skin {
 			_assetSize.width = source.width / 3;
 			_assetSize.height = source.height;
 
-			var outBD:BitmapData = BitmapUtils.crop(source, _assetSize);
-			var overBD:BitmapData = BitmapUtils.crop(source, _assetSize);
-			var focusBD:BitmapData = BitmapUtils.crop(source, _assetSize);
+			var outBD:BitmapData = BitmapUtils.crop(source, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
+			var overBD:BitmapData = BitmapUtils.crop(source, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
+			var focusBD:BitmapData = BitmapUtils.crop(source, new Rectangle(_assetSize.width << 1, 0, _assetSize.width, _assetSize.height));
 
 			_glyphOutSkin.getAssetsFromAtlas(outBD);
 			_glyphHoverSkin.getAssetsFromAtlas(overBD);
