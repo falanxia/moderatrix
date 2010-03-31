@@ -30,6 +30,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.skin.LabelButtonSkin;
 	import com.falanxia.utilitaris.display.MorphSprite;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.utilitaris.utils.ObjectUtils;
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Sine;
 
@@ -85,8 +86,12 @@ package com.falanxia.moderatrix.widgets {
 			if(c.height == undefined) c.height = skin.buttonSkin.assetSize.height;
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			_skin = skin;
 		}
@@ -146,13 +151,23 @@ package com.falanxia.moderatrix.widgets {
 		 * @param padding Padding
 		 * @param max Maximal width (then text will be split in more lines)
 		 */
-		public function autoWidth(padding:Number = 0, max:Number = 500):void {
+		public function autoWidth(padding:Number = 0, max:Number = 500, morph:Boolean = false, morphAddons:Object = null):void {
+			var s:Number = this.width;
+
 			this.width = 2000;
 
 			var w:Number = label.width + padding;
 			if(w > max) w = max;
 
-			this.width = w;
+			if(morph) {
+				if(morphAddons == null) morphAddons = new Object();
+				ObjectUtils.assign(morphAddons, {width:w});
+				this.width = s;
+				this.morph(morphAddons);
+			}
+			else {
+				this.width = w;
+			}
 		}
 
 

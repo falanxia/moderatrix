@@ -61,12 +61,20 @@ package com.falanxia.moderatrix.widgets {
 		                      debugLevel:String = null) {
 			var c:Object;
 
-			if(config == null) c = new Object();
-			else c = config;
+			if(config == null) {
+				c = new Object();
+			}
+			else {
+				c = config;
+			}
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			_isWidthOverriden = (c.width != undefined);
 			_isHeightOverriden = (c.height != undefined);
