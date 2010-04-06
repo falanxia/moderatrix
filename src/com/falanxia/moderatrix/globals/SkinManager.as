@@ -25,8 +25,8 @@
 
 package com.falanxia.moderatrix.globals {
 	import com.falanxia.emitor.Asset;
-	import com.falanxia.moderatrix.constants.DebugLevel;
-	import com.falanxia.moderatrix.constants.SkinType;
+	import com.falanxia.moderatrix.enums.DebugLevel;
+	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.moderatrix.skin.AtlasSkin;
 	import com.falanxia.moderatrix.skin.BarSkin;
 	import com.falanxia.moderatrix.skin.ButtonSkin;

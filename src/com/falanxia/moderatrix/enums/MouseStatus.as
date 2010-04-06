@@ -22,22 +22,22 @@
  * THE SOFTWARE.
  */
 
-package com.falanxia.moderatrix.constants {
+package com.falanxia.moderatrix.enums {
 
 
 
 	/** @todo Comment */
-	public class DebugLevel {
-
+	public class MouseStatus {
 
 
 		/** @todo Comment */
-		public static const NONE:String = "none";
+		public static const OUT:String = "out";
 
 		/** @todo Comment */
 		public static const HOVER:String = "hover";
 
 		/** @todo Comment */
-		public static const ALWAYS:String = "always";
+		public static const FOCUS:String = "focus";
+
 	}
 }

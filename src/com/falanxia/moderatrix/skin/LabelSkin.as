@@ -23,8 +23,8 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.constants.Align;
-	import com.falanxia.moderatrix.constants.SkinType;
+	import com.falanxia.moderatrix.enums.Align;
+	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.utilitaris.helpers.printf;
 
 	import flash.filters.BitmapFilter;

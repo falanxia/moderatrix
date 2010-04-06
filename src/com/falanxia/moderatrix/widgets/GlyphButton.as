@@ -23,7 +23,7 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.constants.MouseStatus;
+	import com.falanxia.moderatrix.enums.MouseStatus;
 	import com.falanxia.moderatrix.events.ButtonEvent;
 	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.skin.GlyphButtonSkin;

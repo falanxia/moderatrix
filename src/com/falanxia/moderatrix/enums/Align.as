@@ -22,22 +22,28 @@
  * THE SOFTWARE.
  */
 
-package com.falanxia.moderatrix.constants {
+package com.falanxia.moderatrix.enums {
 
 
 
 	/** @todo Comment */
-	public class MouseStatus {
+	public class Align {
 
 
-		/** @todo Comment */
-		public static const OUT:String = "out";
 
 		/** @todo Comment */
-		public static const HOVER:String = "hover";
+		public static const LEFT:String = "left";
 
 		/** @todo Comment */
-		public static const FOCUS:String = "focus";
+		public static const RIGHT:String = "right";
 
+		/** @todo Comment */
+		public static const TOP:String = "top";
+
+		/** @todo Comment */
+		public static const BOTTOM:String = "bottom";
+
+		/** @todo Comment */
+		public static const CENTER:String = "center";
 	}
 }

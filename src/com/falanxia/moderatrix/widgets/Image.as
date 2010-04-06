@@ -23,7 +23,7 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.constants.DebugLevel;
+	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.skin.ImageSkin;
 	import com.falanxia.utilitaris.display.QBitmap;

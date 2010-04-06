@@ -23,7 +23,7 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.constants.SkinType;
+	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.utilitaris.utils.BitmapUtils;
 
 	import flash.display.BitmapData;

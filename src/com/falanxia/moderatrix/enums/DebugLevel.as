@@ -22,49 +22,22 @@
  * THE SOFTWARE.
  */
 
-package com.falanxia.moderatrix.constants {
+package com.falanxia.moderatrix.enums {
 
 
 
 	/** @todo Comment */
-	public class SkinType {
+	public class DebugLevel {
 
 
-		/** @todo Comment */
-		public static const CONTAINER:String = "Container";
 
 		/** @todo Comment */
-		public static const BAR:String = "Bar";
+		public static const NONE:String = "none";
 
 		/** @todo Comment */
-		public static const IMAGE:String = "Image";
+		public static const HOVER:String = "hover";
 
 		/** @todo Comment */
-		public static const ATLAS:String = "Atlas";
-
-		/** @todo Comment */
-		public static const GLYPHS:String = "Glyphs";
-
-		/** @todo Comment */
-		public static const BUTTON:String = "Button";
-
-		/** @todo Comment */
-		public static const LABEL:String = "Label";
-
-		/** @todo Comment */
-		public static const LABEL_BUTTON:String = "LabelButton";
-
-		/** @todo Comment */
-		public static const GLYPH_BUTTON:String = "GlyphButton";
-
-		/** @todo Comment */
-		public static const GLYPH_LABEL_BUTTON:String = "GlyphLabelButton";
-
-		/** @todo Comment */
-		public static const CHECK_BUTTON:String = "CheckButton";
-
-		/** @todo Comment */
-		public static const INPUT_BAR:String = "InputBar";
-
+		public static const ALWAYS:String = "always";
 	}
 }
