@@ -23,7 +23,7 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.enums.*;
 
 
 
@@ -78,7 +78,7 @@ package com.falanxia.moderatrix.skin {
 			super.parseConfig(source);
 
 			if(source.button != undefined) _buttonSkin.parseConfig(source.button);
-			if(source.glyphs != undefined) _glyphSkin.parseConfig(source.glyphs);
+			if(source.glyph != undefined) _glyphSkin.parseConfig(source.glyph);
 			if(source.labelOut != undefined) _labelOutSkin.parseConfig(source.labelOut);
 			if(source.labelHover != undefined) _labelHoverSkin.parseConfig(source.labelHover);
 			if(source.labelFocus != undefined) _labelFocusSkin.parseConfig(source.labelFocus);

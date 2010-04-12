@@ -23,11 +23,11 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.enums.SkinType;
-	import com.falanxia.utilitaris.utils.BitmapUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.BitmapData;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.geom.*;
 
 
 
@@ -90,6 +90,10 @@ package com.falanxia.moderatrix.skin {
 		/** @todo Comment */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
+
+			_glyphOutSkin.parseConfig(source);
+			_glyphHoverSkin.parseConfig(source);
+			_glyphFocusSkin.parseConfig(source);
 		}
 
 
