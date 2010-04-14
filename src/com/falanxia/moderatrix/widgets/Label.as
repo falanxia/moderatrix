@@ -367,8 +367,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function onDebugOver(event:MouseEvent):void {
-			super.onDebugOver(event);
+		override protected function onDebugOver(e:MouseEvent):void {
+			super.onDebugOver(e);
 
 			if(_debugLevel == DebugLevel.HOVER) {
 				_textField.border = true;
@@ -378,8 +378,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		override protected function onDebugOut(event:MouseEvent):void {
-			super.onDebugOut(event);
+		override protected function onDebugOut(e:MouseEvent):void {
+			super.onDebugOut(e);
 
 			if(_debugLevel == DebugLevel.HOVER) {
 				_textField.border = false;

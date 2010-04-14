@@ -312,7 +312,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onToggle(event:ButtonEvent):void {
+		private function onToggle(e:ButtonEvent):void {
 			isChecked = !isChecked;
 		}
 	}

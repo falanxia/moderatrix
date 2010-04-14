@@ -447,21 +447,21 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		protected function onDebugOver(event:MouseEvent):void {
+		protected function onDebugOver(e:MouseEvent):void {
 			debugSpr.visible = true;
 		}
 
 
 
 		/** @todo Comment */
-		protected function onDebugOut(event:MouseEvent):void {
+		protected function onDebugOut(e:MouseEvent):void {
 			debugSpr.visible = false;
 		}
 
 
 
 		/** @todo Comment */
-		private function onInvalidate(event:Event):void {
+		private function onInvalidate(e:Event):void {
 			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			draw();

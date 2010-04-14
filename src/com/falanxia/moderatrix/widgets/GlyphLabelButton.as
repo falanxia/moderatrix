@@ -476,7 +476,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onButtonHoverInTween(event:ButtonEvent):void {
+		private function onButtonHoverInTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
@@ -488,7 +488,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onButtonHoverOutTween(event:ButtonEvent):void {
+		private function onButtonHoverOutTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphHover, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphFocus, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -500,7 +500,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onButtonFocusInTween(event:ButtonEvent):void {
+		private function onButtonFocusInTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphFocus, _skin.buttonSkin.focusInDuration, {alpha:1, ease:Sine.easeOut});
@@ -512,7 +512,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onButtonDragConfirmedTween(event:ButtonEvent):void {
+		private function onButtonDragConfirmedTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
@@ -524,7 +524,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onButtonReleasedInsideTween(event:ButtonEvent):void {
+		private function onButtonReleasedInsideTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -536,7 +536,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onButtonReleasedOutsideTween(event:ButtonEvent):void {
+		private function onButtonReleasedOutsideTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});

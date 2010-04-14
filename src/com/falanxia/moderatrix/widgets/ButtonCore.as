@@ -344,9 +344,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onOver(event:MouseEvent = null):void {
+		private function onOver(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
-				if(event != null && event.buttonDown) {
+				if(e != null && e.buttonDown) {
 					// drag over
 					dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_OVER, true));
 				}
@@ -362,9 +362,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onOut(event:MouseEvent = null):void {
+		private function onOut(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
-				if(event != null && event.buttonDown) {
+				if(e != null && e.buttonDown) {
 					// drag out
 					dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_OUT, true));
 				}
@@ -380,7 +380,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onFocus(event:MouseEvent = null):void {
+		private function onFocus(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
 				_mouseStatus = MouseStatus.FOCUS;
 				currentDrag = this;
@@ -393,11 +393,11 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onRelease(event:MouseEvent = null):void {
+		private function onRelease(e:MouseEvent = null):void {
 			if(stage != null) stage.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 
 			if(_areEventsEnabled && _mouseStatus == MouseStatus.FOCUS) {
-				if(event != null && event.currentTarget == stage) {
+				if(e != null && e.currentTarget == stage) {
 					// release outside
 					forceRelease();
 				}
@@ -422,7 +422,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onFocusIn(event:FocusEvent):void {
+		private function onFocusIn(e:FocusEvent):void {
 			if(_areEventsEnabled) {
 				onOver();
 			}
@@ -431,7 +431,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onFocusOut(event:FocusEvent):void {
+		private function onFocusOut(e:FocusEvent):void {
 			if(_areEventsEnabled) {
 				onOut();
 			}
@@ -440,10 +440,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/** @todo Comment */
-		private function onKeyDown(event:KeyboardEvent):void {
+		private function onKeyDown(e:KeyboardEvent):void {
 			// FIXME: Look for all events, like when mouse draggin is on etc.
 			if(_areEventsEnabled) {
-				if(event.keyCode == 32 || event.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+				if(e.keyCode == 32 || e.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
 			}
 		}
 	}
