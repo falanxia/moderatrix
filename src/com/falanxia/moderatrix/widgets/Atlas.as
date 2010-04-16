@@ -29,6 +29,8 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.utilitaris.display.QBitmap;
 	import com.falanxia.utilitaris.helpers.printf;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Linear;
 
 	import flash.display.BitmapData;
 	import flash.display.DisplayObjectContainer;
@@ -52,15 +54,23 @@ package com.falanxia.moderatrix.widgets {
 		public function Atlas(skin:AtlasSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
-			if(config == null) c = new Object();
-			else c = config;
+			if(config == null) {
+				c = new Object();
+			}
+			else {
+				c = config;
+			}
 
 			if(c.width == undefined) c.width = skin.assetSize.width;
 			if(c.height == undefined) c.height = skin.assetSize.height;
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			this.skin = skin;
 		}
@@ -99,6 +109,35 @@ package com.falanxia.moderatrix.widgets {
 					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, assetSize.width, assetSize.height), _debugColor, 5);
 				}
 			}
+		}
+
+
+
+		/**
+		 * Play from a certain phase to the end. If no phase is defined, plays from first one.
+		 * @param durationMultiplier Duration multiplier (0.1 by default, means 10 phases will take 1 second to animate)
+		 * @param startPhase Start phase
+		 * @param endPhase End phase (if not defined, the last phase is used and final phase will be the first one when the animation ends
+		 */
+		public function playFromStart(durationMultiplier:Number = 0.1, startPhase:uint = 0, endPhase:int = -1):void {
+			this.phase = startPhase;
+
+			if(endPhase == -1) endPhase = this.length;
+
+			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:function():void {
+				if(endPhase == length) {
+					reset();
+				}
+			}});
+		}
+
+
+
+		/**
+		 * Reset to the first phase.
+		 */
+		public function reset():void {
+			phase = 0;
 		}
 
 
