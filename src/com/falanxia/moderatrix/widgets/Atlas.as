@@ -23,19 +23,17 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.skin.AtlasSkin;
-	import com.falanxia.utilitaris.display.QBitmap;
-	import com.falanxia.utilitaris.helpers.printf;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
-	import com.greensock.TweenLite;
-	import com.greensock.easing.Linear;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.helpers.*;
+	import com.falanxia.utilitaris.utils.*;
+	import com.greensock.*;
+	import com.greensock.easing.*;
 
-	import flash.display.BitmapData;
-	import flash.display.DisplayObjectContainer;
-	import flash.geom.Point;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.geom.*;
 
 
 
