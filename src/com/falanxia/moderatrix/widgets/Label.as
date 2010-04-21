@@ -29,6 +29,8 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.utils.*;
 
+	import de.dev_lab.logging.Logger;
+
 	import flash.display.*;
 	import flash.events.*;
 	import flash.geom.*;
@@ -124,7 +126,8 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
+					if(rect.top == rect.bottom) rect.bottom += 30;
+					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}
 		}
@@ -166,6 +169,7 @@ package com.falanxia.moderatrix.widgets {
 			super.debugLevel = value;
 
 			_textField.border = (_debugLevel == DebugLevel.ALWAYS);
+			_textField.borderColor = _debugColor.color32;
 		}
 
 
