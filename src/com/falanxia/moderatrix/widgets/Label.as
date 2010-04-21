@@ -23,21 +23,16 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.Align;
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.skin.LabelSkin;
-	import com.falanxia.utilitaris.display.QTextField;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.DisplayObjectContainer;
-	import flash.events.MouseEvent;
-	import flash.geom.Point;
-	import flash.geom.Rectangle;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFieldType;
-	import flash.text.TextFormat;
+	import flash.display.*;
+	import flash.events.*;
+	import flash.geom.*;
+	import flash.text.*;
 
 
 
@@ -94,7 +89,7 @@ package com.falanxia.moderatrix.widgets {
 			_textField.destroy();
 
 			super.destroy();
-			
+
 			_skin = null;
 			_textField = null;
 			_textFormat = null;
