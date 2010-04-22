@@ -33,46 +33,46 @@ package com.falanxia.moderatrix.events {
 
 
 		/** @todo Comment */
-		public static const DRAG_OVER:String = "ButtonDragOver";
+		public static const DRAG_OVER:String = "buttonDragOver";
 
 		/** @todo Comment */
-		public static const DRAG_OUT:String = "ButtonDragOut";
+		public static const DRAG_OUT:String = "buttonDragOut";
 
 		/** @todo Comment */
-		public static const DRAG_CONFIRM:String = "ButtonDragConfirm";
+		public static const DRAG_CONFIRM:String = "buttonDragConfirm";
 
 		/** @todo Comment */
-		public static const HOVER_IN:String = "ButtonHoverIn";
+		public static const HOVER_IN:String = "buttonHoverIn";
 
 		/** @todo Comment */
-		public static const HOVER_OUT:String = "ButtonHoverOut";
+		public static const HOVER_OUT:String = "buttonHoverOut";
 
 		/** @todo Comment */
-		public static const FOCUS_IN:String = "ButtonFocusIn";
+		public static const FOCUS_IN:String = "buttonFocusIn";
 
 		/** @todo Comment */
-		public static const RELEASE_INSIDE:String = "ButtonReleaseInside";
+		public static const RELEASE_INSIDE:String = "buttonReleaseInside";
 
 		/** @todo Comment */
-		public static const RELEASE_OUTSIDE:String = "ButtonReleaseOutside";
+		public static const RELEASE_OUTSIDE:String = "buttonReleaseOutside";
 
 		/** @todo Comment */
-		public static const HOVER_IN_TWEEN:String = "ButtonHoverInTween";
+		public static const HOVER_IN_TWEEN:String = "buttonHoverInTween";
 
 		/** @todo Comment */
-		public static const HOVER_OUT_TWEEN:String = "ButtonHoverOutTween";
+		public static const HOVER_OUT_TWEEN:String = "buttonHoverOutTween";
 
 		/** @todo Comment */
-		public static const FOCUS_IN_TWEEN:String = "ButtonFocusInTween";
+		public static const FOCUS_IN_TWEEN:String = "buttonFocusInTween";
 
 		/** @todo Comment */
-		public static const DRAG_CONFIRMED_TWEEN:String = "ButtonDragConfirmedTween";
+		public static const DRAG_CONFIRMED_TWEEN:String = "buttonDragConfirmedTween";
 
 		/** @todo Comment */
-		public static const RELEASED_INSIDE_TWEEN:String = "ButtonReleasedInsideTween";
+		public static const RELEASED_INSIDE_TWEEN:String = "buttonReleasedInsideTween";
 
 		/** @todo Comment */
-		public static const RELEASED_OUTSIDE_TWEEN:String = "ButtonReleasedOutsideTween";
+		public static const RELEASED_OUTSIDE_TWEEN:String = "buttonReleasedOutsideTween";
 
 
 

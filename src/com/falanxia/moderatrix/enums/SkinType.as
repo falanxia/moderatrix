@@ -31,40 +31,40 @@ package com.falanxia.moderatrix.enums {
 
 
 		/** @todo Comment */
-		public static const CONTAINER:String = "Container";
+		public static const CONTAINER:String = "container";
 
 		/** @todo Comment */
-		public static const BAR:String = "Bar";
+		public static const BAR:String = "bar";
 
 		/** @todo Comment */
-		public static const IMAGE:String = "Image";
+		public static const IMAGE:String = "image";
 
 		/** @todo Comment */
-		public static const ATLAS:String = "Atlas";
+		public static const ATLAS:String = "atlas";
 
 		/** @todo Comment */
-		public static const GLYPHS:String = "Glyphs";
+		public static const GLYPHS:String = "glyphs";
 
 		/** @todo Comment */
-		public static const BUTTON:String = "Button";
+		public static const BUTTON:String = "button";
 
 		/** @todo Comment */
-		public static const LABEL:String = "Label";
+		public static const LABEL:String = "label";
 
 		/** @todo Comment */
-		public static const LABEL_BUTTON:String = "LabelButton";
+		public static const LABEL_BUTTON:String = "labelButton";
 
 		/** @todo Comment */
-		public static const GLYPH_BUTTON:String = "GlyphButton";
+		public static const GLYPH_BUTTON:String = "glyphButton";
 
 		/** @todo Comment */
-		public static const GLYPH_LABEL_BUTTON:String = "GlyphLabelButton";
+		public static const GLYPH_LABEL_BUTTON:String = "glyphLabelButton";
 
 		/** @todo Comment */
-		public static const CHECK_BUTTON:String = "CheckButton";
+		public static const CHECK_BUTTON:String = "checkButton";
 
 		/** @todo Comment */
-		public static const INPUT_BAR:String = "InputBar";
+		public static const INPUT_BAR:String = "inputBar";
 
 	}
 }
