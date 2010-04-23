@@ -165,6 +165,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
+			//noinspection EmptyCatchBlockJS,UnusedCatchParameterJS
 			try {
 				if(contentSpr == null && super.contains(child)) out = super.removeChild(child);
 				else {
