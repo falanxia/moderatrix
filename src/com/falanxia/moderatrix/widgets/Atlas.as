@@ -122,11 +122,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(endPhase == -1) endPhase = this.length;
 
-			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:function():void {
-				if(endPhase == length) {
-					reset();
-				}
-			}});
+			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:[endPhase]});
 		}
 
 
@@ -232,6 +228,19 @@ package com.falanxia.moderatrix.widgets {
 			super.removeChildren();
 
 			DisplayUtils.removeChildren(contentSpr, imageBM);
+		}
+
+
+
+		/* ★ PRIVATE METHODS ★ */
+
+
+		/**
+		 * Check for reset.
+		 * @param endPhase End phase
+		 */
+		private function checkReset(endPhase:int):void {
+			if(endPhase == length) reset();
 		}
 	}
 }
