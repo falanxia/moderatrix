@@ -29,8 +29,6 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.utils.*;
 
-	import de.dev_lab.logging.Logger;
-
 	import flash.display.*;
 	import flash.events.*;
 	import flash.geom.*;
@@ -56,14 +54,8 @@ package com.falanxia.moderatrix.widgets {
 		/** @todo Comment */
 		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                      debugLevel:String = null) {
-			var c:Object;
 
-			if(config == null) {
-				c = new Object();
-			}
-			else {
-				c = config;
-			}
+			var c:Object = config == null ? new Object() : config;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {

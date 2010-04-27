@@ -25,7 +25,7 @@
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.ISkinnable;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
-	import com.falanxia.utilitaris.utils.StringUtils;
+	import com.falanxia.utilitaris.utils.RandomUtils;
 
 	import flash.display.BitmapData;
 	import flash.display.MovieClip;
@@ -52,7 +52,7 @@ package com.falanxia.moderatrix.skin {
 			_type = type;
 
 			if(_id == null) {
-				var rs:String = StringUtils.randomString();
+				var rs:String = RandomUtils.randomString();
 				_id = type + ":skin:" + rs;
 			}
 		}
@@ -155,9 +155,11 @@ package com.falanxia.moderatrix.skin {
 				_assetSize.height = source.height;
 			}
 
-			else if(source.width != _assetSize.width || source.height != _assetSize.height) {
-				// size mismatch
-				throw new Error("Sizes have to match");
+			else {
+				if(source.width != _assetSize.width || source.height != _assetSize.height) {
+					// size mismatch
+					throw new Error("Sizes have to match");
+				}
 			}
 		}
 	}
