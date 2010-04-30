@@ -27,6 +27,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.globals.*;
 	import com.falanxia.moderatrix.skin.*;
 	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.utils.*;
 
 	import flash.display.*;

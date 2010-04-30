@@ -23,12 +23,12 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.Align;
 	import com.falanxia.moderatrix.enums.MouseStatus;
 	import com.falanxia.moderatrix.events.ButtonEvent;
 	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.skin.LabelButtonSkin;
 	import com.falanxia.utilitaris.display.MorphSprite;
+	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.falanxia.utilitaris.utils.ObjectUtils;
 	import com.greensock.TweenLite;

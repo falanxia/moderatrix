@@ -23,11 +23,11 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.Align;
 	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.skin.ContainerSkin;
 	import com.falanxia.utilitaris.display.QSprite;
+	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
 	import flash.display.DisplayObject;
