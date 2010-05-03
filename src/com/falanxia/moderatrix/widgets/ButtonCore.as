@@ -23,21 +23,19 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.MouseStatus;
-	import com.falanxia.moderatrix.events.ButtonEvent;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.interfaces.IWidget;
-	import com.falanxia.moderatrix.skin.ButtonSkin;
-	import com.falanxia.utilitaris.display.QSprite;
-	import com.falanxia.utilitaris.helpers.printf;
-	import com.falanxia.utilitaris.types.RGBA;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.events.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.interfaces.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.helpers.*;
+	import com.falanxia.utilitaris.types.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.DisplayObjectContainer;
-	import flash.events.FocusEvent;
-	import flash.events.KeyboardEvent;
-	import flash.events.MouseEvent;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.events.*;
+	import flash.geom.*;
 
 
 
@@ -61,15 +59,23 @@ package com.falanxia.moderatrix.widgets {
 		                           debugLevel:String = null) {
 			var c:Object;
 
-			if(config == null) c = new Object();
-			else c = config;
+			if(config == null) {
+				c = new Object();
+			}
+			else {
+				c = config;
+			}
 
 			if(c.width == undefined) c.width = skin.assetSize.width;
 			if(c.height == undefined) c.height = skin.assetSize.height;
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			this.skin = skin;
 
@@ -402,17 +408,19 @@ package com.falanxia.moderatrix.widgets {
 					forceRelease();
 				}
 
-				else if(currentDrag != this) {
-					// drag confirm
-					dragConfirmedTween();
-					dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_CONFIRM, true));
-				}
-
 				else {
-					// release inside
-					currentDrag = null;
-					releasedInsideTween();
-					dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+					if(currentDrag != this) {
+						// drag confirm
+						dragConfirmedTween();
+						dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_CONFIRM, true));
+					}
+
+					else {
+						// release inside
+						currentDrag = null;
+						releasedInsideTween();
+						dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+					}
 				}
 
 				dispatchEvent(new MouseEvent(MouseEvent.MOUSE_UP, true));
