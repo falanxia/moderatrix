@@ -24,23 +24,13 @@
 
 
 package com.falanxia.moderatrix.globals {
-	import com.falanxia.emitor.Asset;
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.enums.SkinType;
-	import com.falanxia.moderatrix.skin.AtlasSkin;
-	import com.falanxia.moderatrix.skin.BarSkin;
-	import com.falanxia.moderatrix.skin.ButtonSkin;
-	import com.falanxia.moderatrix.skin.CheckButtonSkin;
-	import com.falanxia.moderatrix.skin.ContainerSkin;
-	import com.falanxia.moderatrix.skin.GlyphButtonSkin;
-	import com.falanxia.moderatrix.skin.GlyphLabelButtonSkin;
-	import com.falanxia.moderatrix.skin.ImageSkin;
-	import com.falanxia.moderatrix.skin.InputBarSkin;
-	import com.falanxia.moderatrix.skin.LabelButtonSkin;
-	import com.falanxia.moderatrix.skin.LabelSkin;
-	import com.falanxia.utilitaris.types.RGBA;
+	import com.falanxia.emitor.*;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.helpers.*;
+	import com.falanxia.utilitaris.types.*;
 
-	import flash.display.BitmapData;
+	import flash.display.*;
 
 
 
@@ -68,138 +58,146 @@ package com.falanxia.moderatrix.globals {
 				var isSupported:Boolean = true;
 				var config:Object = asset.config.widget;
 
-				switch(config.type) {
-					case SkinType.CONTAINER:
-						skin = new ContainerSkin();
+				try {
+					switch(config.type) {
+						case SkinType.CONTAINER:
+							skin = new ContainerSkin();
 
-						var containerSkin:ContainerSkin = ContainerSkin(skin);
+							var containerSkin:ContainerSkin = ContainerSkin(skin);
 
-						containerSkin.parseConfig(config);
+							containerSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.BAR:
-						skin = new BarSkin();
+						case SkinType.BAR:
+							skin = new BarSkin();
 
-						var barSkin:BarSkin = BarSkin(skin);
-						var barSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
+							var barSkin:BarSkin = BarSkin(skin);
+							var barSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
-						barSkin.getAssetsFromAtlas(barSkinBD);
-						barSkin.parseConfig(config);
+							barSkin.getAssetsFromAtlas(barSkinBD);
+							barSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.IMAGE:
-						skin = new ImageSkin();
+						case SkinType.IMAGE:
+							skin = new ImageSkin();
 
-						var imageSkin:ImageSkin = ImageSkin(skin);
-						var imageSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
+							var imageSkin:ImageSkin = ImageSkin(skin);
+							var imageSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
-						imageSkin.getAssetsFromAtlas(imageSkinBD);
-						imageSkin.parseConfig(config);
+							imageSkin.getAssetsFromAtlas(imageSkinBD);
+							imageSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.ATLAS:
-						skin = new AtlasSkin();
+						case SkinType.ATLAS:
+							skin = new AtlasSkin();
 
-						var atlasSkin:AtlasSkin = AtlasSkin(skin);
-						var atlasSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
+							var atlasSkin:AtlasSkin = AtlasSkin(skin);
+							var atlasSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
-						atlasSkin.getAssetsFromAtlas(atlasSkinBD);
-						atlasSkin.parseConfig(config);
+							atlasSkin.getAssetsFromAtlas(atlasSkinBD);
+							atlasSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.BUTTON:
-						skin = new ButtonSkin();
+						case SkinType.BUTTON:
+							skin = new ButtonSkin();
 
-						var buttonSkin:ButtonSkin = ButtonSkin(skin);
-						var buttonSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
+							var buttonSkin:ButtonSkin = ButtonSkin(skin);
+							var buttonSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
 
-						buttonSkin.getAssetsFromAtlas(buttonSkinBD);
-						buttonSkin.parseConfig(config);
+							buttonSkin.getAssetsFromAtlas(buttonSkinBD);
+							buttonSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.LABEL:
-						skin = new LabelSkin();
+						case SkinType.LABEL:
+							skin = new LabelSkin();
 
-						var labelSkin:LabelSkin = LabelSkin(skin);
+							var labelSkin:LabelSkin = LabelSkin(skin);
 
-						labelSkin.parseConfig(config);
+							labelSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.LABEL_BUTTON:
-						skin = new LabelButtonSkin();
+						case SkinType.LABEL_BUTTON:
+							skin = new LabelButtonSkin();
 
-						var labelButtonSkin:LabelButtonSkin = LabelButtonSkin(skin);
-						var labelButtonSkinBD:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
+							var labelButtonSkin:LabelButtonSkin = LabelButtonSkin(skin);
+							var labelButtonSkinBD:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
 
-						labelButtonSkin.buttonSkin.getAssetsFromAtlas(labelButtonSkinBD);
-						labelButtonSkin.parseConfig(config);
+							labelButtonSkin.buttonSkin.getAssetsFromAtlas(labelButtonSkinBD);
+							labelButtonSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.GLYPH_BUTTON:
-						skin = new GlyphButtonSkin();
+						case SkinType.GLYPH_BUTTON:
+							skin = new GlyphButtonSkin();
 
-						var glyphButtonSkin:GlyphButtonSkin = GlyphButtonSkin(skin);
-						var glyphButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
-						var glyphButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
+							var glyphButtonSkin:GlyphButtonSkin = GlyphButtonSkin(skin);
+							var glyphButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
+							var glyphButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
 
-						glyphButtonSkin.buttonSkin.getAssetsFromAtlas(glyphButtonSkinBD1);
-						glyphButtonSkin.glyphSkin.getAssetsFromAtlas(glyphButtonSkinBD2);
-						glyphButtonSkin.parseConfig(config);
+							glyphButtonSkin.buttonSkin.getAssetsFromAtlas(glyphButtonSkinBD1);
+							glyphButtonSkin.glyphSkin.getAssetsFromAtlas(glyphButtonSkinBD2);
+							glyphButtonSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.GLYPH_LABEL_BUTTON:
-						skin = new GlyphLabelButtonSkin();
+						case SkinType.GLYPH_LABEL_BUTTON:
+							skin = new GlyphLabelButtonSkin();
 
-						var glyphLabelButtonSkin:GlyphLabelButtonSkin = GlyphLabelButtonSkin(skin);
-						var glyphLabelButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
-						var glyphLabelButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
+							var glyphLabelButtonSkin:GlyphLabelButtonSkin = GlyphLabelButtonSkin(skin);
+							var glyphLabelButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
+							var glyphLabelButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
 
-						glyphLabelButtonSkin.buttonSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD1);
-						glyphLabelButtonSkin.glyphSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD2);
-						glyphLabelButtonSkin.parseConfig(config);
+							glyphLabelButtonSkin.buttonSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD1);
+							glyphLabelButtonSkin.glyphSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD2);
+							glyphLabelButtonSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.CHECK_BUTTON:
-						skin = new CheckButtonSkin();
+						case SkinType.CHECK_BUTTON:
+							skin = new CheckButtonSkin();
 
-						var checkButtonSkin:CheckButtonSkin = CheckButtonSkin(skin);
-						var checkButtonSkinBD1:BitmapData = asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData;
-						var checkButtonSkinBD2:BitmapData = asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData;
+							var checkButtonSkin:CheckButtonSkin = CheckButtonSkin(skin);
+							var checkButtonSkinBD1:BitmapData = asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData;
+							var checkButtonSkinBD2:BitmapData = asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData;
 
-						checkButtonSkin.buttonOffSkin.getAssetsFromAtlas(checkButtonSkinBD1);
-						checkButtonSkin.buttonOnSkin.getAssetsFromAtlas(checkButtonSkinBD2);
-						checkButtonSkin.parseConfig(config);
+							checkButtonSkin.buttonOffSkin.getAssetsFromAtlas(checkButtonSkinBD1);
+							checkButtonSkin.buttonOnSkin.getAssetsFromAtlas(checkButtonSkinBD2);
+							checkButtonSkin.parseConfig(config);
 
-						break;
+							break;
 
-					case SkinType.INPUT_BAR:
-						skin = new InputBarSkin();
+						case SkinType.INPUT_BAR:
+							skin = new InputBarSkin();
 
-						var inputBarSkin:InputBarSkin = InputBarSkin(skin);
-						var inputBarSkinBD:BitmapData = asset.getChunkByURL(config.bar.image).bitmap.bitmapData;
+							var inputBarSkin:InputBarSkin = InputBarSkin(skin);
+							var inputBarSkinBD:BitmapData = asset.getChunkByURL(config.bar.image).bitmap.bitmapData;
 
-						inputBarSkin.barSkin.getAssetsFromAtlas(inputBarSkinBD);
-						inputBarSkin.parseConfig(config);
+							inputBarSkin.barSkin.getAssetsFromAtlas(inputBarSkinBD);
+							inputBarSkin.parseConfig(config);
 
-						break;
+							break;
 
-					default:
-						//noinspection ReuseOfLocalVariableJS
-						isSupported = false;
+						default:
+							isSupported = false;
+					}
+				}
+				catch(err:Error) {
+					throw new Error(printf("Asset error: %s", err.message));
 				}
 			}
 
-			if(isSupported) return skin;
-			else return null;
+			if(isSupported) {
+				return skin;
+			}
+			else {
+				return null;
+			}
 		}
 
 
@@ -215,8 +213,8 @@ package com.falanxia.moderatrix.globals {
 
 
 		/** @todo Comment */
-		public static function set debugLevel(debugLevel:String):void {
-			_debugLevel = debugLevel;
+		public static function set debugLevel(value:String):void {
+			_debugLevel = value;
 		}
 
 
@@ -229,8 +227,8 @@ package com.falanxia.moderatrix.globals {
 
 
 		/** @todo Comment */
-		public static function set debugColor(debugColor:RGBA):void {
-			_debugColor = debugColor;
+		public static function set debugColor(value:RGBA):void {
+			_debugColor = value;
 		}
 	}
 }
