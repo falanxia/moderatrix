@@ -273,7 +273,7 @@ package com.falanxia.moderatrix.widgets {
 
 			_labelOut.width = labelWidth;
 			_labelHover.width = labelWidth;
-			//_labelFocus.width = labelWidth; // FIXME: What the fuck!?
+			_labelFocus.width = labelWidth; // FIXME: What the fuck!?
 
 			_button.width = value;
 			_glyphOut.x = Math.round((value - maxWidth) / 2);
