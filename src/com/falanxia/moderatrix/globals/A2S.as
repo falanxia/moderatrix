@@ -23,15 +23,18 @@
  */
 
 package com.falanxia.moderatrix.globals {
-	import com.falanxia.emitor.Asset;
-	import com.falanxia.emitor.globals.AssetManager;
-	import com.falanxia.utilitaris.helpers.printf;
+	import com.falanxia.emitor.*;
+	import com.falanxia.emitor.globals.*;
+	import com.falanxia.utilitaris.helpers.*;
 
 
 
 	/** @todo Comment */
-	public function A2S(id:String):* {
-		var asset:Asset = AssetManager.getAsset(id);
+	public function A2S(id:String, assetManagerID:String = null):* {
+		if(assetManagerID == null) assetManagerID = AssetManager.lastAssetManagerID;
+
+		var assetManager:AssetManager = AssetManager.getAssetManager(assetManagerID);
+		var asset:Asset = assetManager.getAsset(id);
 
 		if(asset == null) {
 			throw new Error(printf("Asset \"%s\" is not defined in skin", id));
