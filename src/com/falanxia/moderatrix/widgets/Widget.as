@@ -24,22 +24,16 @@
 
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.interfaces.IWidget;
-	import com.falanxia.utilitaris.display.MorphSprite;
-	import com.falanxia.utilitaris.display.QSprite;
-	import com.falanxia.utilitaris.types.RGBA;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.interfaces.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.types.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Stage;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.events.*;
+	import flash.geom.*;
 
 
 
@@ -51,10 +45,8 @@ package com.falanxia.moderatrix.widgets {
 	public class Widget extends MorphSprite {
 
 
-		/** @todo Comment */
 		public static const DRAW:String = "draw";
 
-		/** @todo Comment */
 		public static var initialDebugLevel:String;
 
 		protected static const DEBUG_PADDING:Number = 4;
@@ -72,11 +64,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * Create a new glyph label button instance.
+		 * @param config Configuration {@code Object}
+		 * @param parent Parent {@code DisplayObjectContainer}
+		 * @param debugLevel Debug level ({@see DebugLevel})
+		 */
 		public function Widget(config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null):void {
-			if(config == null) _config = new Object();
-			else _config = config;
-
+			_config = (config == null) ? new Object() : config;
 			_debugColor = SkinManager.debugColor;
 
 			super(_config);
@@ -89,19 +84,17 @@ package com.falanxia.moderatrix.widgets {
 			if(parent != null) parent.addChild(this);
 
 			if(allWidgets == null) allWidgets = new Array();
-
 			allWidgets.push(this);
-
 			allIdx = allWidgets.length - 1;
 
 			init();
 
 			if(debugLevel == null) {
-				if(initialDebugLevel != null) {
-					this.debugLevel = initialDebugLevel;
-				}
+				if(initialDebugLevel != null) this.debugLevel = initialDebugLevel;
 			}
-			else this.debugLevel = debugLevel;
+			else {
+				this.debugLevel = debugLevel;
+			}
 		}
 
 
@@ -126,15 +119,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
-		public static function initStage(stage:Stage):void {
-			stage.align = StageAlign.TOP_LEFT;
-			stage.scaleMode = StageScaleMode.NO_SCALE;
-		}
-
-
-
-		/** @todo Comment */
+		/**
+		 * Draw the widget.
+		 */
 		public function draw():void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
 				if(!_size.isEmpty()) {
@@ -149,31 +136,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		override public function addChild(child:DisplayObject):DisplayObject {
-			var out:DisplayObject;
-
-			if(contentSpr == null) out = super.addChild(child);
-			else out = contentSpr.addChild(child);
-
-			return out;
+			return (contentSpr == null) ? super.addChild(child) : contentSpr.addChild(child);
 		}
 
 
 
-		/** @todo Comment */
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
-			//noinspection EmptyCatchBlockJS,UnusedCatchParameterJS
-			try {
-				if(contentSpr == null && super.contains(child)) out = super.removeChild(child);
-				else {
-					if(contentSpr.contains(child)) out = contentSpr.removeChild(child);
-				}
+			if(contentSpr == null && super.contains(child)) {
+				out = super.removeChild(child);
 			}
-			catch(err:Error) {
-				// TODO: Fix me. This stinks, somewhere something here is totally wrong
+			else {
+				if(contentSpr.contains(child)) out = contentSpr.removeChild(child);
 			}
 
 			return out;
@@ -181,98 +157,80 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		override public function contains(child:DisplayObject):Boolean {
-			var out:Boolean;
-
-			if(contentSpr == null) out = super.contains(child);
-			else out = contentSpr.contains(child);
-
-			return out;
+			return (contentSpr == null) ? super.contains(child) : contentSpr.contains(child);
 		}
 
 
 
-		/** @todo Comment */
 		override public function swapChildrenAt(index1:int, index2:int):void {
-			if(contentSpr == null) super.swapChildrenAt(index1, index2);
-			else contentSpr.swapChildrenAt(index1, index2);
+			if(contentSpr == null) {
+				super.swapChildrenAt(index1, index2);
+			}
+			else {
+				contentSpr.swapChildrenAt(index1, index2);
+			}
 		}
 
 
 
-		/** @todo Comment */
 		override public function getChildByName(name:String):DisplayObject {
-			var out:DisplayObject;
-
-			if(contentSpr == null) out = super.getChildByName(name);
-			else out = contentSpr.getChildByName(name);
-
-			return out;
+			return (contentSpr == null) ? super.getChildByName(name) : contentSpr.getChildByName(name);
 		}
 
 
 
-		/** @todo Comment */
 		override public function removeChildAt(index:int):DisplayObject {
-			var out:DisplayObject;
-
-			if(contentSpr == null) out = super.removeChildAt(index);
-			else out = contentSpr.removeChildAt(index);
-
-			return out;
+			return (contentSpr == null) ? super.removeChildAt(index) : contentSpr.removeChildAt(index);
 		}
 
 
 
-		/** @todo Comment */
 		override public function getChildIndex(child:DisplayObject):int {
-			var out:int;
-
-			if(contentSpr == null) out = super.getChildIndex(child);
-			else out = contentSpr.getChildIndex(child);
-
-			return out;
+			return (contentSpr == null) ? super.getChildIndex(child) : contentSpr.getChildIndex(child);
 		}
 
 
 
-		/** @todo Comment */
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
-			var out:DisplayObject;
-
-			if(contentSpr == null) out = super.addChildAt(child, index);
-			else out = contentSpr.addChildAt(child, index);
-
-			return out;
+			return (contentSpr == null) ? super.addChildAt(child, index) : contentSpr.addChildAt(child, index);
 		}
 
 
 
-		/** @todo Comment */
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
-			if(contentSpr == null) super.swapChildren(child1, child2);
-			else contentSpr.swapChildren(child1, child2);
+			if(contentSpr == null) {
+				super.swapChildren(child1, child2);
+			}
+			else {
+				contentSpr.swapChildren(child1, child2);
+			}
 		}
 
 
 
-		/** @todo Comment */
 		override public function getChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(contentSpr == null) out = super.getChildAt(index);
-			else contentSpr.getChildAt(index);
+			if(contentSpr == null) {
+				out = super.getChildAt(index);
+			}
+			else {
+				contentSpr.getChildAt(index);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
 		override public function setChildIndex(child:DisplayObject, index:int):void {
-			if(contentSpr == null) super.setChildIndex(child, index);
-			else contentSpr.setChildIndex(child, index);
+			if(contentSpr == null) {
+				super.setChildIndex(child, index);
+			}
+			else {
+				contentSpr.setChildIndex(child, index);
+			}
 		}
 
 
@@ -280,39 +238,40 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
 		override public function set width(w:Number):void {
+			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
+
 			_size.width = Math.round(w);
+
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 
 
 
-		/** @todo Comment */
 		override public function get width():Number {
 			return _size.width;
 		}
 
 
 
-		/** @todo Comment */
 		override public function set height(h:Number):void {
+			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
+
 			_size.height = Math.round(h);
+
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 
 
 
-		/** @todo Comment */
 		override public function get height():Number {
 			return _size.height;
 		}
 
 
 
-		/** @todo Comment */
 		override public function get size():Rectangle {
 			return _size;
 		}
@@ -331,7 +290,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		public static function set allDebugLevel(value:String):void {
 			for each(var i:IWidget in allWidgets) {
 				if(i != null) i.debugLevel = value;
@@ -340,28 +298,24 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		override public function set x(value:Number):void {
 			super.x = Math.round(value);
 		}
 
 
 
-		/** @todo Comment */
 		override public function set y(value:Number):void {
 			super.y = Math.round(value);
 		}
 
 
 
-		/** @todo Comment */
 		public function get config():Object {
 			return _config;
 		}
 
 
 
-		/** @todo Comment */
 		public function set debugLevel(value:String):void {
 			if(value == DebugLevel.ALWAYS) {
 				debugSpr.visible = true;
@@ -381,14 +335,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/** @todo Comment */
 		public function set debugColor(value:RGBA):void {
 			_debugColor = value;
 			draw();
@@ -396,7 +348,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		public function get debugColor():RGBA {
 			return _debugColor;
 		}
@@ -406,7 +357,6 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
 		protected function init():void {
 			addChildren();
 			invalidate();
@@ -414,17 +364,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		protected function addChildren():void {
-			// FIXME: For some reason _debugSpr is below _contentSpr
-
 			contentSpr = new QSprite({mouseEnabled:false}, this);
 			debugSpr = new QSprite({mouseEnabled:false, mouseChildren:false}, this);
 		}
 
 
 
-		/** @todo Comment */
 		protected function removeChildren():void {
 			this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
 			this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
@@ -437,7 +383,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		protected function invalidate():void {
 			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
@@ -447,21 +392,18 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ EVENT LISTENERS ★ */
 
 
-		/** @todo Comment */
 		protected function onDebugOver(e:MouseEvent):void {
 			debugSpr.visible = true;
 		}
 
 
 
-		/** @todo Comment */
 		protected function onDebugOut(e:MouseEvent):void {
 			debugSpr.visible = false;
 		}
 
 
 
-		/** @todo Comment */
 		private function onInvalidate(e:Event):void {
 			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
