@@ -149,7 +149,9 @@ package com.falanxia.moderatrix.widgets {
 				out = super.removeChild(child);
 			}
 			else {
-				if(contentSpr.contains(child)) out = contentSpr.removeChild(child);
+				if(contentSpr.contains(child)) {
+					out = contentSpr.removeChild(child);
+				}
 			}
 
 			return out;
