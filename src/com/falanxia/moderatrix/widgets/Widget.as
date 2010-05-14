@@ -143,18 +143,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function removeChild(child:DisplayObject):DisplayObject {
-			var out:DisplayObject;
-
-			if(contentSpr == null && super.contains(child)) {
-				out = super.removeChild(child);
+			if(super.getChildByName(child.name)) {
+				super.removeChild(child);
 			}
 			else {
-				if(contentSpr.contains(child)) {
-					out = contentSpr.removeChild(child);
-				}
+				if(child.parent.getChildByName(child.name)) child.parent.removeChild(child);
 			}
 
-			return out;
+			return child;
 		}
 
 
@@ -379,8 +375,8 @@ package com.falanxia.moderatrix.widgets {
 
 			allWidgets[allIdx] = null;
 
-			if(contentSpr != null && this.contains(contentSpr)) this.removeChild(contentSpr);
-			if(debugSpr != null && this.contains(debugSpr)) this.removeChild(debugSpr);
+			if(contentSpr != null && this.getChildByName(contentSpr.name)) contentSpr.parent.removeChild(contentSpr);
+			if(debugSpr != null && this.getChildByName(debugSpr.name)) debugSpr.parent.removeChild(debugSpr);
 		}
 
 
