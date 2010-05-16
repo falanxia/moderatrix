@@ -33,9 +33,9 @@ package com.falanxia.moderatrix.interfaces {
 		/** @todo Comment */
 		function parseConfig(source:Object):void;
 
-
-
 		/** @todo Comment */
 		function revertConfig():void;
+
+
 	}
 }
