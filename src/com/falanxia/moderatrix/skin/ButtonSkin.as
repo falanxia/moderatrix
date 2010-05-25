@@ -113,8 +113,8 @@ package com.falanxia.moderatrix.skin {
 
 			if(source.hoverInDuration != undefined) _hoverInDuration = source.hoverInDuration;
 			if(source.hoverOutDuration != undefined) _hoverOutDuration = source.hoverOutDuration;
-			if(source.pressInDuration != undefined) _focusInDuration = source.pressInDuration;
-			if(source.pressOutDuration != undefined) _focusOutDuration = source.pressOutDuration;
+			if(source.focusInDuration != undefined) _focusInDuration = source.focusInDuration;
+			if(source.focusOutDuration != undefined) _focusOutDuration = source.focusOutDuration;
 		}
 
 
