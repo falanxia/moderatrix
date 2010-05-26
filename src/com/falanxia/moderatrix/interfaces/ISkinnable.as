@@ -27,31 +27,31 @@ package com.falanxia.moderatrix.interfaces {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public interface ISkinnable {
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get id():String;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get type():String;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get assetSize():Rectangle;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get data():Object;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set data(value:Object):void;
 	}
 }

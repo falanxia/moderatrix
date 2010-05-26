@@ -23,17 +23,17 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.interfaces.ISkinnable;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
-	import com.falanxia.utilitaris.utils.RandomUtils;
+	import com.falanxia.moderatrix.interfaces.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.BitmapData;
-	import flash.display.MovieClip;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.geom.*;
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class Skin implements ISkinnable {
 
 
@@ -46,7 +46,11 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param type
+		 * @param id
+		 */
 		public function Skin(type:String, id:String = null):void {
 			_id = id;
 			_type = type;
@@ -73,7 +77,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function parseConfig(source:Object):void {
 			oldData = _data;
 
@@ -84,7 +91,9 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		public function revertConfig():void {
 			_data = oldData;
 		}
@@ -94,35 +103,50 @@ package com.falanxia.moderatrix.skin {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get id():String {
 			return _id;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get type():String {
 			return _type;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get assetSize():Rectangle {
 			return _assetSize;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get data():Object {
 			return _data;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set data(value:Object):void {
 			_data = value;
 		}
@@ -132,7 +156,11 @@ package com.falanxia.moderatrix.skin {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 * @param frame
+		 */
 		protected function getSkinSize(source:MovieClip, frame:*):void {
 			// it's needed to duplicate this MovieClip as there was some weird bug:
 			// when used source.gotoAndStop(frame) on one of next lines,
@@ -147,7 +175,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		protected function checkSize(source:BitmapData):void {
 			if(_assetSize.width == 0 && _assetSize.height == 0) {
 				// size is not specified, set initial values

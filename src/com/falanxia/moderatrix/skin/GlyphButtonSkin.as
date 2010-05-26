@@ -23,11 +23,13 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.enums.*;
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class GlyphButtonSkin extends Skin {
 
 
@@ -36,7 +38,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param id
+		 */
 		public function GlyphButtonSkin(id:String = null) {
 			super(SkinType.GLYPH_BUTTON, id);
 
@@ -61,7 +66,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -71,7 +79,9 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -84,28 +94,40 @@ package com.falanxia.moderatrix.skin {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get buttonSkin():ButtonSkin {
 			return _buttonSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set buttonSkin(source:ButtonSkin):void {
 			_buttonSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphSkin():GlyphSkin {
 			return _glyphSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set glyphSkin(source:GlyphSkin):void {
 			_glyphSkin = source;
 		}

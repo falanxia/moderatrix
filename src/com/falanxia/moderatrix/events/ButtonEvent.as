@@ -27,70 +27,70 @@ package com.falanxia.moderatrix.events {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public class ButtonEvent extends Event {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const DRAG_OVER:String = "buttonDragOver";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const DRAG_OUT:String = "buttonDragOut";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const DRAG_CONFIRM:String = "buttonDragConfirm";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const HOVER_IN:String = "buttonHoverIn";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const HOVER_OUT:String = "buttonHoverOut";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const FOCUS_IN:String = "buttonFocusIn";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const RELEASE_INSIDE:String = "buttonReleaseInside";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const RELEASE_OUTSIDE:String = "buttonReleaseOutside";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const HOVER_IN_TWEEN:String = "buttonHoverInTween";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const HOVER_OUT_TWEEN:String = "buttonHoverOutTween";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const FOCUS_IN_TWEEN:String = "buttonFocusInTween";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const DRAG_CONFIRMED_TWEEN:String = "buttonDragConfirmedTween";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const RELEASED_INSIDE_TWEEN:String = "buttonReleasedInsideTween";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const RELEASED_OUTSIDE_TWEEN:String = "buttonReleasedOutsideTween";
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function ButtonEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false) {
 			super(type, bubbles, cancelable);
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public override function clone():Event {
 			return new ButtonEvent(type, bubbles, cancelable);
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public override function toString():String {
 			return formatToString("ButtonEvent", "type", "bubbles", "cancelable");
 		}

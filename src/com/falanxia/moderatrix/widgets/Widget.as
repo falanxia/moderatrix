@@ -38,9 +38,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 	/**
-	 * @todo Comment
-	 * @todo Width & height not applied in the constructor
-	 * @todo Check for children and remove them on destroy()
+	 * TODO: Documentation
+	 * TODO: Width & height not applied in the constructor
+	 * TODO: Check for children and remove them on destroy()
 	 */
 	public class Widget extends MorphSprite {
 

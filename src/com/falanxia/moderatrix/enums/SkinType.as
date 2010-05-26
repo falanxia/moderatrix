@@ -26,44 +26,44 @@ package com.falanxia.moderatrix.enums {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public class SkinType {
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const CONTAINER:String = "container";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const BAR:String = "bar";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const IMAGE:String = "image";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const ATLAS:String = "atlas";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const GLYPHS:String = "glyphs";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const BUTTON:String = "button";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const LABEL:String = "label";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const LABEL_BUTTON:String = "labelButton";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const GLYPH_BUTTON:String = "glyphButton";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const GLYPH_LABEL_BUTTON:String = "glyphLabelButton";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const CHECK_BUTTON:String = "checkButton";
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public static const INPUT_BAR:String = "inputBar";
 
 	}

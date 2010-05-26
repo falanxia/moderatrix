@@ -37,7 +37,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public class Label extends Widget {
 
 
@@ -52,7 +52,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                      debugLevel:String = null) {
 
@@ -94,8 +94,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * @todo Comment
-		 * @todo Optmimize
+		 * TODO: Documentation
+		 * TODO: Optmimize
 		 */
 		override public function draw():void {
 			super.draw();
@@ -129,35 +129,35 @@ package com.falanxia.moderatrix.widgets {
 
 		/* ★ SETTERS & GETTERS ★ */
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function get tabEnabled():Boolean {
 			return _textField.tabEnabled;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function set tabIndex(index:int):void {
 			_textField.tabIndex = index;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function get tabIndex():int {
 			return _textField.tabIndex;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function set tabEnabled(enabled:Boolean):void {
 			_textField.tabEnabled = enabled;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function set debugLevel(value:String):void {
 			super.debugLevel = value;
 
@@ -167,14 +167,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get skin():LabelSkin {
 			return _skin;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set skin(skin:LabelSkin):void {
 			_skin = skin;
 
@@ -215,14 +215,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get text():String {
 			return _textField.text;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set text(value:String):void {
 			var v:String = value;
 
@@ -245,63 +245,63 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get textField():TextField {
 			return _textField;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function get width():Number {
 			return (_isWidthOverriden) ? _textField.width : _textField.textWidth + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function get height():Number {
 			return (_isHeightOverriden) ? _textField.height : _textField.textHeight + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function get x():Number {
 			return super.x - _skin.paddingLeft;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function get y():Number {
 			return super.y - _skin.paddingTop;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get isInput():Boolean {
 			return _isInput;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get isPassword():Boolean {
 			return _textField.displayAsPassword;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set isPassword(value:Boolean):void {
 			_textField.displayAsPassword = value;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set isInput(value:Boolean):void {
 			if(_textField != null) {
 				_textField.type = (value) ? TextFieldType.INPUT : TextFieldType.DYNAMIC;
@@ -323,7 +323,7 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override protected function init():void {
 			super.init();
 
@@ -337,7 +337,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -346,7 +346,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override protected function removeChildren():void {
 			super.removeChildren();
 
@@ -358,7 +358,7 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ EVENT LISTENERS ★ */
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override protected function onDebugOver(e:MouseEvent):void {
 			super.onDebugOver(e);
 
@@ -369,7 +369,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override protected function onDebugOut(e:MouseEvent):void {
 			super.onDebugOut(e);
 

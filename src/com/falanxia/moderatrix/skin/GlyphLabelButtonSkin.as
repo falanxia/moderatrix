@@ -27,7 +27,9 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class GlyphLabelButtonSkin extends Skin {
 
 
@@ -39,7 +41,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param id
+		 */
 		public function GlyphLabelButtonSkin(id:String = null) {
 			super(SkinType.GLYPH_BUTTON, id);
 
@@ -73,7 +78,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -86,7 +94,9 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -102,70 +112,100 @@ package com.falanxia.moderatrix.skin {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get buttonSkin():ButtonSkin {
 			return _buttonSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set buttonSkin(source:ButtonSkin):void {
 			_buttonSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphSkin():GlyphSkin {
 			return _glyphSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set glyphSkin(source:GlyphSkin):void {
 			_glyphSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelOutSkin():LabelSkin {
 			return _labelOutSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set labelOutSkin(source:LabelSkin):void {
 			_labelOutSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelHoverSkin():LabelSkin {
 			return _labelHoverSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set labelHoverSkin(source:LabelSkin):void {
 			_labelHoverSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelFocusSkin():LabelSkin {
 			return _labelFocusSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set labelFocusSkin(source:LabelSkin):void {
 			_labelFocusSkin = source;
 		}

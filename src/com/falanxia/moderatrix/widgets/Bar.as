@@ -23,18 +23,20 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.skin.BarSkin;
-	import com.falanxia.utilitaris.display.ScaleBitmapSprite;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.DisplayObjectContainer;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.geom.*;
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class Bar extends Widget {
 
 
@@ -44,19 +46,33 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 * @param config
+		 * @param parent
+		 * @param debugLevel
+		 */
 		public function Bar(skin:BarSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
-			if(config == null) c = new Object();
-			else c = config;
+			if(config == null) {
+				c = new Object();
+			}
+			else {
+				c = config;
+			}
 
 			if(c.width == undefined) c.width = skin.assetSize.width;
 			if(c.height == undefined) c.height = skin.assetSize.height;
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			this.skin = skin;
 		}
@@ -78,8 +94,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * @todo Comment
-		 * @todo Optimize
+		 * TODO: Documentation
+		 * TODO: Optimize
 		 */
 		override public function draw():void {
 			super.draw();
@@ -107,14 +123,20 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():BarSkin {
 			return _skin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:BarSkin):void {
 			_skin = skin;
 
@@ -130,14 +152,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get width():Number {
 			return _size.width + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get height():Number {
 			return _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
@@ -147,7 +175,9 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function init():void {
 			super.init();
 
@@ -159,7 +189,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -170,7 +202,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

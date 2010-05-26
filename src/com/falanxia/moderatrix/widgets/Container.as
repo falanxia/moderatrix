@@ -23,16 +23,15 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.skin.ContainerSkin;
-	import com.falanxia.utilitaris.display.QSprite;
-	import com.falanxia.utilitaris.enums.Align;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.enums.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.geom.*;
 
 
 
@@ -46,7 +45,7 @@ package com.falanxia.moderatrix.widgets {
 	 * getters of course).
 	 *
 	 * @author Vaclav Vancura (http://vaclav.vancura.org)
-	 * @todo Comment
+	 * TODO: Documentation
 	 */
 	public class Container extends Widget {
 
@@ -69,21 +68,29 @@ package com.falanxia.moderatrix.widgets {
 		 * @see QSprite
 		 * @see ContainerSkin
 		 * @see DebugLevel
-		 * @todo Comment
+		 * TODO: Documentation
 		 */
 		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null,
 		                          debugLevel:String = null) {
 			var c:Object;
 
-			if(config == null) c = new Object();
-			else c = config;
+			if(config == null) {
+				c = new Object();
+			}
+			else {
+				c = config;
+			}
 
 			if(c.width == undefined) c.width = skin.assetSize.width;
 			if(c.height == undefined) c.height = skin.assetSize.height;
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			this.skin = skin;
 		}
@@ -108,7 +115,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Redraw stuff.
-		 * @todo Optimize
+		 * TODO: Optimize
 		 */
 		override public function draw():void {
 			super.draw();
@@ -129,148 +136,243 @@ package com.falanxia.moderatrix.widgets {
 				if(_skin.hAlign == Align.RIGHT) {
 					// right
 					innerSpr.x = _size.width - _skin.paddingRight - _innerWidth;
-				} else if(_skin.hAlign == Align.CENTER) {
-					// center
-					innerSpr.x = rect.x + Math.round((rect.width - _innerWidth) / 2);
 				}
 				else {
-					// left
-					innerSpr.x = rect.x;
+					if(_skin.hAlign == Align.CENTER) {
+						// center
+						innerSpr.x = rect.x + Math.round((rect.width - _innerWidth) / 2);
+					}
+					else {
+						// left
+						innerSpr.x = rect.x;
+					}
 				}
 
 				// align inner sprite vertically
 				if(_skin.vAlign == Align.BOTTOM) {
 					// bottom
 					innerSpr.y = _size.height - _skin.paddingBottom - _innerHeight;
-				} else if(_skin.vAlign == Align.CENTER) {
-					// center
-					innerSpr.y = rect.y + Math.round((rect.height - _innerHeight) / 2);
 				}
 				else {
-					// top
-					innerSpr.y = rect.y;
+					if(_skin.vAlign == Align.CENTER) {
+						// center
+						innerSpr.y = rect.y + Math.round((rect.height - _innerHeight) / 2);
+					}
+					else {
+						// top
+						innerSpr.y = rect.y;
+					}
 				}
 			}
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child
+		 * @return
+		 */
 		override public function addChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
-			if(innerSpr == null) out = super.addChild(child);
-			else out = innerSpr.addChild(child);
+			if(innerSpr == null) {
+				out = super.addChild(child);
+			}
+			else {
+				out = innerSpr.addChild(child);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child
+		 * @return
+		 */
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
-			if(innerSpr == null) out = super.removeChild(child);
-			else out = innerSpr.removeChild(child);
+			if(innerSpr == null) {
+				out = super.removeChild(child);
+			}
+			else {
+				out = innerSpr.removeChild(child);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child
+		 * @return
+		 */
 		override public function contains(child:DisplayObject):Boolean {
 			var out:Boolean;
 
-			if(innerSpr == null) out = super.contains(child);
-			else out = innerSpr.contains(child);
+			if(innerSpr == null) {
+				out = super.contains(child);
+			}
+			else {
+				out = innerSpr.contains(child);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param index1
+		 * @param index2
+		 */
 		override public function swapChildrenAt(index1:int, index2:int):void {
-			if(innerSpr == null) super.swapChildrenAt(index1, index2);
-			else innerSpr.swapChildrenAt(index1, index2);
+			if(innerSpr == null) {
+				super.swapChildrenAt(index1, index2);
+			}
+			else {
+				innerSpr.swapChildrenAt(index1, index2);
+			}
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param name
+		 * @return
+		 */
 		override public function getChildByName(name:String):DisplayObject {
 			var out:DisplayObject;
 
-			if(innerSpr == null) out = super.getChildByName(name);
-			else out = innerSpr.getChildByName(name);
+			if(innerSpr == null) {
+				out = super.getChildByName(name);
+			}
+			else {
+				out = innerSpr.getChildByName(name);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 * @return
+		 */
 		override public function removeChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(innerSpr == null) out = super.removeChildAt(index);
-			else out = innerSpr.removeChildAt(index);
+			if(innerSpr == null) {
+				out = super.removeChildAt(index);
+			}
+			else {
+				out = innerSpr.removeChildAt(index);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child
+		 * @return
+		 */
 		override public function getChildIndex(child:DisplayObject):int {
 			var out:int;
 
-			if(innerSpr == null) out = super.getChildIndex(child);
-			else out = innerSpr.getChildIndex(child);
+			if(innerSpr == null) {
+				out = super.getChildIndex(child);
+			}
+			else {
+				out = innerSpr.getChildIndex(child);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child
+		 * @param index
+		 * @return
+		 */
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(innerSpr == null) out = super.addChildAt(child, index);
-			else out = innerSpr.addChildAt(child, index);
+			if(innerSpr == null) {
+				out = super.addChildAt(child, index);
+			}
+			else {
+				out = innerSpr.addChildAt(child, index);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child1
+		 * @param child2
+		 */
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
-			if(innerSpr == null) super.swapChildren(child1, child2);
-			else innerSpr.swapChildren(child1, child2);
+			if(innerSpr == null) {
+				super.swapChildren(child1, child2);
+			}
+			else {
+				innerSpr.swapChildren(child1, child2);
+			}
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 * @return
+		 */
 		override public function getChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
-			if(innerSpr == null) out = super.getChildAt(index);
-			else out = innerSpr.getChildAt(index);
+			if(innerSpr == null) {
+				out = super.getChildAt(index);
+			}
+			else {
+				out = innerSpr.getChildAt(index);
+			}
 
 			return out;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param child
+		 * @param index
+		 */
 		override public function setChildIndex(child:DisplayObject, index:int):void {
-			if(innerSpr == null) super.setChildIndex(child, index);
-			else innerSpr.setChildIndex(child, index);
+			if(innerSpr == null) {
+				super.setChildIndex(child, index);
+			}
+			else {
+				innerSpr.setChildIndex(child, index);
+			}
 		}
 
 
@@ -278,14 +380,20 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():ContainerSkin {
 			return _skin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:ContainerSkin):void {
 			_skin = skin;
 
@@ -297,42 +405,60 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get width():Number {
 			return _size.width + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get height():Number {
 			return _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get innerWidth():Number {
 			return _innerWidth;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set innerWidth(value:Number):void {
 			_innerWidth = value;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get innerHeight():Number {
 			return _innerWidth;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set innerHeight(value:Number):void {
 			_innerHeight = value;
 		}
@@ -342,7 +468,9 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function init():void {
 			super.init();
 
@@ -354,7 +482,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -365,7 +495,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

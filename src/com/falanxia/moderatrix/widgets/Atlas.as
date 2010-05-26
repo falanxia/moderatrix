@@ -37,7 +37,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class Atlas extends Widget {
 
 
@@ -48,7 +50,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 * @param config
+		 * @param parent
+		 * @param debugLevel
+		 */
 		public function Atlas(skin:AtlasSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
@@ -90,8 +98,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * @todo Comment
-		 * @todo Optimize
+		 * TODO: Documentation
+		 * TODO: Optimize
 		 */
 		override public function draw():void {
 			super.draw();
@@ -139,14 +147,20 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():AtlasSkin {
 			return _skin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:AtlasSkin):void {
 			_skin = skin;
 
@@ -161,14 +175,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get bitmap():QBitmap {
 			return imageBM;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set phase(value:uint):void {
 			if(value != phase) {
 				if(value > this.length) {
@@ -183,14 +203,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get phase():uint {
 			return _phase;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get length():uint {
 			return (_skin.imageBD == null) ? 0 : _skin.imageBD.width / _skin.assetSize.width;
 		}
@@ -200,7 +226,9 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function init():void {
 			super.init();
 
@@ -212,7 +240,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -223,7 +253,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

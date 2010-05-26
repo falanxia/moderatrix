@@ -23,11 +23,13 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.enums.*;
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class CheckButtonSkin extends Skin {
 
 
@@ -36,7 +38,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param id
+		 */
 		public function CheckButtonSkin(id:String = null) {
 			super(SkinType.CHECK_BUTTON, id);
 
@@ -61,7 +66,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -71,7 +79,9 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -84,28 +94,40 @@ package com.falanxia.moderatrix.skin {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get buttonOffSkin():ButtonSkin {
 			return _buttonOffSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set buttonOffSkin(source:ButtonSkin):void {
 			_buttonOffSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get buttonOnSkin():ButtonSkin {
 			return _buttonOnSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		public function set buttonOnSkin(source:ButtonSkin):void {
 			_buttonOnSkin = source;
 		}

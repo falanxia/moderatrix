@@ -39,7 +39,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public class ButtonCore extends Widget implements IWidget {
 
 
@@ -54,9 +56,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
-		public function ButtonCore(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null,
-		                           debugLevel:String = null) {
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 * @param config
+		 * @param parent
+		 * @param debugLevel
+		 */
+		public function ButtonCore(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
 			if(config == null) {
@@ -104,7 +111,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		public function forceRelease():void {
 			if(_mouseStatus == MouseStatus.FOCUS) {
 				currentDrag = null;
@@ -119,7 +128,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		public static function releaseAll():void {
 			for each(var b:* in allWidgets) {
 				if(b is ButtonCore) {
@@ -133,35 +144,50 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param enabled
+		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			activeSpr.tabEnabled = enabled;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 */
 		override public function set tabIndex(index:int):void {
 			activeSpr.tabIndex = index;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabIndex():int {
 			return activeSpr.tabIndex;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():ButtonSkin {
 			return _skin;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:ButtonSkin):void {
 			_skin = ButtonSkin(skin);
 
@@ -173,7 +199,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_areEventsEnabled = value;
 
@@ -188,21 +217,30 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get areEventsEnabled():Boolean {
 			return _areEventsEnabled;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get mouseStatus():String {
 			return _mouseStatus;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set mouseStatus(value:String):void {
 			switch(value) {
 				case MouseStatus.OUT:
@@ -224,7 +262,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabEnabled():Boolean {
 			return activeSpr.tabEnabled;
 		}
@@ -234,7 +275,9 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -257,7 +300,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 
@@ -274,7 +319,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		protected function hoverInTween():void {
 			dispatchEvent(new ButtonEvent(ButtonEvent.HOVER_IN_TWEEN, true));
 
@@ -286,7 +333,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		protected function hoverOutTween():void {
 			dispatchEvent(new ButtonEvent(ButtonEvent.HOVER_OUT_TWEEN, true));
 
@@ -298,7 +347,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		protected function focusInTween():void {
 			dispatchEvent(new ButtonEvent(ButtonEvent.FOCUS_IN_TWEEN, true));
 
@@ -310,7 +361,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		protected function dragConfirmedTween():void {
 			dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_CONFIRMED_TWEEN, true));
 
@@ -322,7 +375,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		protected function releasedInsideTween():void {
 			dispatchEvent(new ButtonEvent(ButtonEvent.RELEASED_INSIDE_TWEEN, true));
 
@@ -334,7 +389,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 */
 		protected function releasedOutsideTween():void {
 			dispatchEvent(new ButtonEvent(ButtonEvent.RELEASED_OUTSIDE_TWEEN, true));
 
@@ -349,7 +406,6 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ EVENT LISTENERS ★ */
 
 
-		/** @todo Comment */
 		private function onOver(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
 				if(e != null && e.buttonDown) {
@@ -367,7 +423,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		private function onOut(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
 				if(e != null && e.buttonDown) {
@@ -385,7 +440,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		private function onFocus(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
 				_mouseStatus = MouseStatus.FOCUS;
@@ -398,7 +452,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		private function onRelease(e:MouseEvent = null):void {
 			if(stage != null) stage.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 
@@ -429,7 +482,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		private function onFocusIn(e:FocusEvent):void {
 			if(_areEventsEnabled) {
 				onOver();
@@ -438,7 +490,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		private function onFocusOut(e:FocusEvent):void {
 			if(_areEventsEnabled) {
 				onOut();
@@ -447,9 +498,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** @todo Comment */
 		private function onKeyDown(e:KeyboardEvent):void {
 			// FIXME: Look for all events, like when mouse draggin is on etc.
+
 			if(_areEventsEnabled) {
 				if(e.keyCode == 32 || e.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
 			}

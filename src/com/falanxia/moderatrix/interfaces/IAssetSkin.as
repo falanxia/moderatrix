@@ -23,16 +23,18 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
-	import flash.display.BitmapData;
+	import flash.display.*;
 
 
 
-	/** @todo Comment */
+	/**
+	 * TODO: Documentation
+	 */
 	public interface IAssetSkin {
 
 
-
-		/** @todo Comment */
 		function getAssetsFromAtlas(source:BitmapData):void;
+
+
 	}
 }

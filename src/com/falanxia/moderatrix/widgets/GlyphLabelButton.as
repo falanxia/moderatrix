@@ -37,7 +37,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public class GlyphLabelButton extends MorphSprite {
 
 

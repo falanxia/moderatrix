@@ -35,9 +35,9 @@ package com.falanxia.moderatrix.globals {
 
 
 	/**
-	 * @todo Comment
-	 * @todo Caching
-	 * @todo Better error handling
+	 * TODO: Documentation
+	 * TODO: Caching
+	 * TODO: Better error handling
 	 */
 	public class SkinManager {
 
@@ -47,7 +47,11 @@ package com.falanxia.moderatrix.globals {
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param asset
+		 * @return
+		 */
 		public static function assetToSkin(asset:Asset):* {
 			if(asset.config.widget == null) {
 				throw new Error("Asset is null");
@@ -205,28 +209,40 @@ package com.falanxia.moderatrix.globals {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public static function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public static function set debugLevel(value:String):void {
 			_debugLevel = value;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public static function get debugColor():RGBA {
 			return _debugColor;
 		}
 
 
 
-		/** @todo Comment */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public static function set debugColor(value:RGBA):void {
 			_debugColor = value;
 		}

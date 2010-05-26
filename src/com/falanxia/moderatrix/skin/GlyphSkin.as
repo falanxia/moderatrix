@@ -31,7 +31,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public class GlyphSkin extends Skin {
 
 
@@ -41,7 +41,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function GlyphSkin(id:String = null) {
 			super(SkinType.GLYPHS, id);
 
@@ -69,7 +69,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			if(source.width % 3 != 0) throw new Error("Width has to be multiple of 3");
 
@@ -87,7 +87,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -98,7 +98,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -112,42 +112,42 @@ package com.falanxia.moderatrix.skin {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get glyphOutSkin():ImageSkin {
 			return _glyphOutSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set glyphOutSkin(source:ImageSkin):void {
 			_glyphOutSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get glyphHoverSkin():ImageSkin {
 			return _glyphHoverSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set glyphHoverSkin(source:ImageSkin):void {
 			_glyphHoverSkin = source;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function get glyphFocusSkin():ImageSkin {
 			return _glyphFocusSkin;
 		}
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		public function set glyphFocusSkin(source:ImageSkin):void {
 			_glyphFocusSkin = source;
 		}

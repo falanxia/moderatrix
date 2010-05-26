@@ -27,71 +27,71 @@ package com.falanxia.moderatrix.interfaces {
 
 
 
-	/** @todo Comment */
+	/** TODO: Documentation */
 	public interface IWidget {
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function draw():void;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set debugLevel(value:String):void;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get debugLevel():String;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get x():Number;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set x(value:Number):void;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get y():Number;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set y(value:Number):void;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get width():Number;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set width(value:Number):void;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get height():Number;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set height(value:Number):void;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function get size():Rectangle;
 
 
 
-		/** @todo Comment */
+		/** TODO: Documentation */
 		function set size(rect:Rectangle):void;
 	}
 }
