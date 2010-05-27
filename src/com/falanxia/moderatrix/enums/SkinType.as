@@ -26,7 +26,9 @@ package com.falanxia.moderatrix.enums {
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public class SkinType {
 
 
@@ -65,6 +67,7 @@ package com.falanxia.moderatrix.enums {
 
 		/** TODO: Documentation */
 		public static const INPUT_BAR:String = "inputBar";
+
 
 	}
 }

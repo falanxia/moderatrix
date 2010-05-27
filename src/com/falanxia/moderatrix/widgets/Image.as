@@ -23,18 +23,20 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.skin.ImageSkin;
-	import com.falanxia.utilitaris.display.QBitmap;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.utils.*;
 
-	import flash.display.DisplayObjectContainer;
-	import flash.geom.Rectangle;
+	import flash.display.*;
+	import flash.geom.*;
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public class Image extends Widget {
 
 
@@ -44,12 +46,22 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 * @param config
+		 * @param parent
+		 * @param debugLevel
+		 */
 		public function Image(skin:ImageSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
-			if(config == null) c = new Object();
-			else c = config;
+			if(config == null) {
+				c = new Object();
+			}
+			else {
+				c = config;
+			}
 
 			if(c.width == undefined) {
 				c.width = skin.assetSize.width;
@@ -60,8 +72,12 @@ package com.falanxia.moderatrix.widgets {
 			}
 
 			//noinspection NegatedIfStatementJS
-			if(skin != null) super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
-			else throw new Error("No skin defined");
+			if(skin != null) {
+				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			}
+			else {
+				throw new Error("No skin defined");
+			}
 
 			this.skin = skin;
 		}
@@ -107,14 +123,20 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():ImageSkin {
 			return _skin;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:ImageSkin):void {
 			_skin = skin;
 
@@ -129,7 +151,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get bitmap():QBitmap {
 			return imageBM;
 		}
@@ -139,7 +164,9 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function init():void {
 			super.init();
 
@@ -151,7 +178,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function addChildren():void {
 			super.addChildren();
 

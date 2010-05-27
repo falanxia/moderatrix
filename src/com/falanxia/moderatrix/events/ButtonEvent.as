@@ -23,11 +23,13 @@
  */
 
 package com.falanxia.moderatrix.events {
-	import flash.events.Event;
+	import flash.events.*;
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public class ButtonEvent extends Event {
 
 
@@ -76,21 +78,32 @@ package com.falanxia.moderatrix.events {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param type
+		 * @param bubbles
+		 * @param cancelable
+		 */
 		public function ButtonEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false) {
 			super(type, bubbles, cancelable);
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public override function clone():Event {
 			return new ButtonEvent(type, bubbles, cancelable);
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public override function toString():String {
 			return formatToString("ButtonEvent", "type", "bubbles", "cancelable");
 		}

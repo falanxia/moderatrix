@@ -37,7 +37,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public class GlyphLabelButton extends MorphSprite {
 
 
@@ -211,36 +213,60 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabEnabled():Boolean {
 			return _button.tabEnabled;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param enabled
+		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			_button.tabEnabled = enabled;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabIndex():int {
 			return _button.tabIndex;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 */
 		override public function set tabIndex(index:int):void {
 			_button.tabIndex = index;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():GlyphLabelButtonSkin {
 			return _skin;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set skin(value:GlyphLabelButtonSkin):void {
 			_skin = value;
 
@@ -261,12 +287,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get width():Number {
 			return _button.width;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set width(value:Number):void {
 			_labelOut.width = 2000;
 			_labelHover.width = 2000;
@@ -300,12 +334,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get height():Number {
 			return _button.height;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set height(value:Number):void {
 			_button.height = value;
 
@@ -322,6 +364,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_button.areEventsEnabled = value;
 			this.buttonMode = value;
@@ -332,30 +378,50 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get areEventsEnabled():Boolean {
 			return _button.areEventsEnabled;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get mouseStatus():String {
 			return _button.mouseStatus;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set mouseStatus(value:String):void {
 			_button.mouseStatus = value;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 			_button.debugLevel = value;
@@ -366,6 +432,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyph():Image {
 			var out:Image;
 
@@ -378,30 +448,50 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphOut():Image {
 			return _glyphOut;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphHover():Image {
 			return _glyphHover;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphFocus():Image {
 			return _glyphFocus;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get text():String {
 			return _labelOut.text;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set text(value:String):void {
 			_labelOut.text = value;
 			_labelHover.text = value;
@@ -412,6 +502,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get label():Label {
 			var out:Label;
 
@@ -424,24 +518,40 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelOut():Label {
 			return _labelOut;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelHover():Label {
 			return _labelHover;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelFocus():Label {
 			return _labelFocus;
 		}
 
 
 
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get button():ScaleButton {
 			return _button;
 		}

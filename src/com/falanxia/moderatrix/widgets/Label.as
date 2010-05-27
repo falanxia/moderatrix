@@ -37,7 +37,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public class Label extends Widget {
 
 
@@ -52,7 +54,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 * @param config
+		 * @param text
+		 * @param parent
+		 * @param debugLevel
+		 */
 		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                      debugLevel:String = null) {
 
@@ -129,35 +138,51 @@ package com.falanxia.moderatrix.widgets {
 
 		/* ★ SETTERS & GETTERS ★ */
 
-		/** TODO: Documentation */
+
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabEnabled():Boolean {
 			return _textField.tabEnabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 */
 		override public function set tabIndex(index:int):void {
 			_textField.tabIndex = index;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabIndex():int {
 			return _textField.tabIndex;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param enabled
+		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			_textField.tabEnabled = enabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set debugLevel(value:String):void {
 			super.debugLevel = value;
 
@@ -167,14 +192,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():LabelSkin {
 			return _skin;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:LabelSkin):void {
 			_skin = skin;
 
@@ -215,14 +246,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get text():String {
 			return _textField.text;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set text(value:String):void {
 			var v:String = value;
 
@@ -245,63 +282,90 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get textField():TextField {
 			return _textField;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get width():Number {
 			return (_isWidthOverriden) ? _textField.width : _textField.textWidth + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get height():Number {
 			return (_isHeightOverriden) ? _textField.height : _textField.textHeight + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get x():Number {
 			return super.x - _skin.paddingLeft;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get y():Number {
 			return super.y - _skin.paddingTop;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get isInput():Boolean {
 			return _isInput;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get isPassword():Boolean {
 			return _textField.displayAsPassword;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set isPassword(value:Boolean):void {
 			_textField.displayAsPassword = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set isInput(value:Boolean):void {
 			if(_textField != null) {
 				_textField.type = (value) ? TextFieldType.INPUT : TextFieldType.DYNAMIC;
@@ -323,7 +387,9 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PROTECTED METHODS ★ */
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function init():void {
 			super.init();
 
@@ -337,7 +403,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -346,7 +414,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 
@@ -358,7 +428,10 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ EVENT LISTENERS ★ */
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param e
+		 */
 		override protected function onDebugOver(e:MouseEvent):void {
 			super.onDebugOver(e);
 
@@ -369,7 +442,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param e
+		 */
 		override protected function onDebugOut(e:MouseEvent):void {
 			super.onDebugOut(e);
 

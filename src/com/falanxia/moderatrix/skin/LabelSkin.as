@@ -23,16 +23,17 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.enums.SkinType;
-	import com.falanxia.utilitaris.enums.Align;
-	import com.falanxia.utilitaris.helpers.printf;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.utilitaris.enums.*;
+	import com.falanxia.utilitaris.helpers.*;
 
-	import flash.filters.BitmapFilter;
-	import flash.filters.DropShadowFilter;
-
+	import flash.filters.*;
 
 
-	/** TODO: Documentation */
+
+	/**
+	 * TODO: Documentation
+	 */
 	public class LabelSkin extends Skin {
 
 
@@ -90,7 +91,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param id
+		 */
 		public function LabelSkin(id:String = null) {
 			super(SkinType.LABEL, id);
 
@@ -144,7 +148,10 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param source
+		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -184,30 +191,33 @@ package com.falanxia.moderatrix.skin {
 					if(f is BitmapFilter) {
 						// bitmapFilter means we got filter already converted
 						_filters.push(f);
-					} else if(f is Object) {
-						// it's an Object, we need to convert it first
-						try {
-							switch(f.filter) {
-								case "DropShadow" :
-									var dsDistance:Number = (f.distance == undefined) ? 1 : f.distance;
-									var dsAngle:Number = (f.angle == undefined) ? 45 : f.angle;
-									var dsColor:Number = (f.color == undefined) ? 0x000000 : f.color;
-									var dsAlpha:Number = (f.alpha == undefined) ? 0.5 : f.alpha;
-									var dsBlur:Number = (f.blur == undefined) ? 1 : f.blur;
-									var dsStrength:Number = (f.strength == undefined) ? 1 : f.strength;
-									var dsQuality:Number = (f.quality == undefined) ? 1 : f.quality;
-									var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
-									var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
-									var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
-									var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur, dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
-									_filters.push(g);
-									break;
+					}
+					else {
+						if(f is Object) {
+							// it's an Object, we need to convert it first
+							try {
+								switch(f.filter) {
+									case "DropShadow" :
+										var dsDistance:Number = (f.distance == undefined) ? 1 : f.distance;
+										var dsAngle:Number = (f.angle == undefined) ? 45 : f.angle;
+										var dsColor:Number = (f.color == undefined) ? 0x000000 : f.color;
+										var dsAlpha:Number = (f.alpha == undefined) ? 0.5 : f.alpha;
+										var dsBlur:Number = (f.blur == undefined) ? 1 : f.blur;
+										var dsStrength:Number = (f.strength == undefined) ? 1 : f.strength;
+										var dsQuality:Number = (f.quality == undefined) ? 1 : f.quality;
+										var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
+										var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
+										var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
+										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur, dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
+										_filters.push(g);
+										break;
 
-								default:
+									default:
+								}
 							}
-						}
-						catch(err:Error) {
-							throw new Error(printf("Error converting filters Object to native filters (%s)", err.message));
+							catch(err:Error) {
+								throw new Error(printf("Error converting filters Object to native filters (%s)", err.message));
+							}
 						}
 					}
 				}
@@ -216,7 +226,9 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -252,350 +264,500 @@ package com.falanxia.moderatrix.skin {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get hAlign():String {
 			return _hAlign;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set hAlign(value:String):void {
 			_hAlign = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get vAlign():String {
 			return _vAlign;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set vAlign(value:String):void {
 			_vAlign = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get bold():Boolean {
 			return _bold;
 		}
 
 
 
-		/** TODO: Documentation */
+		/***
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set bold(value:Boolean):void {
 			_bold = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get blockIndent():Number {
 			return _blockIndent;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set blockIndent(value:Number):void {
 			_blockIndent = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get bullet():Boolean {
 			return _bullet;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set bullet(value:Boolean):void {
 			_bullet = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get color():uint {
 			return _color;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set color(value:uint):void {
 			_color = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get font():String {
 			return _font;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set font(value:String):void {
 			_font = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get indent():Number {
 			return _indent;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set indent(value:Number):void {
 			_indent = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get italic():Boolean {
 			return _italic;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set italic(value:Boolean):void {
 			_italic = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get kerning():Boolean {
 			return _kerning;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set kerning(value:Boolean):void {
 			_kerning = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get leading():Number {
 			return _leading;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set leading(value:Number):void {
 			_leading = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get letterSpacing():Number {
 			return _letterSpacing;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set letterSpacing(value:Number):void {
 			_letterSpacing = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get size():Number {
 			return _size;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set size(value:Number):void {
 			_size = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get underline():Boolean {
 			return _underline;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set underline(value:Boolean):void {
 			_underline = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get url():String {
 			return _url;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set url(value:String):void {
 			_url = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get alpha():Number {
 			return _alpha;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set alpha(value:Number):void {
 			_alpha = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get filters():Array {
 			return _filters;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set filters(value:Array):void {
 			_filters = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get sharpness():Number {
 			return _sharpness;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set sharpness(value:Number):void {
 			_sharpness = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get thickness():Number {
 			return _thickness;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set thickness(value:Number):void {
 			_thickness = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get paddingTop():Number {
 			return _paddingTop;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set paddingTop(value:Number):void {
 			_paddingTop = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get paddingBottom():Number {
 			return _paddingBottom;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set paddingBottom(value:Number):void {
 			_paddingBottom = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get paddingLeft():Number {
 			return _paddingLeft;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set paddingLeft(value:Number):void {
 			_paddingLeft = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get paddingRight():Number {
 			return _paddingRight;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set paddingRight(value:Number):void {
 			_paddingRight = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get marginLeft():Number {
 			return _marginLeft;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set marginLeft(value:Number):void {
 			_marginLeft = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get marginRight():Number {
 			return _marginRight;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set marginRight(value:Number):void {
 			_marginRight = value;
 		}

@@ -132,7 +132,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		public function draw():void {
 			_button.draw();
 			_glyphOut.draw();
@@ -142,14 +144,18 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		public function forceRelease():void {
 			_button.forceRelease();
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
 		}
@@ -159,42 +165,60 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ SETTERS & GETTERS ★ */
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabEnabled():Boolean {
 			return _button.tabEnabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param enabled
+		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			_button.tabEnabled = enabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabIndex():int {
 			return _button.tabIndex;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 */
 		override public function set tabIndex(index:int):void {
 			_button.tabIndex = index;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():GlyphButtonSkin {
 			return _skin;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:GlyphButtonSkin):void {
 			_skin = skin;
 
@@ -208,14 +232,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get width():Number {
 			return _button.width;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set width(value:Number):void {
 			_button.width = value;
 			_glyphOut.x = Math.round((value - _glyphOut.width) / 2);
@@ -227,14 +257,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get height():Number {
 			return _button.height;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set height(value:Number):void {
 			_button.height = value;
 			_glyphOut.y = Math.round((value - _glyphOut.height) / 2);
@@ -246,7 +282,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_button.areEventsEnabled = value;
 			this.buttonMode = value;
@@ -257,35 +296,50 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get areEventsEnabled():Boolean {
 			return _button.areEventsEnabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get mouseStatus():String {
 			return _button.mouseStatus;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set mouseStatus(value:String):void {
 			_button.mouseStatus = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 			_button.debugLevel = value;
@@ -296,7 +350,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyph():Image {
 			var out:Image;
 
@@ -309,28 +366,40 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphOut():Image {
 			return _glyphOut;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphHover():Image {
 			return _glyphHover;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get glyphFocus():Image {
 			return _glyphFocus;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get button():ScaleButton {
 			return _button;
 		}
@@ -340,9 +409,6 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PRIVATE METHODS ★ */
 
 
-		/**
-		 * Remove children.
-		 */
 		private function removeChildren():void {
 			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
@@ -359,7 +425,6 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ EVENT LISTENERS ★ */
 
 
-		/** TODO: Documentation */
 		private function onButtonHoverInTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
@@ -368,7 +433,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonHoverOutTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphHover, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -377,7 +441,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonFocusInTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
@@ -386,7 +449,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonDragConfirmedTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
@@ -395,7 +457,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonReleasedInsideTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
@@ -404,7 +465,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonReleasedOutsideTween(e:ButtonEvent):void {
 			new TweenLite(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});

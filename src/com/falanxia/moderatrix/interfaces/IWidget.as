@@ -23,75 +23,66 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
-	import flash.geom.Rectangle;
+	import flash.geom.*;
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public interface IWidget {
 
 
-		/** TODO: Documentation */
 		function draw():void;
 
 
 
-		/** TODO: Documentation */
 		function set debugLevel(value:String):void;
 
 
 
-		/** TODO: Documentation */
 		function get debugLevel():String;
 
 
 
-		/** TODO: Documentation */
 		function get x():Number;
 
 
 
-		/** TODO: Documentation */
 		function set x(value:Number):void;
 
 
 
-		/** TODO: Documentation */
 		function get y():Number;
 
 
 
-		/** TODO: Documentation */
 		function set y(value:Number):void;
 
 
 
-		/** TODO: Documentation */
 		function get width():Number;
 
 
 
-		/** TODO: Documentation */
 		function set width(value:Number):void;
 
 
 
-		/** TODO: Documentation */
 		function get height():Number;
 
 
 
-		/** TODO: Documentation */
 		function set height(value:Number):void;
 
 
 
-		/** TODO: Documentation */
 		function get size():Rectangle;
 
 
 
-		/** TODO: Documentation */
 		function set size(rect:Rectangle):void;
+
+
 	}
 }

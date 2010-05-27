@@ -23,35 +23,34 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
-	import flash.geom.Rectangle;
+	import flash.geom.*;
 
 
 
-	/** TODO: Documentation */
+	/**
+	 * TODO: Documentation
+	 */
 	public interface ISkinnable {
 
 
-		/** TODO: Documentation */
 		function get id():String;
 
 
 
-		/** TODO: Documentation */
 		function get type():String;
 
 
 
-		/** TODO: Documentation */
 		function get assetSize():Rectangle;
 
 
 
-		/** TODO: Documentation */
 		function get data():Object;
 
 
 
-		/** TODO: Documentation */
 		function set data(value:Object):void;
+
+
 	}
 }

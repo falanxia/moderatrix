@@ -23,22 +23,23 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.MouseStatus;
-	import com.falanxia.moderatrix.events.ButtonEvent;
-	import com.falanxia.moderatrix.globals.SkinManager;
-	import com.falanxia.moderatrix.skin.LabelButtonSkin;
-	import com.falanxia.utilitaris.display.MorphSprite;
-	import com.falanxia.utilitaris.enums.Align;
-	import com.falanxia.utilitaris.utils.DisplayUtils;
-	import com.falanxia.utilitaris.utils.ObjectUtils;
-	import com.greensock.TweenLite;
-	import com.greensock.easing.Sine;
+	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.events.*;
+	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.utilitaris.enums.*;
+	import com.falanxia.utilitaris.utils.*;
+	import com.greensock.*;
+	import com.greensock.easing.*;
 
-	import flash.display.DisplayObjectContainer;
-
+	import flash.display.*;
 
 
-	/** TODO: Documentation */
+
+	/**
+	 * TODO: Documentation
+	 */
 	public class LabelButton extends MorphSprite {
 
 
@@ -52,7 +53,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 * @param config
+		 * @param text
+		 * @param parent
+		 * @param debugLevel
+		 */
 		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
 			var c:Object;
@@ -122,7 +130,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		public function draw():void {
 			_button.draw();
 			_labelOut.draw();
@@ -132,14 +142,18 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		public function forceRelease():void {
 			_button.forceRelease();
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 */
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
 		}
@@ -174,42 +188,61 @@ package com.falanxia.moderatrix.widgets {
 
 		/* ★ SETTERS & GETTERS ★ */
 
-		/** TODO: Documentation */
+
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabEnabled():Boolean {
 			return _button.tabEnabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param enabled
+		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			_button.tabEnabled = enabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get tabIndex():int {
 			return _button.tabIndex;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param index
+		 */
 		override public function set tabIndex(index:int):void {
 			_button.tabIndex = index;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get skin():LabelButtonSkin {
 			return _skin;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param skin
+		 */
 		public function set skin(skin:LabelButtonSkin):void {
 			_skin = skin;
 
@@ -227,14 +260,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get width():Number {
 			return _button.width;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set width(value:Number):void {
 			_button.width = value;
 			_labelOut.width = value;
@@ -246,14 +285,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		override public function get height():Number {
 			return _button.height;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		override public function set height(value:Number):void {
 			_button.height = value;
 			_labelOut.y = Math.round((value - _labelOut.height) / 2);
@@ -265,7 +310,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_button.areEventsEnabled = value;
 			this.buttonMode = value;
@@ -276,35 +324,50 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get areEventsEnabled():Boolean {
 			return _button.areEventsEnabled;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get mouseStatus():String {
 			return _button.mouseStatus;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set mouseStatus(value:String):void {
 			_button.mouseStatus = value;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 			_button.debugLevel = value;
@@ -315,14 +378,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get text():String {
 			return _labelOut.text;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @param value
+		 */
 		public function set text(value:String):void {
 			_labelOut.text = value;
 			_labelHover.text = value;
@@ -333,7 +402,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get label():Label {
 			var out:Label;
 
@@ -346,28 +418,40 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelOut():Label {
 			return _labelOut;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelHover():Label {
 			return _labelHover;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get labelFocus():Label {
 			return _labelFocus;
 		}
 
 
 
-		/** TODO: Documentation */
+		/**
+		 * TODO: Documentation
+		 * @return
+		 */
 		public function get button():ScaleButton {
 			return _button;
 		}
@@ -396,7 +480,6 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ EVENT LISTENERS ★ */
 
 
-		/** TODO: Documentation */
 		private function onButtonHoverInTween(e:ButtonEvent):void {
 			new TweenLite(_labelOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_labelHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
@@ -405,7 +488,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonHoverOutTween(e:ButtonEvent):void {
 			new TweenLite(_labelOut, _skin.buttonSkin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_labelHover, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -414,7 +496,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonFocusInTween(e:ButtonEvent):void {
 			new TweenLite(_labelOut, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_labelHover, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
@@ -423,7 +504,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonDragConfirmedTween(e:ButtonEvent):void {
 			new TweenLite(_labelOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_labelHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
@@ -432,7 +512,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonReleasedInsideTween(e:ButtonEvent):void {
 			new TweenLite(_labelOut, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_labelHover, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
@@ -441,7 +520,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/** TODO: Documentation */
 		private function onButtonReleasedOutsideTween(e:ButtonEvent):void {
 			new TweenLite(_labelOut, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_labelHover, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
