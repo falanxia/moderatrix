@@ -461,9 +461,6 @@ package com.falanxia.moderatrix.widgets {
 		/* ★ PRIVATE METHODS ★ */
 
 
-		/**
-		 * Remove children.
-		 */
 		private function removeChildren():void {
 			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
