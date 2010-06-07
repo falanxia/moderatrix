@@ -150,6 +150,7 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			activeSpr.tabEnabled = enabled;
+			super.tabEnabled = enabled;
 		}
 
 
