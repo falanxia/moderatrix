@@ -25,17 +25,13 @@
 package com.falanxia.moderatrix.interfaces {
 
 
-
-	/**
-	 * TODO: Documentation
-	 */
 	public interface IConfigSkin {
 
 
-		/** TODO: Documentation */
 		function parseConfig(source:Object):void;
 
-		/** TODO: Documentation */
+
+
 		function revertConfig():void;
 
 

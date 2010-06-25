@@ -33,9 +33,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class InputBar extends MorphSprite implements IWidget {
 
 
@@ -47,13 +44,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 * @param config
-		 * @param parent
-		 * @param debugLevel
-		 */
 		public function InputBar(skin:InputBarSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
@@ -111,9 +101,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		public function draw():void {
 			_bar.draw();
 			_label.draw();
@@ -123,60 +110,36 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get tabEnabled():Boolean {
 			return _label.tabEnabled;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param enabled
-		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			_label.tabEnabled = enabled;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get tabIndex():int {
 			return _label.tabIndex;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index
-		 */
 		override public function set tabIndex(index:int):void {
 			_label.tabIndex = index;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get width():Number {
 			return _bar.width;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		override public function set width(value:Number):void {
 			_bar.width = value;
 			_label.width = value;
@@ -186,29 +149,17 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get height():Number {
 			return _bar.height;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		override public function set height(value:Number):void {
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_label.isInput = value;
 			_label.alpha = (value) ? 1 : 0.5;
@@ -218,30 +169,18 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get areEventsEnabled():Boolean {
 			return _label.isInput;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 
@@ -251,60 +190,36 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get bar():Bar {
 			return _bar;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get label():Label {
 			return _label;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get text():String {
 			return _label.text;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set text(value:String):void {
 			_label.text = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get skin():InputBarSkin {
 			return _skin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 */
 		public function set skin(skin:InputBarSkin):void {
 			_skin = skin;
 

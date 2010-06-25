@@ -27,9 +27,6 @@ package com.falanxia.moderatrix.interfaces {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public interface IAssetSkin {
 
 

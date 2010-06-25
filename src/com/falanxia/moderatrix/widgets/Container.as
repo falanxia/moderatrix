@@ -45,7 +45,6 @@ package com.falanxia.moderatrix.widgets {
 	 * getters of course).
 	 *
 	 * @author Vaclav Vancura (http://vaclav.vancura.org)
-	 * TODO: Documentation
 	 */
 	public class Container extends Widget {
 
@@ -59,17 +58,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * Constructor.
-		 * @param skin Skin
-		 * @param config (Optional) Config Object
-		 * @param parent (Optional) parent to addChild() to
-		 * @param debugLevel (Optional) DebugLevel
-		 * @see QSprite
-		 * @see ContainerSkin
-		 * @see DebugLevel
-		 * TODO: Documentation
-		 */
 		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null
 				) {
 			var c:Object;
@@ -115,7 +103,6 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Redraw stuff.
-		 * TODO: Optimize
 		 */
 		override public function draw():void {
 			super.draw();
@@ -168,11 +155,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function addChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
@@ -188,11 +170,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			var out:DisplayObject;
 
@@ -208,11 +185,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function contains(child:DisplayObject):Boolean {
 			var out:Boolean;
 
@@ -228,11 +200,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index1
-		 * @param index2
-		 */
 		override public function swapChildrenAt(index1:int, index2:int):void {
 			if(innerSpr == null) {
 				super.swapChildrenAt(index1, index2);
@@ -244,11 +211,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param name
-		 * @return
-		 */
 		override public function getChildByName(name:String):DisplayObject {
 			var out:DisplayObject;
 
@@ -264,11 +226,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index
-		 * @return
-		 */
 		override public function removeChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
@@ -284,11 +241,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function getChildIndex(child:DisplayObject):int {
 			var out:int;
 
@@ -304,12 +256,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @param index
-		 * @return
-		 */
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
 			var out:DisplayObject;
 
@@ -325,11 +271,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child1
-		 * @param child2
-		 */
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
 			if(innerSpr == null) {
 				super.swapChildren(child1, child2);
@@ -341,11 +282,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index
-		 * @return
-		 */
 		override public function getChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
@@ -361,11 +297,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @param index
-		 */
 		override public function setChildIndex(child:DisplayObject, index:int):void {
 			if(innerSpr == null) {
 				super.setChildIndex(child, index);
@@ -377,20 +308,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get skin():ContainerSkin {
 			return _skin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 */
 		public function set skin(skin:ContainerSkin):void {
 			_skin = skin;
 
@@ -402,69 +325,42 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get width():Number {
 			return _size.width + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get height():Number {
 			return _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get innerWidth():Number {
 			return _innerWidth;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set innerWidth(value:Number):void {
 			_innerWidth = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get innerHeight():Number {
 			return _innerWidth;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set innerHeight(value:Number):void {
 			_innerHeight = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function init():void {
 			super.init();
 
@@ -476,9 +372,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -489,9 +382,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

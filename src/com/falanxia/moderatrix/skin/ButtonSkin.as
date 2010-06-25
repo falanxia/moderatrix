@@ -31,9 +31,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class ButtonSkin extends Skin {
 
 
@@ -53,10 +50,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function ButtonSkin(id:String = null) {
 			super(SkinType.BUTTON, id);
 
@@ -92,10 +85,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			if(source.width % 4 != 0) throw new Error("Width has to be multiple of 4");
 
@@ -110,10 +99,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -130,9 +115,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -144,90 +126,54 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set hoverInDuration(value:Number):void {
 			_hoverInDuration = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get hoverInDuration():Number {
 			return _hoverInDuration;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set hoverOutDuration(value:Number):void {
 			_hoverOutDuration = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get hoverOutDuration():Number {
 			return _hoverOutDuration;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set focusInDuration(value:Number):void {
 			_focusInDuration = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get focusInDuration():Number {
 			return _focusInDuration;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set focusOutDuration(value:Number):void {
 			_focusOutDuration = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get focusOutDuration():Number {
 			return _focusOutDuration;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set outBD(source:BitmapData):void {
 			checkSize(source);
 			_outBD = source;
@@ -235,20 +181,12 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get outBD():BitmapData {
 			return _outBD;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set hoverBD(source:BitmapData):void {
 			checkSize(source);
 			_hoverBD = source;
@@ -256,20 +194,12 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get hoverBD():BitmapData {
 			return _hoverBD;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set focusBD(source:BitmapData):void {
 			checkSize(source);
 			_focusBD = source;
@@ -277,20 +207,12 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get focusBD():BitmapData {
 			return _focusBD;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set guideBD(source:BitmapData):void {
 			checkSize(source);
 			_guideBD = source;
@@ -298,10 +220,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get guideBD():BitmapData {
 			return _guideBD;
 		}

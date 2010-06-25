@@ -27,83 +27,38 @@ package com.falanxia.moderatrix.events {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class ButtonEvent extends Event {
 
 
-
-		/** TODO: Documentation */
 		public static const DRAG_OVER:String = "buttonDragOver";
-
-		/** TODO: Documentation */
 		public static const DRAG_OUT:String = "buttonDragOut";
-
-		/** TODO: Documentation */
 		public static const DRAG_CONFIRM:String = "buttonDragConfirm";
-
-		/** TODO: Documentation */
 		public static const HOVER_IN:String = "buttonHoverIn";
-
-		/** TODO: Documentation */
 		public static const HOVER_OUT:String = "buttonHoverOut";
-
-		/** TODO: Documentation */
 		public static const FOCUS_IN:String = "buttonFocusIn";
-
-		/** TODO: Documentation */
 		public static const RELEASE_INSIDE:String = "buttonReleaseInside";
-
-		/** TODO: Documentation */
 		public static const RELEASE_OUTSIDE:String = "buttonReleaseOutside";
-
-		/** TODO: Documentation */
 		public static const HOVER_IN_TWEEN:String = "buttonHoverInTween";
-
-		/** TODO: Documentation */
 		public static const HOVER_OUT_TWEEN:String = "buttonHoverOutTween";
-
-		/** TODO: Documentation */
 		public static const FOCUS_IN_TWEEN:String = "buttonFocusInTween";
-
-		/** TODO: Documentation */
 		public static const DRAG_CONFIRMED_TWEEN:String = "buttonDragConfirmedTween";
-
-		/** TODO: Documentation */
 		public static const RELEASED_INSIDE_TWEEN:String = "buttonReleasedInsideTween";
-
-		/** TODO: Documentation */
 		public static const RELEASED_OUTSIDE_TWEEN:String = "buttonReleasedOutsideTween";
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param type
-		 * @param bubbles
-		 * @param cancelable
-		 */
 		public function ButtonEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false) {
 			super(type, bubbles, cancelable);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public override function clone():Event {
 			return new ButtonEvent(type, bubbles, cancelable);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public override function toString():String {
 			return formatToString("ButtonEvent", "type", "bubbles", "cancelable");
 		}

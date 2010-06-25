@@ -34,9 +34,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class Bar extends Widget {
 
 
@@ -46,13 +43,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 * @param config
-		 * @param parent
-		 * @param debugLevel
-		 */
 		public function Bar(skin:BarSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
@@ -93,10 +83,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * TODO: Optimize
-		 */
 		override public function draw():void {
 			super.draw();
 
@@ -120,20 +106,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get skin():BarSkin {
 			return _skin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 */
 		public function set skin(skin:BarSkin):void {
 			_skin = skin;
 
@@ -149,29 +127,18 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get width():Number {
 			return _size.width + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get height():Number {
 			return _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function init():void {
 			super.init();
 
@@ -183,9 +150,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -196,9 +160,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function removeChildren():void {
 			super.removeChildren();
 

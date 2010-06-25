@@ -27,9 +27,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class LabelButtonSkin extends Skin {
 
 
@@ -40,10 +37,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function LabelButtonSkin(id:String = null) {
 			super(SkinType.LABEL_BUTTON, id);
 
@@ -74,10 +67,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -89,9 +78,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -103,80 +89,48 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get buttonSkin():ButtonSkin {
 			return _buttonSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set buttonSkin(source:ButtonSkin):void {
 			_buttonSkin = source;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get labelOutSkin():LabelSkin {
 			return _labelOutSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set labelOutSkin(source:LabelSkin):void {
 			_labelOutSkin = source;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get labelHoverSkin():LabelSkin {
 			return _labelHoverSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set labelHoverSkin(source:LabelSkin):void {
 			_labelHoverSkin = source;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get labelFocusSkin():LabelSkin {
 			return _labelFocusSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set labelFocusSkin(source:LabelSkin):void {
 			_labelFocusSkin = source;
 		}

@@ -31,9 +31,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class Skin implements ISkinnable {
 
 
@@ -46,11 +43,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param type
-		 * @param id
-		 */
 		public function Skin(type:String, id:String = null):void {
 			_id = id;
 			_type = type;
@@ -77,10 +69,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function parseConfig(source:Object):void {
 			oldData = _data;
 
@@ -91,70 +79,42 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		public function revertConfig():void {
 			_data = oldData;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get id():String {
 			return _id;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get type():String {
 			return _type;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get assetSize():Rectangle {
 			return _assetSize;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get data():Object {
 			return _data;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set data(value:Object):void {
 			_data = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 * @param frame
-		 */
 		protected function getSkinSize(source:MovieClip, frame:*):void {
 			// it's needed to duplicate this MovieClip as there was some weird bug:
 			// when used source.gotoAndStop(frame) on one of next lines,
@@ -169,10 +129,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		protected function checkSize(source:BitmapData):void {
 			if(_assetSize.width == 0 && _assetSize.height == 0) {
 				// size is not specified, set initial values

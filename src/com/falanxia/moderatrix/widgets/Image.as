@@ -34,9 +34,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class Image extends Widget {
 
 
@@ -46,13 +43,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 * @param config
-		 * @param parent
-		 * @param debugLevel
-		 */
 		public function Image(skin:ImageSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
@@ -100,10 +90,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * TODO: Optimize
-		 */
 		override public function draw():void {
 			super.draw();
 
@@ -120,20 +106,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get skin():ImageSkin {
 			return _skin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 */
 		public function set skin(skin:ImageSkin):void {
 			_skin = skin;
 
@@ -148,19 +126,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get bitmap():QBitmap {
 			return imageBM;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function init():void {
 			super.init();
 
@@ -172,9 +143,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function addChildren():void {
 			super.addChildren();
 

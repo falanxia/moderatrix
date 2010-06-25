@@ -27,9 +27,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class InputBarSkin extends Skin {
 
 
@@ -38,10 +35,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function InputBarSkin(id:String = null) {
 			super(SkinType.INPUT_BAR, id);
 
@@ -66,10 +59,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -79,9 +68,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -91,40 +77,24 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get barSkin():BarSkin {
 			return _barSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set barSkin(source:BarSkin):void {
 			_barSkin = source;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get labelSkin():LabelSkin {
 			return _labelSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set labelSkin(source:LabelSkin):void {
 			_labelSkin = source;
 		}

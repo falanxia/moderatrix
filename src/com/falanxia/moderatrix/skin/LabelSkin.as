@@ -31,9 +31,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class LabelSkin extends Skin {
 
 
@@ -91,10 +88,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function LabelSkin(id:String = null) {
 			super(SkinType.LABEL, id);
 
@@ -148,10 +141,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -226,9 +215,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -261,500 +247,300 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get hAlign():String {
 			return _hAlign;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set hAlign(value:String):void {
 			_hAlign = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get vAlign():String {
 			return _vAlign;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set vAlign(value:String):void {
 			_vAlign = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get bold():Boolean {
 			return _bold;
 		}
 
 
 
-		/***
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set bold(value:Boolean):void {
 			_bold = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get blockIndent():Number {
 			return _blockIndent;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set blockIndent(value:Number):void {
 			_blockIndent = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get bullet():Boolean {
 			return _bullet;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set bullet(value:Boolean):void {
 			_bullet = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get color():uint {
 			return _color;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set color(value:uint):void {
 			_color = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get font():String {
 			return _font;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set font(value:String):void {
 			_font = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get indent():Number {
 			return _indent;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set indent(value:Number):void {
 			_indent = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get italic():Boolean {
 			return _italic;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set italic(value:Boolean):void {
 			_italic = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get kerning():Boolean {
 			return _kerning;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set kerning(value:Boolean):void {
 			_kerning = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get leading():Number {
 			return _leading;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set leading(value:Number):void {
 			_leading = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get letterSpacing():Number {
 			return _letterSpacing;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set letterSpacing(value:Number):void {
 			_letterSpacing = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get size():Number {
 			return _size;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set size(value:Number):void {
 			_size = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get underline():Boolean {
 			return _underline;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set underline(value:Boolean):void {
 			_underline = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get url():String {
 			return _url;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set url(value:String):void {
 			_url = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get alpha():Number {
 			return _alpha;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set alpha(value:Number):void {
 			_alpha = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get filters():Array {
 			return _filters;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set filters(value:Array):void {
 			_filters = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get sharpness():Number {
 			return _sharpness;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set sharpness(value:Number):void {
 			_sharpness = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get thickness():Number {
 			return _thickness;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set thickness(value:Number):void {
 			_thickness = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingTop():Number {
 			return _paddingTop;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingTop(value:Number):void {
 			_paddingTop = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingBottom():Number {
 			return _paddingBottom;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingBottom(value:Number):void {
 			_paddingBottom = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingLeft():Number {
 			return _paddingLeft;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingLeft(value:Number):void {
 			_paddingLeft = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingRight():Number {
 			return _paddingRight;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingRight(value:Number):void {
 			_paddingRight = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get marginLeft():Number {
 			return _marginLeft;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set marginLeft(value:Number):void {
 			_marginLeft = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get marginRight():Number {
 			return _marginRight;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set marginRight(value:Number):void {
 			_marginRight = value;
 		}

@@ -31,9 +31,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class BarSkin extends Skin {
 
 
@@ -51,10 +48,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function BarSkin(id:String = null) {
 			super(SkinType.BAR, id);
 
@@ -84,10 +77,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			if(source.width % 2 != 0) throw new Error("Width has to be multiple of 2");
 
@@ -100,10 +89,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -120,9 +105,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -134,90 +116,54 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingTop():Number {
 			return _paddingTop;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingTop(value:Number):void {
 			_paddingTop = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingBottom():Number {
 			return _paddingBottom;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingBottom(value:Number):void {
 			_paddingBottom = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingLeft():Number {
 			return _paddingLeft;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingLeft(value:Number):void {
 			_paddingLeft = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get paddingRight():Number {
 			return _paddingRight;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set paddingRight(value:Number):void {
 			_paddingRight = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set guideBD(source:BitmapData):void {
 			checkSize(source);
 			_guideBD = source;
@@ -225,20 +171,12 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get guideBD():BitmapData {
 			return _guideBD;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set backBD(source:BitmapData):void {
 			checkSize(source);
 			_backBD = source;
@@ -246,10 +184,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get backBD():BitmapData {
 			return _backBD;
 		}

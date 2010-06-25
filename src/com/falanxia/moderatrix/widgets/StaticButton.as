@@ -35,9 +35,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class StaticButton extends ButtonCore implements IWidget {
 
 
@@ -47,13 +44,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 * @param config
-		 * @param parent
-		 * @param debugLevel
-		 */
 		public function StaticButton(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null
 				) {
 			var c:Object;
@@ -90,9 +80,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function draw():void {
 			super.draw();
 
@@ -101,10 +88,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 */
 		override public function set skin(skin:ButtonSkin):void {
 			super.skin = skin;
 
@@ -117,9 +100,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function init():void {
 			super.init();
 
@@ -131,9 +111,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -155,9 +132,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function hoverInTween():void {
 			new TweenLite(outBM, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(hoverBM, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
@@ -168,9 +142,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function hoverOutTween():void {
 			new TweenLite(outBM, _skin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(hoverBM, _skin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
@@ -181,9 +152,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function focusInTween():void {
 			new TweenLite(outBM, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(hoverBM, _skin.focusInDuration, {alpha:0, ease:Sine.easeIn});
@@ -194,9 +162,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function dragConfirmedTween():void {
 			new TweenLite(outBM, _skin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(hoverBM, _skin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
@@ -207,9 +172,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function releasedInsideTween():void {
 			new TweenLite(outBM, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(hoverBM, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
@@ -220,9 +182,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override protected function releasedOutsideTween():void {
 			new TweenLite(outBM, _skin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(hoverBM, _skin.focusOutDuration, {alpha:0, ease:Sine.easeIn});

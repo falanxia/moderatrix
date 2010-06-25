@@ -38,7 +38,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 	/**
-	 * TODO: Documentation
 	 * TODO: Width & height not applied in the constructor
 	 * TODO: Check for children and remove them on destroy()
 	 */
@@ -136,22 +135,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function addChild(child:DisplayObject):DisplayObject {
 			return (contentSpr == null) ? super.addChild(child) : contentSpr.addChild(child);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			if(super.getChildByName(child.name)) {
 				super.removeChild(child);
@@ -165,22 +154,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function contains(child:DisplayObject):Boolean {
 			return (contentSpr == null) ? super.contains(child) : contentSpr.contains(child);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index1
-		 * @param index2
-		 */
 		override public function swapChildrenAt(index1:int, index2:int):void {
 			if(contentSpr == null) {
 				super.swapChildrenAt(index1, index2);
@@ -192,56 +171,30 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param name
-		 * @return
-		 */
 		override public function getChildByName(name:String):DisplayObject {
 			return (contentSpr == null) ? super.getChildByName(name) : contentSpr.getChildByName(name);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index
-		 * @return
-		 */
 		override public function removeChildAt(index:int):DisplayObject {
 			return (contentSpr == null) ? super.removeChildAt(index) : contentSpr.removeChildAt(index);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @return
-		 */
 		override public function getChildIndex(child:DisplayObject):int {
 			return (contentSpr == null) ? super.getChildIndex(child) : contentSpr.getChildIndex(child);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @param index
-		 * @return
-		 */
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
 			return (contentSpr == null) ? super.addChildAt(child, index) : contentSpr.addChildAt(child, index);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child1
-		 * @param child2
-		 */
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
 			if(contentSpr == null) {
 				super.swapChildren(child1, child2);
@@ -253,11 +206,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index
-		 * @return
-		 */
 		override public function getChildAt(index:int):DisplayObject {
 			var out:DisplayObject;
 
@@ -273,11 +221,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param child
-		 * @param index
-		 */
 		override public function setChildIndex(child:DisplayObject, index:int):void {
 			if(contentSpr == null) {
 				super.setChildIndex(child, index);
@@ -289,10 +232,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param w
-		 */
 		override public function set width(w:Number):void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
@@ -304,20 +243,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get width():Number {
 			return _size.width;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param h
-		 */
 		override public function set height(h:Number):void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
@@ -329,20 +260,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get height():Number {
 			return _size.height;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get size():Rectangle {
 			return _size;
 		}
@@ -361,10 +284,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public static function set allDebugLevel(value:String):void {
 			for each(var i:IWidget in allWidgets) {
 				if(i != null) i.debugLevel = value;
@@ -373,40 +292,24 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		override public function set x(value:Number):void {
 			super.x = Math.round(value);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		override public function set y(value:Number):void {
 			super.y = Math.round(value);
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get config():Object {
 			return _config;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set debugLevel(value:String):void {
 			if(value == DebugLevel.ALWAYS) {
 				debugSpr.visible = true;
@@ -426,20 +329,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set debugColor(value:RGBA):void {
 			_debugColor = value;
 			draw();
@@ -447,19 +342,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get debugColor():RGBA {
 			return _debugColor;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		protected function init():void {
 			addChildren();
 			invalidate();
@@ -467,9 +355,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		protected function addChildren():void {
 			contentSpr = new QSprite({mouseEnabled:false}, this);
 			debugSpr = new QSprite({mouseEnabled:false, mouseChildren:false}, this);
@@ -477,9 +362,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		protected function removeChildren():void {
 			this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
 			this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
@@ -492,9 +374,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		protected function invalidate():void {
 			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}

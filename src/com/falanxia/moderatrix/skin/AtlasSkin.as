@@ -29,9 +29,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class AtlasSkin extends Skin {
 
 
@@ -39,10 +36,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function AtlasSkin(id:String = null) {
 			super(SkinType.IMAGE, id);
 
@@ -64,10 +57,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			_assetSize.width = source.width;
 			_assetSize.height = source.height;
@@ -77,10 +66,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -89,19 +74,12 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set imageBD(source:BitmapData):void {
 			checkSize(source);
 			_imageBD = source;
@@ -109,10 +87,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get imageBD():BitmapData {
 			return _imageBD;
 		}

@@ -34,9 +34,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class CheckButton extends MorphSprite implements IWidget {
 
 
@@ -49,13 +46,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 * @param config
-		 * @param parent
-		 * @param debugLevel
-		 */
 		public function CheckButton(skin:CheckButtonSkin, config:Object = null, parent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
 			var c:Object;
@@ -120,9 +110,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		public function draw():void {
 			_buttonOff.draw();
 			_buttonOn.draw();
@@ -133,9 +120,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		public function forceRelease():void {
 			_buttonOff.forceRelease();
 			_buttonOn.forceRelease();
@@ -143,97 +127,58 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get tabEnabled():Boolean {
 			return button.tabEnabled;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param enabled
-		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			button.tabEnabled = enabled;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get tabIndex():int {
 			return button.tabIndex;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param index
-		 */
 		override public function set tabIndex(index:int):void {
 			button.tabIndex = index;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get width():Number {
 			return _buttonOff.width;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		override public function set width(value:Number):void {
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		override public function get height():Number {
 			return _buttonOff.height;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		override public function set height(value:Number):void {
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_buttonOff.areEventsEnabled = value;
 			_buttonOn.areEventsEnabled = value;
@@ -246,50 +191,30 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get areEventsEnabled():Boolean {
 			return _buttonOff.areEventsEnabled;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get mouseStatus():String {
 			return button.mouseStatus;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set mouseStatus(value:String):void {
 			button.mouseStatus = value;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 
@@ -299,20 +224,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get isChecked():Boolean {
 			return _isChecked;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param value
-		 */
 		public function set isChecked(value:Boolean):void {
 			_isChecked = value;
 			draw();
@@ -320,20 +237,12 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get skin():CheckButtonSkin {
 			return _skin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param skin
-		 */
 		public function set skin(skin:CheckButtonSkin):void {
 			_skin = skin;
 
@@ -345,30 +254,18 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get button():StaticButton {
 			return (_isChecked) ? _buttonOn : _buttonOff;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get buttonOff():StaticButton {
 			return _buttonOff;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get buttonOn():StaticButton {
 			return _buttonOn;
 		}

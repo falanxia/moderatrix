@@ -27,9 +27,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	/**
-	 * TODO: Documentation
-	 */
 	public class GlyphButtonSkin extends Skin {
 
 
@@ -38,10 +35,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param id
-		 */
 		public function GlyphButtonSkin(id:String = null) {
 			super(SkinType.GLYPH_BUTTON, id);
 
@@ -66,10 +59,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		override public function parseConfig(source:Object):void {
 			super.parseConfig(source);
 
@@ -79,9 +68,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 
@@ -91,40 +77,24 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get buttonSkin():ButtonSkin {
 			return _buttonSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set buttonSkin(source:ButtonSkin):void {
 			_buttonSkin = source;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @return
-		 */
 		public function get glyphSkin():GlyphSkin {
 			return _glyphSkin;
 		}
 
 
 
-		/**
-		 * TODO: Documentation
-		 * @param source
-		 */
 		public function set glyphSkin(source:GlyphSkin):void {
 			_glyphSkin = source;
 		}
