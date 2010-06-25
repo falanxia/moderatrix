@@ -206,9 +206,6 @@ package com.falanxia.moderatrix.globals {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return

@@ -54,8 +54,8 @@ package com.falanxia.moderatrix.widgets {
 		 * @param parent
 		 * @param debugLevel
 		 */
-		public function StaticButton(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null,
-		                             debugLevel:String = null) {
+		public function StaticButton(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null
+				) {
 			var c:Object;
 
 			if(config == null) {
@@ -101,9 +101,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @param skin
@@ -118,9 +115,6 @@ package com.falanxia.moderatrix.widgets {
 			draw();
 		}
 
-
-
-		/* ★ PROTECTED METHODS ★ */
 
 
 		/**

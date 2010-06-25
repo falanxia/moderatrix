@@ -113,9 +113,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return

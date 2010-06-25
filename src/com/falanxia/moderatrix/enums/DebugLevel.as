@@ -25,21 +25,13 @@
 package com.falanxia.moderatrix.enums {
 
 
-
-	/**
-	 * TODO: Documentation
-	 */
 	public class DebugLevel {
 
 
-
-		/** TODO: Documentation */
 		public static const NONE:String = "none";
-
-		/** TODO: Documentation */
 		public static const HOVER:String = "hover";
-
-		/** TODO: Documentation */
 		public static const ALWAYS:String = "always";
+
+
 	}
 }

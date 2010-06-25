@@ -25,47 +25,20 @@
 package com.falanxia.moderatrix.enums {
 
 
-
-	/**
-	 * TODO: Documentation
-	 */
 	public class SkinType {
 
 
-		/** TODO: Documentation */
 		public static const CONTAINER:String = "container";
-
-		/** TODO: Documentation */
 		public static const BAR:String = "bar";
-
-		/** TODO: Documentation */
 		public static const IMAGE:String = "image";
-
-		/** TODO: Documentation */
 		public static const ATLAS:String = "atlas";
-
-		/** TODO: Documentation */
 		public static const GLYPHS:String = "glyphs";
-
-		/** TODO: Documentation */
 		public static const BUTTON:String = "button";
-
-		/** TODO: Documentation */
 		public static const LABEL:String = "label";
-
-		/** TODO: Documentation */
 		public static const LABEL_BUTTON:String = "labelButton";
-
-		/** TODO: Documentation */
 		public static const GLYPH_BUTTON:String = "glyphButton";
-
-		/** TODO: Documentation */
 		public static const GLYPH_LABEL_BUTTON:String = "glyphLabelButton";
-
-		/** TODO: Documentation */
 		public static const CHECK_BUTTON:String = "checkButton";
-
-		/** TODO: Documentation */
 		public static const INPUT_BAR:String = "inputBar";
 
 

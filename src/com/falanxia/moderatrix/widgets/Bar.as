@@ -120,9 +120,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -170,9 +167,6 @@ package com.falanxia.moderatrix.widgets {
 			return _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
 
-
-
-		/* ★ PROTECTED METHODS ★ */
 
 
 		/**

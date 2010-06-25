@@ -120,9 +120,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -159,9 +156,6 @@ package com.falanxia.moderatrix.widgets {
 			return imageBM;
 		}
 
-
-
-		/* ★ PROTECTED METHODS ★ */
 
 
 		/**

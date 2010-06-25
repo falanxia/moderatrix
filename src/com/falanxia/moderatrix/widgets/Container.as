@@ -70,8 +70,8 @@ package com.falanxia.moderatrix.widgets {
 		 * @see DebugLevel
 		 * TODO: Documentation
 		 */
-		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null,
-		                          debugLevel:String = null) {
+		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null
+				) {
 			var c:Object;
 
 			if(config == null) {
@@ -377,9 +377,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -463,9 +460,6 @@ package com.falanxia.moderatrix.widgets {
 			_innerHeight = value;
 		}
 
-
-
-		/* ★ PROTECTED METHODS ★ */
 
 
 		/**

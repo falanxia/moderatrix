@@ -289,9 +289,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @param w
@@ -460,9 +457,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ PROTECTED METHODS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 */
@@ -505,9 +499,6 @@ package com.falanxia.moderatrix.widgets {
 			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
 
-
-
-		/* ★ EVENT LISTENERS ★ */
 
 
 		protected function onDebugOver(e:MouseEvent):void {

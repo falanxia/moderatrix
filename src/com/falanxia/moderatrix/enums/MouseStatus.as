@@ -25,21 +25,13 @@
 package com.falanxia.moderatrix.enums {
 
 
-
-	/**
-	 * TODO: Documentation
-	 */
 	public class MouseStatus {
 
 
-		/** TODO: Documentation */
 		public static const OUT:String = "out";
-
-		/** TODO: Documentation */
 		public static const HOVER:String = "hover";
-
-		/** TODO: Documentation */
 		public static const FOCUS:String = "focus";
+
 
 	}
 }

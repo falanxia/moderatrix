@@ -100,9 +100,6 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -151,9 +148,6 @@ package com.falanxia.moderatrix.skin {
 			_data = value;
 		}
 
-
-
-		/* ★ PROTECTED METHODS ★ */
 
 
 		/**

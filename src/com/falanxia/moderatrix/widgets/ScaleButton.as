@@ -117,9 +117,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @param skin
@@ -139,9 +136,6 @@ package com.falanxia.moderatrix.widgets {
 			draw();
 		}
 
-
-
-		/* ★ PROTECTED METHODS ★ */
 
 
 		/**

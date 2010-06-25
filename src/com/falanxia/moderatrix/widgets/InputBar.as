@@ -123,9 +123,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -317,9 +314,6 @@ package com.falanxia.moderatrix.widgets {
 			draw();
 		}
 
-
-
-		/* ★ PRIVATE METHODS ★ */
 
 
 		private function removeChildren():void {

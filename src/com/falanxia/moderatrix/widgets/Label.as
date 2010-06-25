@@ -136,9 +136,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -384,9 +381,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ PROTECTED METHODS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 */
@@ -423,9 +417,6 @@ package com.falanxia.moderatrix.widgets {
 			DisplayUtils.removeChildren(contentSpr, _textField);
 		}
 
-
-
-		/* ★ EVENT LISTENERS ★ */
 
 
 		/**

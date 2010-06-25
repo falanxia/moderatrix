@@ -162,9 +162,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -406,9 +403,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ PRIVATE METHODS ★ */
-
-
 		private function removeChildren():void {
 			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
@@ -420,9 +414,6 @@ package com.falanxia.moderatrix.widgets {
 			DisplayUtils.removeChildren(this, _button, _glyphOut, _glyphHover, _glyphFocus);
 		}
 
-
-
-		/* ★ EVENT LISTENERS ★ */
 
 
 		private function onButtonHoverInTween(e:ButtonEvent):void {

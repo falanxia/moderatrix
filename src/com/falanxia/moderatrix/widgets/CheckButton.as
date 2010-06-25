@@ -152,9 +152,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -378,9 +375,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ PRIVATE METHODS ★ */
-
-
 		private function removeChildren():void {
 			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 			_buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
@@ -388,9 +382,6 @@ package com.falanxia.moderatrix.widgets {
 			DisplayUtils.removeChildren(this, _buttonOff, _buttonOn);
 		}
 
-
-
-		/* ★ EVENT LISTENERS ★ */
 
 
 		private function onToggle(e:ButtonEvent):void {

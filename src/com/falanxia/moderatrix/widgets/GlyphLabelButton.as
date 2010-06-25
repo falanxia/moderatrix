@@ -210,9 +210,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @return
@@ -556,9 +553,6 @@ package com.falanxia.moderatrix.widgets {
 			return _button;
 		}
 
-
-
-		/* ★ EVENT LISTENERS ★ */
 
 
 		private function onButtonHoverInTween(e:ButtonEvent):void {

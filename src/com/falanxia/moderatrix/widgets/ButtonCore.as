@@ -141,9 +141,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ SETTERS & GETTERS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 * @param enabled
@@ -273,9 +270,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/* ★ PROTECTED METHODS ★ */
-
-
 		/**
 		 * TODO: Documentation
 		 */
@@ -402,9 +396,6 @@ package com.falanxia.moderatrix.widgets {
 			// focus -> hidden, easeIn
 		}
 
-
-
-		/* ★ EVENT LISTENERS ★ */
 
 
 		private function onOver(e:MouseEvent = null):void {
