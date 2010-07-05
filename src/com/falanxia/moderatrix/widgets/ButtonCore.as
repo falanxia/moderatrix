@@ -156,7 +156,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			if(!_skin.assetSize.isEmpty()) size = _skin.assetSize;
+			//if(!_skin.assetSize.isEmpty()) size = _skin.assetSize; // FIXME: Removed because some weitd bug happened when setting size via set.size()
 		}
 
 
