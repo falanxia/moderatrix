@@ -44,6 +44,10 @@ package com.falanxia.moderatrix.widgets {
 		protected var _phase:uint = 0;
 
 		protected var imageBM:QBitmap;
+		protected var loop:Boolean;
+		protected var startPhase:uint;
+		protected var endPhase:int;
+		protected var durationMultiplier:Number;
 
 
 
@@ -110,11 +114,17 @@ package com.falanxia.moderatrix.widgets {
 		 * @param durationMultiplier Duration multiplier (0.1 by default, means 10 phases will take 1 second to animate)
 		 * @param startPhase Start phase
 		 * @param endPhase End phase (if not defined, the last phase is used and final phase will be the first one when the animation ends
+		 * @param loop {@code true} to set looping on
 		 */
-		public function playFromStart(durationMultiplier:Number = 0.1, startPhase:uint = 0, endPhase:int = -1):void {
+		public function playFromStart(durationMultiplier:Number = 0.1, startPhase:uint = 0, endPhase:int = -1, loop:Boolean = false):void {
 			this.phase = startPhase;
 
 			if(endPhase == -1) endPhase = this.length;
+
+			this.durationMultiplier = durationMultiplier;
+			this.startPhase = startPhase;
+			this.endPhase = endPhase;
+			this.loop = loop;
 
 			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:[endPhase]});
 		}
@@ -125,7 +135,7 @@ package com.falanxia.moderatrix.widgets {
 		 * Reset to the first phase.
 		 */
 		public function reset():void {
-			phase = 0;
+			phase = startPhase;
 		}
 
 
@@ -216,7 +226,10 @@ package com.falanxia.moderatrix.widgets {
 		 * @param endPhase End phase
 		 */
 		private function checkReset(endPhase:int):void {
-			if(endPhase == length) reset();
+			if(endPhase == length) {
+				reset();
+				if(loop) playFromStart(durationMultiplier, startPhase, endPhase, loop);
+			}
 		}
 	}
 }
