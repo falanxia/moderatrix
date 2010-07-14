@@ -121,7 +121,7 @@ package com.falanxia.moderatrix.widgets {
 			imageBM.bitmapData = _skin.imageBD;
 			imageBM.smoothing = true;
 
-			draw();
+			invalidate();
 		}
 
 

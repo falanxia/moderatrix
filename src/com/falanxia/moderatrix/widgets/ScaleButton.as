@@ -115,7 +115,7 @@ package com.falanxia.moderatrix.widgets {
 			hoverSBS.setData(_skin.hoverBD, rect);
 			focusSBS.setData(_skin.focusBD, rect);
 
-			draw();
+			invalidate();
 		}
 
 

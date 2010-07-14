@@ -95,7 +95,7 @@ package com.falanxia.moderatrix.widgets {
 			hoverBM.bitmapData = _skin.hoverBD;
 			focusBM.bitmapData = _skin.focusBD;
 
-			draw();
+			invalidate();
 		}
 
 

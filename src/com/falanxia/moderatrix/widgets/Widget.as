@@ -135,6 +135,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Invalidate, redraw in next frame redraw.
+		 */
+		public function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+		}
+
+
+
 		override public function addChild(child:DisplayObject):DisplayObject {
 			return (contentSpr == null) ? super.addChild(child) : contentSpr.addChild(child);
 		}
@@ -337,7 +346,8 @@ package com.falanxia.moderatrix.widgets {
 
 		public function set debugColor(value:RGBA):void {
 			_debugColor = value;
-			draw();
+
+			invalidate();
 		}
 
 
@@ -370,12 +380,6 @@ package com.falanxia.moderatrix.widgets {
 
 			if(contentSpr != null && this.getChildByName(contentSpr.name)) contentSpr.parent.removeChild(contentSpr);
 			if(debugSpr != null && this.getChildByName(debugSpr.name)) debugSpr.parent.removeChild(debugSpr);
-		}
-
-
-
-		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
 
 

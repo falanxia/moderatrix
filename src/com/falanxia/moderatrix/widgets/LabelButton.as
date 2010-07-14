@@ -207,8 +207,6 @@ package com.falanxia.moderatrix.widgets {
 			_labelOut.skin = _skin.labelOutSkin;
 			_labelHover.skin = _skin.labelHoverSkin;
 			_labelFocus.skin = _skin.labelFocusSkin;
-
-			draw();
 		}
 
 
@@ -224,8 +222,6 @@ package com.falanxia.moderatrix.widgets {
 			_labelOut.width = value;
 			_labelHover.width = value;
 			_labelFocus.width = value;
-
-			draw();
 		}
 
 
@@ -241,8 +237,6 @@ package com.falanxia.moderatrix.widgets {
 			_labelOut.y = int((value - _labelOut.height) / 2);
 			_labelHover.y = int((value - _labelHover.height) / 2);
 			_labelFocus.y = int((value - _labelFocus.height) / 2);
-
-			draw();
 		}
 
 
@@ -251,8 +245,6 @@ package com.falanxia.moderatrix.widgets {
 			_button.areEventsEnabled = value;
 			this.buttonMode = value;
 			this.useHandCursor = value;
-
-			draw();
 		}
 
 
@@ -301,8 +293,6 @@ package com.falanxia.moderatrix.widgets {
 			_labelOut.text = value;
 			_labelHover.text = value;
 			_labelFocus.text = value;
-
-			draw();
 		}
 
 

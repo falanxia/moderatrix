@@ -143,8 +143,6 @@ package com.falanxia.moderatrix.widgets {
 		override public function set width(value:Number):void {
 			_bar.width = value;
 			_label.width = value;
-
-			draw();
 		}
 
 
@@ -163,8 +161,6 @@ package com.falanxia.moderatrix.widgets {
 		public function set areEventsEnabled(value:Boolean):void {
 			_label.isInput = value;
 			_label.alpha = (value) ? 1 : 0.5;
-
-			draw();
 		}
 
 
@@ -225,8 +221,6 @@ package com.falanxia.moderatrix.widgets {
 
 			_bar.skin = _skin.barSkin;
 			_label.skin = _skin.labelSkin;
-
-			draw();
 		}
 
 

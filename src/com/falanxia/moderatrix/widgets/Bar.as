@@ -122,7 +122,7 @@ package com.falanxia.moderatrix.widgets {
 
 			bodySBS.setData(_skin.backBD, rect);
 
-			draw();
+			invalidate();
 		}
 
 

@@ -180,8 +180,6 @@ package com.falanxia.moderatrix.widgets {
 			_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
 			_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
 			_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
-
-			draw();
 		}
 
 
@@ -197,8 +195,6 @@ package com.falanxia.moderatrix.widgets {
 			_glyphOut.x = int((value - _glyphOut.width) / 2);
 			_glyphHover.x = int((value - _glyphHover.width) / 2);
 			_glyphFocus.x = int((value - _glyphFocus.width) / 2);
-
-			draw();
 		}
 
 
@@ -214,8 +210,6 @@ package com.falanxia.moderatrix.widgets {
 			_glyphOut.y = int((value - _glyphOut.height) / 2);
 			_glyphHover.y = int((value - _glyphHover.height) / 2);
 			_glyphFocus.y = int((value - _glyphFocus.height) / 2);
-
-			draw();
 		}
 
 
@@ -224,8 +218,6 @@ package com.falanxia.moderatrix.widgets {
 			_button.areEventsEnabled = value;
 			this.buttonMode = value;
 			this.useHandCursor = value;
-
-			draw();
 		}
 
 

@@ -129,6 +129,8 @@ package com.falanxia.moderatrix.widgets {
 
 		override public function set tabIndex(index:int):void {
 			_textField.tabIndex = index;
+
+			invalidate();
 		}
 
 
@@ -141,6 +143,8 @@ package com.falanxia.moderatrix.widgets {
 
 		override public function set tabEnabled(enabled:Boolean):void {
 			_textField.tabEnabled = enabled;
+
+			invalidate();
 		}
 
 
@@ -150,6 +154,8 @@ package com.falanxia.moderatrix.widgets {
 
 			_textField.border = (_debugLevel == DebugLevel.ALWAYS);
 			_textField.borderColor = _debugColor.color32;
+
+			invalidate();
 		}
 
 
@@ -195,7 +201,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			draw();
+			invalidate();
 		}
 
 
@@ -220,10 +226,10 @@ package com.falanxia.moderatrix.widgets {
 					}
 
 					_textField.htmlText = v;
+
+					invalidate();
 				}
 			}
-
-			draw();
 		}
 
 
@@ -272,6 +278,8 @@ package com.falanxia.moderatrix.widgets {
 
 		public function set isPassword(value:Boolean):void {
 			_textField.displayAsPassword = value;
+
+			invalidate();
 		}
 
 
@@ -290,6 +298,8 @@ package com.falanxia.moderatrix.widgets {
 			}
 
 			_isInput = value;
+
+			invalidate();
 		}
 
 

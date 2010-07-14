@@ -51,9 +51,6 @@ package com.falanxia.moderatrix.widgets {
 
 		protected var _skin:ContainerSkin;
 
-		private var _innerWidth:Number = 0;
-		private var _innerHeight:Number = 0;
-
 		private var innerSpr:QSprite;
 
 
@@ -108,11 +105,9 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null) {
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight, _size.height - _skin.paddingTop - _skin.paddingBottom);
+				_size = new Rectangle(0, 0, innerSpr.width, innerSpr.height);
 
-				// check for inner width & height override
-				if(_innerWidth == 0) _innerWidth = innerSpr.width;
-				if(_innerHeight == 0) _innerHeight = innerSpr.height;
+				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight, _size.height - _skin.paddingTop - _skin.paddingBottom);
 
 				// draw debug rectangle
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
@@ -122,12 +117,12 @@ package com.falanxia.moderatrix.widgets {
 				// align inner sprite horizontally
 				if(_skin.hAlign == Align.RIGHT) {
 					// right
-					innerSpr.x = _size.width - _skin.paddingRight - _innerWidth;
+					innerSpr.x = _size.width - _skin.paddingRight;
 				}
 				else {
 					if(_skin.hAlign == Align.CENTER) {
 						// center
-						innerSpr.x = rect.x + int((rect.width - _innerWidth) / 2);
+						innerSpr.x = rect.x + int(rect.width / 2);
 					}
 					else {
 						// left
@@ -138,12 +133,12 @@ package com.falanxia.moderatrix.widgets {
 				// align inner sprite vertically
 				if(_skin.vAlign == Align.BOTTOM) {
 					// bottom
-					innerSpr.y = _size.height - _skin.paddingBottom - _innerHeight;
+					innerSpr.y = _size.height - _skin.paddingBottom;
 				}
 				else {
 					if(_skin.vAlign == Align.CENTER) {
 						// center
-						innerSpr.y = rect.y + int((rect.height - _innerHeight) / 2);
+						innerSpr.y = rect.y + int((rect.height) / 2);
 					}
 					else {
 						// top
@@ -165,6 +160,8 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.addChild(child);
 			}
 
+			invalidate();
+
 			return out;
 		}
 
@@ -179,6 +176,8 @@ package com.falanxia.moderatrix.widgets {
 			else {
 				out = innerSpr.removeChild(child);
 			}
+
+			invalidate();
 
 			return out;
 		}
@@ -207,6 +206,8 @@ package com.falanxia.moderatrix.widgets {
 			else {
 				innerSpr.swapChildrenAt(index1, index2);
 			}
+
+			invalidate();
 		}
 
 
@@ -235,6 +236,8 @@ package com.falanxia.moderatrix.widgets {
 			else {
 				out = innerSpr.removeChildAt(index);
 			}
+
+			invalidate();
 
 			return out;
 		}
@@ -266,6 +269,8 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.addChildAt(child, index);
 			}
 
+			invalidate();
+
 			return out;
 		}
 
@@ -278,6 +283,8 @@ package com.falanxia.moderatrix.widgets {
 			else {
 				innerSpr.swapChildren(child1, child2);
 			}
+
+			invalidate();
 		}
 
 
@@ -304,6 +311,8 @@ package com.falanxia.moderatrix.widgets {
 			else {
 				innerSpr.setChildIndex(child, index);
 			}
+
+			invalidate();
 		}
 
 
@@ -320,7 +329,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			draw();
+			invalidate();
 		}
 
 
@@ -333,30 +342,6 @@ package com.falanxia.moderatrix.widgets {
 
 		override public function get height():Number {
 			return _size.height + _skin.paddingTop + _skin.paddingBottom;
-		}
-
-
-
-		public function get innerWidth():Number {
-			return _innerWidth;
-		}
-
-
-
-		public function set innerWidth(value:Number):void {
-			_innerWidth = value;
-		}
-
-
-
-		public function get innerHeight():Number {
-			return _innerWidth;
-		}
-
-
-
-		public function set innerHeight(value:Number):void {
-			_innerHeight = value;
 		}
 
 
@@ -378,6 +363,8 @@ package com.falanxia.moderatrix.widgets {
 			innerSpr = new QSprite({});
 
 			DisplayUtils.addChildren(contentSpr, innerSpr);
+
+			invalidate();
 		}
 
 
@@ -386,6 +373,8 @@ package com.falanxia.moderatrix.widgets {
 			super.removeChildren();
 
 			DisplayUtils.removeChildren(contentSpr, innerSpr);
+
+			invalidate();
 		}
 	}
 }

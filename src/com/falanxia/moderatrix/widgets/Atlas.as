@@ -155,7 +155,7 @@ package com.falanxia.moderatrix.widgets {
 			imageBM.bitmapData = new BitmapData(_skin.assetSize.width, _skin.assetSize.height);
 			imageBM.smoothing = true;
 
-			draw();
+			invalidate();
 		}
 
 
@@ -173,7 +173,8 @@ package com.falanxia.moderatrix.widgets {
 				}
 				else {
 					_phase = value;
-					draw();
+
+					invalidate();
 				}
 			}
 		}
