@@ -105,7 +105,7 @@ package com.falanxia.moderatrix.widgets {
 
 					// non-top alignment
 					if(_vAlign == Align.CENTER) {
-						_textField.y = Math.round((rect.height - _textField.textHeight) / 2) + _skin.paddingTop;
+						_textField.y = int((rect.height - _textField.textHeight) / 2) + _skin.paddingTop;
 					}
 					if(_vAlign == Align.BOTTOM) {
 						_textField.y = rect.height - _textField.textHeight + _skin.paddingTop;

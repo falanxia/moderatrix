@@ -194,9 +194,9 @@ package com.falanxia.moderatrix.widgets {
 
 		override public function set width(value:Number):void {
 			_button.width = value;
-			_glyphOut.x = Math.round((value - _glyphOut.width) / 2);
-			_glyphHover.x = Math.round((value - _glyphHover.width) / 2);
-			_glyphFocus.x = Math.round((value - _glyphFocus.width) / 2);
+			_glyphOut.x = int((value - _glyphOut.width) / 2);
+			_glyphHover.x = int((value - _glyphHover.width) / 2);
+			_glyphFocus.x = int((value - _glyphFocus.width) / 2);
 
 			draw();
 		}
@@ -211,9 +211,9 @@ package com.falanxia.moderatrix.widgets {
 
 		override public function set height(value:Number):void {
 			_button.height = value;
-			_glyphOut.y = Math.round((value - _glyphOut.height) / 2);
-			_glyphHover.y = Math.round((value - _glyphHover.height) / 2);
-			_glyphFocus.y = Math.round((value - _glyphFocus.height) / 2);
+			_glyphOut.y = int((value - _glyphOut.height) / 2);
+			_glyphHover.y = int((value - _glyphHover.height) / 2);
+			_glyphFocus.y = int((value - _glyphFocus.height) / 2);
 
 			draw();
 		}

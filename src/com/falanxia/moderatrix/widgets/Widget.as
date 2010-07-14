@@ -235,7 +235,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set width(w:Number):void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
-			_size.width = Math.round(w);
+			_size.width = int(w);
 
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
@@ -252,7 +252,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set height(h:Number):void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
-			_size.height = Math.round(h);
+			_size.height = int(h);
 
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
@@ -293,13 +293,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function set x(value:Number):void {
-			super.x = Math.round(value);
+			super.x = int(value);
 		}
 
 
 
 		override public function set y(value:Number):void {
-			super.y = Math.round(value);
+			super.y = int(value);
 		}
 
 

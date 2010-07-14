@@ -238,9 +238,9 @@ package com.falanxia.moderatrix.widgets {
 
 		override public function set height(value:Number):void {
 			_button.height = value;
-			_labelOut.y = Math.round((value - _labelOut.height) / 2);
-			_labelHover.y = Math.round((value - _labelHover.height) / 2);
-			_labelFocus.y = Math.round((value - _labelFocus.height) / 2);
+			_labelOut.y = int((value - _labelOut.height) / 2);
+			_labelHover.y = int((value - _labelHover.height) / 2);
+			_labelFocus.y = int((value - _labelFocus.height) / 2);
 
 			draw();
 		}
