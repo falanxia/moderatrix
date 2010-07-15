@@ -237,7 +237,9 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.addEventListener(MouseEvent.MOUSE_UP, onRelease, false, 0, true);
 			activeSpr.addEventListener(FocusEvent.FOCUS_IN, onFocusIn, false, 0, true);
 			activeSpr.addEventListener(FocusEvent.FOCUS_OUT, onFocusOut, false, 0, true);
-			activeSpr.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown, false, 0, true);
+
+			// activeSpr.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown, false, 0, true);
+			// TODO: Removed, caused a lot of troubles
 
 			activeSpr.tabEnabled = true;
 			activeSpr.focusRect = false;
@@ -257,7 +259,9 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_IN, onFocusIn);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
-			activeSpr.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+
+			// activeSpr.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			// TODO: Removed, caused a lot of troubles
 
 			DisplayUtils.removeChildren(contentSpr, activeSpr);
 		}
@@ -386,17 +390,16 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				else {
-					if(currentDrag != this) {
-						// drag confirm
-						dragConfirmedTween();
-						dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_CONFIRM, true));
-					}
-
-					else {
+					if(currentDrag == this) {
 						// release inside
 						currentDrag = null;
 						releasedInsideTween();
 						dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+					}
+					else {
+						// drag confirm
+						dragConfirmedTween();
+						dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_CONFIRM, true));
 					}
 				}
 
@@ -422,12 +425,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		private function onKeyDown(e:KeyboardEvent):void {
-			// FIXME: Look for all events, like when mouse draggin is on etc.
-
-			if(_areEventsEnabled) {
-				if(e.keyCode == 32 || e.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
-			}
-		}
+		/*
+		 private function onKeyDown(e:KeyboardEvent):void {
+		 if(_areEventsEnabled) {
+		 if(e.keyCode == 32 || e.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
+		 }
+		 }
+		 */
+		// TODO: Removed, caused a lot of troubles
 	}
 }
