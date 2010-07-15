@@ -200,15 +200,15 @@ package com.falanxia.moderatrix.widgets {
 		public function set mouseStatus(value:String):void {
 			switch(value) {
 				case MouseStatus.OUT:
-					onOut();
+					setOut();
 					break;
 
 				case MouseStatus.HOVER:
-					onOver();
+					setOver();
 					break;
 
 				case MouseStatus.FOCUS:
-					onFocus();
+					setFocus();
 					break;
 
 				default:
@@ -334,6 +334,27 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		private function setOut():void {
+			_mouseStatus = MouseStatus.OUT;
+			hoverOutTween();
+		}
+
+
+
+		private function setOver():void {
+			_mouseStatus = MouseStatus.HOVER;
+			hoverInTween();
+		}
+
+
+
+		private function setFocus():void {
+			_mouseStatus = MouseStatus.FOCUS;
+			focusInTween();
+		}
+
+
+
 		private function onOver(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
 				if(e != null && e.buttonDown) {
@@ -342,8 +363,7 @@ package com.falanxia.moderatrix.widgets {
 				}
 				else {
 					// roll over
-					_mouseStatus = MouseStatus.HOVER;
-					hoverInTween();
+					setOver();
 					dispatchEvent(new ButtonEvent(ButtonEvent.HOVER_IN, true));
 				}
 			}
@@ -359,8 +379,7 @@ package com.falanxia.moderatrix.widgets {
 				}
 				else {
 					// roll out
-					_mouseStatus = MouseStatus.OUT;
-					hoverOutTween();
+					setOut();
 					dispatchEvent(new ButtonEvent(ButtonEvent.HOVER_OUT, true));
 				}
 			}
@@ -370,9 +389,8 @@ package com.falanxia.moderatrix.widgets {
 
 		private function onFocus(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
-				_mouseStatus = MouseStatus.FOCUS;
 				currentDrag = this;
-				focusInTween();
+				setFocus();
 				if(stage != null) stage.addEventListener(MouseEvent.MOUSE_UP, onRelease, false, 0, true);
 				dispatchEvent(new ButtonEvent(ButtonEvent.FOCUS_IN, true));
 			}
