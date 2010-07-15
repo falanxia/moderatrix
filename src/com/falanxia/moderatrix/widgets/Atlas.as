@@ -33,6 +33,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.greensock.easing.*;
 
 	import flash.display.*;
+	import flash.events.Event;
 	import flash.geom.*;
 
 
@@ -229,6 +230,9 @@ package com.falanxia.moderatrix.widgets {
 		private function checkReset(endPhase:int):void {
 			if(endPhase == length) {
 				reset();
+
+				dispatchEvent(new Event(Event.COMPLETE));
+
 				if(loop) playFromStart(durationMultiplier, startPhase, endPhase, loop);
 			}
 		}
