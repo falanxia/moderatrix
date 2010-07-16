@@ -33,7 +33,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.greensock.easing.*;
 
 	import flash.display.*;
-	import flash.events.Event;
+	import flash.events.*;
 	import flash.geom.*;
 
 
