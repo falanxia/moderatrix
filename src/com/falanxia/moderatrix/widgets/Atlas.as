@@ -174,7 +174,6 @@ package com.falanxia.moderatrix.widgets {
 				}
 				else {
 					_phase = value;
-
 					invalidate();
 				}
 			}
