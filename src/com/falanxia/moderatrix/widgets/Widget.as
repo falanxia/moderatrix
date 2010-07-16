@@ -104,9 +104,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function destroy():void {
 			super.destroy();
 
-			if (this.hasEventListener(Event.ENTER_FRAME)) {
-				removeEventListener(Event.ENTER_FRAME, onInvalidate);
-			}
+			if(this.hasEventListener(Event.ENTER_FRAME)) removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			removeChildren();
 
