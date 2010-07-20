@@ -102,7 +102,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function forceRelease():void {
-			if(_mouseStatus == MouseStatus.FOCUS) {
+			if(_mouseStatus == MouseStatus.FOCUS && _areEventsEnabled) {
 				currentDrag = null;
 				_mouseStatus = MouseStatus.OUT;
 
