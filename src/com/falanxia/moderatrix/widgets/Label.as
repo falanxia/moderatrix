@@ -105,7 +105,7 @@ package com.falanxia.moderatrix.widgets {
 
 					// non-top alignment
 					if(_vAlign == Align.CENTER) {
-						_textField.y = int((rect.height - _textField.textHeight) / 2) + _skin.paddingTop;
+						_textField.y = Math.round((rect.height - _textField.textHeight) / 2) + _skin.paddingTop;
 					}
 					if(_vAlign == Align.BOTTOM) {
 						_textField.y = rect.height - _textField.textHeight + _skin.paddingTop;
@@ -130,7 +130,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set tabIndex(index:int):void {
 			_textField.tabIndex = index;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -144,7 +144,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set tabEnabled(enabled:Boolean):void {
 			_textField.tabEnabled = enabled;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -155,7 +155,7 @@ package com.falanxia.moderatrix.widgets {
 			_textField.border = (_debugLevel == DebugLevel.ALWAYS);
 			_textField.borderColor = _debugColor.color32;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -201,7 +201,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -227,9 +227,11 @@ package com.falanxia.moderatrix.widgets {
 
 					_textField.htmlText = v;
 
-					invalidate();
+					draw();
 				}
 			}
+
+			draw();
 		}
 
 
@@ -279,7 +281,7 @@ package com.falanxia.moderatrix.widgets {
 		public function set isPassword(value:Boolean):void {
 			_textField.displayAsPassword = value;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -299,7 +301,7 @@ package com.falanxia.moderatrix.widgets {
 
 			_isInput = value;
 
-			invalidate();
+			draw();
 		}
 
 

@@ -110,9 +110,9 @@ package com.falanxia.moderatrix.widgets {
 
 				var e:ButtonEvent = new ButtonEvent(ButtonEvent.RELEASE_OUTSIDE, true);
 				dispatchEvent(e);
-			}
 
-			invalidate();
+				draw();
+			}
 		}
 
 
@@ -131,7 +131,7 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.tabEnabled = enabled;
 			super.tabEnabled = enabled;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -139,7 +139,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set tabIndex(index:int):void {
 			activeSpr.tabIndex = index;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -162,9 +162,9 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			//if(!_skin.assetSize.isEmpty()) size = _skin.assetSize; // FIXME: Removed because some weitd bug happened when setting size via set.size()
+			//if(!_skin.assetSize.isEmpty()) size = _skin.assetSize; // FIXME: Removed because some weird bug happened when setting size via set.size()
 
-			invalidate();
+			draw();
 		}
 
 
@@ -180,7 +180,7 @@ package com.falanxia.moderatrix.widgets {
 				forceRelease();
 			}
 
-			invalidate();
+			draw();
 		}
 
 
@@ -214,8 +214,6 @@ package com.falanxia.moderatrix.widgets {
 				default:
 					throw new Error(printf("Unknown mouse status (%s)", value));
 			}
-
-			invalidate();
 		}
 
 

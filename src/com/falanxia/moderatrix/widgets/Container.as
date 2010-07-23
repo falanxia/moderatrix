@@ -160,7 +160,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.addChild(child);
 			}
 
-			invalidate();
+			draw();
 
 			return out;
 		}
@@ -177,7 +177,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.removeChild(child);
 			}
 
-			invalidate();
+			draw();
 
 			return out;
 		}
@@ -207,7 +207,7 @@ package com.falanxia.moderatrix.widgets {
 				innerSpr.swapChildrenAt(index1, index2);
 			}
 
-			invalidate();
+			draw();
 		}
 
 
@@ -237,7 +237,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.removeChildAt(index);
 			}
 
-			invalidate();
+			draw();
 
 			return out;
 		}
@@ -269,7 +269,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.addChildAt(child, index);
 			}
 
-			invalidate();
+			draw();
 
 			return out;
 		}
@@ -284,7 +284,7 @@ package com.falanxia.moderatrix.widgets {
 				innerSpr.swapChildren(child1, child2);
 			}
 
-			invalidate();
+			draw();
 		}
 
 
@@ -312,7 +312,7 @@ package com.falanxia.moderatrix.widgets {
 				innerSpr.setChildIndex(child, index);
 			}
 
-			invalidate();
+			draw();
 		}
 
 
@@ -329,7 +329,7 @@ package com.falanxia.moderatrix.widgets {
 			if(_size.width == 0) _size.width = _skin.assetSize.width;
 			if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -364,7 +364,7 @@ package com.falanxia.moderatrix.widgets {
 
 			DisplayUtils.addChildren(contentSpr, innerSpr);
 
-			invalidate();
+			draw();
 		}
 
 
@@ -374,7 +374,7 @@ package com.falanxia.moderatrix.widgets {
 
 			DisplayUtils.removeChildren(contentSpr, innerSpr);
 
-			invalidate();
+			draw();
 		}
 	}
 }

@@ -230,6 +230,8 @@ package com.falanxia.moderatrix.widgets {
 
 		public function set isChecked(value:Boolean):void {
 			_isChecked = value;
+
+			draw();
 		}
 
 
@@ -245,6 +247,8 @@ package com.falanxia.moderatrix.widgets {
 
 			_buttonOff.skin = skin.buttonOffSkin;
 			_buttonOn.skin = skin.buttonOnSkin;
+
+			draw();
 		}
 
 

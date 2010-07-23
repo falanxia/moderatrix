@@ -281,9 +281,9 @@ package com.falanxia.moderatrix.widgets {
 
 			_button.width = value;
 
-			_glyphOut.x = int((value - maxWidth) / 2);
-			_glyphHover.x = int((value - maxWidth) / 2);
-			_glyphFocus.x = int((value - maxWidth) / 2);
+			_glyphOut.x = Math.round((value - maxWidth) / 2);
+			_glyphHover.x = Math.round((value - maxWidth) / 2);
+			_glyphFocus.x = Math.round((value - maxWidth) / 2);
 
 			_labelOut.x = _glyphOut.x + _glyphOut.width;
 			_labelHover.x = _glyphHover.x + _glyphHover.width;
@@ -301,13 +301,13 @@ package com.falanxia.moderatrix.widgets {
 		override public function set height(value:Number):void {
 			_button.height = value;
 
-			_glyphOut.y = int((value - _glyphOut.height) / 2);
-			_glyphHover.y = int((value - _glyphHover.height) / 2);
-			_glyphFocus.y = int((value - _glyphFocus.height) / 2);
+			_glyphOut.y = Math.round((value - _glyphOut.height) / 2);
+			_glyphHover.y = Math.round((value - _glyphHover.height) / 2);
+			_glyphFocus.y = Math.round((value - _glyphFocus.height) / 2);
 
-			_labelOut.y = int((value - _labelOut.height) / 2);
-			_labelHover.y = int((value - _labelHover.height) / 2);
-			_labelFocus.y = int((value - _labelFocus.height) / 2);
+			_labelOut.y = Math.round((value - _labelOut.height) / 2);
+			_labelHover.y = Math.round((value - _labelHover.height) / 2);
+			_labelFocus.y = Math.round((value - _labelFocus.height) / 2);
 		}
 
 

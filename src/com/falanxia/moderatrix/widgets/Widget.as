@@ -137,15 +137,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * Invalidate, redraw in next frame redraw.
-		 */
-		public function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
-		}
-
-
-
 		override public function addChild(child:DisplayObject):DisplayObject {
 			return (contentSpr == null) ? super.addChild(child) : contentSpr.addChild(child);
 		}
@@ -246,7 +237,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set width(w:Number):void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
-			_size.width = int(w);
+			_size.width = Math.round(w);
 
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
@@ -263,7 +254,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set height(h:Number):void {
 			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
-			_size.height = int(h);
+			_size.height = Math.round(h);
 
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
@@ -304,13 +295,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function set x(value:Number):void {
-			super.x = int(value);
+			super.x = Math.round(value);
 		}
 
 
 
 		override public function set y(value:Number):void {
-			super.y = int(value);
+			super.y = Math.round(value);
 		}
 
 
@@ -349,7 +340,7 @@ package com.falanxia.moderatrix.widgets {
 		public function set debugColor(value:RGBA):void {
 			_debugColor = value;
 
-			invalidate();
+			draw();
 		}
 
 
@@ -382,6 +373,12 @@ package com.falanxia.moderatrix.widgets {
 
 			if(contentSpr != null && this.getChildByName(contentSpr.name)) contentSpr.parent.removeChild(contentSpr);
 			if(debugSpr != null && this.getChildByName(debugSpr.name)) debugSpr.parent.removeChild(debugSpr);
+		}
+
+
+
+		protected function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
 
 
