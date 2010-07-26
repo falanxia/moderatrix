@@ -106,7 +106,10 @@ package com.falanxia.moderatrix.widgets {
 			super.destroy();
 
 			forceRelease();
-			removeChildren();
+
+			// removeChildren();
+			// was removed due to multiple item removal
+			// TODO: Test if it's needed
 
 			_button.destroy();
 			_glyphOut.destroy();
