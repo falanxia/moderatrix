@@ -23,6 +23,7 @@
  */
 
 package com.falanxia.moderatrix.widgets {
+
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.globals.*;
 	import com.falanxia.moderatrix.skin.*;
