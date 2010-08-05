@@ -65,7 +65,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code ScaleButton} instance and frees it for GC.
+		 * Destroys ScaleButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();

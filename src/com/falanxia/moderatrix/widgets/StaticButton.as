@@ -44,8 +44,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function StaticButton(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null
-				) {
+		public function StaticButton(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
 			if(config == null) {
@@ -61,7 +60,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code StaticButton} instance and frees it for GC.
+		 * Destroys StaticButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();

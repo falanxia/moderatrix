@@ -65,8 +65,8 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Create a new glyph label button instance.
-		 * @param config Configuration {@code Object}
-		 * @param parent Parent {@code DisplayObjectContainer}
+		 * @param config Configuration Object
+		 * @param parent Parent DisplayObjectContainer
 		 * @param debugLevel Debug level ({@see DebugLevel})
 		 */
 		public function Widget(config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null):void {
@@ -99,7 +99,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code Widget} instance and frees it for GC.
+		 * Destroys Widget instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -276,7 +276,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Rescales to new size.
-		 * @param rect New size as {@code Rectangle}
+		 * @param rect New size as Rectangle
 		 */
 		override public function set size(rect:Rectangle):void {
 			_size = rect;

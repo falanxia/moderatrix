@@ -49,8 +49,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function GlyphButton(skin:GlyphButtonSkin, config:Object = null, parent:DisplayObjectContainer = null,
-		                            debugLevel:String = null) {
+		public function GlyphButton(skin:GlyphButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
 			if(config == null) {
@@ -100,7 +99,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code GlyphButton} instance and frees it for GC.
+		 * Destroys GlyphButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();

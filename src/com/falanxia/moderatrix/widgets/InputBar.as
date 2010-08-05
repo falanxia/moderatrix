@@ -83,7 +83,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code InputBar} instance and frees it for GC.
+		 * Destroys InputBar instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();

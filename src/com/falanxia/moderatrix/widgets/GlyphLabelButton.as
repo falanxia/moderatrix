@@ -55,15 +55,14 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Create a new glyph label button instance.
-		 * @param skin Skin to be used (use {@code GlyphLabelButtonSkin})
-		 * @param config Configuration {@code Object}
+		 * @param skin Skin to be used (use GlyphLabelButtonSkin)
+		 * @param config Configuration Object
 		 * @param text Initial text
-		 * @param parent Parent {@code DisplayObjectContainer}
+		 * @param parent Parent DisplayObjectContainer
 		 * @param debugLevel Debug level ({@see DebugLevel})
 		 * @throws Error if no skin defined
 		 */
-		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "",
-		                                 parent:DisplayObjectContainer = null, debugLevel:String = null) {
+		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var conf:Object = (config == null) ? new Object() : config;
 			var dlev:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
 
@@ -117,7 +116,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code GlyphLabelButton} instance and frees it for GC.
+		 * Destroys GlyphLabelButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -171,7 +170,7 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Release all buttons.
-		 * Useful when dragging outside the main {@code Stage}.
+		 * Useful when dragging outside the main Stage.
 		 */
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
@@ -183,7 +182,7 @@ package com.falanxia.moderatrix.widgets {
 		 * Automagically set width.
 		 * @param padding Padding
 		 * @param max Max width before button gets wrapped
-		 * @param morph {@code true} to use morphing (see {@see MorphSprite})
+		 * @param morph true to use morphing (see {@see MorphSprite})
 		 * @param morphAddons Additional parameters for morphing (see {@see MorphSprite})
 		 */
 		public function autoWidth(padding:Number, max:Number = 500, morph:Boolean = false, morphAddons:Object = null):void {

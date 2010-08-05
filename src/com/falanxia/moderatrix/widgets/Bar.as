@@ -70,7 +70,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code Bar} instance and frees it for GC.
+		 * Destroys Bar instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -87,7 +87,8 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null) {
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight, _size.height - _skin.paddingTop - _skin.paddingBottom);
+				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
+				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
 
 				if(_size.width != 0 && !isNaN(_size.width)) {
 					bodySBS.width = rect.width;

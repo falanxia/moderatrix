@@ -56,7 +56,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys {@code Skin} instance and frees it for GC.
+		 * Destroys Skin instance and frees it for GC.
 		 */
 		public function destroy():void {
 			_id = null;

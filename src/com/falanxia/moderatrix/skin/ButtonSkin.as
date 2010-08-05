@@ -67,7 +67,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys the {@code ButtonSkin} instance and frees it for GC.
+		 * Destroys the ButtonSkin instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();

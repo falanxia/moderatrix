@@ -55,8 +55,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null
-				) {
+		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
 			if(config == null) {
@@ -83,7 +82,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code Container} instance and frees it for GC.
+		 * Destroys Container instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -107,7 +106,8 @@ package com.falanxia.moderatrix.widgets {
 			if(_skin != null) {
 				_size = new Rectangle(0, 0, innerSpr.width, innerSpr.height);
 
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight, _size.height - _skin.paddingTop - _skin.paddingBottom);
+				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
+				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
 
 				// draw debug rectangle
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {

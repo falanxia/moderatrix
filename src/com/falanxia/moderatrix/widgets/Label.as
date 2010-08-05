@@ -51,8 +51,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
-		                      debugLevel:String = null) {
+		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
 
 			var c:Object = config == null ? new Object() : config;
 
@@ -74,7 +73,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code Label} instance and frees it for GC.
+		 * Destroys Label instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			removeChildren();
@@ -95,7 +94,8 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null) {
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight, _size.height - _skin.paddingTop - _skin.paddingBottom);
+				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
+				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
 
 				if(_size.width != 0) _textField.width = rect.width;
 
@@ -322,7 +322,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function addChildren():void {
 			super.addChildren();
 
-			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel == DebugLevel.ALWAYS)}, contentSpr);
+			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel ==
+			                                                                                                                                              DebugLevel.ALWAYS)},
+			                            contentSpr);
 		}
 
 

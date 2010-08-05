@@ -50,8 +50,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
-		                            debugLevel:String = null) {
+		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object;
 
 			if(config == null) c = new Object();
@@ -96,7 +95,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Destroys {@code LabelButton} instance and frees it for GC.
+		 * Destroys LabelButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -144,7 +143,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Automatically set {@code width} of the button.
+		 * Automatically set width of the button.
 		 * @param padding Padding
 		 * @param max Maximal width (then text will be split in more lines)
 		 */

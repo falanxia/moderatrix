@@ -121,7 +121,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys the {@code LabelSkin} instance and frees it for GC.
+		 * Destroys the LabelSkin instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
@@ -197,7 +197,8 @@ package com.falanxia.moderatrix.skin {
 										var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
 										var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
 										var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
-										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur, dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
+										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur, dsStrength, dsQuality, dsInner,
+										                                              dsKnockout, dsHideObject);
 										_filters.push(g);
 										break;
 

@@ -51,7 +51,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys the {@code GlyphLabelButtonSkin} instance and frees it for GC.
+		 * Destroys the GlyphLabelButtonSkin instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();

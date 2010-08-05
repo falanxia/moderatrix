@@ -63,7 +63,7 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys the {@code BarSkin} instance and frees it for GC.
+		 * Destroys the BarSkin instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
