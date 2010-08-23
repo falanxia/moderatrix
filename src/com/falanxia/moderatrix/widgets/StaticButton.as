@@ -83,9 +83,11 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function draw():void {
-			super.draw();
+			if(_size != null) {
+				super.draw();
 
-			activeSpr.size = _size;
+				activeSpr.size = _size;
+			}
 		}
 
 

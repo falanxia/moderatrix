@@ -160,14 +160,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function set skin(skin:ButtonSkin):void {
-			_skin = ButtonSkin(skin);
+			if(_size != null) {
+				_skin = ButtonSkin(skin);
 
-			if(_size.width == 0) _size.width = _skin.assetSize.width;
-			if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.assetSize.width;
+				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			//if(!_skin.assetSize.isEmpty()) size = _skin.assetSize; // FIXME: Removed because some weird bug happened when setting size via set.size()
-
-			draw();
+				draw();
+			}
 		}
 
 

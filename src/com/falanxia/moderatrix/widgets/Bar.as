@@ -84,9 +84,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function draw():void {
-			super.draw();
+			if(_skin != null && _size != null) {
+				super.draw();
 
-			if(_skin != null) {
 				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
 				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
 
@@ -100,7 +100,7 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
+					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}
 		}
@@ -114,28 +114,30 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function set skin(skin:BarSkin):void {
-			_skin = skin;
+			if(_size != null) {
+				_skin = skin;
 
-			if(_size.width == 0) _size.width = _skin.assetSize.width;
-			if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.assetSize.width;
+				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			var rect:Rectangle = _skin.guideBD.getColorBoundsRect(0x00FF0000, 0x00000000, false);
+				var rect:Rectangle = _skin.guideBD.getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
-			bodySBS.setData(_skin.backBD, rect);
+				bodySBS.setData(_skin.backBD, rect);
 
-			invalidate();
+				invalidate();
+			}
 		}
 
 
 
 		override public function get width():Number {
-			return _size.width + _skin.paddingLeft + _skin.paddingRight;
+			return _size == null ? 0 : _size.width + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
 		override public function get height():Number {
-			return _size.height + _skin.paddingTop + _skin.paddingBottom;
+			return _size == null ? 0 : _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 

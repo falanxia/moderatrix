@@ -93,17 +93,19 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function draw():void {
-			super.draw();
+			if(_size != null) {
+				super.draw();
 
-			var assetSize:Rectangle = _skin.assetSize;
-			var w:uint = assetSize.width;
-			var rect:Rectangle = new Rectangle(_phase * w, 0, w, assetSize.height);
+				var assetSize:Rectangle = _skin.assetSize;
+				var w:uint = assetSize.width;
+				var rect:Rectangle = new Rectangle(_phase * w, 0, w, assetSize.height);
 
-			imageBM.bitmapData.copyPixels(_skin.imageBD, rect, new Point(0, 0));
+				imageBM.bitmapData.copyPixels(_skin.imageBD, rect, new Point(0, 0));
 
-			if(_skin != null) {
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, assetSize.width, assetSize.height), _debugColor, 5);
+				if(_skin != null) {
+					if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
+						DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, assetSize.width, assetSize.height), _debugColor, 5);
+					}
 				}
 			}
 		}
@@ -150,15 +152,17 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function set skin(skin:AtlasSkin):void {
-			_skin = skin;
+			if(_size != null) {
+				_skin = skin;
 
-			if(_size.width == 0) _size.width = _skin.assetSize.width;
-			if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.assetSize.width;
+				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			imageBM.bitmapData = new BitmapData(_skin.assetSize.width, _skin.assetSize.height);
-			imageBM.smoothing = true;
+				imageBM.bitmapData = new BitmapData(_skin.assetSize.width, _skin.assetSize.height);
+				imageBM.smoothing = true;
 
-			draw();
+				draw();
+			}
 		}
 
 

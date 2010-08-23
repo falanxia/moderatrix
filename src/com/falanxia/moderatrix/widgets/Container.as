@@ -103,7 +103,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function draw():void {
 			super.draw();
 
-			if(_skin != null) {
+			if(_skin != null && _size != null) {
 				_size = new Rectangle(0, 0, innerSpr.width, innerSpr.height);
 
 				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
@@ -111,7 +111,7 @@ package com.falanxia.moderatrix.widgets {
 
 				// draw debug rectangle
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-					if(!_size.isEmpty()) DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
+					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 
 				// align inner sprite horizontally
@@ -324,24 +324,26 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function set skin(skin:ContainerSkin):void {
-			_skin = skin;
+			if(_size != null) {
+				_skin = skin;
 
-			if(_size.width == 0) _size.width = _skin.assetSize.width;
-			if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.assetSize.width;
+				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			draw();
+				draw();
+			}
 		}
 
 
 
 		override public function get width():Number {
-			return _size.width + _skin.paddingLeft + _skin.paddingRight;
+			return _size == null ? 0 : _size.width + _skin.paddingLeft + _skin.paddingRight;
 		}
 
 
 
 		override public function get height():Number {
-			return _size.height + _skin.paddingTop + _skin.paddingBottom;
+			return _size == null ? 0 : _size.height + _skin.paddingTop + _skin.paddingBottom;
 		}
 
 

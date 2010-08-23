@@ -124,15 +124,15 @@ package com.falanxia.moderatrix.widgets {
 		 * Draw the widget.
 		 */
 		public function draw():void {
-			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-				if(!_size.isEmpty()) {
+			if(_size != null) {
+				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
 					DisplayUtils.clear(debugSpr);
 					DisplayUtils.drawRect(debugSpr, _size, _debugColor);
 					DisplayUtils.strokeBounds(debugSpr, _size, _debugColor, 5);
 				}
-			}
 
-			dispatchEvent(new Event(Widget.DRAW));
+				dispatchEvent(new Event(Widget.DRAW));
+			}
 		}
 
 
@@ -235,29 +235,33 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function set width(w:Number):void {
-			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
+			if(_size != null) {
+				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
-			_size.width = Math.round(w);
+				_size.width = Math.round(w);
 
-			invalidate();
-			dispatchEvent(new Event(Event.RESIZE));
+				invalidate();
+				dispatchEvent(new Event(Event.RESIZE));
+			}
 		}
 
 
 
 		override public function get width():Number {
-			return _size.width;
+			return _size == null ? 0 : _size.width;
 		}
 
 
 
 		override public function set height(h:Number):void {
-			if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
+			if(_size != null) {
+				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
 
-			_size.height = Math.round(h);
+				_size.height = Math.round(h);
 
-			invalidate();
-			dispatchEvent(new Event(Event.RESIZE));
+				invalidate();
+				dispatchEvent(new Event(Event.RESIZE));
+			}
 		}
 
 
@@ -280,6 +284,7 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		override public function set size(rect:Rectangle):void {
 			_size = rect;
+
 			invalidate();
 			dispatchEvent(new Event(Event.RESIZE));
 		}

@@ -88,20 +88,22 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function draw():void {
-			super.draw();
+			if(_size != null) {
+				super.draw();
 
-			if(_size.width != 0) {
-				outSBS.width = _size.width;
-				hoverSBS.width = _size.width;
-				focusSBS.width = _size.width;
-			}
-			if(_size.height != 0) {
-				outSBS.height = _size.height;
-				hoverSBS.height = _size.height;
-				focusSBS.height = _size.height;
-			}
+				if(_size.width != 0) {
+					outSBS.width = _size.width;
+					hoverSBS.width = _size.width;
+					focusSBS.width = _size.width;
+				}
+				if(_size.height != 0) {
+					outSBS.height = _size.height;
+					hoverSBS.height = _size.height;
+					focusSBS.height = _size.height;
+				}
 
-			activeSpr.size = size;
+				activeSpr.size = size;
+			}
 		}
 
 

@@ -93,7 +93,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function draw():void {
 			super.draw();
 
-			if(_skin != null) {
+			if(_skin != null && _size != null) {
 				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
 				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
 
@@ -167,41 +167,43 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function set skin(skin:LabelSkin):void {
-			_skin = skin;
+			if(_size != null) {
+				_skin = skin;
 
-			_vAlign = _skin.vAlign;
+				_vAlign = _skin.vAlign;
 
-			_textFormat = new TextFormat();
-			_textFormat.align = _skin.hAlign;
-			_textFormat.blockIndent = _skin.blockIndent;
-			_textFormat.bold = _skin.bold;
-			_textFormat.bullet = _skin.bullet;
-			_textFormat.color = _skin.color;
-			_textFormat.font = _skin.font;
-			_textFormat.indent = _skin.indent;
-			_textFormat.italic = _skin.italic;
-			_textFormat.kerning = _skin.kerning;
-			_textFormat.leading = _skin.leading;
-			_textFormat.leftMargin = _skin.marginLeft;
-			_textFormat.letterSpacing = _skin.letterSpacing;
-			_textFormat.rightMargin = _skin.marginRight;
-			_textFormat.size = _skin.size;
-			_textFormat.underline = _skin.underline;
-			_textFormat.url = _skin.url;
+				_textFormat = new TextFormat();
+				_textFormat.align = _skin.hAlign;
+				_textFormat.blockIndent = _skin.blockIndent;
+				_textFormat.bold = _skin.bold;
+				_textFormat.bullet = _skin.bullet;
+				_textFormat.color = _skin.color;
+				_textFormat.font = _skin.font;
+				_textFormat.indent = _skin.indent;
+				_textFormat.italic = _skin.italic;
+				_textFormat.kerning = _skin.kerning;
+				_textFormat.leading = _skin.leading;
+				_textFormat.leftMargin = _skin.marginLeft;
+				_textFormat.letterSpacing = _skin.letterSpacing;
+				_textFormat.rightMargin = _skin.marginRight;
+				_textFormat.size = _skin.size;
+				_textFormat.underline = _skin.underline;
+				_textFormat.url = _skin.url;
 
-			_textField.setTextFormat(_textFormat);
-			_textField.defaultTextFormat = _textFormat;
-			_textField.position = new Point(_skin.paddingLeft, _skin.paddingTop);
-			_textField.filters = _skin.filters;
-			_textField.sharpness = _skin.sharpness;
-			_textField.thickness = _skin.thickness;
-			_textField.alpha = _skin.alpha;
-			_textField.embedFonts = (_skin.font != "");
+				_textField.setTextFormat(_textFormat);
+				_textField.defaultTextFormat = _textFormat;
+				_textField.position = new Point(_skin.paddingLeft, _skin.paddingTop);
+				_textField.filters = _skin.filters;
+				_textField.sharpness = _skin.sharpness;
+				_textField.thickness = _skin.thickness;
+				_textField.alpha = _skin.alpha;
+				_textField.embedFonts = (_skin.font != "");
 
-			if(_size.width == 0) _size.width = _skin.assetSize.width;
-			if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.assetSize.width;
+				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-			draw();
+				draw();
+			}
 		}
 
 
