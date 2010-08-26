@@ -48,6 +48,8 @@ package com.falanxia.moderatrix.widgets {
 
 		public static var initialDebugLevel:String;
 
+		public var data:Object = {};
+
 		protected static const DEBUG_PADDING:Number = 4;
 
 		protected static var allWidgets:Array;
@@ -116,6 +118,7 @@ package com.falanxia.moderatrix.widgets {
 			_debugColor = null;
 			debugSpr = null;
 			contentSpr = null;
+			data = null;
 		}
 
 
