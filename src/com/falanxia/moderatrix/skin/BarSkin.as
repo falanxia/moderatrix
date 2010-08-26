@@ -80,7 +80,7 @@ package com.falanxia.moderatrix.skin {
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			if(source.width % 2 != 0) throw new Error("Width has to be multiple of 2");
 
-			_assetSize.width = source.width / 2;
+			_assetSize.width = source.width >> 1;
 			_assetSize.height = source.height;
 
 			_guideBD = BitmapUtils.crop(source, new Rectangle(0, 0, _assetSize.width, _assetSize.height));

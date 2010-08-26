@@ -122,7 +122,7 @@ package com.falanxia.moderatrix.widgets {
 				else {
 					if(_skin.hAlign == Align.CENTER) {
 						// center
-						innerSpr.x = rect.x + int(rect.width / 2);
+						innerSpr.x = rect.x + (rect.width >> 1);
 					}
 					else {
 						// left
@@ -138,7 +138,7 @@ package com.falanxia.moderatrix.widgets {
 				else {
 					if(_skin.vAlign == Align.CENTER) {
 						// center
-						innerSpr.y = rect.y + int((rect.height) / 2);
+						innerSpr.y = rect.y + (rect.height >> 1);
 					}
 					else {
 						// top
