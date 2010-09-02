@@ -32,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class BarSkin extends Skin implements ISkinnable {
+	public class BarSkin extends Skin implements ISkin {
 
 
 		protected var _paddingTop:Number;

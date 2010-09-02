@@ -32,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class ButtonSkin extends Skin implements ISkinnable {
+	public class ButtonSkin extends Skin implements ISkin {
 
 
 		protected var _hoverInDuration:Number;

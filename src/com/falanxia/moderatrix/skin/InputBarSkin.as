@@ -28,7 +28,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class InputBarSkin extends Skin implements ISkinnable {
+	public class InputBarSkin extends Skin implements ISkin {
 
 
 		protected var _barSkin:BarSkin;

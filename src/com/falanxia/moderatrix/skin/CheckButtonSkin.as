@@ -28,7 +28,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class CheckButtonSkin extends Skin implements ISkinnable {
+	public class CheckButtonSkin extends Skin implements ISkin {
 
 
 		protected var _buttonOffSkin:ButtonSkin;

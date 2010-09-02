@@ -32,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class GlyphSkin extends Skin implements ISkinnable {
+	public class GlyphSkin extends Skin implements ISkin {
 
 
 		protected var _glyphOutSkin:ImageSkin;

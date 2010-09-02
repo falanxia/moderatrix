@@ -28,7 +28,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class GlyphLabelButtonSkin extends Skin implements ISkinnable {
+	public class GlyphLabelButtonSkin extends Skin implements ISkin {
 
 
 		protected var _buttonSkin:ButtonSkin;

@@ -36,7 +36,7 @@ package com.falanxia.moderatrix.interfaces {
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public interface ISkinnable {
+	public interface ISkin {
 
 
 		/**
@@ -50,6 +50,7 @@ package com.falanxia.moderatrix.interfaces {
 		/**
 		 * Get skin type.
 		 * @return Skin type
+		 * @see SkinType
 		 */
 		function get type():String;
 

@@ -32,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class LabelSkin extends Skin implements ISkinnable {
+	public class LabelSkin extends Skin implements ISkin {
 
 
 		protected var _hAlign:String;
