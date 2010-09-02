@@ -51,7 +51,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
+		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
+		                            debugLevel:String = null) {
 			var c:Object;
 
 			if(config == null) c = new Object();
@@ -202,9 +203,9 @@ package com.falanxia.moderatrix.widgets {
 		public function set skin(skin:LabelButtonSkin):void {
 			_skin = skin;
 
-			_skin.labelOutSkin.hAlign = Align.CENTER;
-			_skin.labelHoverSkin.hAlign = Align.CENTER;
-			_skin.labelFocusSkin.hAlign = Align.CENTER;
+			_skin.labelOutSkin.settings["hAlign"] = Align.CENTER;
+			_skin.labelHoverSkin.settings["hAlign"] = Align.CENTER;
+			_skin.labelFocusSkin.settings["hAlign"] = Align.CENTER;
 
 			_button.skin = _skin.buttonSkin;
 			_labelOut.skin = _skin.labelOutSkin;

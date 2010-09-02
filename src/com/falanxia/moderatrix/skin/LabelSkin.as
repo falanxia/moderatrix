@@ -27,8 +27,10 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.utilitaris.enums.*;
 	import com.falanxia.utilitaris.helpers.*;
+	import com.falanxia.utilitaris.utils.*;
 
 	import flash.filters.*;
+	import flash.utils.*;
 
 
 
@@ -44,57 +46,9 @@ package com.falanxia.moderatrix.skin {
 	public class LabelSkin extends Skin implements ISkin {
 
 
-		protected var _hAlign:String;
-		protected var _vAlign:String;
-		protected var _bold:Boolean;
-		protected var _blockIndent:Number;
-		protected var _bullet:Boolean;
-		protected var _color:uint;
-		protected var _font:String;
-		protected var _indent:Number;
-		protected var _italic:Boolean;
-		protected var _kerning:Boolean;
-		protected var _leading:Number;
-		protected var _letterSpacing:Number;
-		protected var _size:Number;
-		protected var _underline:Boolean;
-		protected var _url:String;
-		protected var _alpha:Number;
-		protected var _filters:Array;
-		protected var _sharpness:Number;
-		protected var _thickness:Number;
-		protected var _paddingTop:Number;
-		protected var _paddingBottom:Number;
-		protected var _paddingLeft:Number;
-		protected var _paddingRight:Number;
-		protected var _marginLeft:Number;
-		protected var _marginRight:Number;
+		private var _settings:Dictionary;
 
-		private var oldHAlign:String;
-		private var oldVAlign:String;
-		private var oldBold:Boolean;
-		private var oldBlockIndent:Number;
-		private var oldBullet:Boolean;
-		private var oldColor:uint;
-		private var oldFont:String;
-		private var oldIndent:Number;
-		private var oldItalic:Boolean;
-		private var oldKerning:Boolean;
-		private var oldLeading:Number;
-		private var oldLetterSpacing:Number;
-		private var oldSize:Number;
-		private var oldUnderline:Boolean;
-		private var oldURL:String;
-		private var oldAlpha:Number;
-		private var oldFilters:Array;
-		private var oldSharpness:Number;
-		private var oldThickness:Number;
-		private var oldPaddingTop:Number;
-		private var oldPaddingBottom:Number;
-		private var oldPaddingLeft:Number;
-		private var oldPaddingRight:Number;
-		private var oldMarginLeft:Number;
-		private var oldMarginRight:Number;
+		private var oldSettings:Dictionary;
 
 
 
@@ -106,31 +60,10 @@ package com.falanxia.moderatrix.skin {
 		public function LabelSkin(id:String = null) {
 			super(SkinType.LABEL, id);
 
-			_hAlign = Align.LEFT;
-			_vAlign = Align.TOP;
-			_bold = false;
-			_blockIndent = 0;
-			_bullet = false;
-			_color = 0x000000;
-			_font = null;
-			_indent = 0;
-			_italic = false;
-			_kerning = false;
-			_leading = 0;
-			_letterSpacing = 0;
-			_size = 10;
-			_underline = false;
-			_url = null;
-			_alpha = 1;
-			_filters = new Array();
-			_sharpness = 0;
-			_thickness = 0;
-			_paddingTop = 0;
-			_paddingBottom = 0;
-			_paddingLeft = 0;
-			_paddingRight = 0;
-			_marginLeft = 0;
-			_marginRight = 0;
+			_settings = resetSettings();
+			oldSettings = new Dictionary();
+
+			ObjectUtils.assign(oldSettings, _settings);
 		}
 
 
@@ -141,17 +74,8 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_hAlign = null;
-			_vAlign = null;
-			_font = null;
-			_url = null;
-			_filters = null;
-
-			oldHAlign = null;
-			oldVAlign = null;
-			oldFont = null;
-			oldURL = null;
-			oldFilters = null;
+			_settings = null;
+			oldSettings = null;
 		}
 
 
@@ -163,42 +87,21 @@ package com.falanxia.moderatrix.skin {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			// TODO: Figure out how to speed up this mess:
-			oldHAlign = _hAlign;
-			oldVAlign = _vAlign;
-			oldBold = _bold;
-			oldBlockIndent = _blockIndent;
-			oldBullet = _bullet;
-			oldColor = _color;
-			oldFont = _font;
-			oldIndent = _indent;
-			oldItalic = _italic;
-			oldKerning = _kerning;
-			oldLeading = _leading;
-			oldLetterSpacing = _letterSpacing;
-			oldSize = _size;
-			oldUnderline = _underline;
-			oldURL = _url;
-			oldAlpha = _alpha;
-			oldFilters = _filters;
-			oldSharpness = _sharpness;
-			oldThickness = _thickness;
-			oldPaddingTop = _paddingTop;
-			oldPaddingBottom = _paddingBottom;
-			oldPaddingLeft = _paddingLeft;
-			oldPaddingRight = _paddingRight;
-			oldMarginLeft = _marginLeft;
-			oldMarginRight = _marginRight;
+			ObjectUtils.assign(oldSettings, _settings);
 
 			// TODO: This is the way how to speed up skins, apply it everywhere
-			for(var i:String in value) if(i != "filters") this["_" + i] = value[i];
+			for(var i:String in value) {
+				if(i != "filters") {
+					_settings[i] = value[i];
+				}
+			}
 
 			// TODO: Add this functionality to all skins where it's needed
 			if(value.filters != undefined && value.filters is Array) {
 				for each(var f:* in value.filters) {
 					if(f is BitmapFilter) {
 						// bitmapFilter means we got filter already converted
-						_filters.push(f);
+						_settings.filters.push(f);
 					}
 					else {
 						if(f is Object) {
@@ -216,9 +119,11 @@ package com.falanxia.moderatrix.skin {
 										var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
 										var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
 										var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
-										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur, dsStrength, dsQuality, dsInner,
-										                                              dsKnockout, dsHideObject);
-										_filters.push(g);
+										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur,
+										                                              dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
+
+										_settings.filters.push(g);
+
 										break;
 
 									default:
@@ -241,535 +146,55 @@ package com.falanxia.moderatrix.skin {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_hAlign = oldHAlign;
-			_vAlign = oldVAlign;
-			_bold = oldBold;
-			_blockIndent = oldBlockIndent;
-			_bullet = oldBullet;
-			_color = oldColor;
-			_font = oldFont;
-			_indent = oldIndent;
-			_italic = oldItalic;
-			_kerning = oldKerning;
-			_leading = oldLeading;
-			_letterSpacing = oldLetterSpacing;
-			_size = oldSize;
-			_underline = oldUnderline;
-			_url = oldURL;
-			_alpha = oldAlpha;
-			_filters = oldFilters;
-			_sharpness = oldSharpness;
-			_thickness = oldThickness;
-			_paddingTop = oldPaddingTop;
-			_paddingBottom = oldPaddingBottom;
-			_paddingLeft = oldPaddingLeft;
-			_paddingRight = oldPaddingRight;
-			_marginLeft = oldMarginLeft;
-			_marginRight = oldMarginRight;
+			_settings = new Dictionary();
+
+			ObjectUtils.assign(_settings, oldSettings);
+
+			oldSettings = resetSettings();
 		}
 
 
 
 		/**
-		 * Get horizontal alignment.
-		 * @return Horizontal alignment
-		 * @see Align
+		 * Get current settings.
+		 * @return Current settings
 		 */
-		public function get hAlign():String {
-			return _hAlign;
+		public function get settings():Dictionary {
+			return _settings;
 		}
 
 
 
-		/**
-		 * Set horizontal alignment.
-		 * @param value Horizontal alignment
-		 * @see Align
-		 */
-		public function set hAlign(value:String):void {
-			_hAlign = value;
-		}
-
-
-
-		/**
-		 * Get vertical alignment.
-		 * @return Vertical alignment
-		 * @see Align
-		 */
-		public function get vAlign():String {
-			return _vAlign;
-		}
-
-
-
-		/**
-		 * Set vertical alignment.
-		 * @param value Vertical alignment
-		 * @see Align
-		 */
-		public function set vAlign(value:String):void {
-			_vAlign = value;
-		}
-
-
-
-		/**
-		 * Get bold flag.
-		 * @return Bold flag
-		 */
-		public function get bold():Boolean {
-			return _bold;
-		}
-
-
-
-		/**
-		 * Set bold flag.
-		 * @param value Bold flag
-		 */
-		public function set bold(value:Boolean):void {
-			_bold = value;
-		}
-
-
-
-		/**
-		 * Get block indentation.
-		 * @return Block indentation
-		 */
-		public function get blockIndent():Number {
-			return _blockIndent;
-		}
-
-
-
-		/**
-		 * Set block indentation
-		 * @param value Block indentation
-		 */
-		public function set blockIndent(value:Number):void {
-			_blockIndent = value;
-		}
-
-
-
-		/**
-		 * Get bullet flag.
-		 * @return Bullet flag
-		 */
-		public function get bullet():Boolean {
-			return _bullet;
-		}
-
-
-
-		/**
-		 * Set bullet flag.
-		 * @param value Bullet flag
-		 */
-		public function set bullet(value:Boolean):void {
-			_bullet = value;
-		}
-
-
-
-		/**
-		 * Get color.
-		 * @return Color
-		 */
-		public function get color():uint {
-			return _color;
-		}
-
-
-
-		/**
-		 * Set color.
-		 * @param value Color
-		 */
-		public function set color(value:uint):void {
-			_color = value;
-		}
-
-
-
-		/**
-		 * Get font name.
-		 * @return Font name
-		 */
-		public function get font():String {
-			return _font;
-		}
-
-
-
-		/**
-		 * Set font name.
-		 * @param value Font name
-		 */
-		public function set font(value:String):void {
-			_font = value;
-		}
-
-
-
-		/**
-		 * Get indentation.
-		 * @return Indentation
-		 */
-		public function get indent():Number {
-			return _indent;
-		}
-
-
-
-		/**
-		 * Set indentation.
-		 * @param value Indentation
-		 */
-		public function set indent(value:Number):void {
-			_indent = value;
-		}
-
-
-
-		/**
-		 * Get italic flag.
-		 * @return Italic flag
-		 */
-		public function get italic():Boolean {
-			return _italic;
-		}
-
-
-
-		/**
-		 * Set italic flag.
-		 * @param value Italic flag
-		 */
-		public function set italic(value:Boolean):void {
-			_italic = value;
-		}
-
-
-
-		/**
-		 * Get kerning flag.
-		 * @return Kerning flag
-		 */
-		public function get kerning():Boolean {
-			return _kerning;
-		}
-
-
-
-		/**
-		 * Set kerning flag.
-		 * @param value Kerning flag
-		 */
-		public function set kerning(value:Boolean):void {
-			_kerning = value;
-		}
-
-
-
-		/**
-		 * Get leading.
-		 * @return Leading
-		 */
-		public function get leading():Number {
-			return _leading;
-		}
-
-
-
-		/**
-		 * Set leading.
-		 * @param value Leading
-		 */
-		public function set leading(value:Number):void {
-			_leading = value;
-		}
-
-
-
-		/**
-		 * Get letter spacing.
-		 * @return Letter spacing
-		 */
-		public function get letterSpacing():Number {
-			return _letterSpacing;
-		}
-
-
-
-		/**
-		 * Set letter spacing.
-		 * @param value Letter spacing
-		 */
-		public function set letterSpacing(value:Number):void {
-			_letterSpacing = value;
-		}
-
-
-
-		/**
-		 * Get font size.
-		 * @return Font size
-		 */
-		public function get size():Number {
-			return _size;
-		}
-
-
-
-		/**
-		 * Set font size.
-		 * @param value Font size
-		 */
-		public function set size(value:Number):void {
-			_size = value;
-		}
-
-
-
-		/**
-		 * Get underline flag.
-		 * @return Underline flag
-		 */
-		public function get underline():Boolean {
-			return _underline;
-		}
-
-
-
-		/**
-		 * Set underline flag.
-		 * @param value Underline flag
-		 */
-		public function set underline(value:Boolean):void {
-			_underline = value;
-		}
-
-
-
-		/**
-		 * Get URL.
-		 * @return URL
-		 */
-		public function get url():String {
-			return _url;
-		}
-
-
-
-		/**
-		 * Set URL.
-		 * @param value URL
-		 */
-		public function set url(value:String):void {
-			_url = value;
-		}
-
-
-
-		/**
-		 * Get alpha.
-		 * @return Set alpha
-		 */
-		public function get alpha():Number {
-			return _alpha;
-		}
-
-
-
-		/**
-		 * Set alpha.
-		 * @param value Set alpha
-		 */
-		public function set alpha(value:Number):void {
-			_alpha = value;
-		}
-
-
-
-		/**
-		 * Get filters.
-		 * @return Filters
-		 */
-		public function get filters():Array {
-			return _filters;
-		}
-
-
-
-		/**
-		 * Set filters.
-		 * @param value Filters
-		 */
-		public function set filters(value:Array):void {
-			_filters = value;
-		}
-
-
-
-		/**
-		 * Get sharpness.
-		 * @return Sharpness
-		 */
-		public function get sharpness():Number {
-			return _sharpness;
-		}
-
-
-
-		/**
-		 * Set sharpness.
-		 * @param value Sharpness
-		 */
-		public function set sharpness(value:Number):void {
-			_sharpness = value;
-		}
-
-
-
-		/**
-		 * Get thickness.
-		 * @return Thickness
-		 */
-		public function get thickness():Number {
-			return _thickness;
-		}
-
-
-
-		/**
-		 * Set thickness.
-		 * @param value Thickness
-		 */
-		public function set thickness(value:Number):void {
-			_thickness = value;
-		}
-
-
-
-		/**
-		 * Get top padding.
-		 * @return Top padding
-		 */
-		public function get paddingTop():Number {
-			return _paddingTop;
-		}
-
-
-
-		/**
-		 * Set top padding.
-		 * @param value Top padding
-		 */
-		public function set paddingTop(value:Number):void {
-			_paddingTop = value;
-		}
-
-
-
-		/**
-		 * Get bottom padding.
-		 * @return Bottom padding
-		 */
-		public function get paddingBottom():Number {
-			return _paddingBottom;
-		}
-
-
-
-		/**
-		 * Set bottom padding.
-		 * @param value Bottom padding
-		 */
-		public function set paddingBottom(value:Number):void {
-			_paddingBottom = value;
-		}
-
-
-
-		/**
-		 * Get left padding.
-		 * @return Left padding
-		 */
-		public function get paddingLeft():Number {
-			return _paddingLeft;
-		}
-
-
-
-		/**
-		 * Set left padding.
-		 * @param value Left padding
-		 */
-		public function set paddingLeft(value:Number):void {
-			_paddingLeft = value;
-		}
-
-
-
-		/**
-		 * Get right padding.
-		 * @return Right padding
-		 */
-		public function get paddingRight():Number {
-			return _paddingRight;
-		}
-
-
-
-		/**
-		 * Set right padding.
-		 * @param value Right padding
-		 */
-		public function set paddingRight(value:Number):void {
-			_paddingRight = value;
-		}
-
-
-
-		/**
-		 * Get left margin.
-		 * @return Left margin
-		 */
-		public function get marginLeft():Number {
-			return _marginLeft;
-		}
-
-
-
-		/**
-		 * Set left margin.
-		 * @param value
-		 */
-		public function set marginLeft(value:Number):void {
-			_marginLeft = value;
-		}
-
-
-
-		/**
-		 * Get right margin.
-		 * @return Right margin
-		 */
-		public function get marginRight():Number {
-			return _marginRight;
-		}
-
-
-
-		/**
-		 * Set right margin.
-		 * @param value Right margin
-		 */
-		public function set marginRight(value:Number):void {
-			_marginRight = value;
+		private function resetSettings():Dictionary {
+			var set:Dictionary = new Dictionary();
+
+			set["hAlign"] = Align.LEFT;
+			set["vAlign"] = Align.TOP;
+			set["bold"] = false;
+			set["blockIndent"] = 0;
+			set["bullet"] = false;
+			set["color"] = 0x000000;
+			set["font"] = null;
+			set["indent"] = 0;
+			set["italic"] = false;
+			set["kerning"] = false;
+			set["leading"] = 0;
+			set["letterSpacing"] = 0;
+			set["size"] = 10;
+			set["underline"] = false;
+			set["url"] = null;
+			set["alpha"] = 1;
+			set["filters"] = new Array();
+			set["sharpness"] = 0;
+			set["thickness"] = 0;
+			set["paddingTop"] = 0;
+			set["paddingBottom"] = 0;
+			set["paddingLeft"] = 0;
+			set["paddingRight"] = 0;
+			set["marginLeft"] = 0;
+			set["marginRight"] = 0;
+
+			return set;
 		}
 	}
 }

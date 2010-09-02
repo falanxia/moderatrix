@@ -121,6 +121,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public static function releaseAll():void {
+			// TODO: No asterisk
 			for each(var b:* in allWidgets) {
 				if(b is ButtonCore) {
 					ButtonCore(b).forceRelease();

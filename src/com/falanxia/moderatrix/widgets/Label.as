@@ -35,6 +35,7 @@ package com.falanxia.moderatrix.widgets {
 	import flash.events.*;
 	import flash.geom.*;
 	import flash.text.*;
+	import flash.utils.*;
 
 
 
@@ -52,7 +53,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
+		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null
+				) {
 
 			var c:Object = config == null ? new Object() : config;
 
@@ -95,8 +97,13 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null && _size != null) {
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
-				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
+				var skinSettings:Dictionary = _skin.settings;
+				var paddingLeft:Number = skinSettings["paddingLeft"];
+				var paddingTop:Number = skinSettings["paddingTop"];
+				var paddingRight:Number = skinSettings["paddingRight"];
+				var paddingBottom:Number = skinSettings["paddingBottom"];
+				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight,
+				                                   _size.height - paddingTop - paddingBottom);
 
 				if(_size.width != 0) _textField.width = rect.width;
 
@@ -106,10 +113,10 @@ package com.falanxia.moderatrix.widgets {
 
 					// non-top alignment
 					if(_vAlign == Align.CENTER) {
-						_textField.y = Math.round((rect.height - _textField.textHeight) / 2) + _skin.paddingTop;
+						_textField.y = Math.round((rect.height - _textField.textHeight) / 2) + skinSettings.paddingTop;
 					}
 					if(_vAlign == Align.BOTTOM) {
-						_textField.y = rect.height - _textField.textHeight + _skin.paddingTop;
+						_textField.y = rect.height - _textField.textHeight + skinSettings.paddingTop;
 					}
 				}
 
@@ -171,34 +178,36 @@ package com.falanxia.moderatrix.widgets {
 			if(_size != null) {
 				_skin = skin;
 
-				_vAlign = _skin.vAlign;
+				var settings:Dictionary = _skin.settings;
+
+				_vAlign = settings["vAlign"];
 
 				_textFormat = new TextFormat();
-				_textFormat.align = _skin.hAlign;
-				_textFormat.blockIndent = _skin.blockIndent;
-				_textFormat.bold = _skin.bold;
-				_textFormat.bullet = _skin.bullet;
-				_textFormat.color = _skin.color;
-				_textFormat.font = _skin.font;
-				_textFormat.indent = _skin.indent;
-				_textFormat.italic = _skin.italic;
-				_textFormat.kerning = _skin.kerning;
-				_textFormat.leading = _skin.leading;
-				_textFormat.leftMargin = _skin.marginLeft;
-				_textFormat.letterSpacing = _skin.letterSpacing;
-				_textFormat.rightMargin = _skin.marginRight;
-				_textFormat.size = _skin.size;
-				_textFormat.underline = _skin.underline;
-				_textFormat.url = _skin.url;
+				_textFormat.align = settings["hAlign"];
+				_textFormat.blockIndent = settings["blockIndent"];
+				_textFormat.bold = settings["bold"];
+				_textFormat.bullet = settings["bullet"];
+				_textFormat.color = settings["color"];
+				_textFormat.font = settings["font"];
+				_textFormat.indent = settings["indent"];
+				_textFormat.italic = settings["italic"];
+				_textFormat.kerning = settings["kerning"];
+				_textFormat.leading = settings["leading"];
+				_textFormat.leftMargin = settings["marginLeft"];
+				_textFormat.letterSpacing = settings["letterSpacing"];
+				_textFormat.rightMargin = settings["marginRight"];
+				_textFormat.size = settings["size"];
+				_textFormat.underline = settings["underline"];
+				_textFormat.url = settings["url"];
 
 				_textField.setTextFormat(_textFormat);
 				_textField.defaultTextFormat = _textFormat;
-				_textField.position = new Point(_skin.paddingLeft, _skin.paddingTop);
-				_textField.filters = _skin.filters;
-				_textField.sharpness = _skin.sharpness;
-				_textField.thickness = _skin.thickness;
-				_textField.alpha = _skin.alpha;
-				_textField.embedFonts = (_skin.font != "");
+				_textField.position = new Point(settings["paddingLeft"], settings["paddingTop"]);
+				_textField.filters = settings["filters"];
+				_textField.sharpness = settings["sharpness"];
+				_textField.thickness = settings["thickness"];
+				_textField.alpha = settings["alpha"];
+				_textField.embedFonts = (settings["font"] != "");
 
 				if(_size.width == 0) _size.width = _skin.assetSize.width;
 				if(_size.height == 0) _size.height = _skin.assetSize.height;
@@ -246,25 +255,29 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function get width():Number {
-			return (_isWidthOverriden) ? _textField.width : _textField.textWidth + _skin.paddingLeft + _skin.paddingRight;
+			var settings:Dictionary = _skin.settings;
+
+			return (_isWidthOverriden) ? _textField.width : _textField.textWidth + settings["paddingLeft"] + settings["paddingRight"];
 		}
 
 
 
 		override public function get height():Number {
-			return (_isHeightOverriden) ? _textField.height : _textField.textHeight + _skin.paddingTop + _skin.paddingBottom;
+			var settins:Dictionary = _skin.settings;
+
+			return (_isHeightOverriden) ? _textField.height : _textField.textHeight + settins["paddingTop"] + settins["paddingBottom"];
 		}
 
 
 
 		override public function get x():Number {
-			return super.x - _skin.paddingLeft;
+			return super.x - _skin.settings["paddingLeft"];
 		}
 
 
 
 		override public function get y():Number {
-			return super.y - _skin.paddingTop;
+			return super.y - _skin.settings["paddingTop"];
 		}
 
 

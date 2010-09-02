@@ -63,7 +63,8 @@ package com.falanxia.moderatrix.widgets {
 		 * @param debugLevel Debug level ({@see DebugLevel})
 		 * @throws Error if no skin defined
 		 */
-		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
+		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
+		                                 debugLevel:String = null) {
 			var conf:Object = (config == null) ? new Object() : config;
 			var dlev:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
@@ -240,9 +241,9 @@ package com.falanxia.moderatrix.widgets {
 		public function set skin(value:GlyphLabelButtonSkin):void {
 			_skin = value;
 
-			_skin.labelOutSkin.hAlign = Align.LEFT;
-			_skin.labelHoverSkin.hAlign = Align.LEFT;
-			_skin.labelFocusSkin.hAlign = Align.LEFT;
+			_skin.labelOutSkin.settings["hAlign"] = Align.LEFT;
+			_skin.labelHoverSkin.settings["hAlign"] = Align.LEFT;
+			_skin.labelFocusSkin.settings["hAlign"] = Align.LEFT;
 
 			_button.skin = _skin.buttonSkin;
 			_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;

@@ -138,7 +138,7 @@ package com.falanxia.moderatrix.interfaces {
 
 		/**
 		 * Set size.
-		 * @param rect Size
+		 * @param value Size
 		 */
 		function set size(value:Rectangle):void;
 

@@ -150,7 +150,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-		protected function getSkinSize(source:MovieClip, frame:*):void {
+		protected function getSkinSize(source:MovieClip, frame:Object):void {
 			// it's needed to duplicate this MovieClip as there was some weird bug:
 			// when used source.gotoAndStop(frame) on one of next lines,
 			// all future getChildByName() on this source failed.
