@@ -55,7 +55,7 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			super(skin, c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			super(skin, c, parent, (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel);
 
 			// TODO: Maybe needed in other classes
 			if(config.width != undefined) this.width = config.width;

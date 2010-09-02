@@ -54,13 +54,13 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_bar = new Bar(skin.barSkin, {}, this, dl);
 			_label = new Label(skin.labelSkin, {}, "", this, dl);
 
-			_bar.debugColor = SkinManager.debugColor;
-			_label.debugColor = SkinManager.debugColor;
+			_bar.debugColor = SkinManager.defaultDebugColor;
+			_label.debugColor = SkinManager.defaultDebugColor;
 			_label.isInput = true;
 
 			this.isMorphHeightEnabled = true;

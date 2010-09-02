@@ -56,13 +56,13 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_buttonOff = new StaticButton(skin.buttonOffSkin, {}, this, dl);
 			_buttonOn = new StaticButton(skin.buttonOnSkin, {visible:false}, this, dl);
 
-			_buttonOff.debugColor = SkinManager.debugColor;
-			_buttonOn.debugColor = SkinManager.debugColor;
+			_buttonOff.debugColor = SkinManager.defaultDebugColor;
+			_buttonOn.debugColor = SkinManager.defaultDebugColor;
 
 			this.buttonMode = true;
 			this.useHandCursor = true;

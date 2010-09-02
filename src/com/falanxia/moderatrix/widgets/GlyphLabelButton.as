@@ -65,7 +65,7 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var conf:Object = (config == null) ? new Object() : config;
-			var dlev:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
+			var dlev:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dlev);
 
@@ -81,13 +81,13 @@ package com.falanxia.moderatrix.widgets {
 			_labelHover.textField.wordWrap = false;
 			_labelFocus.textField.wordWrap = false;
 
-			_button.debugColor = SkinManager.debugColor;
-			_glyphOut.debugColor = SkinManager.debugColor;
-			_glyphHover.debugColor = SkinManager.debugColor;
-			_glyphFocus.debugColor = SkinManager.debugColor;
-			_labelOut.debugColor = SkinManager.debugColor;
-			_labelHover.debugColor = SkinManager.debugColor;
-			_labelFocus.debugColor = SkinManager.debugColor;
+			_button.debugColor = SkinManager.defaultDebugColor;
+			_glyphOut.debugColor = SkinManager.defaultDebugColor;
+			_glyphHover.debugColor = SkinManager.defaultDebugColor;
+			_glyphFocus.debugColor = SkinManager.defaultDebugColor;
+			_labelOut.debugColor = SkinManager.defaultDebugColor;
+			_labelHover.debugColor = SkinManager.defaultDebugColor;
+			_labelFocus.debugColor = SkinManager.defaultDebugColor;
 
 			this.skin = skin;
 			this.text = text;

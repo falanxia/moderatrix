@@ -73,7 +73,7 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		public function Widget(config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null):void {
 			_config = (config == null) ? new Object() : config;
-			_debugColor = SkinManager.debugColor;
+			_debugColor = SkinManager.defaultDebugColor;
 
 			super(_config);
 

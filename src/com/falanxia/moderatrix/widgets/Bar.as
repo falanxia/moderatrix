@@ -59,7 +59,7 @@ package com.falanxia.moderatrix.widgets {
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {
-				super(c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+				super(c, parent, (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel);
 			}
 			else {
 				throw new Error("No skin defined");

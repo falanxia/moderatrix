@@ -54,7 +54,7 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			super(skin, c, parent, (debugLevel == null) ? SkinManager.debugLevel : debugLevel);
+			super(skin, c, parent, (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel);
 		}
 
 

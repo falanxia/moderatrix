@@ -47,8 +47,8 @@ package com.falanxia.moderatrix.globals {
 	public class SkinManager {
 
 
-		private static var _debugLevel:String = DebugLevel.NONE;
-		private static var _debugColor:RGBA = new RGBA(255, 0, 0, 0.25 * 255);
+		private static var _defaultDebugLevel:String = DebugLevel.NONE;
+		private static var _defaultDebugColor:RGBA = new RGBA(255, 0, 0, 0.25 * 255);
 
 
 
@@ -127,26 +127,26 @@ package com.falanxia.moderatrix.globals {
 
 
 
-		public static function get debugLevel():String {
-			return _debugLevel;
+		public static function get defaultDebugLevel():String {
+			return _defaultDebugLevel;
 		}
 
 
 
-		public static function set debugLevel(value:String):void {
-			_debugLevel = value;
+		public static function set defaultDebugLevel(value:String):void {
+			_defaultDebugLevel = value;
 		}
 
 
 
-		public static function get debugColor():RGBA {
-			return _debugColor;
+		public static function get defaultDebugColor():RGBA {
+			return _defaultDebugColor;
 		}
 
 
 
-		public static function set debugColor(value:RGBA):void {
-			_debugColor = value;
+		public static function set defaultDebugColor(value:RGBA):void {
+			_defaultDebugColor = value;
 		}
 
 

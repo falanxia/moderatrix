@@ -60,16 +60,16 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			var dl:String = (debugLevel == null) ? SkinManager.debugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
 			_glyphOut = new Image(skin.glyphSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
 			_glyphHover = new Image(skin.glyphSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
 			_glyphFocus = new Image(skin.glyphSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
-			_button.debugColor = SkinManager.debugColor;
-			_glyphOut.debugColor = SkinManager.debugColor;
-			_glyphHover.debugColor = SkinManager.debugColor;
-			_glyphFocus.debugColor = SkinManager.debugColor;
+			_button.debugColor = SkinManager.defaultDebugColor;
+			_glyphOut.debugColor = SkinManager.defaultDebugColor;
+			_glyphHover.debugColor = SkinManager.defaultDebugColor;
+			_glyphFocus.debugColor = SkinManager.defaultDebugColor;
 
 			this.skin = skin;
 			this.buttonMode = true;
