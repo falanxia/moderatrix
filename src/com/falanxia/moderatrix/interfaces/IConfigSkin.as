@@ -25,13 +25,31 @@
 package com.falanxia.moderatrix.interfaces {
 
 
+
+	/**
+	 * Config skin interface.
+	 *
+	 * Skin implementing this interface is able to work with config settings.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public interface IConfigSkin {
 
 
+
+		/**
+		 * Parse config.
+		 * @param source Config Object
+		 */
 		function parseConfig(source:Object):void;
 
 
 
+		/**
+		 * Revert config to the last known state.
+		 */
 		function revertConfig():void;
 
 

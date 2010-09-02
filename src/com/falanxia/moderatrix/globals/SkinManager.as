@@ -201,12 +201,7 @@ package com.falanxia.moderatrix.globals {
 				}
 			}
 
-			if(isSupported) {
-				return skin;
-			}
-			else {
-				return null;
-			}
+			return isSupported ? skin : null;
 		}
 
 

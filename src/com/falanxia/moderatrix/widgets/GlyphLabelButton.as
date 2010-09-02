@@ -26,6 +26,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.events.*;
 	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.moderatrix.skin.*;
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.enums.*;
@@ -37,7 +38,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	public class GlyphLabelButton extends MorphSprite {
+	public class GlyphLabelButton extends MorphSprite implements IWidget {
 
 
 		protected var _skin:GlyphLabelButtonSkin;

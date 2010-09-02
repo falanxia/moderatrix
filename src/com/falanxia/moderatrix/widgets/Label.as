@@ -25,9 +25,10 @@
 package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.moderatrix.skin.*;
 	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.enums.Align;
+	import com.falanxia.utilitaris.enums.*;
 	import com.falanxia.utilitaris.utils.*;
 
 	import flash.display.*;
@@ -37,7 +38,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	public class Label extends Widget {
+	public class Label extends Widget implements IWidget {
 
 
 		protected var _skin:LabelSkin;

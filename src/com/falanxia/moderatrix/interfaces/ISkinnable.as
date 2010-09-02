@@ -27,25 +27,54 @@ package com.falanxia.moderatrix.interfaces {
 
 
 
+	/**
+	 * Skinnable interface.
+	 *
+	 * All widget skins must implement this interface.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public interface ISkinnable {
 
 
+		/**
+		 * Get skin ID.
+		 * @return Skin ID
+		 */
 		function get id():String;
 
 
 
+		/**
+		 * Get skin type.
+		 * @return Skin type
+		 */
 		function get type():String;
 
 
 
+		/**
+		 * Get asset size.
+		 * @return Asset size
+		 */
 		function get assetSize():Rectangle;
 
 
 
+		/**
+		 * Get arbitary data.
+		 * @return Arbitary data
+		 */
 		function get data():Object;
 
 
 
+		/**
+		 * Set arbitary data.
+		 * @param value Arbitary data
+		 */
 		function set data(value:Object):void;
 
 

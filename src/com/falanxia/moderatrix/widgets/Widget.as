@@ -41,7 +41,7 @@ package com.falanxia.moderatrix.widgets {
 	 * TODO: Width & height not applied in the constructor
 	 * TODO: Check for children and remove them on destroy()
 	 */
-	public class Widget extends MorphSprite {
+	public class Widget extends MorphSprite implements IWidget {
 
 
 		public static const DRAW:String = "draw";

@@ -27,9 +27,22 @@ package com.falanxia.moderatrix.interfaces {
 
 
 
+	/**
+	 * Asset skin interface.
+	 *
+	 * Skin implementing this interface is able to work with image assets.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public interface IAssetSkin {
 
 
+		/**
+		 * Get assets from atlas.
+		 * @param source Source atlas BitmapData
+		 */
 		function getAssetsFromAtlas(source:BitmapData):void;
 
 

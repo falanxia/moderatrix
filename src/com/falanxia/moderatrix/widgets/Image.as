@@ -25,6 +25,7 @@
 package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.globals.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.moderatrix.skin.*;
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.utils.*;
@@ -34,7 +35,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-	public class Image extends Widget {
+	public class Image extends Widget implements IWidget {
 
 
 		protected var _skin:ImageSkin;

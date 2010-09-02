@@ -27,58 +27,136 @@ package com.falanxia.moderatrix.interfaces {
 
 
 
+	/**
+	 * Widget interface.
+	 *
+	 * All widgets need to implement this interface.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public interface IWidget {
 
 
+		/**
+		 * Draw the widget.
+		 */
 		function draw():void;
 
 
 
+		/**
+		 * Set debug level.
+		 * @param value Debug level
+		 * @see DebugLevel
+		 */
 		function set debugLevel(value:String):void;
 
 
 
+		/**
+		 * Get current debug level.
+		 * @return Current debug level
+		 * @see DebugLevel
+		 */
 		function get debugLevel():String;
 
 
 
+		/**
+		 * Get X position.
+		 * @return X position
+		 */
 		function get x():Number;
 
 
 
+		/**
+		 * Set X position.
+		 * @param value X position
+		 */
 		function set x(value:Number):void;
 
 
 
+		/**
+		 * Get Y position.
+		 * @return Y position
+		 */
 		function get y():Number;
 
 
 
+		/**
+		 * Set Y position.
+		 * @param value Y position
+		 */
 		function set y(value:Number):void;
 
 
 
+		/**
+		 * Get width.
+		 * @return Width
+		 */
 		function get width():Number;
 
 
 
+		/**
+		 * Set width.
+		 * @param value Width
+		 */
 		function set width(value:Number):void;
 
 
 
+		/**
+		 * Get height.
+		 * @return Height
+		 */
 		function get height():Number;
 
 
 
+		/**
+		 * Set height.
+		 * @param value Height
+		 */
 		function set height(value:Number):void;
 
 
 
+		/**
+		 * Get size.
+		 * @return Size
+		 */
 		function get size():Rectangle;
 
 
 
-		function set size(rect:Rectangle):void;
+		/**
+		 * Set size.
+		 * @param rect Size
+		 */
+		function set size(value:Rectangle):void;
+
+
+
+		/**
+		 * Get position.
+		 * @return Position
+		 */
+		function get position():Point;
+
+
+
+		/**
+		 * Set position.
+		 * @param value Position
+		 */
+		function set position(value:Point):void;
 
 
 	}
