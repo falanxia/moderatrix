@@ -41,10 +41,24 @@ package com.falanxia.moderatrix.interfaces {
 
 		/**
 		 * Get assets from atlas.
-		 * @param source Source atlas BitmapData
+		 * @param value Source atlas BitmapData
 		 */
-		function getAssetsFromAtlas(source:BitmapData):void;
+		function getAssetsFromAtlas(value:BitmapData):void;
 
 
+
+		/**
+		 * Set asset source BitmapData
+		 * @param value Asset source BitmapData
+		 */
+		function set assetSource(value:BitmapData):void;
+
+
+
+		/**
+		 * Get asset source BitmapData
+		 * @return Asset source BitmapData
+		 */
+		function get assetSource():BitmapData;
 	}
 }

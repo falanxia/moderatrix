@@ -40,6 +40,21 @@ package com.falanxia.moderatrix.interfaces {
 
 
 		/**
+		 * Parse config.
+		 * @param value Config Object
+		 */
+		function parseConfig(value:Object):void;
+
+
+
+		/**
+		 * Revert config to the last known state.
+		 */
+		function revertConfig():void;
+
+
+
+		/**
 		 * Get skin ID.
 		 * @return Skin ID
 		 */
@@ -65,19 +80,9 @@ package com.falanxia.moderatrix.interfaces {
 
 
 		/**
-		 * Get arbitary data.
-		 * @return Arbitary data
+		 * Get config Object.
+		 * @return Config Object
 		 */
-		function get data():Object;
-
-
-
-		/**
-		 * Set arbitary data.
-		 * @param value Arbitary data
-		 */
-		function set data(value:Object):void;
-
-
+		function get config():Object;
 	}
 }

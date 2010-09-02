@@ -39,10 +39,10 @@ package com.falanxia.moderatrix.skin {
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class AtlasSkin extends Skin implements ISkin {
+	public class AtlasSkin extends Skin implements ISkin, IAssetSkin {
 
 
-		protected var _imageBD:BitmapData;
+		protected var _assetSource:BitmapData;
 
 
 
@@ -54,7 +54,7 @@ package com.falanxia.moderatrix.skin {
 		public function AtlasSkin(id:String = null) {
 			super(SkinType.IMAGE, id);
 
-			_imageBD = new BitmapData(1, 1, true, 0x00000000);
+			_assetSource = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -65,45 +65,65 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_imageBD.dispose();
+			_assetSource.dispose();
 
-			_imageBD = null;
+			_assetSource = null;
 		}
 
 
 
+		/**
+		 * Get assets from atlas.
+		 * @param source Source atlas BitmapData
+		 */
 		public function getAssetsFromAtlas(source:BitmapData):void {
 			_assetSize.width = source.width;
 			_assetSize.height = source.height;
 
-			_imageBD = source;
+			_assetSource = source;
 		}
 
 
 
-		override public function parseConfig(source:Object):void {
-			super.parseConfig(source);
+		/**
+		 * Parse config.
+		 * @param value Config Object
+		 */
+		override public function parseConfig(value:Object):void {
+			super.parseConfig(value);
 
-			if(source.spriteWidth != undefined) _assetSize.width = source.spriteWidth;
+			if(value.spriteWidth != undefined) _assetSize.width = value.spriteWidth;
 		}
 
 
 
+		/**
+		 * Revert config to the last known state.
+		 */
 		override public function revertConfig():void {
 			super.revertConfig();
 		}
 
 
 
-		public function set imageBD(source:BitmapData):void {
-			checkSize(source);
-			_imageBD = source;
+		/**
+		 * Set asset source BitmapData
+		 * @param value Asset source BitmapData
+		 */
+		public function set assetSource(value:BitmapData):void {
+			checkSize(value);
+
+			_assetSource = value;
 		}
 
 
 
-		public function get imageBD():BitmapData {
-			return _imageBD;
+		/**
+		 * Get asset source BitmapData
+		 * @return Asset source BitmapData
+		 */
+		public function get assetSource():BitmapData {
+			return _assetSource;
 		}
 	}
 }

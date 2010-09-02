@@ -101,7 +101,7 @@ package com.falanxia.moderatrix.widgets {
 				var w:uint = assetSize.width;
 				var rect:Rectangle = new Rectangle(_phase * w, 0, w, assetSize.height);
 
-				imageBM.bitmapData.copyPixels(_skin.imageBD, rect, new Point(0, 0));
+				imageBM.bitmapData.copyPixels(_skin.assetSource, rect, new Point(0, 0));
 
 				if(_skin != null) {
 					if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
@@ -196,7 +196,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function get length():uint {
-			return (_skin.imageBD == null) ? 0 : _skin.imageBD.width / _skin.assetSize.width;
+			return (_skin.assetSource == null) ? 0 : _skin.assetSource.width / _skin.assetSize.width;
 		}
 
 

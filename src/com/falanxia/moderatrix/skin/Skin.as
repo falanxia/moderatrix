@@ -46,7 +46,7 @@ package com.falanxia.moderatrix.skin {
 		protected var _id:String;
 		protected var _type:String;
 		protected var _assetSize:Rectangle = new Rectangle(0, 0, 0, 0);
-		protected var _data:Object = new Object();
+		protected var _config:Object = new Object();
 
 		private var prevConfig:Object;
 
@@ -77,7 +77,7 @@ package com.falanxia.moderatrix.skin {
 			_id = null;
 			_type = null;
 			_assetSize = null;
-			_data = null;
+			_config = null;
 
 			prevConfig = null;
 		}
@@ -90,10 +90,10 @@ package com.falanxia.moderatrix.skin {
 		 * @param source Config Object
 		 */
 		public function parseConfig(source:Object):void {
-			prevConfig = _data;
+			prevConfig = _config;
 
 			if(source._data != undefined) {
-				_data = source._data;
+				_config = source._data;
 			}
 		}
 
@@ -104,7 +104,7 @@ package com.falanxia.moderatrix.skin {
 		 * Placeholder to be overridden via child skins.
 		 */
 		public function revertConfig():void {
-			_data = prevConfig;
+			_config = prevConfig;
 		}
 
 
@@ -141,21 +141,11 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Get arbitary data.
-		 * @return Arbitary data
+		 * Get config Object.
+		 * @return Config Object
 		 */
-		public function get data():Object {
-			return _data;
-		}
-
-
-
-		/**
-		 * Set arbitary data.
-		 * @param value Arbitary data
-		 */
-		public function set data(value:Object):void {
-			_data = value;
+		public function get config():Object {
+			return _config;
 		}
 
 
