@@ -25,11 +25,25 @@
 package com.falanxia.moderatrix.enums {
 
 
+	/**
+	 * Mouse status.
+	 *
+	 * Select one of three modes of simulated mouse state.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class MouseStatus {
 
 
+		/** Mouse out state */
 		public static const OUT:String = "out";
+
+		/** Mouse hover state */
 		public static const HOVER:String = "hover";
+
+		/** Mouse focus state */
 		public static const FOCUS:String = "focus";
 
 

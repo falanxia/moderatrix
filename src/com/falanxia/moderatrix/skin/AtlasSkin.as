@@ -24,12 +24,13 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 
 	import flash.display.*;
 
 
 
-	public class AtlasSkin extends Skin {
+	public class AtlasSkin extends Skin implements ISkinnable {
 
 
 		protected var _imageBD:BitmapData;

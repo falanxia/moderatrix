@@ -25,11 +25,25 @@
 package com.falanxia.moderatrix.enums {
 
 
+	/**
+	 * Debug level enums.
+	 *
+	 * Select one of three modes of the debug stroke.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class DebugLevel {
 
 
+		/** No debug stroke */
 		public static const NONE:String = "none";
+
+		/** Debug stroke on hover */
 		public static const HOVER:String = "hover";
+
+		/** Debug stroke always visible */
 		public static const ALWAYS:String = "always";
 
 

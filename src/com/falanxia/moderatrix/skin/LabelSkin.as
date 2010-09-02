@@ -24,6 +24,7 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.utilitaris.enums.*;
 	import com.falanxia.utilitaris.helpers.*;
 
@@ -31,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class LabelSkin extends Skin {
+	public class LabelSkin extends Skin implements ISkinnable {
 
 
 		protected var _hAlign:String;

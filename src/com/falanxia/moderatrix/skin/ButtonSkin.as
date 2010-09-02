@@ -24,6 +24,7 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.utilitaris.utils.*;
 
 	import flash.display.*;
@@ -31,7 +32,7 @@ package com.falanxia.moderatrix.skin {
 
 
 
-	public class ButtonSkin extends Skin {
+	public class ButtonSkin extends Skin implements ISkinnable {
 
 
 		protected var _hoverInDuration:Number;

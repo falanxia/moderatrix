@@ -24,10 +24,11 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 
 
 
-	public class InputBarSkin extends Skin {
+	public class InputBarSkin extends Skin implements ISkinnable {
 
 
 		protected var _barSkin:BarSkin;

@@ -24,10 +24,11 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 
 
 
-	public class GlyphButtonSkin extends Skin {
+	public class GlyphButtonSkin extends Skin implements ISkinnable {
 
 
 		protected var _buttonSkin:ButtonSkin;

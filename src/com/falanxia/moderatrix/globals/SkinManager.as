@@ -26,6 +26,7 @@
 package com.falanxia.moderatrix.globals {
 	import com.falanxia.emitor.*;
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.moderatrix.skin.*;
 	import com.falanxia.utilitaris.helpers.*;
 	import com.falanxia.utilitaris.types.*;
@@ -34,6 +35,15 @@ package com.falanxia.moderatrix.globals {
 
 
 
+	/**
+	 * Skin manager.
+	 *
+	 * Skin manager manages all widget skins used in the loaded skin.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class SkinManager {
 
 
@@ -42,13 +52,18 @@ package com.falanxia.moderatrix.globals {
 
 
 
-		public static function assetToSkin(asset:Asset):* {
+		/**
+		 * Convert asset data to a skin.
+		 * @param asset Asset data Object
+		 * @return Skin
+		 */
+		public static function assetToSkin(asset:Asset):ISkinnable {
 			if(asset.config.widget == null) {
 				throw new Error("Asset is null");
 			}
 
 			else {
-				var skin:*;
+				var skin:ISkinnable;
 				var isSupported:Boolean = true;
 				var config:Object = asset.config.widget;
 

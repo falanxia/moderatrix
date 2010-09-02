@@ -24,10 +24,11 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 
 
 
-	public class CheckButtonSkin extends Skin {
+	public class CheckButtonSkin extends Skin implements ISkinnable {
 
 
 		protected var _buttonOffSkin:ButtonSkin;

@@ -24,11 +24,12 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
+	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.utilitaris.enums.*;
 
 
 
-	public class ContainerSkin extends Skin {
+	public class ContainerSkin extends Skin implements ISkinnable {
 
 
 		protected var _hAlign:String;

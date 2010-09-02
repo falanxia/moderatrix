@@ -25,20 +25,52 @@
 package com.falanxia.moderatrix.enums {
 
 
+	/**
+	 * Skin types.
+	 *
+	 * All widgets need skins. Here's the list of skins, and is somewhat a list of all currently supported widgets.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class SkinType {
 
 
+		/** Container skin */
 		public static const CONTAINER:String = "container";
+
+		/** Bar skin */
 		public static const BAR:String = "bar";
+
+		/** Image skin */
 		public static const IMAGE:String = "image";
+
+		/** Atlas skin */
 		public static const ATLAS:String = "atlas";
+
+		/** Glyphs skin */
 		public static const GLYPHS:String = "glyphs";
+
+		/** Button skin */
 		public static const BUTTON:String = "button";
+
+		/** Label skin */
 		public static const LABEL:String = "label";
+
+		/** Label button skin */
 		public static const LABEL_BUTTON:String = "labelButton";
+
+		/** Glyph button skin */
 		public static const GLYPH_BUTTON:String = "glyphButton";
+
+		/** Glyph label button skin */
 		public static const GLYPH_LABEL_BUTTON:String = "glyphLabelButton";
+
+		/** Check button skin */
 		public static const CHECK_BUTTON:String = "checkButton";
+
+		/** Input bar skin */
 		public static const INPUT_BAR:String = "inputBar";
 
 
