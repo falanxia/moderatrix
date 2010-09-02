@@ -70,126 +70,47 @@ package com.falanxia.moderatrix.globals {
 				try {
 					switch(config.type) {
 						case SkinType.CONTAINER:
-							skin = new ContainerSkin();
-
-							var containerSkin:ContainerSkin = ContainerSkin(skin);
-
-							containerSkin.parseConfig(config);
-
+							skin = createContainerSkin(config);
 							break;
 
 						case SkinType.BAR:
-							skin = new BarSkin();
-
-							var barSkin:BarSkin = BarSkin(skin);
-							var barSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
-
-							barSkin.getAssetsFromAtlas(barSkinBD);
-							barSkin.parseConfig(config);
-
+							skin = createBarSkin(config, asset);
 							break;
 
 						case SkinType.IMAGE:
-							skin = new ImageSkin();
-
-							var imageSkin:ImageSkin = ImageSkin(skin);
-							var imageSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
-
-							imageSkin.getAssetsFromAtlas(imageSkinBD);
-							imageSkin.parseConfig(config);
-
+							skin = createImageSkin(config, asset);
 							break;
 
 						case SkinType.ATLAS:
-							skin = new AtlasSkin();
-
-							var atlasSkin:AtlasSkin = AtlasSkin(skin);
-							var atlasSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
-
-							atlasSkin.getAssetsFromAtlas(atlasSkinBD);
-							atlasSkin.parseConfig(config);
-
+							skin = createAtlasSkin(config, asset);
 							break;
 
 						case SkinType.BUTTON:
-							skin = new ButtonSkin();
-
-							var buttonSkin:ButtonSkin = ButtonSkin(skin);
-							var buttonSkinBD:BitmapData = asset.getChunkByURL(config.image).bitmap.bitmapData;
-
-							buttonSkin.getAssetsFromAtlas(buttonSkinBD);
-							buttonSkin.parseConfig(config);
-
+							skin = createButtonSkin(config, asset);
 							break;
 
 						case SkinType.LABEL:
-							skin = new LabelSkin();
-
-							var labelSkin:LabelSkin = LabelSkin(skin);
-
-							labelSkin.parseConfig(config);
-
+							skin = createLabelSkin(config);
 							break;
 
 						case SkinType.LABEL_BUTTON:
-							skin = new LabelButtonSkin();
-
-							var labelButtonSkin:LabelButtonSkin = LabelButtonSkin(skin);
-							var labelButtonSkinBD:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
-
-							labelButtonSkin.buttonSkin.getAssetsFromAtlas(labelButtonSkinBD);
-							labelButtonSkin.parseConfig(config);
-
+							skin = createLabelButtonSkin(config, asset);
 							break;
 
 						case SkinType.GLYPH_BUTTON:
-							skin = new GlyphButtonSkin();
-
-							var glyphButtonSkin:GlyphButtonSkin = GlyphButtonSkin(skin);
-							var glyphButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
-							var glyphButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
-
-							glyphButtonSkin.buttonSkin.getAssetsFromAtlas(glyphButtonSkinBD1);
-							glyphButtonSkin.glyphSkin.getAssetsFromAtlas(glyphButtonSkinBD2);
-							glyphButtonSkin.parseConfig(config);
-
+							skin = createGlyphButtonSkin(config, asset);
 							break;
 
 						case SkinType.GLYPH_LABEL_BUTTON:
-							skin = new GlyphLabelButtonSkin();
-
-							var glyphLabelButtonSkin:GlyphLabelButtonSkin = GlyphLabelButtonSkin(skin);
-							var glyphLabelButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
-							var glyphLabelButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
-
-							glyphLabelButtonSkin.buttonSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD1);
-							glyphLabelButtonSkin.glyphSkin.getAssetsFromAtlas(glyphLabelButtonSkinBD2);
-							glyphLabelButtonSkin.parseConfig(config);
-
+							skin = createGlyphLabelButtonSkin(config, asset);
 							break;
 
 						case SkinType.CHECK_BUTTON:
-							skin = new CheckButtonSkin();
-
-							var checkButtonSkin:CheckButtonSkin = CheckButtonSkin(skin);
-							var checkButtonSkinBD1:BitmapData = asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData;
-							var checkButtonSkinBD2:BitmapData = asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData;
-
-							checkButtonSkin.buttonOffSkin.getAssetsFromAtlas(checkButtonSkinBD1);
-							checkButtonSkin.buttonOnSkin.getAssetsFromAtlas(checkButtonSkinBD2);
-							checkButtonSkin.parseConfig(config);
-
+							skin = createCheckButtonSkin(config, asset);
 							break;
 
 						case SkinType.INPUT_BAR:
-							skin = new InputBarSkin();
-
-							var inputBarSkin:InputBarSkin = InputBarSkin(skin);
-							var inputBarSkinBD:BitmapData = asset.getChunkByURL(config.bar.image).bitmap.bitmapData;
-
-							inputBarSkin.barSkin.getAssetsFromAtlas(inputBarSkinBD);
-							inputBarSkin.parseConfig(config);
-
+							skin = createInputBarSkin(config, asset);
 							break;
 
 						default:
@@ -226,6 +147,131 @@ package com.falanxia.moderatrix.globals {
 
 		public static function set debugColor(value:RGBA):void {
 			_debugColor = value;
+		}
+
+
+
+		private static function createContainerSkin(config:Object):ISkinnable {
+			var skin:ContainerSkin = new ContainerSkin();
+
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createBarSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:BarSkin = new BarSkin();
+
+			skin.getAssetsFromAtlas(asset.getChunkByURL(config.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createImageSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:ImageSkin = new ImageSkin();
+
+			skin.getAssetsFromAtlas(asset.getChunkByURL(config.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createAtlasSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:AtlasSkin = new AtlasSkin();
+
+			skin.getAssetsFromAtlas(asset.getChunkByURL(config.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createButtonSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:ButtonSkin = new ButtonSkin();
+
+			skin.getAssetsFromAtlas(asset.getChunkByURL(config.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createLabelSkin(config:Object):ISkinnable {
+			var skin:LabelSkin = new LabelSkin();
+
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createLabelButtonSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:LabelButtonSkin = new LabelButtonSkin();
+
+			skin.buttonSkin.getAssetsFromAtlas(asset.getChunkByURL(config.button.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createGlyphButtonSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:GlyphButtonSkin = new GlyphButtonSkin();
+
+			var glyphButtonSkinBD1:BitmapData = asset.getChunkByURL(config.button.image).bitmap.bitmapData;
+			var glyphButtonSkinBD2:BitmapData = asset.getChunkByURL(config.glyph.image).bitmap.bitmapData;
+
+			skin.buttonSkin.getAssetsFromAtlas(glyphButtonSkinBD1);
+			skin.glyphSkin.getAssetsFromAtlas(glyphButtonSkinBD2);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createGlyphLabelButtonSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:GlyphLabelButtonSkin = new GlyphLabelButtonSkin();
+
+			skin.buttonSkin.getAssetsFromAtlas(asset.getChunkByURL(config.button.image).bitmap.bitmapData);
+			skin.glyphSkin.getAssetsFromAtlas(asset.getChunkByURL(config.glyph.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createCheckButtonSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:CheckButtonSkin = new CheckButtonSkin();
+
+			skin.buttonOffSkin.getAssetsFromAtlas(asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData);
+			skin.buttonOnSkin.getAssetsFromAtlas(asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
+		}
+
+
+
+		private static function createInputBarSkin(config:Object, asset:Asset):ISkinnable {
+			var skin:InputBarSkin = new InputBarSkin();
+
+			skin.barSkin.getAssetsFromAtlas(asset.getChunkByURL(config.bar.image).bitmap.bitmapData);
+			skin.parseConfig(config);
+
+			return skin;
 		}
 	}
 }
