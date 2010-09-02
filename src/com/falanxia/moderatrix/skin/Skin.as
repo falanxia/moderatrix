@@ -87,13 +87,13 @@ package com.falanxia.moderatrix.skin {
 		/**
 		 * Parse config Object.
 		 * Placeholder to be overridden via child skins.
-		 * @param source Config Object
+		 * @param value Config Object
 		 */
-		public function parseConfig(source:Object):void {
+		public function parseConfig(value:Object):void {
 			prevConfig = _config;
 
-			if(source._data != undefined) {
-				_config = source._data;
+			if(value._data != undefined) {
+				_config = value._data;
 			}
 		}
 

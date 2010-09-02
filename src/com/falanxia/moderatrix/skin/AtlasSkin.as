@@ -42,7 +42,7 @@ package com.falanxia.moderatrix.skin {
 	public class AtlasSkin extends Skin implements ISkin, IAssetSkin {
 
 
-		protected var _assetSource:BitmapData;
+		protected var _assetSources:Vector.<BitmapData>;
 
 
 
@@ -54,7 +54,9 @@ package com.falanxia.moderatrix.skin {
 		public function AtlasSkin(id:String = null) {
 			super(SkinType.IMAGE, id);
 
-			_assetSource = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources = new Vector.<BitmapData>;
+
+			_assetSources[0] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -65,22 +67,26 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSource.dispose();
+			_assetSources[0].dispose();
 
-			_assetSource = null;
+			_assetSources = null;
 		}
 
 
 
 		/**
-		 * Get assets from atlas.
-		 * @param source Source atlas BitmapData
+		 * Get assets from vector of BitmapData.
+		 * @param value Source vector of BitmapData
 		 */
-		public function getAssetsFromAtlas(source:BitmapData):void {
-			_assetSize.width = source.width;
-			_assetSize.height = source.height;
+		public function getAssetsFromAtlas(value:Vector.<BitmapData>):void {
+			var atlasSource:BitmapData = value[0];
 
-			_assetSource = source;
+			_assetSize.width = atlasSource.width;
+			_assetSize.height = atlasSource.height;
+
+			_assetSources = new <BitmapData>[
+				atlasSource
+			];
 		}
 
 
@@ -108,22 +114,22 @@ package com.falanxia.moderatrix.skin {
 
 		/**
 		 * Set asset source BitmapData
-		 * @param value Asset source BitmapData
+		 * @param value Vector of asset source BitmapData
 		 */
-		public function set assetSource(value:BitmapData):void {
-			checkSize(value);
+		public function set assetSources(value:Vector.<BitmapData>):void {
+			checkSize(value[0]);
 
-			_assetSource = value;
+			_assetSources = value;
 		}
 
 
 
 		/**
 		 * Get asset source BitmapData
-		 * @return Asset source BitmapData
+		 * @return Vector of asset source BitmapData
 		 */
-		public function get assetSource():BitmapData {
-			return _assetSource;
+		public function get assetSources():Vector.<BitmapData> {
+			return _assetSources;
 		}
 	}
 }

@@ -121,9 +121,9 @@ package com.falanxia.moderatrix.widgets {
 				if(_size.width == 0) _size.width = _skin.assetSize.width;
 				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-				var rect:Rectangle = _skin.guideBD.getColorBoundsRect(0x00FF0000, 0x00000000, false);
+				var rect:Rectangle = _skin.assetSources[0].getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
-				bodySBS.setData(_skin.backBD, rect);
+				bodySBS.setData(_skin.assetSources[1], rect);
 
 				invalidate();
 			}

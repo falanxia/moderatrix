@@ -120,7 +120,7 @@ package com.falanxia.moderatrix.widgets {
 				if(_size.width == 0) _size.width = _skin.assetSize.width;
 				if(_size.height == 0) _size.height = _skin.assetSize.height;
 
-				imageBM.bitmapData = _skin.imageBD;
+				imageBM.bitmapData = _skin.assetSources[0];
 				imageBM.smoothing = true;
 
 				invalidate();

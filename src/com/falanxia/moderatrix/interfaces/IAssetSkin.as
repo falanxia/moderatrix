@@ -40,25 +40,25 @@ package com.falanxia.moderatrix.interfaces {
 
 
 		/**
-		 * Get assets from atlas.
-		 * @param value Source atlas BitmapData
+		 * Get assets from vector of BitmapData.
+		 * @param value Source vector of BitmapData
 		 */
-		function getAssetsFromAtlas(value:BitmapData):void;
+		function getAssetsFromAtlas(value:Vector.<BitmapData>):void;
 
 
 
 		/**
 		 * Set asset source BitmapData
-		 * @param value Asset source BitmapData
+		 * @param value Vector of asset source BitmapData
 		 */
-		function set assetSource(value:BitmapData):void;
+		function set assetSources(value:Vector.<BitmapData>):void;
 
 
 
 		/**
 		 * Get asset source BitmapData
-		 * @return Asset source BitmapData
+		 * @return Vector of asset source BitmapData
 		 */
-		function get assetSource():BitmapData;
+		function get assetSources():Vector.<BitmapData>;
 	}
 }
