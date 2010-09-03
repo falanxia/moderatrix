@@ -28,6 +28,7 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.moderatrix.skin.meta.*;
 	import com.falanxia.utilitaris.helpers.*;
 	import com.falanxia.utilitaris.types.*;
 

@@ -26,10 +26,7 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.utilitaris.enums.*;
-	import com.falanxia.utilitaris.helpers.*;
-	import com.falanxia.utilitaris.utils.*;
 
-	import flash.filters.*;
 	import flash.utils.*;
 
 
@@ -46,11 +43,6 @@ package com.falanxia.moderatrix.skin {
 	public class LabelSkin extends Skin implements ISkin {
 
 
-		private var _settings:Dictionary;
-
-		private var oldSettings:Dictionary;
-
-
 
 		/**
 		 * Constructor.
@@ -59,113 +51,11 @@ package com.falanxia.moderatrix.skin {
 		 */
 		public function LabelSkin(id:String = null) {
 			super(SkinType.LABEL, id);
-
-			_settings = resetSettings();
-			oldSettings = new Dictionary();
-
-			ObjectUtils.assign(oldSettings, _settings);
 		}
 
 
 
-		/**
-		 * Destroys the LabelSkin instance and frees it for GC.
-		 */
-		override public function destroy():void {
-			super.destroy();
-
-			_settings = null;
-			oldSettings = null;
-		}
-
-
-
-		/**
-		 * Parse config Object.
-		 * @param value Config Object
-		 */
-		override public function parseConfig(value:Object):void {
-			super.parseConfig(value);
-
-			ObjectUtils.assign(oldSettings, _settings);
-
-			// TODO: This is the way how to speed up skins, apply it everywhere
-			for(var i:String in value) {
-				if(i != "filters") {
-					_settings[i] = value[i];
-				}
-			}
-
-			// TODO: Add this functionality to all skins where it's needed
-			if(value.filters != undefined && value.filters is Array) {
-				for each(var f:* in value.filters) {
-					if(f is BitmapFilter) {
-						// bitmapFilter means we got filter already converted
-						_settings.filters.push(f);
-					}
-					else {
-						if(f is Object) {
-							// it's an Object, we need to convert it first
-							try {
-								switch(f.filter) {
-									case "DropShadow" :
-										var dsDistance:Number = (f.distance == undefined) ? 1 : f.distance;
-										var dsAngle:Number = (f.angle == undefined) ? 45 : f.angle;
-										var dsColor:Number = (f.color == undefined) ? 0x000000 : f.color;
-										var dsAlpha:Number = (f.alpha == undefined) ? 0.5 : f.alpha;
-										var dsBlur:Number = (f.blur == undefined) ? 1 : f.blur;
-										var dsStrength:Number = (f.strength == undefined) ? 1 : f.strength;
-										var dsQuality:Number = (f.quality == undefined) ? 1 : f.quality;
-										var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
-										var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
-										var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
-										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur,
-										                                              dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
-
-										_settings.filters.push(g);
-
-										break;
-
-									default:
-								}
-							}
-							catch(err:Error) {
-								throw new Error(printf("Error converting filters Object to native filters (%s)", err.message));
-							}
-						}
-					}
-				}
-			}
-		}
-
-
-
-		/**
-		 * Revert config to the last known state.
-		 */
-		override public function revertConfig():void {
-			super.revertConfig();
-
-			_settings = new Dictionary();
-
-			ObjectUtils.assign(_settings, oldSettings);
-
-			oldSettings = resetSettings();
-		}
-
-
-
-		/**
-		 * Get current settings.
-		 * @return Current settings
-		 */
-		public function get settings():Dictionary {
-			return _settings;
-		}
-
-
-
-		private function resetSettings():Dictionary {
+		override protected function resetSettings():Dictionary {
 			var set:Dictionary = new Dictionary();
 
 			set["hAlign"] = Align.LEFT;

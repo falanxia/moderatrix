@@ -29,6 +29,7 @@ package com.falanxia.moderatrix.skin {
 
 	import flash.display.*;
 	import flash.geom.*;
+	import flash.utils.*;
 
 
 
@@ -44,16 +45,7 @@ package com.falanxia.moderatrix.skin {
 	public class ButtonSkin extends Skin implements ISkin, IAssetSkin {
 
 
-		protected var _hoverInDuration:Number;
-		protected var _hoverOutDuration:Number;
-		protected var _focusInDuration:Number;
-		protected var _focusOutDuration:Number;
 		protected var _assetSources:Vector.<BitmapData>;
-
-		private var oldHoverInDuration:Number;
-		private var oldHoverOutDuration:Number;
-		private var oldFocusInDuration:Number;
-		private var oldFocusOutDuration:Number;
 
 
 
@@ -64,11 +56,6 @@ package com.falanxia.moderatrix.skin {
 		 */
 		public function ButtonSkin(id:String = null) {
 			super(SkinType.BUTTON, id);
-
-			_hoverInDuration = 0;
-			_hoverOutDuration = 0.15;
-			_focusInDuration = 0;
-			_focusOutDuration = 0.1;
 
 			_assetSources = new Vector.<BitmapData>;
 
@@ -117,120 +104,6 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Parse config Object.
-		 * @param value Config Object
-		 */
-		override public function parseConfig(value:Object):void {
-			super.parseConfig(value);
-
-			oldHoverInDuration = _hoverInDuration;
-			oldHoverOutDuration = _hoverOutDuration;
-			oldFocusInDuration = _focusInDuration;
-			oldFocusOutDuration = _focusOutDuration;
-
-			if(value.hoverInDuration != undefined) _hoverInDuration = value.hoverInDuration;
-			if(value.hoverOutDuration != undefined) _hoverOutDuration = value.hoverOutDuration;
-			if(value.focusInDuration != undefined) _focusInDuration = value.focusInDuration;
-			if(value.focusOutDuration != undefined) _focusOutDuration = value.focusOutDuration;
-		}
-
-
-
-		/**
-		 * Revert config to the last known state.
-		 */
-		override public function revertConfig():void {
-			super.revertConfig();
-
-			_hoverInDuration = oldHoverInDuration;
-			_hoverOutDuration = oldHoverOutDuration;
-			_focusInDuration = oldFocusInDuration;
-			_focusOutDuration = oldFocusOutDuration;
-		}
-
-
-
-		/**
-		 * Set hover in duration.
-		 * @param value Hover in duration
-		 */
-		public function set hoverInDuration(value:Number):void {
-			_hoverInDuration = value;
-		}
-
-
-
-		/**
-		 * Get hover in duration.
-		 * @return Hover in duration
-		 */
-		public function get hoverInDuration():Number {
-			return _hoverInDuration;
-		}
-
-
-
-		/**
-		 * Set hover out duration.
-		 * @param value Hover out duration
-		 */
-		public function set hoverOutDuration(value:Number):void {
-			_hoverOutDuration = value;
-		}
-
-
-
-		/**
-		 * Get hover out duration.
-		 * @return Hover out duration
-		 */
-		public function get hoverOutDuration():Number {
-			return _hoverOutDuration;
-		}
-
-
-
-		/**
-		 * Set focus in duration.
-		 * @param value Focus in duration
-		 */
-		public function set focusInDuration(value:Number):void {
-			_focusInDuration = value;
-		}
-
-
-
-		/**
-		 * Get focus in duration.
-		 * @return Focus in duration
-		 */
-		public function get focusInDuration():Number {
-			return _focusInDuration;
-		}
-
-
-
-		/**
-		 * Get focus out duration.
-		 * @param value Focus out duration
-		 */
-		public function set focusOutDuration(value:Number):void {
-			_focusOutDuration = value;
-		}
-
-
-
-		/**
-		 * Get focus out duration.
-		 * @return Focus out duration
-		 */
-		public function get focusOutDuration():Number {
-			return _focusOutDuration;
-		}
-
-
-
-		/**
 		 * Set asset source BitmapData
 		 * @param value Vector of asset source BitmapData
 		 */
@@ -251,6 +124,19 @@ package com.falanxia.moderatrix.skin {
 		 */
 		public function get assetSources():Vector.<BitmapData> {
 			return _assetSources;
+		}
+
+
+
+		override protected function resetSettings():Dictionary {
+			var set:Dictionary = new Dictionary();
+
+			set["hoverInDuration"] = 0;
+			set["hoverOutDuration"] = 0.15;
+			set["focusInDuration"] = 0;
+			set["focusOutDuration"] = 0.1;
+
+			return set;
 		}
 	}
 }

@@ -27,6 +27,7 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.*;
 
 	import flash.display.*;
+	import flash.utils.*;
 
 
 
@@ -42,12 +43,7 @@ package com.falanxia.moderatrix.skin {
 	public class ImageSkin extends Skin implements ISkin, IAssetSkin {
 
 
-		protected var _paddingTop:Number;
-		protected var _paddingLeft:Number;
 		protected var _assetSources:Vector.<BitmapData>;
-
-		private var oldPaddingTop:Number;
-		private var oldPaddingLeft:Number;
 
 
 
@@ -59,8 +55,6 @@ package com.falanxia.moderatrix.skin {
 		public function ImageSkin(id:String = null) {
 			super(SkinType.IMAGE, id);
 
-			_paddingTop = 0;
-			_paddingLeft = 0;
 			_assetSources = new Vector.<BitmapData>;
 
 			_assetSources[0] = new BitmapData(1, 1, true, 0x00000000);
@@ -97,74 +91,6 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Parse config Object.
-		 * @param value Config Object
-		 */
-		override public function parseConfig(value:Object):void {
-			super.parseConfig(value);
-
-			oldPaddingTop = _paddingTop;
-			oldPaddingLeft = _paddingLeft;
-
-			if(value.paddingTop != undefined) _paddingTop = value.paddingTop;
-			if(value.paddingLeft != undefined) _paddingLeft = value.paddingLeft;
-		}
-
-
-
-		/**
-		 * Revert config to the last known state.
-		 */
-		override public function revertConfig():void {
-			super.revertConfig();
-
-			_paddingTop = oldPaddingTop;
-			_paddingLeft = oldPaddingLeft;
-		}
-
-
-
-		/**
-		 * Get top padding.
-		 * @return Top padding
-		 */
-		public function get paddingTop():Number {
-			return _paddingTop;
-		}
-
-
-
-		/**
-		 * Set top padding.
-		 * @param value Top padding
-		 */
-		public function set paddingTop(value:Number):void {
-			_paddingTop = value;
-		}
-
-
-
-		/**
-		 * Get left padding.
-		 * @return Left padding
-		 */
-		public function get paddingLeft():Number {
-			return _paddingLeft;
-		}
-
-
-
-		/**
-		 * Set left padding.
-		 * @param value Left padding
-		 */
-		public function set paddingLeft(value:Number):void {
-			_paddingLeft = value;
-		}
-
-
-
-		/**
 		 * Set asset source BitmapData
 		 * @param value Vector of asset source BitmapData
 		 */
@@ -182,6 +108,17 @@ package com.falanxia.moderatrix.skin {
 		 */
 		public function get assetSources():Vector.<BitmapData> {
 			return _assetSources;
+		}
+
+
+
+		override protected function resetSettings():Dictionary {
+			var set:Dictionary = new Dictionary();
+
+			set["paddingTop"] = 0;
+			set["paddingLeft"] = 0;
+
+			return set;
 		}
 	}
 }

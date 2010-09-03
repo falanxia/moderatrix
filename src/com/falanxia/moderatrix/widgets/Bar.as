@@ -32,6 +32,7 @@ package com.falanxia.moderatrix.widgets {
 
 	import flash.display.*;
 	import flash.geom.*;
+	import flash.utils.*;
 
 
 
@@ -88,8 +89,10 @@ package com.falanxia.moderatrix.widgets {
 			if(_skin != null && _size != null) {
 				super.draw();
 
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
-				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
+				var settings:Dictionary = _skin.settings;
+				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"],
+				                                   _size.width - settings["paddingLeft"] - settings["paddingRight"],
+				                                   _size.height - settings["paddingTop"] - settings["paddingBottom"]);
 
 				if(_size.width != 0 && !isNaN(_size.width)) {
 					bodySBS.width = rect.width;
@@ -132,13 +135,17 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function get width():Number {
-			return _size == null ? 0 : _size.width + _skin.paddingLeft + _skin.paddingRight;
+			var settings:Dictionary = _skin.settings;
+
+			return _size == null ? 0 : _size.width + settings["paddingLeft"] + settings["paddingRight"];
 		}
 
 
 
 		override public function get height():Number {
-			return _size == null ? 0 : _size.height + _skin.paddingTop + _skin.paddingBottom;
+			var settings:Dictionary = _skin.settings;
+
+			return _size == null ? 0 : _size.height + settings["paddingTop"] + settings["paddingBottom"];
 		}
 
 

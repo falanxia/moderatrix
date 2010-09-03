@@ -22,9 +22,10 @@
  * THE SOFTWARE.
  */
 
-package com.falanxia.moderatrix.skin {
+package com.falanxia.moderatrix.skin.meta {
 	import com.falanxia.moderatrix.enums.*;
 	import com.falanxia.moderatrix.interfaces.*;
+	import com.falanxia.moderatrix.skin.*;
 
 
 

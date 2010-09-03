@@ -27,7 +27,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.events.*;
 	import com.falanxia.moderatrix.globals.*;
 	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.moderatrix.skin.meta.*;
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.enums.*;
 	import com.falanxia.utilitaris.utils.*;
@@ -436,73 +436,85 @@ package com.falanxia.moderatrix.widgets {
 
 
 		private function onButtonHoverInTween(e:ButtonEvent):void {
-			new TweenLite(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_glyphFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-			new TweenLite(_labelOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_labelFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphOut, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphHover, hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_glyphFocus, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+
+			new TweenLite(_labelOut, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelHover, hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_labelFocus, hoverInDuration, {alpha:0, ease:Sine.easeIn});
 		}
 
 
 
 		private function onButtonHoverOutTween(e:ButtonEvent):void {
-			new TweenLite(_glyphOut, _skin.buttonSkin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_glyphHover, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphFocus, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			var hoverOutDuration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
 
-			new TweenLite(_labelOut, _skin.buttonSkin.hoverOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_labelHover, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelFocus, _skin.buttonSkin.hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphOut, hoverOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_glyphHover, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphFocus, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+
+			new TweenLite(_labelOut, hoverOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_labelHover, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelFocus, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
 		}
 
 
 
 		private function onButtonFocusInTween(e:ButtonEvent):void {
-			new TweenLite(_glyphOut, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphHover, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphFocus, _skin.buttonSkin.focusInDuration, {alpha:1, ease:Sine.easeOut});
+			var focusInDuration:Number = _skin.buttonSkin.settings["focusInDuration"];
 
-			new TweenLite(_labelOut, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelHover, _skin.buttonSkin.focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelFocus, _skin.buttonSkin.focusInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_glyphOut, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphHover, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphFocus, focusInDuration, {alpha:1, ease:Sine.easeOut});
+
+			new TweenLite(_labelOut, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelHover, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelFocus, focusInDuration, {alpha:1, ease:Sine.easeOut});
 		}
 
 
 
 		private function onButtonDragConfirmedTween(e:ButtonEvent):void {
-			new TweenLite(_glyphOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_glyphFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-			new TweenLite(_labelOut, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelHover, _skin.buttonSkin.hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_labelFocus, _skin.buttonSkin.hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphOut, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphHover, hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_glyphFocus, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+
+			new TweenLite(_labelOut, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelHover, hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_labelFocus, hoverInDuration, {alpha:0, ease:Sine.easeIn});
 		}
 
 
 
 		private function onButtonReleasedInsideTween(e:ButtonEvent):void {
-			new TweenLite(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_glyphFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-			new TweenLite(_labelOut, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelHover, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_labelFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphOut, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphHover, focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_glyphFocus, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+
+			new TweenLite(_labelOut, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelHover, focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_labelFocus, focusOutDuration, {alpha:0, ease:Sine.easeIn});
 		}
 
 
 
 		private function onButtonReleasedOutsideTween(e:ButtonEvent):void {
-			new TweenLite(_glyphOut, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_glyphHover, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_glyphFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-			new TweenLite(_labelOut, _skin.buttonSkin.focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(_labelHover, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(_labelFocus, _skin.buttonSkin.focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphOut, focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_glyphHover, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_glyphFocus, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+
+			new TweenLite(_labelOut, focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenLite(_labelHover, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenLite(_labelFocus, focusOutDuration, {alpha:0, ease:Sine.easeIn});
 		}
 	}
 }

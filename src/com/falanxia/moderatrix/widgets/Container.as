@@ -33,6 +33,7 @@ package com.falanxia.moderatrix.widgets {
 
 	import flash.display.*;
 	import flash.geom.*;
+	import flash.utils.*;
 
 
 
@@ -107,8 +108,15 @@ package com.falanxia.moderatrix.widgets {
 			if(_skin != null && _size != null) {
 				_size = new Rectangle(0, 0, innerSpr.width, innerSpr.height);
 
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft - _skin.paddingRight,
-				                                   _size.height - _skin.paddingTop - _skin.paddingBottom);
+				var settings:Dictionary = _skin.settings;
+				var paddingLeft:Number = settings["paddingLeft"];
+				var paddingTop:Number = settings["paddingTop"];
+				var paddingRight:Number = settings["paddingRight"];
+				var paddingBottom:Number = settings["paddingBottom"];
+				var hAlign:String = settings["hAlign"];
+				var vAlign:String = settings["vAlign"];
+				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight,
+				                                   _size.height - paddingTop - paddingBottom);
 
 				// draw debug rectangle
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
@@ -116,12 +124,12 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				// align inner sprite horizontally
-				if(_skin.hAlign == Align.RIGHT) {
+				if(hAlign == Align.RIGHT) {
 					// right
-					innerSpr.x = _size.width - _skin.paddingRight;
+					innerSpr.x = _size.width - paddingRight;
 				}
 				else {
-					if(_skin.hAlign == Align.CENTER) {
+					if(hAlign == Align.CENTER) {
 						// center
 						innerSpr.x = rect.x + (rect.width >> 1);
 					}
@@ -132,12 +140,12 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				// align inner sprite vertically
-				if(_skin.vAlign == Align.BOTTOM) {
+				if(vAlign == Align.BOTTOM) {
 					// bottom
-					innerSpr.y = _size.height - _skin.paddingBottom;
+					innerSpr.y = _size.height - paddingBottom;
 				}
 				else {
-					if(_skin.vAlign == Align.CENTER) {
+					if(vAlign == Align.CENTER) {
 						// center
 						innerSpr.y = rect.y + (rect.height >> 1);
 					}
@@ -338,13 +346,17 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function get width():Number {
-			return _size == null ? 0 : _size.width + _skin.paddingLeft + _skin.paddingRight;
+			var settings:Dictionary = _skin.settings;
+
+			return _size == null ? 0 : _size.width + settings["paddingLeft"] + settings["paddingRight"];
 		}
 
 
 
 		override public function get height():Number {
-			return _size == null ? 0 : _size.height + _skin.paddingTop + _skin.paddingBottom;
+			var settings:Dictionary = _skin.settings;
+
+			return _size == null ? 0 : _size.height + settings["paddingTop"] + settings["paddingBottom"];
 		}
 
 

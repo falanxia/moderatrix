@@ -24,10 +24,13 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.*;
+	import com.falanxia.utilitaris.helpers.*;
 	import com.falanxia.utilitaris.utils.*;
 
 	import flash.display.*;
+	import flash.filters.*;
 	import flash.geom.*;
+	import flash.utils.*;
 
 
 
@@ -47,8 +50,10 @@ package com.falanxia.moderatrix.skin {
 		protected var _type:String;
 		protected var _assetSize:Rectangle = new Rectangle(0, 0, 0, 0);
 		protected var _config:Object = new Object();
+		protected var _settings:Dictionary;
 
 		private var prevConfig:Object;
+		private var oldSettings:Dictionary;
 
 
 
@@ -66,6 +71,11 @@ package com.falanxia.moderatrix.skin {
 			if(_id == null) {
 				_id = type + ":skin:" + RandomUtils.randomString();
 			}
+
+			_settings = resetSettings();
+			oldSettings = new Dictionary();
+
+			ObjectUtils.assign(oldSettings, _settings);
 		}
 
 
@@ -78,8 +88,10 @@ package com.falanxia.moderatrix.skin {
 			_type = null;
 			_assetSize = null;
 			_config = null;
+			_settings = null;
 
 			prevConfig = null;
+			oldSettings = null;
 		}
 
 
@@ -92,8 +104,58 @@ package com.falanxia.moderatrix.skin {
 		public function parseConfig(value:Object):void {
 			prevConfig = _config;
 
+			ObjectUtils.assign(oldSettings, _settings);
+
 			if(value._data != undefined) {
 				_config = value._data;
+			}
+
+			// TODO: This is the way how to speed up skins, apply it everywhere
+			for(var i:String in value) {
+				if(i != "filters") {
+					_settings[i] = value[i];
+				}
+			}
+
+			// TODO: Add this functionality to all skins where it's needed
+			if(value.filters != undefined && value.filters is Array) {
+				for each(var f:* in value.filters) {
+					if(f is BitmapFilter) {
+						// bitmapFilter means we got filter already converted
+						_settings.filters.push(f);
+					}
+					else {
+						if(f is Object) {
+							// it's an Object, we need to convert it first
+							try {
+								switch(f.filter) {
+									case "DropShadow" :
+										var dsDistance:Number = (f.distance == undefined) ? 1 : f.distance;
+										var dsAngle:Number = (f.angle == undefined) ? 45 : f.angle;
+										var dsColor:Number = (f.color == undefined) ? 0x000000 : f.color;
+										var dsAlpha:Number = (f.alpha == undefined) ? 0.5 : f.alpha;
+										var dsBlur:Number = (f.blur == undefined) ? 1 : f.blur;
+										var dsStrength:Number = (f.strength == undefined) ? 1 : f.strength;
+										var dsQuality:Number = (f.quality == undefined) ? 1 : f.quality;
+										var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
+										var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
+										var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
+										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur,
+										                                              dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
+
+										_settings.filters.push(g);
+
+										break;
+
+									default:
+								}
+							}
+							catch(err:Error) {
+								throw new Error(printf("Error converting filters Object to native filters (%s)", err.message));
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -105,6 +167,11 @@ package com.falanxia.moderatrix.skin {
 		 */
 		public function revertConfig():void {
 			_config = prevConfig;
+			_settings = new Dictionary();
+
+			ObjectUtils.assign(_settings, oldSettings);
+
+			oldSettings = resetSettings();
 		}
 
 
@@ -150,6 +217,16 @@ package com.falanxia.moderatrix.skin {
 
 
 
+		/**
+		 * Get current settings.
+		 * @return Current settings
+		 */
+		public function get settings():Dictionary {
+			return _settings;
+		}
+
+
+
 		protected function getSkinSize(source:MovieClip, frame:Object):void {
 			// it's needed to duplicate this MovieClip as there was some weird bug:
 			// when used source.gotoAndStop(frame) on one of next lines,
@@ -177,6 +254,12 @@ package com.falanxia.moderatrix.skin {
 					throw new Error("Sizes have to match");
 				}
 			}
+		}
+
+
+
+		protected function resetSettings():Dictionary {
+			return new Dictionary();
 		}
 	}
 }

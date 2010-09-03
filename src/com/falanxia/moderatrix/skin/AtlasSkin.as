@@ -27,6 +27,7 @@ package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.*;
 
 	import flash.display.*;
+	import flash.utils.*;
 
 
 
@@ -75,6 +76,18 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
+		 * Parse config Object.
+		 * @param value Config Object
+		 */
+		override public function parseConfig(value:Object):void {
+			super.parseConfig(value);
+
+			_assetSize.width = _settings["spriteWidth"];
+		}
+
+
+
+		/**
 		 * Get assets from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
@@ -87,27 +100,6 @@ package com.falanxia.moderatrix.skin {
 			_assetSources = new <BitmapData>[
 				atlasSource
 			];
-		}
-
-
-
-		/**
-		 * Parse config.
-		 * @param value Config Object
-		 */
-		override public function parseConfig(value:Object):void {
-			super.parseConfig(value);
-
-			if(value.spriteWidth != undefined) _assetSize.width = value.spriteWidth;
-		}
-
-
-
-		/**
-		 * Revert config to the last known state.
-		 */
-		override public function revertConfig():void {
-			super.revertConfig();
 		}
 
 
@@ -130,6 +122,16 @@ package com.falanxia.moderatrix.skin {
 		 */
 		public function get assetSources():Vector.<BitmapData> {
 			return _assetSources;
+		}
+
+
+
+		override protected function resetSettings():Dictionary {
+			var set:Dictionary = new Dictionary();
+
+			set["spriteWidth"] = 0;
+
+			return set;
 		}
 	}
 }

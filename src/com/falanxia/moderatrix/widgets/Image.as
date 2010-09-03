@@ -32,6 +32,7 @@ package com.falanxia.moderatrix.widgets {
 
 	import flash.display.*;
 	import flash.geom.*;
+	import flash.utils.*;
 
 
 
@@ -95,7 +96,9 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null && _size != null) {
-				var rect:Rectangle = new Rectangle(_skin.paddingLeft, _skin.paddingTop, _size.width - _skin.paddingLeft, _size.height - _skin.paddingTop);
+				var settings:Dictionary = _skin.settings;
+				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"], _size.width - settings["paddingLeft"],
+				                                   _size.height - settings["paddingTop"]);
 
 				imageBM.positionAndSize = rect;
 
