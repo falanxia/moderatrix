@@ -351,7 +351,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		private function onButtonHoverInTween(e:ButtonEvent):void {
-			var hoverInDuration:Number = _skin.buttonSkin["hoverInDuration"];
+			var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
 			new TweenLite(_labelOut, hoverInDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_labelHover, hoverInDuration, {alpha:1, ease:Sine.easeOut});

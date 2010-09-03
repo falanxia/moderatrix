@@ -50,6 +50,7 @@ package com.falanxia.moderatrix.widgets {
 		protected var startPhase:uint;
 		protected var endPhase:int;
 		protected var durationMultiplier:Number;
+		protected var spriteWidth:uint;
 
 
 
@@ -66,7 +67,6 @@ package com.falanxia.moderatrix.widgets {
 			if(c.width == undefined) c.width = skin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
-			//noinspection NegatedIfStatementJS
 			if(skin != null) {
 				super(c, parent, (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel);
 			}
@@ -97,14 +97,14 @@ package com.falanxia.moderatrix.widgets {
 			if(_size != null) {
 				super.draw();
 
-				var w:uint = _skin.bitmapSize.width;
+				var w:uint = spriteWidth;
 				var rect:Rectangle = new Rectangle(_phase * w, 0, w, _skin.bitmapSize.height);
 
 				imageBM.bitmapData.copyPixels(_skin.bitmapSources[AtlasSkin.ATLAS_BITMAP], rect, new Point(0, 0));
 
 				if(_skin != null) {
 					if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-						DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, _skin.bitmapSize.width, _skin.bitmapSize.height), _debugColor, 5);
+						DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, w, _skin.bitmapSize.height), _debugColor, 5);
 					}
 				}
 			}
@@ -155,11 +155,12 @@ package com.falanxia.moderatrix.widgets {
 		public function set skin(skin:AtlasSkin):void {
 			if(_size != null) {
 				_skin = skin;
+				spriteWidth = _skin.settings["spriteWidth"];
 
-				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+				if(_size.width == 0) _size.width = spriteWidth;
 				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
-				imageBM.bitmapData = new BitmapData(_skin.bitmapSize.width, _skin.bitmapSize.height);
+				imageBM.bitmapData = new BitmapData(spriteWidth, _skin.bitmapSize.height);
 				imageBM.smoothing = true;
 
 				draw();
@@ -196,7 +197,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function get length():uint {
-			return (_skin.bitmapSources == null) ? 0 : _skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / _skin.bitmapSize.width;
+			return (_skin.bitmapSources == null) ? 0 : _skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / spriteWidth;
 		}
 
 

@@ -23,6 +23,8 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
+	import com.falanxia.emitor.*;
+
 	import flash.display.*;
 
 
@@ -37,6 +39,15 @@ package com.falanxia.moderatrix.interfaces {
 	 * @since 1.0
 	 */
 	public interface IBitmapSkin {
+
+
+		/**
+		 * Parse asset.
+		 * @param value Asset
+		 * @see Asset
+		 */
+		function parseAsset(value:Asset):void;
+
 
 
 		/**

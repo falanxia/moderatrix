@@ -32,8 +32,6 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.utilitaris.helpers.*;
 	import com.falanxia.utilitaris.types.*;
 
-	import flash.display.*;
-
 
 
 	/**
@@ -71,47 +69,47 @@ package com.falanxia.moderatrix.globals {
 				try {
 					switch(config.type) {
 						case SkinType.CONTAINER:
-							skin = createContainerSkin(config);
+							skin = new ContainerSkin(config, null);
 							break;
 
 						case SkinType.BAR:
-							skin = createBarSkin(config, asset);
+							skin = new BarSkin(config, null, asset);
 							break;
 
 						case SkinType.IMAGE:
-							skin = createImageSkin(config, asset);
+							skin = new ImageSkin(config, null, asset);
 							break;
 
 						case SkinType.ATLAS:
-							skin = createAtlasSkin(config, asset);
+							skin = new AtlasSkin(config, null, asset);
 							break;
 
 						case SkinType.BUTTON:
-							skin = createButtonSkin(config, asset);
+							skin = new ButtonSkin(config, null, asset);
 							break;
 
 						case SkinType.LABEL:
-							skin = createLabelSkin(config);
+							skin = new LabelSkin(config, null);
 							break;
 
 						case SkinType.LABEL_BUTTON:
-							skin = createLabelButtonSkin(config, asset);
+							skin = new LabelButtonSkin(config, null, asset);
 							break;
 
 						case SkinType.GLYPH_BUTTON:
-							skin = createGlyphButtonSkin(config, asset);
+							skin = new GlyphButtonSkin(config, null, asset);
 							break;
 
 						case SkinType.GLYPH_LABEL_BUTTON:
-							skin = createGlyphLabelButtonSkin(config, asset);
+							skin = new GlyphLabelButtonSkin(config, null, asset);
 							break;
 
 						case SkinType.CHECK_BUTTON:
-							skin = createCheckButtonSkin(config, asset);
+							skin = new CheckButtonSkin(config, null, asset);
 							break;
 
 						case SkinType.INPUT_BAR:
-							skin = createInputBarSkin(config, asset);
+							skin = new InputBarSkin(config, null, asset);
 							break;
 
 						default:
@@ -148,164 +146,6 @@ package com.falanxia.moderatrix.globals {
 
 		public static function set defaultDebugColor(value:RGBA):void {
 			_defaultDebugColor = value;
-		}
-
-
-
-		private static function createContainerSkin(config:Object):ISkin {
-			var skin:ContainerSkin = new ContainerSkin();
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createBarSkin(config:Object, asset:Asset):ISkin {
-			var skin:BarSkin = new BarSkin();
-
-			skin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createImageSkin(config:Object, asset:Asset):ISkin {
-			var skin:ImageSkin = new ImageSkin();
-
-			skin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createAtlasSkin(config:Object, asset:Asset):ISkin {
-			var skin:AtlasSkin = new AtlasSkin();
-
-			skin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createButtonSkin(config:Object, asset:Asset):ISkin {
-			var skin:ButtonSkin = new ButtonSkin();
-
-			skin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createLabelSkin(config:Object):ISkin {
-			var skin:LabelSkin = new LabelSkin();
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createLabelButtonSkin(config:Object, asset:Asset):ISkin {
-			var skin:LabelButtonSkin = new LabelButtonSkin();
-
-			skin.buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.button.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createGlyphButtonSkin(config:Object, asset:Asset):ISkin {
-			var skin:GlyphButtonSkin = new GlyphButtonSkin();
-
-			skin.buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.button.image).bitmap.bitmapData
-			]);
-
-			skin.glyphSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.glyph.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createGlyphLabelButtonSkin(config:Object, asset:Asset):ISkin {
-			var skin:GlyphLabelButtonSkin = new GlyphLabelButtonSkin();
-
-			skin.buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.button.image).bitmap.bitmapData
-			]);
-
-			skin.glyphSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.glyph.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createCheckButtonSkin(config:Object, asset:Asset):ISkin {
-			var skin:CheckButtonSkin = new CheckButtonSkin();
-
-			skin.buttonOffSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData
-			]);
-
-			skin.buttonOnSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
-		}
-
-
-
-		private static function createInputBarSkin(config:Object, asset:Asset):ISkin {
-			var skin:InputBarSkin = new InputBarSkin();
-
-			skin.barSkin.getBitmapsFromAtlas(new <BitmapData>[
-				asset.getChunkByURL(config.bar.image).bitmap.bitmapData
-			]);
-
-			skin.parseConfig(config);
-
-			return skin;
 		}
 	}
 }
