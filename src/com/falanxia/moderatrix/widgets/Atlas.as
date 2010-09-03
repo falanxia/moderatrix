@@ -64,7 +64,7 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			if(c.width == undefined) c.width = skin.bitmapSize.width;
+			if(c.width == undefined) c.width = skin.settings["spriteWidth"];
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			if(skin != null) {
