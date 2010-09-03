@@ -209,8 +209,8 @@ package com.falanxia.moderatrix.widgets {
 				_textField.alpha = settings["alpha"];
 				_textField.embedFonts = (settings["font"] != "");
 
-				if(_size.width == 0) _size.width = _skin.assetSize.width;
-				if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
 				draw();
 			}

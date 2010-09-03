@@ -40,12 +40,12 @@ package com.falanxia.moderatrix.skin {
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class AtlasSkin extends Skin implements ISkin, IAssetSkin {
+	public class AtlasSkin extends Skin implements ISkin, IBitmapSkin {
 
 
-		public static const ATLAS_ASSET:uint = 0;
+		public static const ATLAS_BITMAP:uint = 0;
 
-		protected var _assetSources:Vector.<BitmapData>;
+		protected var _bitmapSources:Vector.<BitmapData>;
 
 
 
@@ -57,9 +57,9 @@ package com.falanxia.moderatrix.skin {
 		public function AtlasSkin(id:String = null) {
 			super(SkinType.IMAGE, id);
 
-			_assetSources = new Vector.<BitmapData>;
+			_bitmapSources = new Vector.<BitmapData>;
 
-			_assetSources[ATLAS_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[ATLAS_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -70,9 +70,9 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[ATLAS_ASSET].dispose();
+			_bitmapSources[ATLAS_BITMAP].dispose();
 
-			_assetSources = null;
+			_bitmapSources = null;
 		}
 
 
@@ -84,46 +84,46 @@ package com.falanxia.moderatrix.skin {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			_assetSize.width = _settings["spriteWidth"];
+			_bitmapSize.width = _settings["spriteWidth"];
 		}
 
 
 
 		/**
-		 * Get assets from vector of BitmapData.
+		 * Get bitmaps from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
-		public function getAssetsFromAtlas(value:Vector.<BitmapData>):void {
-			var atlasSource:BitmapData = value[0];
+		public function getBitmapsFromAtlas(value:Vector.<BitmapData>):void {
+			var bitmap:BitmapData = value[0];
 
-			_assetSize.width = atlasSource.width;
-			_assetSize.height = atlasSource.height;
+			_bitmapSize.width = bitmap.width;
+			_bitmapSize.height = bitmap.height;
 
-			_assetSources = new <BitmapData>[
-				atlasSource
+			_bitmapSources = new <BitmapData>[
+				bitmap
 			];
 		}
 
 
 
 		/**
-		 * Set asset source BitmapData
-		 * @param value Vector of asset source BitmapData
+		 * Set bitmap sources BitmapData.
+		 * @param value Vector of bitmap sources
 		 */
-		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[ATLAS_ASSET]);
+		public function set bitmapSources(value:Vector.<BitmapData>):void {
+			checkSize(value[ATLAS_BITMAP]);
 
-			_assetSources = value;
+			_bitmapSources = value;
 		}
 
 
 
 		/**
-		 * Get asset source BitmapData
-		 * @return Vector of asset source BitmapData
+		 * Get bitmap sources BitmapData.
+		 * @return Vector of bitmap sources
 		 */
-		public function get assetSources():Vector.<BitmapData> {
-			return _assetSources;
+		public function get bitmapSources():Vector.<BitmapData> {
+			return _bitmapSources;
 		}
 
 

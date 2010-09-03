@@ -111,13 +111,13 @@ package com.falanxia.moderatrix.widgets {
 		override public function set skin(skin:ButtonSkin):void {
 			super.skin = skin;
 
-			var rect:Rectangle = _skin.assetSources[ButtonSkin.GUIDE_ASSET].getColorBoundsRect(0x00FF0000, 0x00000000, false);
+			var rect:Rectangle = _skin.bitmapSources[ButtonSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
 			// TODO: Outer rect
 
-			outSBS.setData(_skin.assetSources[ButtonSkin.OUT_ASSET], rect);
-			hoverSBS.setData(_skin.assetSources[ButtonSkin.HOVER_ASSET], rect);
-			focusSBS.setData(_skin.assetSources[ButtonSkin.FOCUS_ASSET], rect);
+			outSBS.setData(_skin.bitmapSources[ButtonSkin.OUT_BITMAP], rect);
+			hoverSBS.setData(_skin.bitmapSources[ButtonSkin.HOVER_BITMAP], rect);
+			focusSBS.setData(_skin.bitmapSources[ButtonSkin.FOCUS_BITMAP], rect);
 
 			invalidate();
 		}

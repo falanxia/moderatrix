@@ -25,7 +25,7 @@
 package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.globals.*;
 	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.moderatrix.skin.meta.*;
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.utils.*;
 
@@ -66,8 +66,8 @@ package com.falanxia.moderatrix.widgets {
 			this.isMorphHeightEnabled = true;
 			this.isMorphWidthEnabled = false;
 
-			if(c.width == undefined) c.width = skin.assetSize.width;
-			if(c.height == undefined) c.height = skin.assetSize.height;
+			if(c.width == undefined) c.width = skin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {

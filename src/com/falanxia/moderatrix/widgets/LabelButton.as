@@ -80,8 +80,8 @@ package com.falanxia.moderatrix.widgets {
 			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween, false, 0, true);
 			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween, false, 0, true);
 
-			if(c.width == undefined) c.width = skin.buttonSkin.assetSize.width;
-			if(c.height == undefined) c.height = skin.buttonSkin.assetSize.height;
+			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {

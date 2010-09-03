@@ -56,11 +56,11 @@ package com.falanxia.moderatrix.widgets {
 			}
 
 			if(c.width == undefined) {
-				c.width = skin.assetSize.width;
+				c.width = skin.bitmapSize.width;
 			}
 
 			if(c.height == undefined) {
-				c.height = skin.assetSize.height;
+				c.height = skin.bitmapSize.height;
 			}
 
 			//noinspection NegatedIfStatementJS
@@ -120,10 +120,10 @@ package com.falanxia.moderatrix.widgets {
 			if(_size != null) {
 				_skin = skin;
 
-				if(_size.width == 0) _size.width = _skin.assetSize.width;
-				if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
-				imageBM.bitmapData = _skin.assetSources[ImageSkin.IMAGE_ASSET];
+				imageBM.bitmapData = _skin.bitmapSources[ImageSkin.IMAGE_BITMAP];
 				imageBM.smoothing = true;
 
 				invalidate();

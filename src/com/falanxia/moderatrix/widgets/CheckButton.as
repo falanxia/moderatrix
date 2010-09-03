@@ -26,7 +26,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.events.*;
 	import com.falanxia.moderatrix.globals.*;
 	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.moderatrix.skin.meta.*;
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.utils.*;
 
@@ -73,8 +73,8 @@ package com.falanxia.moderatrix.widgets {
 			_buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle, false, 0, true);
 			_buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle, false, 0, true);
 
-			if(c.width == undefined) c.width = skin.buttonOffSkin.assetSize.width;
-			if(c.height == undefined) c.height = skin.buttonOffSkin.assetSize.height;
+			if(c.width == undefined) c.width = skin.buttonOffSkin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.buttonOffSkin.bitmapSize.height;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {

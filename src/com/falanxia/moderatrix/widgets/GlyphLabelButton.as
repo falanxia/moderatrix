@@ -101,8 +101,8 @@ package com.falanxia.moderatrix.widgets {
 			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween, false, 0, true);
 			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween, false, 0, true);
 
-			if(conf.width == undefined) conf.width = skin.buttonSkin.assetSize.width;
-			if(conf.height == undefined) conf.height = skin.buttonSkin.assetSize.height;
+			if(conf.width == undefined) conf.width = skin.buttonSkin.bitmapSize.width;
+			if(conf.height == undefined) conf.height = skin.buttonSkin.bitmapSize.height;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {

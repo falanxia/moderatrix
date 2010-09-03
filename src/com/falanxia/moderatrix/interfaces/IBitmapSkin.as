@@ -28,37 +28,37 @@ package com.falanxia.moderatrix.interfaces {
 
 
 	/**
-	 * Asset skin interface.
+	 * Bitmap skin interface.
 	 *
-	 * Skin implementing this interface is able to work with image assets.
+	 * Skin implementing this interface is able to work with images.
 	 *
 	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public interface IAssetSkin {
+	public interface IBitmapSkin {
 
 
 		/**
-		 * Get assets from vector of BitmapData.
+		 * Get bitmaps from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
-		function getAssetsFromAtlas(value:Vector.<BitmapData>):void;
+		function getBitmapsFromAtlas(value:Vector.<BitmapData>):void;
 
 
 
 		/**
-		 * Set asset source BitmapData
-		 * @param value Vector of asset source BitmapData
+		 * Set bitmap sources BitmapData.
+		 * @param value Vector of bitmap sources
 		 */
-		function set assetSources(value:Vector.<BitmapData>):void;
+		function set bitmapSources(value:Vector.<BitmapData>):void;
 
 
 
 		/**
-		 * Get asset source BitmapData
-		 * @return Vector of asset source BitmapData
+		 * Get bitmap sources BitmapData.
+		 * @return Vector of bitmap sources
 		 */
-		function get assetSources():Vector.<BitmapData>;
+		function get bitmapSources():Vector.<BitmapData>;
 	}
 }

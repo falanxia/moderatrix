@@ -84,27 +84,27 @@ package com.falanxia.moderatrix.skin.meta {
 
 
 		/**
-		 * Get assets from vector of BitmapData.
+		 * Get bitmaps from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
-		public function getAssetsFromAtlas(value:Vector.<BitmapData>):void {
-			var glyphSource:BitmapData = value[0];
+		public function getBitmapsFromAtlas(value:Vector.<BitmapData>):void {
+			var bitmap:BitmapData = value[0];
 
-			if(glyphSource.width % 3 != 0) throw new Error("Width has to be multiple of 3");
+			if(bitmap.width % 3 != 0) throw new Error("Width has to be multiple of 3");
 
-			_assetSize.width = glyphSource.width / 3;
-			_assetSize.height = glyphSource.height;
+			_bitmapSize.width = bitmap.width / 3;
+			_bitmapSize.height = bitmap.height;
 
-			_glyphOutSkin.getAssetsFromAtlas(new <BitmapData>[
-				BitmapUtils.crop(glyphSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height))
+			_glyphOutSkin.getBitmapsFromAtlas(new <BitmapData>[
+				BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height))
 			]);
 
-			_glyphHoverSkin.getAssetsFromAtlas(new <BitmapData>[
-				BitmapUtils.crop(glyphSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height))
+			_glyphHoverSkin.getBitmapsFromAtlas(new <BitmapData>[
+				BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height))
 			]);
 
-			_glyphFocusSkin.getAssetsFromAtlas(new <BitmapData>[
-				BitmapUtils.crop(glyphSource, new Rectangle(_assetSize.width << 1, 0, _assetSize.width, _assetSize.height))
+			_glyphFocusSkin.getBitmapsFromAtlas(new <BitmapData>[
+				BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width << 1, 0, _bitmapSize.width, _bitmapSize.height))
 			]);
 		}
 

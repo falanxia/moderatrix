@@ -40,12 +40,12 @@ package com.falanxia.moderatrix.skin {
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class ImageSkin extends Skin implements ISkin, IAssetSkin {
+	public class ImageSkin extends Skin implements ISkin, IBitmapSkin {
 
 
-		public static const IMAGE_ASSET:uint = 0;
+		public static const IMAGE_BITMAP:uint = 0;
 
-		protected var _assetSources:Vector.<BitmapData>;
+		protected var _bitmapSources:Vector.<BitmapData>;
 
 
 
@@ -57,9 +57,9 @@ package com.falanxia.moderatrix.skin {
 		public function ImageSkin(id:String = null) {
 			super(SkinType.IMAGE, id);
 
-			_assetSources = new Vector.<BitmapData>;
+			_bitmapSources = new Vector.<BitmapData>;
 
-			_assetSources[IMAGE_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[IMAGE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -70,46 +70,46 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[IMAGE_ASSET].dispose();
+			_bitmapSources[IMAGE_BITMAP].dispose();
 
-			_assetSources = null;
+			_bitmapSources = null;
 		}
 
 
 
 		/**
-		 * Get assets from vector of BitmapData.
+		 * Get bitmaps from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
-		public function getAssetsFromAtlas(value:Vector.<BitmapData>):void {
-			var imageSource:BitmapData = value[0];
+		public function getBitmapsFromAtlas(value:Vector.<BitmapData>):void {
+			var bitmap:BitmapData = value[0];
 
-			_assetSize.width = imageSource.width;
-			_assetSize.height = imageSource.height;
+			_bitmapSize.width = bitmap.width;
+			_bitmapSize.height = bitmap.height;
 
-			_assetSources[IMAGE_ASSET] = value[0];
+			_bitmapSources[IMAGE_BITMAP] = value[0];
 		}
 
 
 
 		/**
-		 * Set asset source BitmapData
-		 * @param value Vector of asset source BitmapData
+		 * Set bitmap sources BitmapData.
+		 * @param value Vector of bitmap sources
 		 */
-		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[IMAGE_ASSET]);
+		public function set bitmapSources(value:Vector.<BitmapData>):void {
+			checkSize(value[IMAGE_BITMAP]);
 
-			_assetSources = value;
+			_bitmapSources = value;
 		}
 
 
 
 		/**
-		 * Get asset source BitmapData
-		 * @return Vector of asset source BitmapData
+		 * Get bitmap sources BitmapData.
+		 * @return Vector of bitmap sources
 		 */
-		public function get assetSources():Vector.<BitmapData> {
-			return _assetSources;
+		public function get bitmapSources():Vector.<BitmapData> {
+			return _bitmapSources;
 		}
 
 

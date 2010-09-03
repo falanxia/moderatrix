@@ -67,8 +67,8 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			if(c.width == undefined) c.width = skin.assetSize.width;
-			if(c.height == undefined) c.height = skin.assetSize.height;
+			if(c.width == undefined) c.width = skin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {
@@ -336,8 +336,8 @@ package com.falanxia.moderatrix.widgets {
 			if(_size != null) {
 				_skin = skin;
 
-				if(_size.width == 0) _size.width = _skin.assetSize.width;
-				if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
 				draw();
 			}

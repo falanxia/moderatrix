@@ -42,15 +42,15 @@ package com.falanxia.moderatrix.skin {
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class ButtonSkin extends Skin implements ISkin, IAssetSkin {
+	public class ButtonSkin extends Skin implements ISkin, IBitmapSkin {
 
 
-		public static const GUIDE_ASSET:uint = 0;
-		public static const OUT_ASSET:uint = 1;
-		public static const HOVER_ASSET:uint = 2;
-		public static const FOCUS_ASSET:uint = 3;
+		public static const GUIDE_BITMAP:uint = 0;
+		public static const OUT_BITMAP:uint = 1;
+		public static const HOVER_BITMAP:uint = 2;
+		public static const FOCUS_BITMAP:uint = 3;
 
-		protected var _assetSources:Vector.<BitmapData>;
+		protected var _bitmapSources:Vector.<BitmapData>;
 
 
 
@@ -62,12 +62,12 @@ package com.falanxia.moderatrix.skin {
 		public function ButtonSkin(id:String = null) {
 			super(SkinType.BUTTON, id);
 
-			_assetSources = new Vector.<BitmapData>;
+			_bitmapSources = new Vector.<BitmapData>;
 
-			_assetSources[GUIDE_ASSET] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[OUT_ASSET] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[HOVER_ASSET] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[FOCUS_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[GUIDE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[OUT_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[HOVER_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[FOCUS_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -78,57 +78,57 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[GUIDE_ASSET].dispose();
-			_assetSources[OUT_ASSET].dispose();
-			_assetSources[HOVER_ASSET].dispose();
-			_assetSources[FOCUS_ASSET].dispose();
+			_bitmapSources[GUIDE_BITMAP].dispose();
+			_bitmapSources[OUT_BITMAP].dispose();
+			_bitmapSources[HOVER_BITMAP].dispose();
+			_bitmapSources[FOCUS_BITMAP].dispose();
 
-			_assetSources = null;
+			_bitmapSources = null;
 		}
 
 
 
 		/**
-		 * Get assets from vector of BitmapData.
+		 * Get bitmaps from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
-		public function getAssetsFromAtlas(value:Vector.<BitmapData>):void {
-			var buttonSource:BitmapData = value[0];
+		public function getBitmapsFromAtlas(value:Vector.<BitmapData>):void {
+			var bitmap:BitmapData = value[0];
 
-			if(buttonSource.width % 4 != 0) throw new Error("Width has to be multiple of 4");
+			if(bitmap.width % 4 != 0) throw new Error("Width has to be multiple of 4");
 
-			_assetSize.width = buttonSource.width / 4;
-			_assetSize.height = buttonSource.height;
+			_bitmapSize.width = bitmap.width / 4;
+			_bitmapSize.height = bitmap.height;
 
-			_assetSources[GUIDE_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
-			_assetSources[OUT_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
-			_assetSources[HOVER_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width * 2, 0, _assetSize.width, _assetSize.height));
-			_assetSources[FOCUS_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width * 3, 0, _assetSize.width, _assetSize.height));
+			_bitmapSources[GUIDE_BITMAP] = BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height));
+			_bitmapSources[OUT_BITMAP] = BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height));
+			_bitmapSources[HOVER_BITMAP] = BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width * 2, 0, _bitmapSize.width, _bitmapSize.height));
+			_bitmapSources[FOCUS_BITMAP] = BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width * 3, 0, _bitmapSize.width, _bitmapSize.height));
 		}
 
 
 
 		/**
-		 * Set asset source BitmapData
-		 * @param value Vector of asset source BitmapData
+		 * Set bitmap sources BitmapData.
+		 * @param value Vector of bitmap sources
 		 */
-		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[GUIDE_ASSET]);
-			checkSize(value[OUT_ASSET]);
-			checkSize(value[HOVER_ASSET]);
-			checkSize(value[FOCUS_ASSET]);
+		public function set bitmapSources(value:Vector.<BitmapData>):void {
+			checkSize(value[GUIDE_BITMAP]);
+			checkSize(value[OUT_BITMAP]);
+			checkSize(value[HOVER_BITMAP]);
+			checkSize(value[FOCUS_BITMAP]);
 
-			_assetSources = value;
+			_bitmapSources = value;
 		}
 
 
 
 		/**
-		 * Get asset source BitmapData
-		 * @return Vector of asset source BitmapData
+		 * Get bitmap sources BitmapData.
+		 * @return Vector of bitmap sources
 		 */
-		public function get assetSources():Vector.<BitmapData> {
-			return _assetSources;
+		public function get bitmapSources():Vector.<BitmapData> {
+			return _bitmapSources;
 		}
 
 

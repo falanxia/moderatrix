@@ -55,8 +55,8 @@ package com.falanxia.moderatrix.widgets {
 				c = config;
 			}
 
-			if(c.width == undefined) c.width = skin.assetSize.width;
-			if(c.height == undefined) c.height = skin.assetSize.height;
+			if(c.width == undefined) c.width = skin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			//noinspection NegatedIfStatementJS
 			if(skin != null) {
@@ -121,12 +121,12 @@ package com.falanxia.moderatrix.widgets {
 			if(_size != null) {
 				_skin = skin;
 
-				if(_size.width == 0) _size.width = _skin.assetSize.width;
-				if(_size.height == 0) _size.height = _skin.assetSize.height;
+				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
-				var rect:Rectangle = _skin.assetSources[BarSkin.GUIDE_ASSET].getColorBoundsRect(0x00FF0000, 0x00000000, false);
+				var rect:Rectangle = _skin.bitmapSources[BarSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
-				bodySBS.setData(_skin.assetSources[BarSkin.BAR_ASSET], rect);
+				bodySBS.setData(_skin.bitmapSources[BarSkin.BAR_BITMAP], rect);
 
 				invalidate();
 			}

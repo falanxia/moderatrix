@@ -42,13 +42,13 @@ package com.falanxia.moderatrix.skin {
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class BarSkin extends Skin implements ISkin, IAssetSkin {
+	public class BarSkin extends Skin implements ISkin, IBitmapSkin {
 
 
-		public static const GUIDE_ASSET:uint = 0;
-		public static const BAR_ASSET:uint = 1;
+		public static const GUIDE_BITMAP:uint = 0;
+		public static const BAR_BITMAP:uint = 1;
 
-		protected var _assetSources:Vector.<BitmapData>;
+		protected var _bitmapSources:Vector.<BitmapData>;
 
 
 
@@ -60,10 +60,10 @@ package com.falanxia.moderatrix.skin {
 		public function BarSkin(id:String = null) {
 			super(SkinType.BAR, id);
 
-			_assetSources = new Vector.<BitmapData>;
+			_bitmapSources = new Vector.<BitmapData>;
 
-			_assetSources[GUIDE_ASSET] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[BAR_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[GUIDE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
+			_bitmapSources[BAR_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -74,51 +74,51 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[GUIDE_ASSET].dispose();
-			_assetSources[BAR_ASSET].dispose();
+			_bitmapSources[GUIDE_BITMAP].dispose();
+			_bitmapSources[BAR_BITMAP].dispose();
 
-			_assetSources = null;
+			_bitmapSources = null;
 		}
 
 
 
 		/**
-		 * Get assets from vector of BitmapData.
+		 * Get bitmaps from vector of BitmapData.
 		 * @param value Source vector of BitmapData
 		 */
-		public function getAssetsFromAtlas(value:Vector.<BitmapData>):void {
-			var barSource:BitmapData = value[0];
+		public function getBitmapsFromAtlas(value:Vector.<BitmapData>):void {
+			var bitmap:BitmapData = value[0];
 
-			if(barSource.width % 2 != 0) throw new Error("Width has to be multiple of 2");
+			if(bitmap.width % 2 != 0) throw new Error("Width has to be multiple of 2");
 
-			_assetSize.width = barSource.width >> 1;
-			_assetSize.height = barSource.height;
+			_bitmapSize.width = bitmap.width >> 1;
+			_bitmapSize.height = bitmap.height;
 
-			_assetSources[GUIDE_ASSET] = BitmapUtils.crop(barSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
-			_assetSources[BAR_ASSET] = BitmapUtils.crop(barSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
+			_bitmapSources[GUIDE_BITMAP] = BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height));
+			_bitmapSources[BAR_BITMAP] = BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height));
 		}
 
 
 
 		/**
-		 * Set asset source BitmapData
-		 * @param value Vector of asset source BitmapData
+		 * Set bitmap sources BitmapData.
+		 * @param value Vector of bitmap sources
 		 */
-		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[GUIDE_ASSET]);
-			checkSize(value[BAR_ASSET]);
+		public function set bitmapSources(value:Vector.<BitmapData>):void {
+			checkSize(value[GUIDE_BITMAP]);
+			checkSize(value[BAR_BITMAP]);
 
-			_assetSources = value;
+			_bitmapSources = value;
 		}
 
 
 
 		/**
-		 * Get asset source BitmapData
-		 * @return Vector of asset source BitmapData
+		 * Get bitmap sources BitmapData.
+		 * @return Vector of bitmap sources
 		 */
-		public function get assetSources():Vector.<BitmapData> {
-			return _assetSources;
+		public function get bitmapSources():Vector.<BitmapData> {
+			return _bitmapSources;
 		}
 
 

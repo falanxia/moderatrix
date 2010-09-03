@@ -165,9 +165,10 @@ package com.falanxia.moderatrix.globals {
 		private static function createBarSkin(config:Object, asset:Asset):ISkin {
 			var skin:BarSkin = new BarSkin();
 
-			skin.getAssetsFromAtlas(new <BitmapData>[
+			skin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -178,9 +179,10 @@ package com.falanxia.moderatrix.globals {
 		private static function createImageSkin(config:Object, asset:Asset):ISkin {
 			var skin:ImageSkin = new ImageSkin();
 
-			skin.getAssetsFromAtlas(new <BitmapData>[
+			skin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -191,9 +193,10 @@ package com.falanxia.moderatrix.globals {
 		private static function createAtlasSkin(config:Object, asset:Asset):ISkin {
 			var skin:AtlasSkin = new AtlasSkin();
 
-			skin.getAssetsFromAtlas(new <BitmapData>[
+			skin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -204,9 +207,10 @@ package com.falanxia.moderatrix.globals {
 		private static function createButtonSkin(config:Object, asset:Asset):ISkin {
 			var skin:ButtonSkin = new ButtonSkin();
 
-			skin.getAssetsFromAtlas(new <BitmapData>[
+			skin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -227,9 +231,10 @@ package com.falanxia.moderatrix.globals {
 		private static function createLabelButtonSkin(config:Object, asset:Asset):ISkin {
 			var skin:LabelButtonSkin = new LabelButtonSkin();
 
-			skin.buttonSkin.getAssetsFromAtlas(new <BitmapData>[
+			skin.buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.button.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -240,12 +245,14 @@ package com.falanxia.moderatrix.globals {
 		private static function createGlyphButtonSkin(config:Object, asset:Asset):ISkin {
 			var skin:GlyphButtonSkin = new GlyphButtonSkin();
 
-			skin.buttonSkin.getAssetsFromAtlas(new <BitmapData>[
+			skin.buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.button.image).bitmap.bitmapData
 			]);
-			skin.glyphSkin.getAssetsFromAtlas(new <BitmapData>[
+
+			skin.glyphSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.glyph.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -256,12 +263,14 @@ package com.falanxia.moderatrix.globals {
 		private static function createGlyphLabelButtonSkin(config:Object, asset:Asset):ISkin {
 			var skin:GlyphLabelButtonSkin = new GlyphLabelButtonSkin();
 
-			skin.buttonSkin.getAssetsFromAtlas(new <BitmapData>[
+			skin.buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.button.image).bitmap.bitmapData
 			]);
-			skin.glyphSkin.getAssetsFromAtlas(new <BitmapData>[
+
+			skin.glyphSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.glyph.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -272,12 +281,14 @@ package com.falanxia.moderatrix.globals {
 		private static function createCheckButtonSkin(config:Object, asset:Asset):ISkin {
 			var skin:CheckButtonSkin = new CheckButtonSkin();
 
-			skin.buttonOffSkin.getAssetsFromAtlas(new <BitmapData>[
+			skin.buttonOffSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.buttonOff.image).bitmap.bitmapData
 			]);
-			skin.buttonOnSkin.getAssetsFromAtlas(new <BitmapData>[
+
+			skin.buttonOnSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.buttonOn.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;
@@ -288,9 +299,10 @@ package com.falanxia.moderatrix.globals {
 		private static function createInputBarSkin(config:Object, asset:Asset):ISkin {
 			var skin:InputBarSkin = new InputBarSkin();
 
-			skin.barSkin.getAssetsFromAtlas(new <BitmapData>[
+			skin.barSkin.getBitmapsFromAtlas(new <BitmapData>[
 				asset.getChunkByURL(config.bar.image).bitmap.bitmapData
 			]);
+
 			skin.parseConfig(config);
 
 			return skin;

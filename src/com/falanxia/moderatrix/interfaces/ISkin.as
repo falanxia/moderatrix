@@ -72,10 +72,10 @@ package com.falanxia.moderatrix.interfaces {
 
 
 		/**
-		 * Get asset size.
-		 * @return Asset size
+		 * Get bitmap size.
+		 * @return Bitmap size
 		 */
-		function get assetSize():Rectangle;
+		function get bitmapSize():Rectangle;
 
 
 

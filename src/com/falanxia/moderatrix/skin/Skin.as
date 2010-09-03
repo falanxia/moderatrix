@@ -48,7 +48,7 @@ package com.falanxia.moderatrix.skin {
 
 		protected var _id:String;
 		protected var _type:String;
-		protected var _assetSize:Rectangle = new Rectangle(0, 0, 0, 0);
+		protected var _bitmapSize:Rectangle = new Rectangle(0, 0, 0, 0);
 		protected var _config:Object = new Object();
 		protected var _settings:Dictionary;
 
@@ -86,7 +86,7 @@ package com.falanxia.moderatrix.skin {
 		public function destroy():void {
 			_id = null;
 			_type = null;
-			_assetSize = null;
+			_bitmapSize = null;
 			_config = null;
 			_settings = null;
 
@@ -198,11 +198,11 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Get asset size.
-		 * @return Asset size
+		 * Get bitmap size.
+		 * @return Bitmap size
 		 */
-		public function get assetSize():Rectangle {
-			return _assetSize;
+		public function get bitmapSize():Rectangle {
+			return _bitmapSize;
 		}
 
 
@@ -235,21 +235,21 @@ package com.falanxia.moderatrix.skin {
 
 			duplicate.gotoAndStop(frame);
 
-			_assetSize.width = duplicate.width;
-			_assetSize.height = duplicate.height;
+			_bitmapSize.width = duplicate.width;
+			_bitmapSize.height = duplicate.height;
 		}
 
 
 
 		protected function checkSize(source:BitmapData):void {
-			if(_assetSize.width == 0 && _assetSize.height == 0) {
+			if(_bitmapSize.width == 0 && _bitmapSize.height == 0) {
 				// size is not specified, set initial values
-				_assetSize.width = source.width;
-				_assetSize.height = source.height;
+				_bitmapSize.width = source.width;
+				_bitmapSize.height = source.height;
 			}
 
 			else {
-				if(source.width != _assetSize.width || source.height != _assetSize.height) {
+				if(source.width != _bitmapSize.width || source.height != _bitmapSize.height) {
 					// size mismatch
 					throw new Error("Sizes have to match");
 				}
