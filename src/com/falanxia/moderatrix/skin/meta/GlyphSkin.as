@@ -98,9 +98,11 @@ package com.falanxia.moderatrix.skin.meta {
 			_glyphOutSkin.getAssetsFromAtlas(new <BitmapData>[
 				BitmapUtils.crop(glyphSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height))
 			]);
+
 			_glyphHoverSkin.getAssetsFromAtlas(new <BitmapData>[
 				BitmapUtils.crop(glyphSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height))
 			]);
+
 			_glyphFocusSkin.getAssetsFromAtlas(new <BitmapData>[
 				BitmapUtils.crop(glyphSource, new Rectangle(_assetSize.width << 1, 0, _assetSize.width, _assetSize.height))
 			]);

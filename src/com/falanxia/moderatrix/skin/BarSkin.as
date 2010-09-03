@@ -45,6 +45,9 @@ package com.falanxia.moderatrix.skin {
 	public class BarSkin extends Skin implements ISkin, IAssetSkin {
 
 
+		public static const GUIDE_ASSET:uint = 0;
+		public static const BAR_ASSET:uint = 1;
+
 		protected var _assetSources:Vector.<BitmapData>;
 
 
@@ -59,8 +62,8 @@ package com.falanxia.moderatrix.skin {
 
 			_assetSources = new Vector.<BitmapData>;
 
-			_assetSources[0] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[1] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[GUIDE_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[BAR_ASSET] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -71,8 +74,8 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[0].dispose();
-			_assetSources[1].dispose();
+			_assetSources[GUIDE_ASSET].dispose();
+			_assetSources[BAR_ASSET].dispose();
 
 			_assetSources = null;
 		}
@@ -91,8 +94,8 @@ package com.falanxia.moderatrix.skin {
 			_assetSize.width = barSource.width >> 1;
 			_assetSize.height = barSource.height;
 
-			_assetSources[0] = BitmapUtils.crop(barSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
-			_assetSources[1] = BitmapUtils.crop(barSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
+			_assetSources[GUIDE_ASSET] = BitmapUtils.crop(barSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
+			_assetSources[BAR_ASSET] = BitmapUtils.crop(barSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
 		}
 
 
@@ -102,8 +105,8 @@ package com.falanxia.moderatrix.skin {
 		 * @param value Vector of asset source BitmapData
 		 */
 		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[0]);
-			checkSize(value[1]);
+			checkSize(value[GUIDE_ASSET]);
+			checkSize(value[BAR_ASSET]);
 
 			_assetSources = value;
 		}

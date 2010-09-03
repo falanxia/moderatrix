@@ -101,7 +101,7 @@ package com.falanxia.moderatrix.widgets {
 				var w:uint = assetSize.width;
 				var rect:Rectangle = new Rectangle(_phase * w, 0, w, assetSize.height);
 
-				imageBM.bitmapData.copyPixels(_skin.assetSources[0], rect, new Point(0, 0));
+				imageBM.bitmapData.copyPixels(_skin.assetSources[AtlasSkin.ATLAS_ASSET], rect, new Point(0, 0));
 
 				if(_skin != null) {
 					if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
@@ -130,9 +130,10 @@ package com.falanxia.moderatrix.widgets {
 			this.endPhase = endPhase;
 			this.loop = loop;
 
-			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:[
-				endPhase
-			]});
+			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1),
+			             {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:[
+				             endPhase
+			             ]});
 		}
 
 
@@ -196,7 +197,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function get length():uint {
-			return (_skin.assetSources == null) ? 0 : _skin.assetSources[0].width / _skin.assetSize.width;
+			return (_skin.assetSources == null) ? 0 : _skin.assetSources[AtlasSkin.ATLAS_ASSET].width / _skin.assetSize.width;
 		}
 
 

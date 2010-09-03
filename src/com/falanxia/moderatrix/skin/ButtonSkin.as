@@ -45,6 +45,11 @@ package com.falanxia.moderatrix.skin {
 	public class ButtonSkin extends Skin implements ISkin, IAssetSkin {
 
 
+		public static const GUIDE_ASSET:uint = 0;
+		public static const OUT_ASSET:uint = 1;
+		public static const HOVER_ASSET:uint = 2;
+		public static const FOCUS_ASSET:uint = 3;
+
 		protected var _assetSources:Vector.<BitmapData>;
 
 
@@ -59,10 +64,10 @@ package com.falanxia.moderatrix.skin {
 
 			_assetSources = new Vector.<BitmapData>;
 
-			_assetSources[0] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[1] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[2] = new BitmapData(1, 1, true, 0x00000000);
-			_assetSources[3] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[GUIDE_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[OUT_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[HOVER_ASSET] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[FOCUS_ASSET] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -73,10 +78,10 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[0].dispose();
-			_assetSources[1].dispose();
-			_assetSources[2].dispose();
-			_assetSources[3].dispose();
+			_assetSources[GUIDE_ASSET].dispose();
+			_assetSources[OUT_ASSET].dispose();
+			_assetSources[HOVER_ASSET].dispose();
+			_assetSources[FOCUS_ASSET].dispose();
 
 			_assetSources = null;
 		}
@@ -95,10 +100,10 @@ package com.falanxia.moderatrix.skin {
 			_assetSize.width = buttonSource.width / 4;
 			_assetSize.height = buttonSource.height;
 
-			_assetSources[0] = BitmapUtils.crop(buttonSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
-			_assetSources[1] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
-			_assetSources[2] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width * 2, 0, _assetSize.width, _assetSize.height));
-			_assetSources[3] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width * 3, 0, _assetSize.width, _assetSize.height));
+			_assetSources[GUIDE_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(0, 0, _assetSize.width, _assetSize.height));
+			_assetSources[OUT_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width, 0, _assetSize.width, _assetSize.height));
+			_assetSources[HOVER_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width * 2, 0, _assetSize.width, _assetSize.height));
+			_assetSources[FOCUS_ASSET] = BitmapUtils.crop(buttonSource, new Rectangle(_assetSize.width * 3, 0, _assetSize.width, _assetSize.height));
 		}
 
 
@@ -108,10 +113,10 @@ package com.falanxia.moderatrix.skin {
 		 * @param value Vector of asset source BitmapData
 		 */
 		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[0]);
-			checkSize(value[1]);
-			checkSize(value[2]);
-			checkSize(value[3]);
+			checkSize(value[GUIDE_ASSET]);
+			checkSize(value[OUT_ASSET]);
+			checkSize(value[HOVER_ASSET]);
+			checkSize(value[FOCUS_ASSET]);
 
 			_assetSources = value;
 		}

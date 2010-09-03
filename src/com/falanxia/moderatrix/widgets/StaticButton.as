@@ -95,9 +95,9 @@ package com.falanxia.moderatrix.widgets {
 		override public function set skin(skin:ButtonSkin):void {
 			super.skin = skin;
 
-			outBM.bitmapData = _skin.assetSources[1];
-			hoverBM.bitmapData = _skin.assetSources[2];
-			focusBM.bitmapData = _skin.assetSources[3];
+			outBM.bitmapData = _skin.assetSources[ButtonSkin.OUT_ASSET];
+			hoverBM.bitmapData = _skin.assetSources[ButtonSkin.HOVER_ASSET];
+			focusBM.bitmapData = _skin.assetSources[ButtonSkin.FOCUS_ASSET];
 
 			invalidate();
 		}

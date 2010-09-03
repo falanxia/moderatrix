@@ -43,6 +43,8 @@ package com.falanxia.moderatrix.skin {
 	public class AtlasSkin extends Skin implements ISkin, IAssetSkin {
 
 
+		public static const ATLAS_ASSET:uint = 0;
+
 		protected var _assetSources:Vector.<BitmapData>;
 
 
@@ -57,7 +59,7 @@ package com.falanxia.moderatrix.skin {
 
 			_assetSources = new Vector.<BitmapData>;
 
-			_assetSources[0] = new BitmapData(1, 1, true, 0x00000000);
+			_assetSources[ATLAS_ASSET] = new BitmapData(1, 1, true, 0x00000000);
 		}
 
 
@@ -68,7 +70,7 @@ package com.falanxia.moderatrix.skin {
 		override public function destroy():void {
 			super.destroy();
 
-			_assetSources[0].dispose();
+			_assetSources[ATLAS_ASSET].dispose();
 
 			_assetSources = null;
 		}
@@ -109,7 +111,7 @@ package com.falanxia.moderatrix.skin {
 		 * @param value Vector of asset source BitmapData
 		 */
 		public function set assetSources(value:Vector.<BitmapData>):void {
-			checkSize(value[0]);
+			checkSize(value[ATLAS_ASSET]);
 
 			_assetSources = value;
 		}
