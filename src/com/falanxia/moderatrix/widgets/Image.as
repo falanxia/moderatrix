@@ -36,6 +36,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+	/**
+	 * Image.
+	 *
+	 * Image is an image :]
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class Image extends Widget implements IWidget {
 
 
@@ -43,6 +52,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Initial skin
+		 * @param config Config Object
+		 * @param parent Parent DisplayObjectContainer
+		 * @param debugLevel Initial debug level
+		 * @see DebugLevel
+		 */
 		public function Image(skin:ImageSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
@@ -53,6 +70,8 @@ package com.falanxia.moderatrix.widgets {
 			super(c, parent, dl);
 
 			this.skin = skin;
+
+			draw();
 		}
 
 
@@ -61,11 +80,11 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys Image instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			removeChildren();
 
 			imageBM.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			imageBM = null;
@@ -73,6 +92,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Draw widget.
+		 */
 		override public function draw():void {
 			super.draw();
 
@@ -82,7 +104,7 @@ package com.falanxia.moderatrix.widgets {
 
 				imageBM.positionAndSize = rect;
 
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
+				if(_debugLevel != DebugLevel.NONE) {
 					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}

@@ -53,6 +53,8 @@ package com.falanxia.moderatrix.widgets {
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			super(skin, c, parent, dl);
+
+			draw();
 		}
 
 
@@ -61,17 +63,13 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys ScaleButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			forceRelease();
-
-			// removeChildren();
-			// was removed due to multiple item removal
-			// TODO: Test if it's needed
 
 			outSBS.destroy();
 			hoverSBS.destroy();
 			focusSBS.destroy();
+
+			super.destroy();
 
 			outSBS = null;
 			hoverSBS = null;

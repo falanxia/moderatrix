@@ -108,6 +108,8 @@ package com.falanxia.moderatrix.widgets {
 			debugSpr.destroy();
 			contentSpr.destroy();
 
+			super.destroy();
+
 			_config = null;
 			_size = null;
 			_debugColor = null;
@@ -116,8 +118,6 @@ package com.falanxia.moderatrix.widgets {
 			debugSpr = null;
 			contentSpr = null;
 			data = null;
-
-			super.destroy();
 		}
 
 
@@ -435,7 +435,6 @@ package com.falanxia.moderatrix.widgets {
 
 		protected function init():void {
 			addChildren();
-			invalidate();
 		}
 
 
@@ -459,12 +458,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
-		}
-
-
-
 		protected function onDebugOver(e:MouseEvent):void {
 			debugSpr.visible = true;
 		}
@@ -473,6 +466,12 @@ package com.falanxia.moderatrix.widgets {
 
 		protected function onDebugOut(e:MouseEvent):void {
 			debugSpr.visible = false;
+		}
+
+
+
+		protected function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
 		}
 
 

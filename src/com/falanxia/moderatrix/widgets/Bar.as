@@ -36,6 +36,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+	/**
+	 * Bar.
+	 *
+	 * Bar is a resizable bitmap element.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class Bar extends Widget implements IWidget {
 
 
@@ -43,6 +52,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Initial skin
+		 * @param config Config Object
+		 * @param parent Parent DisplayObjectContainer
+		 * @param debugLevel Initial debug level
+		 * @see DebugLevel
+		 */
 		public function Bar(skin:BarSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
@@ -53,6 +70,8 @@ package com.falanxia.moderatrix.widgets {
 			super(c, parent, dl);
 
 			this.skin = skin;
+
+			draw();
 		}
 
 
@@ -61,9 +80,9 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys Bar instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			bodySBS.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			bodySBS = null;
@@ -71,6 +90,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Draw the widget.
+		 */
 		override public function draw():void {
 			if(_skin != null && _size != null) {
 				super.draw();
@@ -82,12 +104,13 @@ package com.falanxia.moderatrix.widgets {
 					bodySBS.width = rect.width;
 					bodySBS.x = rect.x;
 				}
+
 				if(_size.height != 0 && !isNaN(_size.height)) {
 					bodySBS.height = rect.height;
 					bodySBS.y = rect.y;
 				}
 
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
+				if(_debugLevel != DebugLevel.NONE) {
 					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 			}
@@ -115,6 +138,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current width.
+		 * @return Current width
+		 */
 		override public function get width():Number {
 			var settings:Dictionary = _skin.settings;
 
@@ -123,6 +150,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current height.
+		 * @return Current height
+		 */
 		override public function get height():Number {
 			var settings:Dictionary = _skin.settings;
 

@@ -29,9 +29,9 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.skin.meta.*;
 	import com.falanxia.moderatrix.widgets.*;
 	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.utils.*;
 
 	import flash.display.*;
+	import flash.events.*;
 
 
 
@@ -80,16 +80,12 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys CheckButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			forceRelease();
-
-			// removeChildren();
-			// was removed due to multiple item removal
-			// TODO: Test if it's needed
 
 			_buttonOff.destroy();
 			_buttonOn.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			_buttonOff = null;
@@ -100,11 +96,11 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		public function draw():void {
-			_buttonOff.draw();
-			_buttonOn.draw();
-
 			_buttonOff.visible = !_isChecked;
 			_buttonOn.visible = _isChecked;
+
+			_buttonOff.draw();
+			_buttonOn.draw();
 		}
 
 
@@ -220,7 +216,7 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function set isChecked(value:Boolean):void {
 			_isChecked = value;
 
-			draw();
+			invalidate();
 		}
 
 
@@ -268,17 +264,22 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		private function removeChildren():void {
-			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
-			_buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
-
-			DisplayUtils.removeChildren(this, _buttonOff, _buttonOn);
+		private function onToggle(e:ButtonEvent):void {
+			isChecked = !isChecked;
 		}
 
 
 
-		private function onToggle(e:ButtonEvent):void {
-			isChecked = !isChecked;
+		protected function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+		}
+
+
+
+		private function onInvalidate(e:Event):void {
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
+
+			draw();
 		}
 	}
 }

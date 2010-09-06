@@ -31,6 +31,7 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.utilitaris.utils.*;
 
 	import flash.display.*;
+	import flash.events.*;
 
 
 
@@ -73,12 +74,12 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys InputBar instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			removeChildren();
 
 			_bar.destroy();
 			_label.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			_bar = null;
@@ -224,6 +225,20 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function removeChildren():void {
 			DisplayUtils.removeChildren(this, _bar, _label);
+		}
+
+
+
+		protected function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+		}
+
+
+
+		private function onInvalidate(e:Event):void {
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
+
+			draw();
 		}
 	}
 }

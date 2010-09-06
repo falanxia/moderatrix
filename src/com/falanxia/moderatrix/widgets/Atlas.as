@@ -39,6 +39,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+	/**
+	 * Atlas.
+	 *
+	 * Atlas is basically an animated Image.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class Atlas extends Widget implements IWidget {
 
 
@@ -53,6 +62,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Initial skin
+		 * @param config Config Object
+		 * @param parent Parent DisplayObjectContainer
+		 * @param debugLevel Initial debug level
+		 * @see DebugLevel
+		 */
 		public function Atlas(skin:AtlasSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
@@ -63,6 +80,8 @@ package com.falanxia.moderatrix.widgets {
 			super(c, parent, dl);
 
 			this.skin = skin;
+
+			draw();
 		}
 
 
@@ -71,9 +90,9 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys Atlas instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			imageBM.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			imageBM = null;
@@ -81,6 +100,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Draw the widget.
+		 */
 		override public function draw():void {
 			if(_size != null) {
 				super.draw();
@@ -90,10 +112,8 @@ package com.falanxia.moderatrix.widgets {
 
 				imageBM.bitmapData.copyPixels(AtlasSkin(_skin).bitmapSources[AtlasSkin.ATLAS_BITMAP], rect, new Point(0, 0));
 
-				if(_skin != null) {
-					if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
-						DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, w, _skin.bitmapSize.height), _debugColor, 5);
-					}
+				if(_debugLevel != DebugLevel.NONE) {
+					DisplayUtils.strokeBounds(debugSpr, new Rectangle(0, 0, w, _skin.bitmapSize.height), _debugColor, 5);
 				}
 			}
 		}
@@ -154,12 +174,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current Atlas bitmap.
+		 * @return Current Atlas bitmap
+		 */
 		public function get bitmap():QBitmap {
 			return imageBM;
 		}
 
 
 
+		/**
+		 * Set phase.
+		 * @param value Phase
+		 */
 		public function set phase(value:uint):void {
 			if(value != phase) {
 				if(value > this.length) {
@@ -167,20 +195,27 @@ package com.falanxia.moderatrix.widgets {
 				}
 				else {
 					_phase = value;
-
-					draw();
+					invalidate();
 				}
 			}
 		}
 
 
 
+		/**
+		 * Get current phase.
+		 * @return Current phase
+		 */
 		public function get phase():uint {
 			return _phase;
 		}
 
 
 
+		/**
+		 * Get length of animation in frames.
+		 * @return Length
+		 */
 		public function get length():uint {
 			var skin:AtlasSkin = AtlasSkin(_skin);
 
@@ -218,10 +253,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		/**
-		 * Check for reset.
-		 * @param endPhase End phase
-		 */
 		private function checkReset(endPhase:int):void {
 			if(endPhase == length) {
 				reset();

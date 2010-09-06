@@ -35,6 +35,7 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.greensock.easing.*;
 
 	import flash.display.*;
+	import flash.events.*;
 
 
 
@@ -90,18 +91,14 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys GlyphButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			forceRelease();
-
-			// removeChildren();
-			// was removed due to multiple item removal
-			// TODO: Test if it's needed
 
 			_button.destroy();
 			_glyphOut.destroy();
 			_glyphHover.destroy();
 			_glyphFocus.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			_button = null;
@@ -361,6 +358,20 @@ package com.falanxia.moderatrix.widgets.meta {
 			new TweenLite(_glyphOut, focusOutDuration, {alpha:1, ease:Sine.easeOut});
 			new TweenLite(_glyphHover, focusOutDuration, {alpha:0, ease:Sine.easeIn});
 			new TweenLite(_glyphFocus, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+		}
+
+
+
+		protected function invalidate():void {
+			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+		}
+
+
+
+		private function onInvalidate(e:Event):void {
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
+
+			draw();
 		}
 	}
 }

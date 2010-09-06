@@ -46,7 +46,9 @@ package com.falanxia.moderatrix.widgets {
 	 * need to override inner sprite size, specify it via innerWidth and innerHeight setters (with corresponding
 	 * getters of course).
 	 *
-	 * @author Vaclav Vancura (http://vaclav.vancura.org)
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
 	 */
 	public class Container extends Widget implements IWidget {
 
@@ -55,6 +57,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Initial skin
+		 * @param config Config Object
+		 * @param parent Parent DisplayObjectContainer
+		 * @param debugLevel Initial debug level
+		 * @see DebugLevel
+		 */
 		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
@@ -65,6 +75,8 @@ package com.falanxia.moderatrix.widgets {
 			super(c, parent, dl);
 
 			this.skin = skin;
+
+			draw();
 		}
 
 
@@ -73,11 +85,11 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys Container instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			removeChildren();
 
 			innerSpr.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			innerSpr = null;
@@ -86,7 +98,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Redraw stuff.
+		 * Draw widget.
 		 */
 		override public function draw():void {
 			super.draw();
@@ -104,7 +116,7 @@ package com.falanxia.moderatrix.widgets {
 				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight, _size.height - paddingTop - paddingBottom);
 
 				// draw debug rectangle
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
+				if(_debugLevel != DebugLevel.NONE) {
 					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
 				}
 
@@ -154,7 +166,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.addChild(child);
 			}
 
-			draw();
+			invalidate();
 
 			return out;
 		}
@@ -171,7 +183,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.removeChild(child);
 			}
 
-			draw();
+			invalidate();
 
 			return out;
 		}
@@ -201,7 +213,7 @@ package com.falanxia.moderatrix.widgets {
 				innerSpr.swapChildrenAt(index1, index2);
 			}
 
-			draw();
+			invalidate();
 		}
 
 
@@ -231,7 +243,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.removeChildAt(index);
 			}
 
-			draw();
+			invalidate();
 
 			return out;
 		}
@@ -263,7 +275,7 @@ package com.falanxia.moderatrix.widgets {
 				out = innerSpr.addChildAt(child, index);
 			}
 
-			draw();
+			invalidate();
 
 			return out;
 		}
@@ -278,7 +290,7 @@ package com.falanxia.moderatrix.widgets {
 				innerSpr.swapChildren(child1, child2);
 			}
 
-			draw();
+			invalidate();
 		}
 
 
@@ -306,7 +318,7 @@ package com.falanxia.moderatrix.widgets {
 				innerSpr.setChildIndex(child, index);
 			}
 
-			draw();
+			invalidate();
 		}
 
 
@@ -326,6 +338,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current width.
+		 * @return Current width
+		 */
 		override public function get width():Number {
 			var settings:Dictionary = _skin.settings;
 
@@ -334,6 +350,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current height.
+		 * @return Current height
+		 */
 		override public function get height():Number {
 			var settings:Dictionary = _skin.settings;
 
@@ -360,7 +380,7 @@ package com.falanxia.moderatrix.widgets {
 
 			DisplayUtils.addChildren(contentSpr, innerSpr);
 
-			draw();
+			invalidate();
 		}
 
 
@@ -370,7 +390,7 @@ package com.falanxia.moderatrix.widgets {
 
 			DisplayUtils.removeChildren(contentSpr, innerSpr);
 
-			draw();
+			invalidate();
 		}
 	}
 }

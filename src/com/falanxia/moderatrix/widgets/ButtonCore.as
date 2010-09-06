@@ -60,6 +60,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Initial skin
+		 * @param config Config Object
+		 * @param parent Parent DisplayObjectContainer
+		 * @param debugLevel Initial debug level
+		 * @see DebugLevel
+		 */
 		public function ButtonCore(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
@@ -72,6 +80,8 @@ package com.falanxia.moderatrix.widgets {
 			this.skin = skin;
 
 			_mouseStatus = MouseStatus.OUT;
+
+			draw();
 		}
 
 
@@ -80,17 +90,13 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys ButtonCore instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			forceRelease();
-
-			// removeChildren();
-			// was removed due to multiple item removal
-			// TODO: Test if it's needed
 
 			if(stage != null) stage.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 
 			activeSpr.destroy();
+
+			super.destroy();
 
 			_skin = null;
 			activeSpr = null;
@@ -99,6 +105,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Force release.
+		 */
 		public function forceRelease():void {
 			if(_mouseStatus == MouseStatus.FOCUS && _areEventsEnabled) {
 				currentDrag = null;
@@ -106,15 +115,17 @@ package com.falanxia.moderatrix.widgets {
 
 				releasedOutsideTween();
 
-				var e:ButtonEvent = new ButtonEvent(ButtonEvent.RELEASE_OUTSIDE, true);
-				dispatchEvent(e);
+				dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_OUTSIDE, true));
 
-				draw();
+				invalidate();
 			}
 		}
 
 
 
+		/**
+		 * Release all buttons everywhere.
+		 */
 		public static function releaseAll():void {
 			var widget:IWidget;
 
@@ -125,11 +136,17 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		override public function get tabEnabled():Boolean {
+			return activeSpr.tabEnabled;
+		}
+
+
+
 		override public function set tabEnabled(enabled:Boolean):void {
 			activeSpr.tabEnabled = enabled;
 			super.tabEnabled = enabled;
 
-			draw();
+			invalidate();
 		}
 
 
@@ -137,7 +154,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function set tabIndex(index:int):void {
 			activeSpr.tabIndex = index;
 
-			draw();
+			invalidate();
 		}
 
 
@@ -163,6 +180,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Enable or disable button events.
+		 * @param value true to enable button events
+		 */
 		public function set areEventsEnabled(value:Boolean):void {
 			_areEventsEnabled = value;
 
@@ -170,27 +191,39 @@ package com.falanxia.moderatrix.widgets {
 			this.buttonMode = value;
 			this.useHandCursor = value;
 
-			if(!value) {
-				forceRelease();
-			}
+			if(!value) forceRelease();
 
-			draw();
+			invalidate();
 		}
 
 
 
+		/**
+		 * Get button events enabled flag.
+		 * @return Button events enabled flag
+		 */
 		public function get areEventsEnabled():Boolean {
 			return _areEventsEnabled;
 		}
 
 
 
+		/**
+		 * Get current mouse status.
+		 * @return Current mouse status
+		 * @see MouseStatus
+		 */
 		public function get mouseStatus():String {
 			return _mouseStatus;
 		}
 
 
 
+		/**
+		 * Set mouse status.
+		 * @param value Mouse status
+		 * @see MouseStatus
+		 */
 		public function set mouseStatus(value:String):void {
 			switch(value) {
 				case MouseStatus.OUT:
@@ -212,12 +245,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		override public function get tabEnabled():Boolean {
-			return activeSpr.tabEnabled;
-		}
-
-
-
 		override protected function addChildren():void {
 			super.addChildren();
 
@@ -229,9 +256,6 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.addEventListener(MouseEvent.MOUSE_UP, onRelease, false, 0, true);
 			activeSpr.addEventListener(FocusEvent.FOCUS_IN, onFocusIn, false, 0, true);
 			activeSpr.addEventListener(FocusEvent.FOCUS_OUT, onFocusOut, false, 0, true);
-
-			// activeSpr.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown, false, 0, true);
-			// TODO: Removed, caused a lot of troubles
 
 			activeSpr.tabEnabled = true;
 			activeSpr.focusRect = false;
@@ -251,9 +275,6 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_IN, onFocusIn);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
-
-			// activeSpr.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			// TODO: Removed, caused a lot of troubles
 
 			DisplayUtils.removeChildren(contentSpr, activeSpr);
 		}
@@ -432,16 +453,5 @@ package com.falanxia.moderatrix.widgets {
 				onOut();
 			}
 		}
-
-
-
-		/*
-		 private function onKeyDown(e:KeyboardEvent):void {
-		 if(_areEventsEnabled) {
-		 if(e.keyCode == 32 || e.keyCode == 13) dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
-		 }
-		 }
-		 */
-		// TODO: Removed, caused a lot of troubles
 	}
 }

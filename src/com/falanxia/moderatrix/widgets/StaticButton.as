@@ -52,6 +52,8 @@ package com.falanxia.moderatrix.widgets {
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			super(skin, c, parent, dl);
+
+			draw();
 		}
 
 
@@ -60,17 +62,13 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys StaticButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			forceRelease();
-
-			// removeChildren();
-			// was removed due to multiple item removal
-			// TODO: Test if it's needed
 
 			outBM.destroy();
 			hoverBM.destroy();
 			focusBM.destroy();
+
+			super.destroy();
 
 			outBM = null;
 			hoverBM = null;
