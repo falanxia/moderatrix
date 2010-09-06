@@ -39,8 +39,6 @@ package com.falanxia.moderatrix.widgets {
 	public class Image extends Widget implements IWidget {
 
 
-		protected var _skin:ImageSkin;
-
 		protected var imageBM:QBitmap;
 
 
@@ -97,8 +95,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(_skin != null && _size != null) {
 				var settings:Dictionary = _skin.settings;
-				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"], _size.width - settings["paddingLeft"],
-				                                   _size.height - settings["paddingTop"]);
+				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"], _size.width - settings["paddingLeft"], _size.height - settings["paddingTop"]);
 
 				imageBM.positionAndSize = rect;
 
@@ -110,23 +107,19 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function get skin():ImageSkin {
-			return _skin;
-		}
-
-
-
-		public function set skin(skin:ImageSkin):void {
-			if(_size != null) {
-				_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
 				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
 				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
-				imageBM.bitmapData = _skin.bitmapSources[ImageSkin.IMAGE_BITMAP];
+				imageBM.bitmapData = ImageSkin(_skin).bitmapSources[ImageSkin.IMAGE_BITMAP];
 				imageBM.smoothing = true;
-
-				invalidate();
 			}
 		}
 

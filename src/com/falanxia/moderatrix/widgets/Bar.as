@@ -39,8 +39,6 @@ package com.falanxia.moderatrix.widgets {
 	public class Bar extends Widget implements IWidget {
 
 
-		protected var _skin:BarSkin;
-
 		protected var bodySBS:ScaleBitmapSprite;
 
 
@@ -90,9 +88,7 @@ package com.falanxia.moderatrix.widgets {
 				super.draw();
 
 				var settings:Dictionary = _skin.settings;
-				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"],
-				                                   _size.width - settings["paddingLeft"] - settings["paddingRight"],
-				                                   _size.height - settings["paddingTop"] - settings["paddingBottom"]);
+				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"], _size.width - settings["paddingLeft"] - settings["paddingRight"], _size.height - settings["paddingTop"] - settings["paddingBottom"]);
 
 				if(_size.width != 0 && !isNaN(_size.width)) {
 					bodySBS.width = rect.width;
@@ -111,24 +107,21 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function get skin():BarSkin {
-			return _skin;
-		}
-
-
-
-		public function set skin(skin:BarSkin):void {
-			if(_size != null) {
-				_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
 				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
 				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
-				var rect:Rectangle = _skin.bitmapSources[BarSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
+				var skin:BarSkin = BarSkin(_skin);
+				var rect:Rectangle = skin.bitmapSources[BarSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
-				bodySBS.setData(_skin.bitmapSources[BarSkin.BAR_BITMAP], rect);
-
-				invalidate();
+				bodySBS.setData(skin.bitmapSources[BarSkin.BAR_BITMAP], rect);
 			}
 		}
 

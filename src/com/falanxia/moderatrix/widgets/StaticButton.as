@@ -92,14 +92,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		override public function set skin(skin:ButtonSkin):void {
-			super.skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
-			outBM.bitmapData = _skin.bitmapSources[ButtonSkin.OUT_BITMAP];
-			hoverBM.bitmapData = _skin.bitmapSources[ButtonSkin.HOVER_BITMAP];
-			focusBM.bitmapData = _skin.bitmapSources[ButtonSkin.FOCUS_BITMAP];
+				var skin:ButtonSkin = ButtonSkin(_skin);
 
-			invalidate();
+				outBM.bitmapData = skin.bitmapSources[ButtonSkin.OUT_BITMAP];
+				hoverBM.bitmapData = skin.bitmapSources[ButtonSkin.HOVER_BITMAP];
+				focusBM.bitmapData = skin.bitmapSources[ButtonSkin.FOCUS_BITMAP];
+			}
 		}
 
 

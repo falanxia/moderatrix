@@ -38,13 +38,18 @@ package com.falanxia.moderatrix.widgets {
 
 
 	/**
-	 * TODO: Width & height not applied in the constructor
-	 * TODO: Check for children and remove them on destroy()
+	 * Widget.
+	 *
+	 * Parent of all widgets.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
 	 */
 	public class Widget extends MorphSprite implements IWidget {
 
 
-		public static const DRAW:String = "draw";
+		public static const DRAW:String = "widgetDraw";
 
 		public static var initialDebugLevel:String;
 
@@ -52,14 +57,15 @@ package com.falanxia.moderatrix.widgets {
 
 		protected static const DEBUG_PADDING:Number = 4;
 
-		protected static var allWidgets:Array;
+		protected static var allWidgets:Vector.<IWidget> = new Vector.<IWidget>;
 
 		protected var _config:Object;
 		protected var _size:Rectangle = new Rectangle(0, 0, 0, 0);
-		protected var _debugLevel:String;
+		protected var _debugLevel:String = DebugLevel.NONE;
 		protected var _debugColor:RGBA;
+		protected var _idx:uint;
+		protected var _skin:ISkin;
 
-		protected var allIdx:uint;
 		protected var debugSpr:QSprite;
 		protected var contentSpr:QSprite;
 
@@ -75,23 +81,14 @@ package com.falanxia.moderatrix.widgets {
 			_config = (config == null) ? new Object() : config;
 			_debugColor = SkinManager.defaultDebugColor;
 
-			super(_config);
+			super(_config, parent);
 
-			if(_config.x != undefined) this.x = _config.x;
-			if(_config.y != undefined) this.y = _config.y;
-			if(_config.width != undefined) this.width = _config.width;
-			if(_config.height != undefined) this.height = _config.height;
-
-			if(parent != null) parent.addChild(this);
-
-			if(allWidgets == null) allWidgets = new Array();
-			allWidgets.push(this);
-			allIdx = allWidgets.length - 1;
+			allWidgets[_idx = allWidgets.length] = this;
 
 			init();
 
 			if(debugLevel == null) {
-				if(initialDebugLevel != null) this.debugLevel = initialDebugLevel;
+				this.debugLevel = initialDebugLevel == null ? null : initialDebugLevel;
 			}
 			else {
 				this.debugLevel = debugLevel;
@@ -104,8 +101,6 @@ package com.falanxia.moderatrix.widgets {
 		 * Destroys Widget instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			super.destroy();
-
 			if(this.hasEventListener(Event.ENTER_FRAME)) removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			removeChildren();
@@ -116,9 +111,13 @@ package com.falanxia.moderatrix.widgets {
 			_config = null;
 			_size = null;
 			_debugColor = null;
+			_debugLevel = null;
+
 			debugSpr = null;
 			contentSpr = null;
 			data = null;
+
+			super.destroy();
 		}
 
 
@@ -128,7 +127,7 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		public function draw():void {
 			if(_size != null) {
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
+				if(_debugLevel != DebugLevel.NONE) {
 					DisplayUtils.clear(debugSpr);
 					DisplayUtils.drawRect(debugSpr, _size, _debugColor);
 					DisplayUtils.strokeBounds(debugSpr, _size, _debugColor, 5);
@@ -237,11 +236,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		override public function set width(w:Number):void {
+		/**
+		 * Rescale to new width.
+		 * @param value Width
+		 */
+		override public function set width(value:Number):void {
 			if(_size != null) {
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
+				if(_debugLevel != DebugLevel.NONE) DisplayUtils.clear(debugSpr);
 
-				_size.width = Math.round(w);
+				_size.width = Math.round(value);
 
 				invalidate();
 				dispatchEvent(new Event(Event.RESIZE));
@@ -250,17 +253,25 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get width.
+		 * @return Width
+		 */
 		override public function get width():Number {
 			return _size == null ? 0 : _size.width;
 		}
 
 
 
-		override public function set height(h:Number):void {
+		/**
+		 * Rescale to new height.
+		 * @param value Height
+		 */
+		override public function set height(value:Number):void {
 			if(_size != null) {
-				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) DisplayUtils.clear(debugSpr);
+				if(_debugLevel != DebugLevel.NONE) DisplayUtils.clear(debugSpr);
 
-				_size.height = Math.round(h);
+				_size.height = Math.round(value);
 
 				invalidate();
 				dispatchEvent(new Event(Event.RESIZE));
@@ -269,12 +280,20 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get height.
+		 * @return Height
+		 */
 		override public function get height():Number {
 			return _size.height;
 		}
 
 
 
+		/**
+		 * Get size.
+		 * @return Size
+		 */
 		override public function get size():Rectangle {
 			return _size;
 		}
@@ -283,55 +302,73 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Rescales to new size.
-		 * @param rect New size as Rectangle
+		 * @param value New size as Rectangle
 		 */
-		override public function set size(rect:Rectangle):void {
-			_size = rect;
+		override public function set size(value:Rectangle):void {
+			if(value != null) {
+				if(_debugLevel != DebugLevel.NONE) DisplayUtils.clear(debugSpr);
 
-			invalidate();
-			dispatchEvent(new Event(Event.RESIZE));
-		}
+				_size = value;
 
-
-
-		public static function set allDebugLevel(value:String):void {
-			for each(var i:IWidget in allWidgets) {
-				if(i != null) i.debugLevel = value;
+				invalidate();
+				dispatchEvent(new Event(Event.RESIZE));
 			}
 		}
 
 
 
-		override public function set x(value:Number):void {
-			super.x = Math.round(value);
+		/**
+		 * Set debug level in all widgets everywhere.
+		 * @param value Debug level
+		 * @see DebugLevel
+		 */
+		public static function set allDebugLevel(value:String):void {
+			var widget:IWidget;
+
+			for each(widget in allWidgets) {
+				if(widget != null) widget.debugLevel = value;
+			}
 		}
 
 
 
-		override public function set y(value:Number):void {
-			super.y = Math.round(value);
-		}
-
-
-
+		/**
+		 * Get configuration Object.
+		 * @return Configuration Object
+		 */
 		public function get config():Object {
 			return _config;
 		}
 
 
 
-		public function set debugLevel(value:String):void {
-			if(value == DebugLevel.ALWAYS) {
-				debugSpr.visible = true;
+		/**
+		 * Get index in a list of all widgets.
+		 * @return Index
+		 */
+		public function get idx():uint {
+			return _idx;
+		}
 
-				this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
-				this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
-			}
-			else {
+
+
+		/**
+		 * Set debug level.
+		 * @param value Debug level
+		 * @see DebugLevel
+		 */
+		public function set debugLevel(value:String):void {
+			if(value == DebugLevel.HOVER) {
 				debugSpr.visible = false;
 
 				this.addEventListener(MouseEvent.ROLL_OVER, onDebugOver, false, 0, true);
 				this.addEventListener(MouseEvent.ROLL_OUT, onDebugOut, false, 0, true);
+			}
+			else {
+				debugSpr.visible = true;
+
+				this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 
 			_debugLevel = value;
@@ -339,22 +376,59 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current debug level.
+		 * @return Debug level
+		 * @see DebugLevel
+		 */
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
 
 
 
+		/**
+		 * Set debug color.
+		 * @param value Debug color
+		 */
 		public function set debugColor(value:RGBA):void {
-			_debugColor = value;
-
-			draw();
+			if(value != null) {
+				_debugColor = value;
+				invalidate();
+			}
 		}
 
 
 
+		/**
+		 * Get current debug color.
+		 * @return Debug color
+		 */
 		public function get debugColor():RGBA {
 			return _debugColor;
+		}
+
+
+
+		/**
+		 * Get skin.
+		 * @return Skin
+		 */
+		public function get skin():ISkin {
+			return _skin;
+		}
+
+
+
+		/**
+		 * Set skin.
+		 * @param skin Skin
+		 */
+		public function set skin(skin:ISkin):void {
+			if(_size != null) {
+				_skin = skin;
+				invalidate();
+			}
 		}
 
 
@@ -377,7 +451,7 @@ package com.falanxia.moderatrix.widgets {
 			this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
 			this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 
-			allWidgets[allIdx] = null;
+			allWidgets[_idx] = null;
 
 			if(contentSpr != null && this.getChildByName(contentSpr.name)) contentSpr.parent.removeChild(contentSpr);
 			if(debugSpr != null && this.getChildByName(debugSpr.name)) debugSpr.parent.removeChild(debugSpr);

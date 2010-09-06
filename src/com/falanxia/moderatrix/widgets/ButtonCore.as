@@ -39,12 +39,19 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+	/**
+	 * Button core.
+	 *
+	 * Parent of all button widgets.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class ButtonCore extends Widget implements IWidget {
 
 
 		private static var currentDrag:ButtonCore;
-
-		protected var _skin:ButtonSkin;
 
 		protected var activeSpr:QSprite;
 
@@ -121,11 +128,10 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public static function releaseAll():void {
-			// TODO: No asterisk
-			for each(var b:* in allWidgets) {
-				if(b is ButtonCore) {
-					ButtonCore(b).forceRelease();
-				}
+			var widget:IWidget;
+
+			for each(widget in allWidgets) {
+				if(widget is ButtonCore) ButtonCore(widget).forceRelease();
 			}
 		}
 
@@ -154,20 +160,16 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function get skin():ButtonSkin {
-			return _skin;
-		}
-
-
-
-		public function set skin(skin:ButtonSkin):void {
-			if(_size != null) {
-				_skin = ButtonSkin(skin);
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
 				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
 				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
-
-				draw();
 			}
 		}
 

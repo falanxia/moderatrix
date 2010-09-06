@@ -24,6 +24,7 @@
 
 package com.falanxia.moderatrix.interfaces {
 	import flash.geom.*;
+	import flash.utils.*;
 
 
 
@@ -84,5 +85,13 @@ package com.falanxia.moderatrix.interfaces {
 		 * @return Config Object
 		 */
 		function get config():Object;
+
+
+
+		/**
+		 * Get current settings.
+		 * @return Current settings
+		 */
+		function get settings():Dictionary;
 	}
 }

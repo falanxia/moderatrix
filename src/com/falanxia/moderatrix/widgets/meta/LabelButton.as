@@ -195,23 +195,33 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function get skin():LabelButtonSkin {
+		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		public function get skin():ISkin {
 			return _skin;
 		}
 
 
 
-		public function set skin(skin:LabelButtonSkin):void {
-			_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		public function set skin(value:ISkin):void {
+			if(value != null) {
+				_skin = LabelButtonSkin(value);
 
-			_skin.labelOutSkin.settings["hAlign"] = Align.CENTER;
-			_skin.labelHoverSkin.settings["hAlign"] = Align.CENTER;
-			_skin.labelFocusSkin.settings["hAlign"] = Align.CENTER;
+				_skin.labelOutSkin.settings["hAlign"] = Align.CENTER;
+				_skin.labelHoverSkin.settings["hAlign"] = Align.CENTER;
+				_skin.labelFocusSkin.settings["hAlign"] = Align.CENTER;
 
-			_button.skin = _skin.buttonSkin;
-			_labelOut.skin = _skin.labelOutSkin;
-			_labelHover.skin = _skin.labelHoverSkin;
-			_labelFocus.skin = _skin.labelFocusSkin;
+				_button.skin = _skin.buttonSkin;
+				_labelOut.skin = _skin.labelOutSkin;
+				_labelHover.skin = _skin.labelHoverSkin;
+				_labelFocus.skin = _skin.labelFocusSkin;
+			}
 		}
 
 

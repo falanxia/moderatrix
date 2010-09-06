@@ -171,19 +171,29 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function get skin():GlyphButtonSkin {
+		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		public function get skin():ISkin {
 			return _skin;
 		}
 
 
 
-		public function set skin(skin:GlyphButtonSkin):void {
-			_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		public function set skin(value:ISkin):void {
+			if(value != null) {
+				_skin = GlyphButtonSkin(value);
 
-			_button.skin = _skin.buttonSkin;
-			_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
-			_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
-			_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
+				_button.skin = _skin.buttonSkin;
+				_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
+				_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
+				_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
+			}
 		}
 
 

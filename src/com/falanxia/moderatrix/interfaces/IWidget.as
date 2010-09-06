@@ -159,5 +159,19 @@ package com.falanxia.moderatrix.interfaces {
 		function set position(value:Point):void;
 
 
+
+		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		function get skin():ISkin;
+
+
+
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		function set skin(value:ISkin):void;
 	}
 }

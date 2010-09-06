@@ -211,17 +211,27 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function get skin():InputBarSkin {
+		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		public function get skin():ISkin {
 			return _skin;
 		}
 
 
 
-		public function set skin(skin:InputBarSkin):void {
-			_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		public function set skin(value:ISkin):void {
+			if(value != null) {
+				_skin = InputBarSkin(value);
 
-			_bar.skin = _skin.barSkin;
-			_label.skin = _skin.labelSkin;
+				_bar.skin = _skin.barSkin;
+				_label.skin = _skin.labelSkin;
+			}
 		}
 
 

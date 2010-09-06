@@ -42,7 +42,6 @@ package com.falanxia.moderatrix.widgets {
 	public class Atlas extends Widget implements IWidget {
 
 
-		protected var _skin:AtlasSkin;
 		protected var _phase:uint = 0;
 
 		protected var imageBM:QBitmap;
@@ -100,7 +99,7 @@ package com.falanxia.moderatrix.widgets {
 				var w:uint = spriteWidth;
 				var rect:Rectangle = new Rectangle(_phase * w, 0, w, _skin.bitmapSize.height);
 
-				imageBM.bitmapData.copyPixels(_skin.bitmapSources[AtlasSkin.ATLAS_BITMAP], rect, new Point(0, 0));
+				imageBM.bitmapData.copyPixels(AtlasSkin(_skin).bitmapSources[AtlasSkin.ATLAS_BITMAP], rect, new Point(0, 0));
 
 				if(_skin != null) {
 					if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
@@ -129,10 +128,10 @@ package com.falanxia.moderatrix.widgets {
 			this.endPhase = endPhase;
 			this.loop = loop;
 
-			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1),
-			             {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:[
-				             endPhase
-			             ]});
+			TweenLite.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:
+					[
+						endPhase
+					]});
 		}
 
 
@@ -146,15 +145,14 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function get skin():AtlasSkin {
-			return _skin;
-		}
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
-
-
-		public function set skin(skin:AtlasSkin):void {
-			if(_size != null) {
-				_skin = skin;
 				spriteWidth = _skin.settings["spriteWidth"];
 
 				if(_size.width == 0) _size.width = spriteWidth;
@@ -162,8 +160,6 @@ package com.falanxia.moderatrix.widgets {
 
 				imageBM.bitmapData = new BitmapData(spriteWidth, _skin.bitmapSize.height);
 				imageBM.smoothing = true;
-
-				draw();
 			}
 		}
 
@@ -197,7 +193,9 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function get length():uint {
-			return (_skin.bitmapSources == null) ? 0 : _skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / spriteWidth;
+			var skin:AtlasSkin = AtlasSkin(_skin);
+
+			return (skin.bitmapSources == null) ? 0 : skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / spriteWidth;
 		}
 
 

@@ -51,8 +51,6 @@ package com.falanxia.moderatrix.widgets {
 	public class Container extends Widget implements IWidget {
 
 
-		protected var _skin:ContainerSkin;
-
 		private var innerSpr:QSprite;
 
 
@@ -115,8 +113,7 @@ package com.falanxia.moderatrix.widgets {
 				var paddingBottom:Number = settings["paddingBottom"];
 				var hAlign:String = settings["hAlign"];
 				var vAlign:String = settings["vAlign"];
-				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight,
-				                                   _size.height - paddingTop - paddingBottom);
+				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight, _size.height - paddingTop - paddingBottom);
 
 				// draw debug rectangle
 				if(_debugLevel == DebugLevel.ALWAYS || _debugLevel == DebugLevel.HOVER) {
@@ -326,20 +323,16 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function get skin():ContainerSkin {
-			return _skin;
-		}
-
-
-
-		public function set skin(skin:ContainerSkin):void {
-			if(_size != null) {
-				_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
 				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
 				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
-
-				draw();
 			}
 		}
 

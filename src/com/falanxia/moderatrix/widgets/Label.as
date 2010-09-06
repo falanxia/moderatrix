@@ -42,7 +42,6 @@ package com.falanxia.moderatrix.widgets {
 	public class Label extends Widget implements IWidget {
 
 
-		protected var _skin:LabelSkin;
 		protected var _textField:QTextField;
 		protected var _textFormat:TextFormat;
 
@@ -102,8 +101,7 @@ package com.falanxia.moderatrix.widgets {
 				var paddingTop:Number = skinSettings["paddingTop"];
 				var paddingRight:Number = skinSettings["paddingRight"];
 				var paddingBottom:Number = skinSettings["paddingBottom"];
-				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight,
-				                                   _size.height - paddingTop - paddingBottom);
+				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight, _size.height - paddingTop - paddingBottom);
 
 				if(_size.width != 0) _textField.width = rect.width;
 
@@ -168,15 +166,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function get skin():LabelSkin {
-			return _skin;
-		}
-
-
-
-		public function set skin(skin:LabelSkin):void {
-			if(_size != null) {
-				_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		override public function set skin(value:ISkin):void {
+			if(value != null) {
+				super.skin = value;
 
 				var settings:Dictionary = _skin.settings;
 
@@ -211,8 +207,6 @@ package com.falanxia.moderatrix.widgets {
 
 				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
 				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
-
-				draw();
 			}
 		}
 
@@ -338,9 +332,7 @@ package com.falanxia.moderatrix.widgets {
 		override protected function addChildren():void {
 			super.addChildren();
 
-			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel ==
-			                                                                                                                                              DebugLevel.ALWAYS)},
-			                            contentSpr);
+			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel == DebugLevel.ALWAYS)}, contentSpr);
 		}
 
 

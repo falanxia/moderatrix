@@ -239,19 +239,27 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function get skin():CheckButtonSkin {
+		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		public function get skin():ISkin {
 			return _skin;
 		}
 
 
 
-		public function set skin(skin:CheckButtonSkin):void {
-			_skin = skin;
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		public function set skin(value:ISkin):void {
+			if(value != null) {
+				_skin = CheckButtonSkin(value);
 
-			_buttonOff.skin = skin.buttonOffSkin;
-			_buttonOn.skin = skin.buttonOnSkin;
-
-			draw();
+				_buttonOff.skin = _skin.buttonOffSkin;
+				_buttonOn.skin = _skin.buttonOnSkin;
+			}
 		}
 
 
