@@ -46,15 +46,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		public function InputBar(skin:InputBarSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object;
-
-			if(config == null) {
-				c = new Object();
-			}
-			else {
-				c = config;
-			}
-
+			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_bar = new Bar(skin.barSkin, {}, this, dl);
@@ -67,16 +59,10 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.isMorphHeightEnabled = true;
 			this.isMorphWidthEnabled = false;
 
-			if(c.width == undefined) c.width = skin.bitmapSize.width;
-			if(c.height == undefined) c.height = skin.bitmapSize.height;
+			if(c.width == undefined) c.width = skin.barSkin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.barSkin.bitmapSize.height;
 
-			//noinspection NegatedIfStatementJS
-			if(skin != null) {
-				super(c, parent);
-			}
-			else {
-				throw new Error("No skin defined");
-			}
+			super(c, parent);
 
 			_skin = skin;
 		}

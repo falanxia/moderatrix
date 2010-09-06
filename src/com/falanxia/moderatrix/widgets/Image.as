@@ -44,30 +44,13 @@ package com.falanxia.moderatrix.widgets {
 
 
 		public function Image(skin:ImageSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object;
+			var c:Object = config == null ? new Object() : config;
+			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
-			if(config == null) {
-				c = new Object();
-			}
-			else {
-				c = config;
-			}
+			if(c.width == undefined) c.width = skin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
-			if(c.width == undefined) {
-				c.width = skin.bitmapSize.width;
-			}
-
-			if(c.height == undefined) {
-				c.height = skin.bitmapSize.height;
-			}
-
-			//noinspection NegatedIfStatementJS
-			if(skin != null) {
-				super(c, parent, (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel);
-			}
-			else {
-				throw new Error("No skin defined");
-			}
+			super(c, parent, dl);
 
 			this.skin = skin;
 		}

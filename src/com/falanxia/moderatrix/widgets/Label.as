@@ -54,19 +54,13 @@ package com.falanxia.moderatrix.widgets {
 
 		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null
 				) {
-
 			var c:Object = config == null ? new Object() : config;
-
-			//noinspection NegatedIfStatementJS
-			if(skin != null) {
-				super(c, parent, (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel);
-			}
-			else {
-				throw new Error("No skin defined");
-			}
+			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_isWidthOverriden = (c.width != undefined);
 			_isHeightOverriden = (c.height != undefined);
+
+			super(c, parent, dl);
 
 			this.skin = skin;
 			this.text = text;

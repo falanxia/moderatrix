@@ -66,18 +66,18 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
 		                                 debugLevel:String = null) {
-			var conf:Object = (config == null) ? new Object() : config;
-			var dlev:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
+			var c:Object = (config == null) ? new Object() : config;
+			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
-			_button = new ScaleButton(skin.buttonSkin, {}, this, dlev);
+			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
 
-			_glyphOut = new Image(skin.glyphSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dlev);
-			_glyphHover = new Image(skin.glyphSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dlev);
-			_glyphFocus = new Image(skin.glyphSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dlev);
+			_glyphOut = new Image(skin.glyphSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphHover = new Image(skin.glyphSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
+			_glyphFocus = new Image(skin.glyphSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
 
-			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dlev);
-			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dlev);
-			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dlev);
+			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
 
 			_labelOut.textField.wordWrap = false;
 			_labelHover.textField.wordWrap = false;
@@ -102,16 +102,10 @@ package com.falanxia.moderatrix.widgets.meta {
 			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween, false, 0, true);
 			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween, false, 0, true);
 
-			if(conf.width == undefined) conf.width = skin.buttonSkin.bitmapSize.width;
-			if(conf.height == undefined) conf.height = skin.buttonSkin.bitmapSize.height;
+			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
+			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
 
-			//noinspection NegatedIfStatementJS
-			if(skin != null) {
-				super(conf, parent);
-			}
-			else {
-				throw new Error("No skin defined");
-			}
+			super(c, parent);
 
 			_skin = skin;
 		}
