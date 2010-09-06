@@ -66,12 +66,8 @@ package com.falanxia.moderatrix.skin {
 		 * @see SkinType
 		 */
 		public function Skin(type:String, config:Object = null, id:String = null):void {
-			_id = id;
 			_type = type;
-
-			if(_id == null) {
-				_id = type + ":skin:" + RandomUtils.randomString();
-			}
+			_id = _id == null ? type + ":skin:" + RandomUtils.randomString() : id;
 
 			_settings = resetSettings();
 			oldSettings = new Dictionary();
@@ -111,14 +107,12 @@ package com.falanxia.moderatrix.skin {
 
 			ObjectUtils.assign(oldSettings, _settings);
 
-			// TODO: This is the way how to speed up skins, apply it everywhere
 			for(var i:String in value) {
 				if(i != "filters") {
 					_settings[i] = value[i];
 				}
 			}
 
-			// TODO: Add this functionality to all skins where it's needed
 			if(value.filters != undefined && value.filters is Array) {
 				for each(var f:* in value.filters) {
 					if(f is BitmapFilter) {
@@ -141,8 +135,7 @@ package com.falanxia.moderatrix.skin {
 										var dsInner:Boolean = (f.inner == undefined) ? false : f.inner;
 										var dsKnockout:Boolean = (f.knockout == undefined) ? false : f.knockout;
 										var dsHideObject:Boolean = (f.hideObject == undefined) ? false : f.hideObject;
-										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur,
-										                                              dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
+										var g:DropShadowFilter = new DropShadowFilter(dsDistance, dsAngle, dsColor, dsAlpha, dsBlur, dsBlur, dsStrength, dsQuality, dsInner, dsKnockout, dsHideObject);
 
 										_settings.filters.push(g);
 

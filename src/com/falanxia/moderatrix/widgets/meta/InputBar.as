@@ -22,10 +22,11 @@
  * THE SOFTWARE.
  */
 
-package com.falanxia.moderatrix.widgets {
+package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.globals.*;
 	import com.falanxia.moderatrix.interfaces.*;
 	import com.falanxia.moderatrix.skin.meta.*;
+	import com.falanxia.moderatrix.widgets.*;
 	import com.falanxia.utilitaris.display.*;
 	import com.falanxia.utilitaris.utils.*;
 
