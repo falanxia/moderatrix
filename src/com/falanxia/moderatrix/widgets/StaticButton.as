@@ -23,15 +23,16 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
-	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.utils.*;
-	import com.greensock.*;
-	import com.greensock.easing.*;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.moderatrix.skin.ButtonSkin;
+	import com.falanxia.utilitaris.display.QBitmap;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
+	import com.greensock.TweenMax;
+	import com.greensock.easing.Sine;
 
-	import flash.display.*;
+	import flash.display.DisplayObjectContainer;
 
 
 
@@ -140,9 +141,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function hoverInTween():void {
 			var hoverInDuration:Number = _skin.settings["hoverInDuration"];
 
-			new TweenLite(outBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(hoverBM, hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(focusBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(outBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverBM, hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(focusBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.hoverInTween();
 		}
@@ -152,9 +153,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function hoverOutTween():void {
 			var hoverOutDuration:Number = _skin.settings["hoverOutDuration"];
 
-			new TweenLite(outBM, hoverOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(hoverBM, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(focusBM, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(outBM, hoverOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(hoverBM, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(focusBM, hoverOutDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.hoverOutTween();
 		}
@@ -164,9 +165,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function focusInTween():void {
 			var focusInDuration:Number = _skin.settings["focusInDuration"];
 
-			new TweenLite(outBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(hoverBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(focusBM, focusInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(outBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(focusBM, focusInDuration, {alpha:1, ease:Sine.easeOut});
 
 			super.focusInTween();
 		}
@@ -176,9 +177,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function dragConfirmedTween():void {
 			var hoverInDuration:Number = _skin.settings["hoverInDuration"];
 
-			new TweenLite(outBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(hoverBM, hoverInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(focusBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(outBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverBM, hoverInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(focusBM, hoverInDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.dragConfirmedTween();
 		}
@@ -188,9 +189,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function releasedInsideTween():void {
 			var focusOutDuration:Number = _skin.settings["focusOutDuration"];
 
-			new TweenLite(outBM, focusOutDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(hoverBM, focusOutDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(focusBM, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(outBM, focusOutDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(hoverBM, focusOutDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(focusBM, focusOutDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.releasedInsideTween();
 		}
@@ -200,9 +201,9 @@ package com.falanxia.moderatrix.widgets {
 		override protected function releasedOutsideTween():void {
 			var focusInDuration:Number = _skin.settings["focusOutDuration"];
 
-			new TweenLite(outBM, focusInDuration, {alpha:1, ease:Sine.easeOut});
-			new TweenLite(hoverBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
-			new TweenLite(focusBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(outBM, focusInDuration, {alpha:1, ease:Sine.easeOut});
+			new TweenMax(hoverBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
+			new TweenMax(focusBM, focusInDuration, {alpha:0, ease:Sine.easeIn});
 
 			super.releasedOutsideTween();
 		}
