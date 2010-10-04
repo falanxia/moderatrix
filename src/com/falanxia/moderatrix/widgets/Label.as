@@ -23,19 +23,24 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
-	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.enums.*;
-	import com.falanxia.utilitaris.utils.*;
+	import com.falanxia.moderatrix.enums.DebugLevel;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.moderatrix.skin.LabelSkin;
+	import com.falanxia.utilitaris.display.QTextField;
+	import com.falanxia.utilitaris.enums.Align;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.*;
-	import flash.events.*;
-	import flash.geom.*;
-	import flash.text.*;
-	import flash.utils.*;
+	import flash.display.DisplayObjectContainer;
+	import flash.events.MouseEvent;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFieldType;
+	import flash.text.TextFormat;
+	import flash.utils.Dictionary;
 
 
 
@@ -91,7 +96,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function draw():void {
 			super.draw();
 
-			if(_skin != null && _size != null) {
+			if(_skin != null && _skin.settings != null && _size != null) {
 				var skinSettings:Dictionary = _skin.settings;
 				var paddingLeft:Number = skinSettings["paddingLeft"];
 				var paddingTop:Number = skinSettings["paddingTop"];
@@ -170,39 +175,43 @@ package com.falanxia.moderatrix.widgets {
 			if(value != null) {
 				super.skin = value;
 
-				var settings:Dictionary = _skin.settings;
+				if(value.settings != null) {
+					var settings:Dictionary = _skin.settings;
 
-				_vAlign = settings["vAlign"];
+					_vAlign = settings["vAlign"];
 
-				_textFormat = new TextFormat();
-				_textFormat.align = settings["hAlign"];
-				_textFormat.blockIndent = settings["blockIndent"];
-				_textFormat.bold = settings["bold"];
-				_textFormat.bullet = settings["bullet"];
-				_textFormat.color = settings["color"];
-				_textFormat.font = settings["font"];
-				_textFormat.indent = settings["indent"];
-				_textFormat.italic = settings["italic"];
-				_textFormat.kerning = settings["kerning"];
-				_textFormat.leading = settings["leading"];
-				_textFormat.leftMargin = settings["marginLeft"];
-				_textFormat.letterSpacing = settings["letterSpacing"];
-				_textFormat.rightMargin = settings["marginRight"];
-				_textFormat.size = settings["size"];
-				_textFormat.underline = settings["underline"];
-				_textFormat.url = settings["url"];
+					_textFormat = new TextFormat();
+					_textFormat.align = settings["hAlign"];
+					_textFormat.blockIndent = settings["blockIndent"];
+					_textFormat.bold = settings["bold"];
+					_textFormat.bullet = settings["bullet"];
+					_textFormat.color = settings["color"];
+					_textFormat.font = settings["font"];
+					_textFormat.indent = settings["indent"];
+					_textFormat.italic = settings["italic"];
+					_textFormat.kerning = settings["kerning"];
+					_textFormat.leading = settings["leading"];
+					_textFormat.leftMargin = settings["marginLeft"];
+					_textFormat.letterSpacing = settings["letterSpacing"];
+					_textFormat.rightMargin = settings["marginRight"];
+					_textFormat.size = settings["size"];
+					_textFormat.underline = settings["underline"];
+					_textFormat.url = settings["url"];
 
-				_textField.setTextFormat(_textFormat);
-				_textField.defaultTextFormat = _textFormat;
-				_textField.position = new Point(settings["paddingLeft"], settings["paddingTop"]);
-				_textField.filters = settings["filters"];
-				_textField.sharpness = settings["sharpness"];
-				_textField.thickness = settings["thickness"];
-				_textField.alpha = settings["alpha"];
-				_textField.embedFonts = (settings["font"] != "");
+					_textField.setTextFormat(_textFormat);
+					_textField.defaultTextFormat = _textFormat;
+					_textField.position = new Point(settings["paddingLeft"], settings["paddingTop"]);
+					_textField.filters = settings["filters"];
+					_textField.sharpness = settings["sharpness"];
+					_textField.thickness = settings["thickness"];
+					_textField.alpha = settings["alpha"];
+					_textField.embedFonts = (settings["font"] != "");
+				}
 
-				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
-				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				if(_skin.bitmapSize != null) {
+					if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+					if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				}
 			}
 		}
 
@@ -243,29 +252,49 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override public function get width():Number {
-			var settings:Dictionary = _skin.settings;
+			if(_skin != null && _skin.settings != null) {
+				var settings:Dictionary = _skin.settings;
 
-			return (_isWidthOverriden) ? _textField.width : _textField.textWidth + settings["paddingLeft"] + settings["paddingRight"];
+				return (_isWidthOverriden) ? _textField.width : _textField.textWidth + settings["paddingLeft"] + settings["paddingRight"];
+			}
+			else {
+				return 0;
+			}
 		}
 
 
 
 		override public function get height():Number {
-			var settins:Dictionary = _skin.settings;
+			if(_skin != null && _skin.settings != null) {
+				var settins:Dictionary = _skin.settings;
 
-			return (_isHeightOverriden) ? _textField.height : _textField.textHeight + settins["paddingTop"] + settins["paddingBottom"];
+				return (_isHeightOverriden) ? _textField.height : _textField.textHeight + settins["paddingTop"] + settins["paddingBottom"];
+			}
+			else {
+				return 0;
+			}
 		}
 
 
 
 		override public function get x():Number {
-			return super.x - _skin.settings["paddingLeft"];
+			if(_skin != null && _skin.settings != null) {
+				return super.x - _skin.settings["paddingLeft"];
+			}
+			else {
+				return 0;
+			}
 		}
 
 
 
 		override public function get y():Number {
-			return super.y - _skin.settings["paddingTop"];
+			if(_skin != null && _skin.settings != null) {
+				return super.y - _skin.settings["paddingTop"];
+			}
+			else {
+				return 0;
+			}
 		}
 
 

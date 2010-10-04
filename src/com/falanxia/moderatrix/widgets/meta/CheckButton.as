@@ -23,15 +23,17 @@
  */
 
 package com.falanxia.moderatrix.widgets.meta {
-	import com.falanxia.moderatrix.events.*;
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.meta.*;
-	import com.falanxia.moderatrix.widgets.*;
-	import com.falanxia.utilitaris.display.*;
+	import com.falanxia.moderatrix.events.ButtonEvent;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.moderatrix.skin.meta.CheckButtonSkin;
+	import com.falanxia.moderatrix.widgets.ButtonCore;
+	import com.falanxia.moderatrix.widgets.StaticButton;
+	import com.falanxia.utilitaris.display.MorphSprite;
 
-	import flash.display.*;
-	import flash.events.*;
+	import flash.display.DisplayObjectContainer;
+	import flash.events.Event;
 
 
 

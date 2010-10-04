@@ -251,14 +251,28 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(value != null) {
 				_skin = GlyphLabelButtonSkin(value);
 
-				_skin.labelOutSkin.settings["hAlign"] = Align.LEFT;
-				_skin.labelHoverSkin.settings["hAlign"] = Align.LEFT;
-				_skin.labelFocusSkin.settings["hAlign"] = Align.LEFT;
+				if(_skin.labelOutSkin.settings != null) {
+					_skin.labelOutSkin.settings["hAlign"] = Align.LEFT;
+				}
 
-				_button.skin = _skin.buttonSkin;
-				_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
-				_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
-				_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
+				if(_skin.labelHoverSkin.settings != null) {
+					_skin.labelHoverSkin.settings["hAlign"] = Align.LEFT;
+				}
+
+				if(_skin.labelFocusSkin.settings != null) {
+					_skin.labelFocusSkin.settings["hAlign"] = Align.LEFT;
+				}
+
+				if(_skin.buttonSkin != null) {
+					_button.skin = _skin.buttonSkin;
+				}
+
+				if(_skin.glyphSkin != null) {
+					_glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
+					_glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
+					_glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
+				}
+
 				_labelOut.skin = _skin.labelOutSkin;
 				_labelHover.skin = _skin.labelHoverSkin;
 				_labelFocus.skin = _skin.labelFocusSkin;
@@ -447,85 +461,97 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		private function onButtonHoverInTween(e:ButtonEvent):void {
-			var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
+			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
+				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-			new TweenMax(_glyphOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_glyphFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_glyphFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
 
-			new TweenMax(_labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+			}
 		}
 
 
 
 		private function onButtonHoverOutTween(e:ButtonEvent):void {
-			var hoverOutDuration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
+			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
+				var hoverOutDuration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
 
-			new TweenMax(_glyphOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_glyphHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_glyphHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
 
-			new TweenMax(_labelOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_labelHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_labelHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+			}
 		}
 
 
 
 		private function onButtonFocusInTween(e:ButtonEvent):void {
-			var focusInDuration:Number = _skin.buttonSkin.settings["focusInDuration"];
+			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
+				var focusInDuration:Number = _skin.buttonSkin.settings["focusInDuration"];
 
-			new TweenMax(_glyphOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_glyphOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
 
-			new TweenMax(_labelOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_labelOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
+			}
 		}
 
 
 
 		private function onButtonDragConfirmedTween(e:ButtonEvent):void {
-			var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
+			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
+				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-			new TweenMax(_glyphOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_glyphFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_glyphFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
 
-			new TweenMax(_labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+			}
 		}
 
 
 
 		private function onButtonReleasedInsideTween(e:ButtonEvent):void {
-			var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
+			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
+				var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-			new TweenMax(_glyphOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_glyphFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_glyphFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 
-			new TweenMax(_labelOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+			}
 		}
 
 
 
 		private function onButtonReleasedOutsideTween(e:ButtonEvent):void {
-			var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
+			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
+				var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-			new TweenMax(_glyphOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_glyphHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_glyphFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_glyphHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_glyphFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 
-			new TweenMax(_labelOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(_labelHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(_labelHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+			}
 		}
 
 

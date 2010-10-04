@@ -23,19 +23,21 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.events.*;
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
-	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.helpers.*;
-	import com.falanxia.utilitaris.types.*;
-	import com.falanxia.utilitaris.utils.*;
+	import com.falanxia.moderatrix.enums.MouseStatus;
+	import com.falanxia.moderatrix.events.ButtonEvent;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.moderatrix.skin.ButtonSkin;
+	import com.falanxia.utilitaris.display.QSprite;
+	import com.falanxia.utilitaris.helpers.printf;
+	import com.falanxia.utilitaris.types.RGBA;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.*;
-	import flash.events.*;
-	import flash.geom.*;
+	import flash.display.DisplayObjectContainer;
+	import flash.events.FocusEvent;
+	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 
 
 
@@ -173,8 +175,10 @@ package com.falanxia.moderatrix.widgets {
 			if(value != null) {
 				super.skin = value;
 
-				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
-				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				if(_skin.bitmapSize != null) {
+					if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+					if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				}
 			}
 		}
 

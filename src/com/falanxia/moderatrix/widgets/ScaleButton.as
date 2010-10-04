@@ -109,11 +109,14 @@ package com.falanxia.moderatrix.widgets {
 				super.skin = value;
 
 				var skin:ButtonSkin = ButtonSkin(_skin);
-				var rect:Rectangle = skin.bitmapSources[ButtonSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
-				outSBS.setData(skin.bitmapSources[ButtonSkin.OUT_BITMAP], rect);
-				hoverSBS.setData(skin.bitmapSources[ButtonSkin.HOVER_BITMAP], rect);
-				focusSBS.setData(skin.bitmapSources[ButtonSkin.FOCUS_BITMAP], rect);
+				if(skin.bitmapSources != null) {
+					var rect:Rectangle = skin.bitmapSources[ButtonSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
+
+					outSBS.setData(skin.bitmapSources[ButtonSkin.OUT_BITMAP], rect);
+					hoverSBS.setData(skin.bitmapSources[ButtonSkin.HOVER_BITMAP], rect);
+					focusSBS.setData(skin.bitmapSources[ButtonSkin.FOCUS_BITMAP], rect);
+				}
 			}
 		}
 
@@ -161,73 +164,85 @@ package com.falanxia.moderatrix.widgets {
 
 
 		override protected function hoverInTween():void {
-			var hoverInDuration:Number = _skin.settings["hoverInDuration"];
+			if(_skin != null && _skin.settings != null) {
+				var hoverInDuration:Number = _skin.settings["hoverInDuration"];
 
-			new TweenMax(outSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(hoverSBS, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(focusSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(outSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(hoverSBS, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(focusSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
 
-			super.hoverInTween();
+				super.hoverInTween();
+			}
 		}
 
 
 
 		override protected function hoverOutTween():void {
-			var hoverOutDuration:Number = _skin.settings["hoverOutDuration"];
+			if(_skin != null && _skin.settings != null) {
+				var hoverOutDuration:Number = _skin.settings["hoverOutDuration"];
 
-			new TweenMax(outSBS, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(hoverSBS, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(focusSBS, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(outSBS, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(hoverSBS, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(focusSBS, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
 
-			super.hoverOutTween();
+				super.hoverOutTween();
+			}
 		}
 
 
 
 		override protected function focusInTween():void {
-			var focusInDuration:Number = _skin.settings["focusInDuration"];
+			if(_skin != null && _skin.settings != null) {
+				var focusInDuration:Number = _skin.settings["focusInDuration"];
 
-			new TweenMax(outSBS, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(hoverSBS, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(focusSBS, focusInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(outSBS, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(hoverSBS, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(focusSBS, focusInDuration, {alpha:1, ease:Cubic.easeOut});
 
-			super.focusInTween();
+				super.focusInTween();
+			}
 		}
 
 
 
 		override protected function dragConfirmedTween():void {
-			var hoverInDuration:Number = _skin.settings["hoverInDuration"];
+			if(_skin != null && _skin.settings != null) {
+				var hoverInDuration:Number = _skin.settings["hoverInDuration"];
 
-			new TweenMax(outSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(hoverSBS, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(focusSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(outSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(hoverSBS, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(focusSBS, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
 
-			super.dragConfirmedTween();
+				super.dragConfirmedTween();
+			}
 		}
 
 
 
 		override protected function releasedInsideTween():void {
-			var focusOutDuration:Number = _skin.settings["focusOutDuration"];
+			if(_skin != null && _skin.settings != null) {
+				var focusOutDuration:Number = _skin.settings["focusOutDuration"];
 
-			new TweenMax(outSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(hoverSBS, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(focusSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(outSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(hoverSBS, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(focusSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 
-			super.releasedInsideTween();
+				super.releasedInsideTween();
+			}
 		}
 
 
 
 		override protected function releasedOutsideTween():void {
-			var focusOutDuration:Number = _skin.settings["focusOutDuration"];
+			if(_skin != null && _skin.settings != null) {
+				var focusOutDuration:Number = _skin.settings["focusOutDuration"];
 
-			new TweenMax(outSBS, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-			new TweenMax(hoverSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-			new TweenMax(focusSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(outSBS, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(hoverSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(focusSBS, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 
-			super.releasedOutsideTween();
+				super.releasedOutsideTween();
+			}
 		}
 	}
 }

@@ -77,7 +77,7 @@ package com.falanxia.moderatrix.widgets {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
-			if(c.width == undefined) c.width = skin.settings["spriteWidth"];
+			if(c.width == undefined && skin.settings != null) c.width = skin.settings["spriteWidth"];
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			super(c, parent, dl);
@@ -107,7 +107,7 @@ package com.falanxia.moderatrix.widgets {
 		 * Draw the widget.
 		 */
 		override public function draw():void {
-			if(_size != null) {
+			if(_skin != null && _size != null) {
 				super.draw();
 
 				var w:uint = spriteWidth;
@@ -165,13 +165,16 @@ package com.falanxia.moderatrix.widgets {
 			if(value != null) {
 				super.skin = value;
 
-				spriteWidth = _skin.settings["spriteWidth"];
+				if(skin.settings != null) spriteWidth = _skin.settings["spriteWidth"];
 
 				if(_size.width == 0) _size.width = spriteWidth;
-				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
 
-				imageBM.bitmapData = new BitmapData(spriteWidth, _skin.bitmapSize.height);
-				imageBM.smoothing = true;
+				if(_skin.bitmapSize != null) {
+					if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+
+					imageBM.bitmapData = new BitmapData(spriteWidth, _skin.bitmapSize.height);
+					imageBM.smoothing = true;
+				}
 			}
 		}
 
@@ -220,9 +223,14 @@ package com.falanxia.moderatrix.widgets {
 		 * @return Length
 		 */
 		public function get length():uint {
-			var skin:AtlasSkin = AtlasSkin(_skin);
+			if(_skin == null) {
+				return 0;
+			}
+			else {
+				var skin:AtlasSkin = AtlasSkin(_skin);
 
-			return (skin.bitmapSources == null) ? 0 : skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / spriteWidth;
+				return (skin.bitmapSources == null) ? 0 : skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / spriteWidth;
+			}
 		}
 
 

@@ -23,16 +23,17 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
-	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.utils.*;
+	import com.falanxia.moderatrix.enums.DebugLevel;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.moderatrix.skin.BarSkin;
+	import com.falanxia.utilitaris.display.ScaleBitmapSprite;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.*;
-	import flash.geom.*;
-	import flash.utils.*;
+	import flash.display.DisplayObjectContainer;
+	import flash.geom.Rectangle;
+	import flash.utils.Dictionary;
 
 
 
@@ -94,7 +95,7 @@ package com.falanxia.moderatrix.widgets {
 		 * Draw the widget.
 		 */
 		override public function draw():void {
-			if(_skin != null && _size != null) {
+			if(_skin != null && _skin.settings != null && _size != null) {
 				super.draw();
 
 				var settings:Dictionary = _skin.settings;
@@ -126,13 +127,18 @@ package com.falanxia.moderatrix.widgets {
 			if(value != null) {
 				super.skin = value;
 
-				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
-				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				if(_skin.bitmapSize != null) {
+					if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+					if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				}
 
 				var skin:BarSkin = BarSkin(_skin);
-				var rect:Rectangle = skin.bitmapSources[BarSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
 
-				bodySBS.setData(skin.bitmapSources[BarSkin.BAR_BITMAP], rect);
+				if(skin.bitmapSources != null) {
+					var rect:Rectangle = skin.bitmapSources[BarSkin.GUIDE_BITMAP].getColorBoundsRect(0x00FF0000, 0x00000000, false);
+
+					bodySBS.setData(skin.bitmapSources[BarSkin.BAR_BITMAP], rect);
+				}
 			}
 		}
 
@@ -143,9 +149,14 @@ package com.falanxia.moderatrix.widgets {
 		 * @return Current width
 		 */
 		override public function get width():Number {
-			var settings:Dictionary = _skin.settings;
+			if(_skin != null && _skin.settings != null) {
+				var settings:Dictionary = _skin.settings;
 
-			return _size == null ? 0 : _size.width + settings["paddingLeft"] + settings["paddingRight"];
+				return _size == null ? 0 : _size.width + settings["paddingLeft"] + settings["paddingRight"];
+			}
+			else {
+				return 0;
+			}
 		}
 
 
@@ -155,9 +166,14 @@ package com.falanxia.moderatrix.widgets {
 		 * @return Current height
 		 */
 		override public function get height():Number {
-			var settings:Dictionary = _skin.settings;
+			if(_skin != null && _skin.settings != null) {
+				var settings:Dictionary = _skin.settings;
 
-			return _size == null ? 0 : _size.height + settings["paddingTop"] + settings["paddingBottom"];
+				return _size == null ? 0 : _size.height + settings["paddingTop"] + settings["paddingBottom"];
+			}
+			else {
+				return 0;
+			}
 		}
 
 

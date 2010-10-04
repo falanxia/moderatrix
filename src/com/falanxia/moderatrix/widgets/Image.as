@@ -23,16 +23,17 @@
  */
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
-	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.utils.*;
+	import com.falanxia.moderatrix.enums.DebugLevel;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.moderatrix.skin.ImageSkin;
+	import com.falanxia.utilitaris.display.QBitmap;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.*;
-	import flash.geom.*;
-	import flash.utils.*;
+	import flash.display.DisplayObjectContainer;
+	import flash.geom.Rectangle;
+	import flash.utils.Dictionary;
 
 
 
@@ -98,7 +99,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function draw():void {
 			super.draw();
 
-			if(_skin != null && _size != null) {
+			if(_skin != null && _skin.settings != null && _size != null) {
 				var settings:Dictionary = _skin.settings;
 				var rect:Rectangle = new Rectangle(settings["paddingLeft"], settings["paddingTop"], _size.width - settings["paddingLeft"], _size.height - settings["paddingTop"]);
 
@@ -120,11 +121,17 @@ package com.falanxia.moderatrix.widgets {
 			if(value != null) {
 				super.skin = value;
 
-				if(_size.width == 0) _size.width = _skin.bitmapSize.width;
-				if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				if(_skin.bitmapSize != null) {
+					if(_size.width == 0) _size.width = _skin.bitmapSize.width;
+					if(_size.height == 0) _size.height = _skin.bitmapSize.height;
+				}
 
-				imageBM.bitmapData = ImageSkin(_skin).bitmapSources[ImageSkin.IMAGE_BITMAP];
-				imageBM.smoothing = true;
+				var skin:ImageSkin = ImageSkin(_skin);
+
+				if(skin.bitmapSources != null) {
+					imageBM.bitmapData = skin.bitmapSources[ImageSkin.IMAGE_BITMAP];
+					imageBM.smoothing = true;
+				}
 			}
 		}
 

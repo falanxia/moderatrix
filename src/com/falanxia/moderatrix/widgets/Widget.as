@@ -24,16 +24,20 @@
 
 
 package com.falanxia.moderatrix.widgets {
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.globals.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.utilitaris.display.*;
-	import com.falanxia.utilitaris.types.*;
-	import com.falanxia.utilitaris.utils.*;
+	import com.falanxia.moderatrix.enums.DebugLevel;
+	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.interfaces.IWidget;
+	import com.falanxia.utilitaris.display.MorphSprite;
+	import com.falanxia.utilitaris.display.QSprite;
+	import com.falanxia.utilitaris.types.RGBA;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.*;
-	import flash.events.*;
-	import flash.geom.*;
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 
 
 
@@ -427,6 +431,7 @@ package com.falanxia.moderatrix.widgets {
 		public function set skin(skin:ISkin):void {
 			if(_size != null) {
 				_skin = skin;
+
 				invalidate();
 			}
 		}
