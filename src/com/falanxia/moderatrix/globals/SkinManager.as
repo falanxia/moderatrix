@@ -24,13 +24,23 @@
 
 
 package com.falanxia.moderatrix.globals {
-	import com.falanxia.emitor.*;
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
-	import com.falanxia.moderatrix.skin.meta.*;
-	import com.falanxia.utilitaris.helpers.*;
-	import com.falanxia.utilitaris.types.*;
+	import com.falanxia.emitor.Asset;
+	import com.falanxia.moderatrix.enums.DebugLevel;
+	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.skin.AtlasSkin;
+	import com.falanxia.moderatrix.skin.BarSkin;
+	import com.falanxia.moderatrix.skin.ButtonSkin;
+	import com.falanxia.moderatrix.skin.ContainerSkin;
+	import com.falanxia.moderatrix.skin.ImageSkin;
+	import com.falanxia.moderatrix.skin.LabelSkin;
+	import com.falanxia.moderatrix.skin.meta.CheckButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.GlyphButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.GlyphLabelButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
+	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
+	import com.falanxia.utilitaris.helpers.printf;
+	import com.falanxia.utilitaris.types.RGBA;
 
 
 

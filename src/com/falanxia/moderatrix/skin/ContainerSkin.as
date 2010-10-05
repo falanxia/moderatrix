@@ -23,11 +23,11 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.utilitaris.enums.*;
+	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.utilitaris.enums.Align;
 
-	import flash.utils.*;
+	import flash.utils.Dictionary;
 
 
 

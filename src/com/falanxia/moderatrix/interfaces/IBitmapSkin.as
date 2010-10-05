@@ -23,9 +23,9 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
-	import com.falanxia.emitor.*;
+	import com.falanxia.emitor.Asset;
 
-	import flash.display.*;
+	import flash.display.BitmapData;
 
 
 

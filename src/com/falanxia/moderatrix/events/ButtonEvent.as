@@ -23,7 +23,7 @@
  */
 
 package com.falanxia.moderatrix.events {
-	import flash.events.*;
+	import flash.events.Event;
 
 
 

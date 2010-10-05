@@ -23,7 +23,8 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
-	import flash.geom.*;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
 
 
 

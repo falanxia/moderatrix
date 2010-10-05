@@ -23,14 +23,15 @@
  */
 
 package com.falanxia.moderatrix.skin {
-	import com.falanxia.emitor.*;
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.utilitaris.utils.*;
+	import com.falanxia.emitor.Asset;
+	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.interfaces.IBitmapSkin;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.utilitaris.utils.BitmapUtils;
 
-	import flash.display.*;
-	import flash.geom.*;
-	import flash.utils.*;
+	import flash.display.BitmapData;
+	import flash.geom.Rectangle;
+	import flash.utils.Dictionary;
 
 
 

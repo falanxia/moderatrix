@@ -23,12 +23,14 @@
  */
 
 package com.falanxia.moderatrix.skin.meta {
-	import com.falanxia.emitor.*;
-	import com.falanxia.moderatrix.enums.*;
-	import com.falanxia.moderatrix.interfaces.*;
-	import com.falanxia.moderatrix.skin.*;
+	import com.falanxia.emitor.Asset;
+	import com.falanxia.moderatrix.enums.SkinType;
+	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.skin.ButtonSkin;
+	import com.falanxia.moderatrix.skin.LabelSkin;
+	import com.falanxia.moderatrix.skin.Skin;
 
-	import flash.display.*;
+	import flash.display.BitmapData;
 
 
 
