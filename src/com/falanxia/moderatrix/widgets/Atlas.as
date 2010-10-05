@@ -29,7 +29,6 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.AtlasSkin;
 	import com.falanxia.utilitaris.display.QBitmap;
-	import com.falanxia.utilitaris.helpers.printf;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.greensock.TweenMax;
 	import com.greensock.easing.Linear;
@@ -197,7 +196,7 @@ package com.falanxia.moderatrix.widgets {
 		public function set phase(value:uint):void {
 			if(value != phase) {
 				if(value > this.length) {
-					throw new Error(printf('Atlas phase too high (%d), only %d phases available', value, this.length));
+					throw new Error("Atlas phase too high (" + value + "), only " + this.length + " phases available");
 				}
 				else {
 					_phase = value;

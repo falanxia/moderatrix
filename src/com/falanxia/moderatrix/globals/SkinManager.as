@@ -39,7 +39,6 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.meta.GlyphLabelButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
 	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
-	import com.falanxia.utilitaris.helpers.printf;
 	import com.falanxia.utilitaris.types.RGBA;
 
 
@@ -127,7 +126,7 @@ package com.falanxia.moderatrix.globals {
 					}
 				}
 				catch(err:Error) {
-					throw new Error(printf("Asset error: %s", err.message));
+					throw new Error("Asset error: " + err.message);
 				}
 			}
 

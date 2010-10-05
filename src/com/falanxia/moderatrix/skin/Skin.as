@@ -24,7 +24,6 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.ISkin;
-	import com.falanxia.utilitaris.helpers.printf;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.falanxia.utilitaris.utils.ObjectUtils;
 	import com.falanxia.utilitaris.utils.RandomUtils;
@@ -149,7 +148,7 @@ package com.falanxia.moderatrix.skin {
 								}
 							}
 							catch(err:Error) {
-								throw new Error(printf("Error converting filters Object to native filters (%s)", err.message));
+								throw new Error("Error converting filters Object to native filters (" + err.message + ")");
 							}
 						}
 					}
