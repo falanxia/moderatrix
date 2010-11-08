@@ -365,8 +365,8 @@ package com.falanxia.moderatrix.widgets {
 			if(value == DebugLevel.HOVER) {
 				debugSpr.visible = false;
 
-				this.addEventListener(MouseEvent.ROLL_OVER, onDebugOver, false, 0, true);
-				this.addEventListener(MouseEvent.ROLL_OUT, onDebugOut, false, 0, true);
+				this.addEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				this.addEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 			else {
 				debugSpr.visible = true;
@@ -476,7 +476,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+			addEventListener(Event.ENTER_FRAME, onInvalidate);
 		}
 
 

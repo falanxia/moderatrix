@@ -40,7 +40,6 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.greensock.easing.Cubic;
 
 	import flash.display.DisplayObjectContainer;
-	import flash.events.Event;
 
 
 
@@ -75,12 +74,12 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.text = text;
 			this.focusRect = false;
 
-			_button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween, false, 0, true);
-			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween, false, 0, true);
+			_button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			_button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			_button.addEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			_button.addEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
@@ -96,6 +95,15 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys LabelButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
+			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+
+			DisplayUtils.removeChildren(this, _button, _labelOut, _labelHover, _labelFocus);
+
 			forceRelease();
 
 			_button.destroy();
@@ -347,20 +355,6 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		// FIXME: Unused?
-		private function removeChildren():void {
-			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
-			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
-			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
-			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
-
-			DisplayUtils.removeChildren(this, _button, _labelOut, _labelHover, _labelFocus);
-		}
-
-
-
 		private function onButtonHoverInTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
@@ -429,20 +423,6 @@ package com.falanxia.moderatrix.widgets.meta {
 				new TweenMax(_labelHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 				new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 			}
-		}
-
-
-
-		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
-		}
-
-
-
-		private function onInvalidate(e:Event):void {
-			removeEventListener(Event.ENTER_FRAME, onInvalidate);
-
-			draw();
 		}
 	}
 }

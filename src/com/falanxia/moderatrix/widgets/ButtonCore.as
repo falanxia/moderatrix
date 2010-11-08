@@ -253,12 +253,12 @@ package com.falanxia.moderatrix.widgets {
 
 			activeSpr = new QSprite({alpha:0}, contentSpr);
 
-			activeSpr.addEventListener(MouseEvent.MOUSE_OVER, onOver, false, 0, true);
-			activeSpr.addEventListener(MouseEvent.MOUSE_OUT, onOut, false, 0, true);
-			activeSpr.addEventListener(MouseEvent.MOUSE_DOWN, onFocus, false, 0, true);
-			activeSpr.addEventListener(MouseEvent.MOUSE_UP, onRelease, false, 0, true);
-			activeSpr.addEventListener(FocusEvent.FOCUS_IN, onFocusIn, false, 0, true);
-			activeSpr.addEventListener(FocusEvent.FOCUS_OUT, onFocusOut, false, 0, true);
+			activeSpr.addEventListener(MouseEvent.MOUSE_OVER, onOver);
+			activeSpr.addEventListener(MouseEvent.MOUSE_OUT, onOut);
+			activeSpr.addEventListener(MouseEvent.MOUSE_DOWN, onFocus);
+			activeSpr.addEventListener(MouseEvent.MOUSE_UP, onRelease);
+			activeSpr.addEventListener(FocusEvent.FOCUS_IN, onFocusIn);
+			activeSpr.addEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
 
 			activeSpr.tabEnabled = true;
 			activeSpr.focusRect = false;
@@ -278,6 +278,8 @@ package com.falanxia.moderatrix.widgets {
 			activeSpr.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_IN, onFocusIn);
 			activeSpr.removeEventListener(FocusEvent.FOCUS_OUT, onFocusOut);
+
+			if(stage != null) stage.removeEventListener(MouseEvent.MOUSE_UP, onRelease);
 
 			DisplayUtils.removeChildren(contentSpr, activeSpr);
 		}
@@ -406,8 +408,11 @@ package com.falanxia.moderatrix.widgets {
 		private function onFocus(e:MouseEvent = null):void {
 			if(_areEventsEnabled) {
 				currentDrag = this;
+
 				setFocus();
-				if(stage != null) stage.addEventListener(MouseEvent.MOUSE_UP, onRelease, false, 0, true);
+
+				if(stage != null) stage.addEventListener(MouseEvent.MOUSE_UP, onRelease);
+
 				dispatchEvent(new ButtonEvent(ButtonEvent.FOCUS_IN, true));
 			}
 		}
