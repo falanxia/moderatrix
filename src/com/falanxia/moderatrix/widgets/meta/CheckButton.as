@@ -84,7 +84,7 @@ package com.falanxia.moderatrix.widgets.meta {
 		override public function destroy():void {
 			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 			_buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
-			this.removeEventListener(Event.ENTER_FRAME, onInvalidate);
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			forceRelease();
 
@@ -277,13 +277,13 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		protected function invalidate():void {
-			this.addEventListener(Event.ENTER_FRAME, onInvalidate);
+			addEventListener(Event.ENTER_FRAME, onInvalidate);
 		}
 
 
 
 		private function onInvalidate(e:Event):void {
-			this.removeEventListener(Event.ENTER_FRAME, onInvalidate);
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			draw();
 		}

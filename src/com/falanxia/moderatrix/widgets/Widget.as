@@ -365,14 +365,14 @@ package com.falanxia.moderatrix.widgets {
 			if(value == DebugLevel.HOVER) {
 				debugSpr.visible = false;
 
-				this.addEventListener(MouseEvent.ROLL_OVER, onDebugOver);
-				this.addEventListener(MouseEvent.ROLL_OUT, onDebugOut);
+				addEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				addEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 			else {
 				debugSpr.visible = true;
 
-				this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
-				this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
+				removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 
 			_debugLevel = value;
@@ -452,8 +452,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected function removeChildren():void {
-			this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
-			this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
+			removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+			removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 
 			allWidgets[_idx] = null;
 
