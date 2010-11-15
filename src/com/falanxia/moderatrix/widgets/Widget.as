@@ -53,7 +53,7 @@ package com.falanxia.moderatrix.widgets {
 	public class Widget extends MorphSprite implements IWidget {
 
 
-		public static const DRAW:String = "widgetDraw";
+		public static const DRAW:String = "widget:draw";
 
 		public static var initialDebugLevel:String;
 
