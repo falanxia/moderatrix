@@ -49,9 +49,6 @@ package com.falanxia.moderatrix.enums {
 		/** Atlas skin */
 		public static const ATLAS:String = "atlas";
 
-		/** Glyphs skin */
-		public static const GLYPHS:String = "glyphs";
-
 		/** Button skin */
 		public static const BUTTON:String = "button";
 
@@ -66,6 +63,9 @@ package com.falanxia.moderatrix.enums {
 
 		/** Glyph label button skin */
 		public static const GLYPH_LABEL_BUTTON:String = "glyphLabelButton";
+
+		/** Glyph skin */
+		public static const GLYPH:String = "glyph";
 
 		/** Check button skin */
 		public static const CHECK_BUTTON:String = "checkButton";

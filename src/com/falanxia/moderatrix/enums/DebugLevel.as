@@ -38,13 +38,13 @@ package com.falanxia.moderatrix.enums {
 
 
 		/** No debug stroke */
-		public static const NONE:String = "none";
+		public static const NONE:String = "debugLevel:none";
 
 		/** Debug stroke on hover */
-		public static const HOVER:String = "hover";
+		public static const HOVER:String = "debugLevel:hover";
 
 		/** Debug stroke always visible */
-		public static const ALWAYS:String = "always";
+		public static const ALWAYS:String = "debugLevel:always";
 
 
 	}

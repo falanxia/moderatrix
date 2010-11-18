@@ -37,6 +37,7 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.meta.CheckButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.GlyphButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.GlyphLabelButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.GlyphSkin;
 	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
 	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
 	import com.falanxia.utilitaris.types.RGBA;
@@ -113,6 +114,10 @@ package com.falanxia.moderatrix.globals {
 
 						case SkinType.GLYPH_LABEL_BUTTON:
 							skin = new GlyphLabelButtonSkin(config, null, asset);
+							break;
+
+						case SkinType.GLYPH:
+							skin = new GlyphSkin(config, null, asset);
 							break;
 
 						case SkinType.CHECK_BUTTON:

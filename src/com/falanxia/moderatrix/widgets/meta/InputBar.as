@@ -33,7 +33,6 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
 	import flash.display.DisplayObjectContainer;
-	import flash.events.Event;
 
 
 
@@ -227,20 +226,6 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function removeChildren():void {
 			DisplayUtils.removeChildren(this, _bar, _label);
-		}
-
-
-
-		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
-		}
-
-
-
-		private function onInvalidate(e:Event):void {
-			removeEventListener(Event.ENTER_FRAME, onInvalidate);
-
-			draw();
 		}
 	}
 }

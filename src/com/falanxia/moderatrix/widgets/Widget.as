@@ -53,7 +53,7 @@ package com.falanxia.moderatrix.widgets {
 	public class Widget extends MorphSprite implements IWidget {
 
 
-		public static const DRAW:String = "widgetDraw";
+		public static const DRAW:String = "widget:draw";
 
 		public static var initialDebugLevel:String;
 
@@ -365,14 +365,14 @@ package com.falanxia.moderatrix.widgets {
 			if(value == DebugLevel.HOVER) {
 				debugSpr.visible = false;
 
-				this.addEventListener(MouseEvent.ROLL_OVER, onDebugOver, false, 0, true);
-				this.addEventListener(MouseEvent.ROLL_OUT, onDebugOut, false, 0, true);
+				addEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				addEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 			else {
 				debugSpr.visible = true;
 
-				this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
-				this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
+				removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+				removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 			}
 
 			_debugLevel = value;
@@ -452,8 +452,8 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected function removeChildren():void {
-			this.removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
-			this.removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
+			removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);
+			removeEventListener(MouseEvent.ROLL_OUT, onDebugOut);
 
 			allWidgets[_idx] = null;
 
@@ -476,7 +476,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+			addEventListener(Event.ENTER_FRAME, onInvalidate);
 		}
 
 

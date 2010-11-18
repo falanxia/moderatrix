@@ -40,46 +40,46 @@ package com.falanxia.moderatrix.events {
 
 
 		/** Dragged over button */
-		public static const DRAG_OVER:String = "buttonDragOver";
+		public static const DRAG_OVER:String = "buttonEvent:dragOver";
 
 		/** Dragget out of the button */
-		public static const DRAG_OUT:String = "buttonDragOut";
+		public static const DRAG_OUT:String = "buttonEvent:dragOut";
 
 		/** Drag was confirmed */
-		public static const DRAG_CONFIRM:String = "buttonDragConfirm";
+		public static const DRAG_CONFIRM:String = "buttonEvent:dragConfirm";
 
 		/** Hovering in */
-		public static const HOVER_IN:String = "buttonHoverIn";
+		public static const HOVER_IN:String = "buttonEvent:hoverIn";
 
 		/** Hovering out */
-		public static const HOVER_OUT:String = "buttonHoverOut";
+		public static const HOVER_OUT:String = "buttonEvent:hoverOut";
 
 		/** Focusing in */
-		public static const FOCUS_IN:String = "buttonFocusIn";
+		public static const FOCUS_IN:String = "buttonEvent:focusIn";
 
 		/** Releasing inside the button */
-		public static const RELEASE_INSIDE:String = "buttonReleaseInside";
+		public static const RELEASE_INSIDE:String = "buttonEvent:releaseInside";
 
 		/** Releasing outside the button */
-		public static const RELEASE_OUTSIDE:String = "buttonReleaseOutside";
+		public static const RELEASE_OUTSIDE:String = "buttonEvent:releaseOutside";
 
 		/** Hover in tween starting (when a synchronized animation is needed) */
-		public static const HOVER_IN_TWEEN:String = "buttonHoverInTween";
+		public static const HOVER_IN_TWEEN:String = "buttonEvent:hoverInTween";
 
 		/** Hover out tween starting (when a synchronized animation is needed) */
-		public static const HOVER_OUT_TWEEN:String = "buttonHoverOutTween";
+		public static const HOVER_OUT_TWEEN:String = "buttonEvent:hoverOutTween";
 
 		/** Focus in tween starting (when a synchronized animation is needed) */
-		public static const FOCUS_IN_TWEEN:String = "buttonFocusInTween";
+		public static const FOCUS_IN_TWEEN:String = "buttonEvent:focusInTween";
 
 		/** Drag confirmed tween starting (when a synchronized animation is needed) */
-		public static const DRAG_CONFIRMED_TWEEN:String = "buttonDragConfirmedTween";
+		public static const DRAG_CONFIRMED_TWEEN:String = "buttonEvent:dragConfirmedTween";
 
 		/** Released inside tween starting (when a synchronized animation is needed) */
-		public static const RELEASED_INSIDE_TWEEN:String = "buttonReleasedInsideTween";
+		public static const RELEASED_INSIDE_TWEEN:String = "buttonEvent:releasedInsideTween";
 
 		/** Released outside tween starting (when a synchronized animation is needed) */
-		public static const RELEASED_OUTSIDE_TWEEN:String = "buttonReleasedOutsideTween";
+		public static const RELEASED_OUTSIDE_TWEEN:String = "buttonEvent:releasedOutsideTween";
 
 
 
@@ -91,16 +91,6 @@ package com.falanxia.moderatrix.events {
 		 */
 		public function ButtonEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false) {
 			super(type, bubbles, cancelable);
-		}
-
-
-
-		/**
-		 * Clone the event.
-		 * @return Cloned event
-		 */
-		public override function clone():Event {
-			return new ButtonEvent(type, bubbles, cancelable);
 		}
 	}
 }

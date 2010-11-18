@@ -65,8 +65,8 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.isMorphHeightEnabled = false;
 			this.isMorphWidthEnabled = false;
 
-			_buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle, false, 0, true);
-			_buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle, false, 0, true);
+			_buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			_buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 
 			if(c.width == undefined) c.width = skin.buttonOffSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonOffSkin.bitmapSize.height;
@@ -82,6 +82,10 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys CheckButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
+			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			_buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			removeEventListener(Event.ENTER_FRAME, onInvalidate);
+
 			forceRelease();
 
 			_buttonOff.destroy();
@@ -273,7 +277,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		protected function invalidate():void {
-			addEventListener(Event.ENTER_FRAME, onInvalidate, false, 0, true);
+			addEventListener(Event.ENTER_FRAME, onInvalidate);
 		}
 
 

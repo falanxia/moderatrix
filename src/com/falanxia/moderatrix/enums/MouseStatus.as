@@ -38,13 +38,13 @@ package com.falanxia.moderatrix.enums {
 
 
 		/** Mouse out state */
-		public static const OUT:String = "out";
+		public static const OUT:String = "mouseStatus:out";
 
 		/** Mouse hover state */
-		public static const HOVER:String = "hover";
+		public static const HOVER:String = "mouseStatus:hover";
 
 		/** Mouse focus state */
-		public static const FOCUS:String = "focus";
+		public static const FOCUS:String = "mouseStatus:focus";
 
 
 	}
