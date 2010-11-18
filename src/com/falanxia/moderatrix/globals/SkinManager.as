@@ -41,6 +41,8 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
 	import com.falanxia.utilitaris.types.RGBA;
 
+	import de.dev_lab.logging.Logger;
+
 
 
 	/**
@@ -124,8 +126,7 @@ package com.falanxia.moderatrix.globals {
 						default:
 							isSupported = false;
 					}
-				}
-				catch(err:Error) {
+				} catch(err:Error) {
 					throw new Error("Asset error: " + err.message);
 				}
 			}

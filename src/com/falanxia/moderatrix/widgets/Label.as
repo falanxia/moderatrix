@@ -32,6 +32,8 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
+	import de.dev_lab.logging.Logger;
+
 	import flash.display.DisplayObjectContainer;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
@@ -57,8 +59,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function Label(skin:LabelSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null
-				) {
+		public function Label(skin:ISkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = config == null ? new Object() : config;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
@@ -109,9 +110,10 @@ package com.falanxia.moderatrix.widgets {
 				if(_size.height != 0) {
 					// set label height
 					_textField.height = rect.height;
-
+					
 					// non-top alignment
 					if(_vAlign == Align.CENTER) {
+
 						_textField.y = Math.round((rect.height - _textField.textHeight) / 2) + skinSettings.paddingTop;
 					}
 					if(_vAlign == Align.BOTTOM) {

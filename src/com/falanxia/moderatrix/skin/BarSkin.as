@@ -23,6 +23,7 @@
  */
 
 package com.falanxia.moderatrix.skin {
+
 	import com.falanxia.emitor.Asset;
 	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.moderatrix.interfaces.IBitmapSkin;

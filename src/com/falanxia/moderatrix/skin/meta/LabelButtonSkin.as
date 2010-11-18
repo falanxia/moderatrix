@@ -94,7 +94,7 @@ package com.falanxia.moderatrix.skin.meta {
 
 		/**
 		 * Parse asset.
-		 * @param value Asset
+		 * @param value Asset2
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {

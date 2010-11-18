@@ -75,8 +75,6 @@ package com.falanxia.moderatrix.widgets {
 			draw();
 		}
 
-
-
 		/**
 		 * Destroys Image instance and frees it for GC.
 		 */
