@@ -65,7 +65,7 @@ package com.falanxia.moderatrix.skin {
 		public function BarSkin(config:Object = null, id:String = null, asset:Asset = null) {
 			super(SkinType.BAR, config, id);
 
-			_bitmapSources = new Vector.<BitmapData>;
+			_bitmapSources = new Vector.<BitmapData>();
 
 			_bitmapSources[GUIDE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 			_bitmapSources[BAR_BITMAP] = new BitmapData(1, 1, true, 0x00000000);

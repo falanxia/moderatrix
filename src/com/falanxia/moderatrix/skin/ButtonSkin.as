@@ -66,7 +66,7 @@ package com.falanxia.moderatrix.skin {
 		public function ButtonSkin(config:Object = null, id:String = null, asset:Asset = null) {
 			super(SkinType.BUTTON, config, id);
 
-			_bitmapSources = new Vector.<BitmapData>;
+			_bitmapSources = new Vector.<BitmapData>();
 
 			_bitmapSources[GUIDE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 			_bitmapSources[OUT_BITMAP] = new BitmapData(1, 1, true, 0x00000000);

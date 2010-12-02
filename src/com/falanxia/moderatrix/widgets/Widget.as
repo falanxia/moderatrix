@@ -61,7 +61,7 @@ package com.falanxia.moderatrix.widgets {
 
 		protected static const DEBUG_PADDING:Number = 4;
 
-		protected static var allWidgets:Vector.<IWidget> = new Vector.<IWidget>;
+		protected static var allWidgets:Vector.<IWidget> = new Vector.<IWidget>();
 
 		protected var _config:Object;
 		protected var _size:Rectangle = new Rectangle(0, 0, 0, 0);
