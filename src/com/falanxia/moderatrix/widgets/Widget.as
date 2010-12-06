@@ -93,8 +93,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(debugLevel == null) {
 				this.debugLevel = initialDebugLevel == null ? null : initialDebugLevel;
-			}
-			else {
+			} else {
 				this.debugLevel = debugLevel;
 			}
 		}
@@ -152,9 +151,8 @@ package com.falanxia.moderatrix.widgets {
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			if(super.getChildByName(child.name)) {
 				super.removeChild(child);
-			}
-			else {
-				if(child.parent.getChildByName(child.name)) child.parent.removeChild(child);
+			} else if(child.parent.getChildByName(child.name)) {
+				child.parent.removeChild(child);
 			}
 
 			return child;
@@ -171,8 +169,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function swapChildrenAt(index1:int, index2:int):void {
 			if(contentSpr == null) {
 				super.swapChildrenAt(index1, index2);
-			}
-			else {
+			} else {
 				contentSpr.swapChildrenAt(index1, index2);
 			}
 		}
@@ -206,8 +203,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
 			if(contentSpr == null) {
 				super.swapChildren(child1, child2);
-			}
-			else {
+			} else {
 				contentSpr.swapChildren(child1, child2);
 			}
 		}
@@ -219,8 +215,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(contentSpr == null) {
 				out = super.getChildAt(index);
-			}
-			else {
+			} else {
 				contentSpr.getChildAt(index);
 			}
 
@@ -232,8 +227,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function setChildIndex(child:DisplayObject, index:int):void {
 			if(contentSpr == null) {
 				super.setChildIndex(child, index);
-			}
-			else {
+			} else {
 				contentSpr.setChildIndex(child, index);
 			}
 		}
@@ -367,8 +361,7 @@ package com.falanxia.moderatrix.widgets {
 
 				addEventListener(MouseEvent.ROLL_OVER, onDebugOver);
 				addEventListener(MouseEvent.ROLL_OUT, onDebugOut);
-			}
-			else {
+			} else {
 				debugSpr.visible = true;
 
 				removeEventListener(MouseEvent.ROLL_OVER, onDebugOver);

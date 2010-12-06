@@ -123,35 +123,21 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				// align inner sprite horizontally
-				if(hAlign == Align.RIGHT) {
-					// right
+				if(hAlign == Align.RIGHT) { // right
 					innerSpr.x = _size.width - paddingRight;
-				}
-				else {
-					if(hAlign == Align.CENTER) {
-						// center
-						innerSpr.x = rect.x + (rect.width >> 1);
-					}
-					else {
-						// left
-						innerSpr.x = rect.x;
-					}
+				} else if(hAlign == Align.CENTER) { // center
+					innerSpr.x = rect.x + (rect.width >> 1);
+				} else { // left
+					innerSpr.x = rect.x;
 				}
 
 				// align inner sprite vertically
-				if(vAlign == Align.BOTTOM) {
-					// bottom
+				if(vAlign == Align.BOTTOM) { // bottom
 					innerSpr.y = _size.height - paddingBottom;
-				}
-				else {
-					if(vAlign == Align.CENTER) {
-						// center
-						innerSpr.y = rect.y + (rect.height >> 1);
-					}
-					else {
-						// top
-						innerSpr.y = rect.y;
-					}
+				} else if(vAlign == Align.CENTER) { // center
+					innerSpr.y = rect.y + (rect.height >> 1);
+				} else { // top
+					innerSpr.y = rect.y;
 				}
 			}
 		}
@@ -163,8 +149,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.addChild(child);
-			}
-			else {
+			} else {
 				out = innerSpr.addChild(child);
 			}
 
@@ -180,8 +165,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.removeChild(child);
-			}
-			else {
+			} else {
 				out = innerSpr.removeChild(child);
 			}
 
@@ -197,8 +181,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.contains(child);
-			}
-			else {
+			} else {
 				out = innerSpr.contains(child);
 			}
 
@@ -210,8 +193,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function swapChildrenAt(index1:int, index2:int):void {
 			if(innerSpr == null) {
 				super.swapChildrenAt(index1, index2);
-			}
-			else {
+			} else {
 				innerSpr.swapChildrenAt(index1, index2);
 			}
 
@@ -225,8 +207,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.getChildByName(name);
-			}
-			else {
+			} else {
 				out = innerSpr.getChildByName(name);
 			}
 
@@ -240,8 +221,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.removeChildAt(index);
-			}
-			else {
+			} else {
 				out = innerSpr.removeChildAt(index);
 			}
 
@@ -257,8 +237,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.getChildIndex(child);
-			}
-			else {
+			} else {
 				out = innerSpr.getChildIndex(child);
 			}
 
@@ -272,8 +251,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.addChildAt(child, index);
-			}
-			else {
+			} else {
 				out = innerSpr.addChildAt(child, index);
 			}
 
@@ -287,8 +265,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
 			if(innerSpr == null) {
 				super.swapChildren(child1, child2);
-			}
-			else {
+			} else {
 				innerSpr.swapChildren(child1, child2);
 			}
 
@@ -302,8 +279,7 @@ package com.falanxia.moderatrix.widgets {
 
 			if(innerSpr == null) {
 				out = super.getChildAt(index);
-			}
-			else {
+			} else {
 				out = innerSpr.getChildAt(index);
 			}
 
@@ -315,8 +291,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function setChildIndex(child:DisplayObject, index:int):void {
 			if(innerSpr == null) {
 				super.setChildIndex(child, index);
-			}
-			else {
+			} else {
 				innerSpr.setChildIndex(child, index);
 			}
 
@@ -351,8 +326,7 @@ package com.falanxia.moderatrix.widgets {
 				var settings:Dictionary = _skin.settings;
 
 				return _size == null ? 0 : _size.width + settings["paddingLeft"] + settings["paddingRight"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
@@ -368,8 +342,7 @@ package com.falanxia.moderatrix.widgets {
 				var settings:Dictionary = _skin.settings;
 
 				return _size == null ? 0 : _size.height + settings["paddingTop"] + settings["paddingBottom"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
