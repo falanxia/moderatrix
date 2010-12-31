@@ -31,13 +31,13 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.utilitaris.display.MorphSprite;
 	import com.falanxia.utilitaris.display.QSprite;
 	import com.falanxia.utilitaris.types.RGBA;
+	import com.falanxia.utilitaris.types.Size;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.geom.Rectangle;
 
 
 
@@ -64,7 +64,7 @@ package com.falanxia.moderatrix.widgets {
 		protected static var allWidgets:Vector.<IWidget> = new Vector.<IWidget>();
 
 		protected var _config:Object;
-		protected var _size:Rectangle = new Rectangle(0, 0, 0, 0);
+		protected var _size:Size = new Size(0, 0);
 		protected var _debugLevel:String = DebugLevel.NONE;
 		protected var _debugColor:RGBA;
 		protected var _idx:uint;
@@ -132,8 +132,8 @@ package com.falanxia.moderatrix.widgets {
 			if(_size != null) {
 				if(_debugLevel != DebugLevel.NONE) {
 					DisplayUtils.clear(debugSpr);
-					DisplayUtils.drawRect(debugSpr, _size, _debugColor);
-					DisplayUtils.strokeBounds(debugSpr, _size, _debugColor, 5);
+					DisplayUtils.drawRect(debugSpr, _size.rect, _debugColor);
+					DisplayUtils.strokeBounds(debugSpr, _size.rect, _debugColor, 5);
 				}
 
 				dispatchEvent(new Event(Widget.DRAW));
@@ -291,8 +291,9 @@ package com.falanxia.moderatrix.widgets {
 		/**
 		 * Get size.
 		 * @return Size
+		 * @see Size
 		 */
-		override public function get size():Rectangle {
+		override public function get size():Size {
 			return _size;
 		}
 
@@ -300,9 +301,10 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Rescales to new size.
-		 * @param value New size as Rectangle
+		 * @param value New size as Size
+		 * @see Size
 		 */
-		override public function set size(value:Rectangle):void {
+		override public function set size(value:Size):void {
 			if(value != null) {
 				if(_debugLevel != DebugLevel.NONE) DisplayUtils.clear(debugSpr);
 

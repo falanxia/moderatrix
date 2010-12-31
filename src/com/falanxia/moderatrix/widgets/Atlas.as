@@ -139,10 +139,7 @@ package com.falanxia.moderatrix.widgets {
 			this.endPhase = endPhase;
 			this.loop = loop;
 
-			TweenMax.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:
-					[
-						endPhase
-					]});
+			TweenMax.to(this, durationMultiplier * (endPhase - startPhase + 1), {phase:endPhase, ease:Linear.easeNone, onComplete:checkReset, onCompleteParams:[endPhase]});
 		}
 
 
@@ -197,8 +194,7 @@ package com.falanxia.moderatrix.widgets {
 			if(value != phase) {
 				if(value > this.length) {
 					throw new Error("Atlas phase too high (" + value + "), only " + this.length + " phases available");
-				}
-				else {
+				} else {
 					_phase = value;
 					invalidate();
 				}
@@ -224,8 +220,7 @@ package com.falanxia.moderatrix.widgets {
 		public function get length():uint {
 			if(_skin == null) {
 				return 0;
-			}
-			else {
+			} else {
 				var skin:AtlasSkin = AtlasSkin(_skin);
 
 				return (skin.bitmapSources == null) ? 0 : skin.bitmapSources[AtlasSkin.ATLAS_BITMAP].width / spriteWidth;

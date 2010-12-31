@@ -23,7 +23,8 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
-	import flash.geom.Rectangle;
+	import com.falanxia.utilitaris.types.Size;
+
 	import flash.utils.Dictionary;
 
 
@@ -75,8 +76,9 @@ package com.falanxia.moderatrix.interfaces {
 		/**
 		 * Get bitmap size.
 		 * @return Bitmap size
+		 * @see Size
 		 */
-		function get bitmapSize():Rectangle;
+		function get bitmapSize():Size;
 
 
 

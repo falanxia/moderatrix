@@ -30,6 +30,7 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.skin.ContainerSkin;
 	import com.falanxia.utilitaris.display.QSprite;
 	import com.falanxia.utilitaris.enums.Align;
+	import com.falanxia.utilitaris.types.Size;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
 	import flash.display.DisplayObject;
@@ -106,7 +107,7 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null && _skin.settings != null && _size != null) {
-				_size = new Rectangle(0, 0, innerSpr.width, innerSpr.height);
+				_size = new Size(innerSpr.width, innerSpr.height);
 
 				var settings:Dictionary = _skin.settings;
 				var paddingLeft:Number = settings["paddingLeft"];

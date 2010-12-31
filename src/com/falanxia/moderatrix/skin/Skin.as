@@ -24,6 +24,7 @@
 
 package com.falanxia.moderatrix.skin {
 	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.utilitaris.types.Size;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.falanxia.utilitaris.utils.ObjectUtils;
 	import com.falanxia.utilitaris.utils.RandomUtils;
@@ -32,7 +33,6 @@ package com.falanxia.moderatrix.skin {
 	import flash.display.MovieClip;
 	import flash.filters.BitmapFilter;
 	import flash.filters.DropShadowFilter;
-	import flash.geom.Rectangle;
 	import flash.utils.Dictionary;
 
 
@@ -51,7 +51,7 @@ package com.falanxia.moderatrix.skin {
 
 		protected var _id:String;
 		protected var _type:String;
-		protected var _bitmapSize:Rectangle = new Rectangle(0, 0, 0, 0);
+		protected var _bitmapSize:Size = new Size(0, 0);
 		protected var _config:Object = new Object();
 		protected var _settings:Dictionary;
 
@@ -121,8 +121,7 @@ package com.falanxia.moderatrix.skin {
 					if(f is BitmapFilter) {
 						// bitmapFilter means we got filter already converted
 						_settings.filters.push(f);
-					}
-					else {
+					} else {
 						if(f is Object) {
 							// it's an Object, we need to convert it first
 							try {
@@ -197,8 +196,9 @@ package com.falanxia.moderatrix.skin {
 		/**
 		 * Get bitmap size.
 		 * @return Bitmap size
+		 * @see Size
 		 */
-		public function get bitmapSize():Rectangle {
+		public function get bitmapSize():Size {
 			return _bitmapSize;
 		}
 

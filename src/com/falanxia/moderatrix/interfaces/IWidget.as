@@ -23,8 +23,9 @@
  */
 
 package com.falanxia.moderatrix.interfaces {
+	import com.falanxia.utilitaris.types.Size;
+
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
 
 
 
@@ -132,16 +133,18 @@ package com.falanxia.moderatrix.interfaces {
 		/**
 		 * Get size.
 		 * @return Size
+		 * @see Size
 		 */
-		function get size():Rectangle;
+		function get size():Size;
 
 
 
 		/**
 		 * Set size.
 		 * @param value Size
+		 * @see Size
 		 */
-		function set size(value:Rectangle):void;
+		function set size(value:Size):void;
 
 
 

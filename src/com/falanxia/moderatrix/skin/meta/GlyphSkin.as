@@ -114,17 +114,9 @@ package com.falanxia.moderatrix.skin.meta {
 			_bitmapSize.width = bitmap.width / 3;
 			_bitmapSize.height = bitmap.height;
 
-			_glyphOutSkin.getBitmapsFromAtlas(new <BitmapData>[
-				BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height))
-			]);
-
-			_glyphHoverSkin.getBitmapsFromAtlas(new <BitmapData>[
-				BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height))
-			]);
-
-			_glyphFocusSkin.getBitmapsFromAtlas(new <BitmapData>[
-				BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width << 1, 0, _bitmapSize.width, _bitmapSize.height))
-			]);
+			_glyphOutSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height))]);
+			_glyphHoverSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height))]);
+			_glyphFocusSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width << 1, 0, _bitmapSize.width, _bitmapSize.height))]);
 		}
 
 
