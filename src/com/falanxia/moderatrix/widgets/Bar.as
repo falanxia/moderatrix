@@ -1,7 +1,7 @@
 /*
  * Falanxia Moderatrix.
  *
- * Copyright (c) 2010 Falanxia (http://falanxia.com)
+ * Copyright (c) 2011 Falanxia (http://falanxia.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -153,8 +153,7 @@ package com.falanxia.moderatrix.widgets {
 				var settings:Dictionary = _skin.settings;
 
 				return _size == null ? 0 : _size.width + settings["paddingLeft"] + settings["paddingRight"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
@@ -170,8 +169,7 @@ package com.falanxia.moderatrix.widgets {
 				var settings:Dictionary = _skin.settings;
 
 				return _size == null ? 0 : _size.height + settings["paddingTop"] + settings["paddingBottom"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}

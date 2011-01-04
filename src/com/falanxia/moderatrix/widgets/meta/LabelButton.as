@@ -1,7 +1,7 @@
 /*
  * Falanxia Moderatrix.
  *
- * Copyright (c) 2010 Falanxia (http://falanxia.com)
+ * Copyright (c) 2011 Falanxia (http://falanxia.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -162,8 +162,7 @@ package com.falanxia.moderatrix.widgets.meta {
 				ObjectUtils.assign(morphAddons, {width:w});
 				this.width = s;
 				this.morph(morphAddons);
-			}
-			else {
+			} else {
 				this.width = w;
 			}
 		}

@@ -1,7 +1,7 @@
 /*
  * Falanxia Moderatrix.
  *
- * Copyright (c) 2010 Falanxia (http://falanxia.com)
+ * Copyright (c) 2011 Falanxia (http://falanxia.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -378,8 +378,7 @@ package com.falanxia.moderatrix.widgets {
 				if(e != null && e.buttonDown) {
 					// drag over
 					dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_OVER, true));
-				}
-				else {
+				} else {
 					// roll over
 					setOver();
 					dispatchEvent(new ButtonEvent(ButtonEvent.HOVER_IN, true));
@@ -394,8 +393,7 @@ package com.falanxia.moderatrix.widgets {
 				if(e != null && e.buttonDown) {
 					// drag out
 					dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_OUT, true));
-				}
-				else {
+				} else {
 					// roll out
 					setOut();
 					dispatchEvent(new ButtonEvent(ButtonEvent.HOVER_OUT, true));
@@ -434,8 +432,7 @@ package com.falanxia.moderatrix.widgets {
 						currentDrag = null;
 						releasedInsideTween();
 						dispatchEvent(new ButtonEvent(ButtonEvent.RELEASE_INSIDE, true));
-					}
-					else {
+					} else {
 						// drag confirm
 						dragConfirmedTween();
 						dispatchEvent(new ButtonEvent(ButtonEvent.DRAG_CONFIRM, true));

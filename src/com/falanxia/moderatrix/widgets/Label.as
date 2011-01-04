@@ -1,7 +1,7 @@
 /*
  * Falanxia Moderatrix.
  *
- * Copyright (c) 2010 Falanxia (http://falanxia.com)
+ * Copyright (c) 2011 Falanxia (http://falanxia.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,9 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
-	import com.falanxia.moderatrix.skin.LabelSkin;
 	import com.falanxia.utilitaris.display.QTextField;
 	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
-
-	import de.dev_lab.logging.Logger;
 
 	import flash.display.DisplayObjectContainer;
 	import flash.events.MouseEvent;
@@ -110,7 +107,7 @@ package com.falanxia.moderatrix.widgets {
 				if(_size.height != 0) {
 					// set label height
 					_textField.height = rect.height;
-					
+
 					// non-top alignment
 					if(_vAlign == Align.CENTER) {
 
@@ -258,8 +255,7 @@ package com.falanxia.moderatrix.widgets {
 				var settings:Dictionary = _skin.settings;
 
 				return (_isWidthOverriden) ? _textField.width : _textField.textWidth + settings["paddingLeft"] + settings["paddingRight"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
@@ -271,8 +267,7 @@ package com.falanxia.moderatrix.widgets {
 				var settins:Dictionary = _skin.settings;
 
 				return (_isHeightOverriden) ? _textField.height : _textField.textHeight + settins["paddingTop"] + settins["paddingBottom"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
@@ -282,8 +277,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function get x():Number {
 			if(_skin != null && _skin.settings != null) {
 				return super.x - _skin.settings["paddingLeft"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
@@ -293,8 +287,7 @@ package com.falanxia.moderatrix.widgets {
 		override public function get y():Number {
 			if(_skin != null && _skin.settings != null) {
 				return super.y - _skin.settings["paddingTop"];
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
