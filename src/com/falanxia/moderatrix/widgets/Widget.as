@@ -77,15 +77,15 @@ package com.falanxia.moderatrix.widgets {
 
 		/**
 		 * Create a new glyph label button instance.
-		 * @param config Configuration Object
-		 * @param parent Parent DisplayObjectContainer
+		 * @param displayConfig Configuration Object
+		 * @param displayParent Parent DisplayObjectContainer
 		 * @param debugLevel Debug level ({@see DebugLevel})
 		 */
-		public function Widget(config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null):void {
-			_config = (config == null) ? new Object() : config;
+		public function Widget(displayConfig:Object = null, displayParent:DisplayObjectContainer = null, debugLevel:String = null):void {
+			_config = (displayConfig == null) ? new Object() : displayConfig;
 			_debugColor = SkinManager.defaultDebugColor;
 
-			super(_config, parent);
+			super(_config, displayParent);
 
 			allWidgets[_idx = allWidgets.length] = this;
 

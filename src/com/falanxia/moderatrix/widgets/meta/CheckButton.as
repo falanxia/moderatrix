@@ -49,8 +49,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function CheckButton(skin:CheckButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+		public function CheckButton(skin:CheckButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
+		                            debugLevel:String = null) {
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_buttonOff = new StaticButton(skin.buttonOffSkin, {}, this, dl);
@@ -71,7 +72,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.width == undefined) c.width = skin.buttonOffSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonOffSkin.bitmapSize.height;
 
-			super(c, parent);
+			super(c, displayParent);
 
 			_skin = skin;
 		}

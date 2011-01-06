@@ -54,8 +54,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function GlyphButton(skin:GlyphButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+		public function GlyphButton(skin:GlyphButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
+		                            debugLevel:String = null) {
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
@@ -82,7 +83,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
 
-			super(c, parent);
+			super(c, displayParent);
 
 			_skin = skin;
 		}

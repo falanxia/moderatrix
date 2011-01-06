@@ -47,8 +47,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function InputBar(skin:InputBarSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+		public function InputBar(skin:InputBarSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
+		                         debugLevel:String = null) {
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_bar = new Bar(skin.barSkin, {}, this, dl);
@@ -64,7 +65,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.width == undefined) c.width = skin.barSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.barSkin.bitmapSize.height;
 
-			super(c, parent);
+			super(c, displayParent);
 
 			_skin = skin;
 		}

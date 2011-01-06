@@ -56,9 +56,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function LabelButton(skin:LabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
+		public function LabelButton(skin:LabelButtonSkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
@@ -84,7 +84,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
 
-			super(c, parent);
+			super(c, displayParent);
 
 			_skin = skin;
 		}

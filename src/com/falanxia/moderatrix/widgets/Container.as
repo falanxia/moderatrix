@@ -63,19 +63,20 @@ package com.falanxia.moderatrix.widgets {
 		/**
 		 * Constructor.
 		 * @param skin Initial skin
-		 * @param config Config Object
-		 * @param parent Parent DisplayObjectContainer
+		 * @param displayConfig Config Object
+		 * @param displayParent Parent DisplayObjectContainer
 		 * @param debugLevel Initial debug level
 		 * @see DebugLevel
 		 */
-		public function Container(skin:ContainerSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+		public function Container(skin:ContainerSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
+		                          debugLevel:String = null) {
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			if(c.width == undefined) c.width = skin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
-			super(c, parent, dl);
+			super(c, displayParent, dl);
 
 			this.skin = skin;
 

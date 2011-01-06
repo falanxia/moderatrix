@@ -63,15 +63,15 @@ package com.falanxia.moderatrix.widgets.meta {
 		/**
 		 * Create a new glyph label button instance.
 		 * @param skin Skin to be used (use GlyphLabelButtonSkin)
-		 * @param config Configuration Object
+		 * @param displayConfig Configuration Object
 		 * @param text Initial text
-		 * @param parent Parent DisplayObjectContainer
+		 * @param displayParent Parent DisplayObjectContainer
 		 * @param debugLevel Debug level ({@see DebugLevel})
 		 * @throws Error if no skin defined
 		 */
-		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null,
-		                                 debugLevel:String = null) {
-			var c:Object = (config == null) ? new Object() : config;
+		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, displayConfig:Object = null, text:String = "",
+		                                 displayParent:DisplayObjectContainer = null, debugLevel:String = null) {
+			var c:Object = (displayConfig == null) ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
@@ -110,7 +110,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
 
-			super(c, parent);
+			super(c, displayParent);
 
 			_skin = skin;
 		}

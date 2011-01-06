@@ -45,14 +45,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function StaticButton(skin:ButtonSkin, config:Object = null, parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+		public function StaticButton(skin:ButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
+		                             debugLevel:String = null) {
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			if(c.width == undefined) c.width = skin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
-			super(skin, c, parent, dl);
+			super(skin, c, displayParent, dl);
 
 			draw();
 		}

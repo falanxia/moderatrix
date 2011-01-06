@@ -56,14 +56,15 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		public function Label(skin:ISkin, config:Object = null, text:String = "", parent:DisplayObjectContainer = null, debugLevel:String = null) {
-			var c:Object = config == null ? new Object() : config;
+		public function Label(skin:ISkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
+		                      debugLevel:String = null) {
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
 
 			_isWidthOverriden = (c.width != undefined);
 			_isHeightOverriden = (c.height != undefined);
 
-			super(c, parent, dl);
+			super(c, displayParent, dl);
 
 			this.skin = skin;
 			this.text = text;
