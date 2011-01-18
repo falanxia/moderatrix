@@ -106,9 +106,7 @@ package com.falanxia.moderatrix.skin {
 			_bitmapSize.width = bitmap.width;
 			_bitmapSize.height = bitmap.height;
 
-			_bitmapSources = new <BitmapData>[
-				bitmap
-			];
+			_bitmapSources = new <BitmapData>[bitmap];
 		}
 
 
