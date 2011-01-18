@@ -23,9 +23,9 @@
  */
 
 package com.falanxia.moderatrix.widgets.meta {
+	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.enums.MouseStatus;
 	import com.falanxia.moderatrix.events.ButtonEvent;
-	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.meta.GlyphLabelButtonSkin;
@@ -35,6 +35,7 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.widgets.ScaleButton;
 	import com.falanxia.utilitaris.display.MorphSprite;
 	import com.falanxia.utilitaris.enums.Align;
+	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.falanxia.utilitaris.utils.ObjectUtils;
 	import com.greensock.TweenMax;
@@ -72,7 +73,8 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function GlyphLabelButton(skin:GlyphLabelButtonSkin, displayConfig:Object = null, text:String = "",
 		                                 displayParent:DisplayObjectContainer = null, debugLevel:String = null) {
 			var c:Object = (displayConfig == null) ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
+			var dc:RGBA = DisplayUtils.RED;
 
 			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
 
@@ -88,13 +90,13 @@ package com.falanxia.moderatrix.widgets.meta {
 			_labelHover.textField.wordWrap = false;
 			_labelFocus.textField.wordWrap = false;
 
-			_button.debugColor = SkinManager.defaultDebugColor;
-			_glyphOut.debugColor = SkinManager.defaultDebugColor;
-			_glyphHover.debugColor = SkinManager.defaultDebugColor;
-			_glyphFocus.debugColor = SkinManager.defaultDebugColor;
-			_labelOut.debugColor = SkinManager.defaultDebugColor;
-			_labelHover.debugColor = SkinManager.defaultDebugColor;
-			_labelFocus.debugColor = SkinManager.defaultDebugColor;
+			_button.debugColor = dc;
+			_glyphOut.debugColor = dc;
+			_glyphHover.debugColor = dc;
+			_glyphFocus.debugColor = dc;
+			_labelOut.debugColor = dc;
+			_labelHover.debugColor = dc;
+			_labelFocus.debugColor = dc;
 
 			this.skin = skin;
 			this.text = text;

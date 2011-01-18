@@ -23,14 +23,16 @@
  */
 
 package com.falanxia.moderatrix.widgets.meta {
+	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.events.ButtonEvent;
-	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.meta.CheckButtonSkin;
 	import com.falanxia.moderatrix.widgets.ButtonCore;
 	import com.falanxia.moderatrix.widgets.StaticButton;
 	import com.falanxia.utilitaris.display.MorphSprite;
+	import com.falanxia.utilitaris.types.RGBA;
+	import com.falanxia.utilitaris.utils.DisplayUtils;
 
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
@@ -52,13 +54,14 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function CheckButton(skin:CheckButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
+			var dc:RGBA = DisplayUtils.RED;
 
 			_buttonOff = new StaticButton(skin.buttonOffSkin, {}, this, dl);
 			_buttonOn = new StaticButton(skin.buttonOnSkin, {visible:false}, this, dl);
 
-			_buttonOff.debugColor = SkinManager.defaultDebugColor;
-			_buttonOn.debugColor = SkinManager.defaultDebugColor;
+			_buttonOff.debugColor = dc;
+			_buttonOn.debugColor = dc;
 
 			this.buttonMode = true;
 			this.useHandCursor = true;

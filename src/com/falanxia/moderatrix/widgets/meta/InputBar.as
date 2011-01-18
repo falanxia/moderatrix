@@ -23,13 +23,14 @@
  */
 
 package com.falanxia.moderatrix.widgets.meta {
-	import com.falanxia.moderatrix.globals.SkinManager;
+	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
 	import com.falanxia.moderatrix.widgets.Bar;
 	import com.falanxia.moderatrix.widgets.Label;
 	import com.falanxia.utilitaris.display.MorphSprite;
+	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
 	import flash.display.DisplayObjectContainer;
@@ -50,13 +51,14 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function InputBar(skin:InputBarSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                         debugLevel:String = null) {
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
+			var dc:RGBA = DisplayUtils.RED;
 
 			_bar = new Bar(skin.barSkin, {}, this, dl);
 			_label = new Label(skin.labelSkin, {}, "", this, dl);
 
-			_bar.debugColor = SkinManager.defaultDebugColor;
-			_label.debugColor = SkinManager.defaultDebugColor;
+			_bar.debugColor = dc;
+			_label.debugColor = dc;
 			_label.isInput = true;
 
 			this.isMorphHeightEnabled = true;

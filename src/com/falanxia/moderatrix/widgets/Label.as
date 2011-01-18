@@ -24,7 +24,6 @@
 
 package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.utilitaris.display.QTextField;
@@ -59,7 +58,7 @@ package com.falanxia.moderatrix.widgets {
 		public function Label(skin:ISkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                      debugLevel:String = null) {
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 
 			_isWidthOverriden = (c.width != undefined);
 			_isHeightOverriden = (c.height != undefined);

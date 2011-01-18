@@ -25,7 +25,6 @@
 
 package com.falanxia.moderatrix.globals {
 	import com.falanxia.emitor.Asset;
-	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.skin.AtlasSkin;
@@ -40,7 +39,6 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.meta.GlyphSkin;
 	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
 	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
-	import com.falanxia.utilitaris.types.RGBA;
 
 
 
@@ -56,8 +54,28 @@ package com.falanxia.moderatrix.globals {
 	public class SkinManager {
 
 
-		private static var _defaultDebugLevel:String = DebugLevel.NONE;
-		private static var _defaultDebugColor:RGBA = new RGBA(255, 0, 0, 0.25 * 255);
+		private static var instance:SkinManager;
+
+
+
+		/**
+		 * Constructor.
+		 */
+		public function SkinManager(s:Senf) {
+			if(s == null) throw new Error("SkinManager is singleton, use getInstance() method");
+		}
+
+
+
+		/**
+		 * Singleton acces method
+		 * @return Instance of the SkinManager singleton.
+		 */
+		public static function getInstance():SkinManager {
+			if(instance == null) instance = new SkinManager(new Senf());
+
+			return instance;
+		}
 
 
 
@@ -66,7 +84,7 @@ package com.falanxia.moderatrix.globals {
 		 * @param asset Asset data Object
 		 * @return Skin
 		 */
-		public static function assetToSkin(asset:Asset):ISkin {
+		public function assetToSkin(asset:Asset):ISkin {
 			if(asset.config.widget == null) {
 				throw new Error("Asset is null");
 			}
@@ -137,29 +155,10 @@ package com.falanxia.moderatrix.globals {
 
 			return isSupported ? skin : null;
 		}
-
-
-
-		public static function get defaultDebugLevel():String {
-			return _defaultDebugLevel;
-		}
-
-
-
-		public static function set defaultDebugLevel(value:String):void {
-			_defaultDebugLevel = value;
-		}
-
-
-
-		public static function get defaultDebugColor():RGBA {
-			return _defaultDebugColor;
-		}
-
-
-
-		public static function set defaultDebugColor(value:RGBA):void {
-			_defaultDebugColor = value;
-		}
 	}
+}
+
+
+
+class Senf {
 }

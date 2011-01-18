@@ -23,9 +23,9 @@
  */
 
 package com.falanxia.moderatrix.widgets {
+	import com.falanxia.moderatrix.enums.DebugLevel;
 	import com.falanxia.moderatrix.enums.MouseStatus;
 	import com.falanxia.moderatrix.events.ButtonEvent;
-	import com.falanxia.moderatrix.globals.SkinManager;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.ButtonSkin;
@@ -72,7 +72,7 @@ package com.falanxia.moderatrix.widgets {
 		public function ButtonCore(skin:ButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                           debugLevel:String = null) {
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? SkinManager.defaultDebugLevel : debugLevel;
+			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 
 			if(c.width == undefined) c.width = skin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.bitmapSize.height;

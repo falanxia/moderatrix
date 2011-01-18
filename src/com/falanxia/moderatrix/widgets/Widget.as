@@ -69,6 +69,7 @@ package com.falanxia.moderatrix.widgets {
 		protected var _debugColor:RGBA;
 		protected var _idx:uint;
 		protected var _skin:ISkin;
+		protected var _skinManager:SkinManager;
 
 		protected var debugSpr:QSprite;
 		protected var contentSpr:QSprite;
@@ -83,7 +84,8 @@ package com.falanxia.moderatrix.widgets {
 		 */
 		public function Widget(displayConfig:Object = null, displayParent:DisplayObjectContainer = null, debugLevel:String = null):void {
 			_config = (displayConfig == null) ? new Object() : displayConfig;
-			_debugColor = SkinManager.defaultDebugColor;
+			_skinManager = SkinManager.getInstance();
+			_debugColor = DisplayUtils.RED;
 
 			super(_config, displayParent);
 
