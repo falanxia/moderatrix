@@ -75,7 +75,7 @@ package com.falanxia.moderatrix.skin {
 			set["underline"] = false;
 			set["url"] = null;
 			set["alpha"] = 1;
-			set["filters"] = new Array();
+			set["filters"] = [];
 			set["sharpness"] = 0;
 			set["thickness"] = 0;
 			set["paddingTop"] = 0;
