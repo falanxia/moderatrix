@@ -25,6 +25,8 @@
 
 package com.falanxia.moderatrix.globals {
 	import com.falanxia.emitor.Asset;
+	import com.falanxia.emitor.AssetCollection;
+	import com.falanxia.emitor.AssetManager;
 	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.skin.AtlasSkin;
@@ -55,6 +57,9 @@ package com.falanxia.moderatrix.globals {
 
 
 		private static var instance:SkinManager;
+
+		private var assetManager:AssetManager;
+		private var defaultCollection:AssetCollection;
 
 
 
@@ -154,6 +159,30 @@ package com.falanxia.moderatrix.globals {
 			}
 
 			return isSupported ? skin : null;
+		}
+
+
+
+		/**
+		 * Get asset from the asset collection.
+		 * If no asset collection ID is provided, default one is used instead.
+		 * @param assetID Asset ID
+		 * @param collectionID (optional) Asset collection ID
+		 * @return Skin
+		 * @see ISkin
+		 */
+		public function a2s(assetID:String, collectionID:String = null):ISkin {
+			if(assetManager == null) {
+				assetManager = AssetManager.getInstance();
+			}
+
+			if(defaultCollection == null) {
+				defaultCollection = assetManager.getCollection();
+			}
+
+			var collection:AssetCollection = (collectionID == null) ? defaultCollection : assetManager.getCollection(collectionID);
+
+			return (collection == null) ? null : assetToSkin(collection.getAsset(assetID));
 		}
 	}
 }
