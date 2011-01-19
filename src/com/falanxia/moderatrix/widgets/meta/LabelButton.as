@@ -167,7 +167,9 @@ package com.falanxia.moderatrix.widgets.meta {
 				ObjectUtils.assign(morphAddons, {width:w});
 				this.width = s;
 				this.morph(morphAddons);
-			} else {
+			}
+
+			else {
 				this.width = w;
 			}
 		}
@@ -260,6 +262,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		override public function set height(value:Number):void {
 			button.height = value;
+
 			labelOut.y = Math.round((value - labelOut.height) / 2);
 			labelHover.y = Math.round((value - labelHover.height) / 2);
 			labelFocus.y = Math.round((value - labelFocus.height) / 2);

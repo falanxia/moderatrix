@@ -34,7 +34,6 @@ package com.falanxia.moderatrix.widgets {
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
@@ -45,7 +44,8 @@ package com.falanxia.moderatrix.widgets {
 	public class Label extends Widget implements IWidget {
 
 
-		protected var _textField:QTextField;
+		public var textField:QTextField;
+
 		protected var _textFormat:TextFormat;
 
 		private var _isWidthOverriden:Boolean;
@@ -55,6 +55,16 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Widget skin
+		 * @param displayConfig (optional) Display config
+		 * @param text (optional) Text
+		 * @param displayParent (optional) Display parent
+		 * @param debugLevel (optional) Debug level
+		 * @see ISkin
+		 * @see DebugLevel
+		 */
 		public function Label(skin:ISkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                      debugLevel:String = null) {
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
@@ -79,18 +89,22 @@ package com.falanxia.moderatrix.widgets {
 		override public function destroy():void {
 			removeChildren();
 
-			_textField.destroy();
+			textField.destroy();
 
 			super.destroy();
 
+			textField = null;
+
 			_skin = null;
-			_textField = null;
 			_textFormat = null;
 			_vAlign = null;
 		}
 
 
 
+		/**
+		 * Draw the widget.
+		 */
 		override public function draw():void {
 			super.draw();
 
@@ -102,19 +116,18 @@ package com.falanxia.moderatrix.widgets {
 				var paddingBottom:Number = skinSettings["paddingBottom"];
 				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight, _size.height - paddingTop - paddingBottom);
 
-				if(_size.width != 0) _textField.width = rect.width;
+				if(_size.width != 0) textField.width = rect.width;
 
 				if(_size.height != 0) {
 					// set label height
-					_textField.height = rect.height;
+					textField.height = rect.height;
 
 					// non-top alignment
 					if(_vAlign == Align.CENTER) {
-
-						_textField.y = Math.round((rect.height - _textField.textHeight) / 2) + skinSettings.paddingTop;
+						textField.y = Math.round((rect.height - textField.textHeight) / 2) + skinSettings.paddingTop;
 					}
 					if(_vAlign == Align.BOTTOM) {
-						_textField.y = rect.height - _textField.textHeight + skinSettings.paddingTop;
+						textField.y = rect.height - textField.textHeight + skinSettings.paddingTop;
 					}
 				}
 
@@ -127,39 +140,60 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get the tab enabled status.
+		 * @return true if tab is enabled for this widget
+		 */
 		override public function get tabEnabled():Boolean {
-			return _textField.tabEnabled;
+			return textField.tabEnabled;
 		}
 
 
 
-		override public function set tabIndex(index:int):void {
-			_textField.tabIndex = index;
+		/**
+		 * Set tab enabled status.
+		 * @param value true if tab is enabled for this widget
+		 */
+		override public function set tabEnabled(value:Boolean):void {
+			textField.tabEnabled = value;
 
 			invalidate();
 		}
 
 
 
+		/**
+		 * Get the tab index.
+		 * @return Tab index for this widget
+		 */
 		override public function get tabIndex():int {
-			return _textField.tabIndex;
+			return textField.tabIndex;
 		}
 
 
 
-		override public function set tabEnabled(enabled:Boolean):void {
-			_textField.tabEnabled = enabled;
+		/**
+		 * Set the tab index.
+		 * @param value Tab index for this widget
+		 */
+		override public function set tabIndex(value:int):void {
+			textField.tabIndex = value;
 
 			invalidate();
 		}
 
 
 
+		/**
+		 * Set the debug level.
+		 * @param value Debug level
+		 * @see DebugLevel
+		 */
 		override public function set debugLevel(value:String):void {
 			super.debugLevel = value;
 
-			_textField.border = (_debugLevel == DebugLevel.ALWAYS);
-			_textField.borderColor = _debugColor.color32;
+			textField.border = (_debugLevel == DebugLevel.ALWAYS);
+			textField.borderColor = _debugColor.color32;
 
 			invalidate();
 		}
@@ -169,6 +203,7 @@ package com.falanxia.moderatrix.widgets {
 		/**
 		 * Set skin.
 		 * @param value Skin
+		 * @see ISkin
 		 */
 		override public function set skin(value:ISkin):void {
 			if(value != null) {
@@ -197,14 +232,14 @@ package com.falanxia.moderatrix.widgets {
 					_textFormat.underline = settings["underline"];
 					_textFormat.url = settings["url"];
 
-					_textField.setTextFormat(_textFormat);
-					_textField.defaultTextFormat = _textFormat;
-					_textField.position = new Point(settings["paddingLeft"], settings["paddingTop"]);
-					_textField.filters = settings["filters"];
-					_textField.sharpness = settings["sharpness"];
-					_textField.thickness = settings["thickness"];
-					_textField.alpha = settings["alpha"];
-					_textField.embedFonts = (settings["font"] != "");
+					textField.setTextFormat(_textFormat);
+					textField.defaultTextFormat = _textFormat;
+					textField.position = new Point(settings["paddingLeft"], settings["paddingTop"]);
+					textField.filters = settings["filters"];
+					textField.sharpness = settings["sharpness"];
+					textField.thickness = settings["thickness"];
+					textField.alpha = settings["alpha"];
+					textField.embedFonts = (settings["font"] != "");
 				}
 
 				if(_skin.bitmapSize != null) {
@@ -216,118 +251,143 @@ package com.falanxia.moderatrix.widgets {
 
 
 
+		/**
+		 * Get current text.
+		 * @return Current text
+		 */
 		public function get text():String {
-			return _textField.text;
+			return textField.text;
 		}
 
 
 
+		/**
+		 * Set current text
+		 * @param value Current text
+		 */
 		public function set text(value:String):void {
-			var v:String = value;
+			if(textField != null) {
+				textField.defaultTextFormat = _textFormat;
 
-			if(_textField != null) {
-				_textField.defaultTextFormat = _textFormat;
-
-				if(v != null) {
-					if(v == "") {
-						// fix alignment problem when empty string was applied to the html enabled TextField
-						// noinspection ReuseOfLocalVariableJS
-						v = "&nbsp;";
-					}
-
-					_textField.htmlText = v;
-
-					invalidate();
+				if(value == "") {
+					// fix alignment problem when empty string was applied to the html enabled TextField
+					value = " ";
 				}
+
+				textField.text = value;
+
+				invalidate();
 			}
 		}
 
 
 
-		public function get textField():TextField {
-			return _textField;
-		}
-
-
-
+		/**
+		 * Get widget width.
+		 * @return Widget width
+		 */
 		override public function get width():Number {
 			if(_skin != null && _skin.settings != null) {
 				var settings:Dictionary = _skin.settings;
 
-				return (_isWidthOverriden) ? _textField.width : _textField.textWidth + settings["paddingLeft"] + settings["paddingRight"];
-			} else {
+				return (_isWidthOverriden) ? textField.width : textField.textWidth + settings["paddingLeft"] + settings["paddingRight"];
+			}
+
+			else {
 				return 0;
 			}
 		}
 
 
 
+		/**
+		 * Get widget height.
+		 * @return Widget height
+		 */
 		override public function get height():Number {
 			if(_skin != null && _skin.settings != null) {
 				var settins:Dictionary = _skin.settings;
 
-				return (_isHeightOverriden) ? _textField.height : _textField.textHeight + settins["paddingTop"] + settins["paddingBottom"];
-			} else {
+				return (_isHeightOverriden) ? textField.height : textField.textHeight + settins["paddingTop"] + settins["paddingBottom"];
+			}
+
+			else {
 				return 0;
 			}
 		}
 
 
 
+		/**
+		 * Get widget X position (including optional horizontal padding)
+		 * @return Widget X position
+		 */
 		override public function get x():Number {
-			if(_skin != null && _skin.settings != null) {
-				return super.x - _skin.settings["paddingLeft"];
-			} else {
-				return 0;
-			}
+			return (_skin != null && _skin.settings != null) ? (super.x - _skin.settings["paddingLeft"]) : 0;
 		}
 
 
 
+		/**
+		 * Get widget Y position (including optional vertical padding).
+		 * @return Widget Y position
+		 */
 		override public function get y():Number {
-			if(_skin != null && _skin.settings != null) {
-				return super.y - _skin.settings["paddingTop"];
-			} else {
-				return 0;
-			}
+			return (_skin != null && _skin.settings != null) ? (super.y - _skin.settings["paddingTop"]) : 0;
 		}
 
 
 
+		/**
+		 * Get input flag.
+		 * @return true if widget is an input field.
+		 */
 		public function get isInput():Boolean {
 			return _isInput;
 		}
 
 
 
-		public function get isPassword():Boolean {
-			return _textField.displayAsPassword;
-		}
+		/**
+		 * Set input flag.
+		 * @param value true if widget is an input field.
+		 */
+		public function set isInput(value:Boolean):void {
+			if(textField != null) {
+				textField.type = (value) ? TextFieldType.INPUT : TextFieldType.DYNAMIC;
+				textField.selectable = value;
+				textField.multiline = false;
+				textField.condenseWhite = !value;
 
+				if(value) textField.autoSize = TextFieldAutoSize.NONE;
 
+				_textFormat.kerning = !value;
+				textField.setTextFormat(_textFormat);
+			}
 
-		public function set isPassword(value:Boolean):void {
-			_textField.displayAsPassword = value;
+			_isInput = value;
 
 			invalidate();
 		}
 
 
 
-		public function set isInput(value:Boolean):void {
-			if(_textField != null) {
-				_textField.type = (value) ? TextFieldType.INPUT : TextFieldType.DYNAMIC;
-				_textField.selectable = value;
-				_textField.multiline = !value;
-				_textField.condenseWhite = !value;
+		/**
+		 * Get password flag.
+		 * @return true if widget is a password field.
+		 */
+		public function get isPassword():Boolean {
+			return textField.displayAsPassword;
+		}
 
-				if(value) _textField.autoSize = TextFieldAutoSize.NONE;
 
-				_textFormat.kerning = !value;
-				_textField.setTextFormat(_textFormat);
-			}
 
-			_isInput = value;
+		/**
+		 * Set password flag.
+		 * @param value true if widget is a password field.
+		 */
+		public function set isPassword(value:Boolean):void {
+			textField.displayAsPassword = value;
 
 			invalidate();
 		}
@@ -350,7 +410,7 @@ package com.falanxia.moderatrix.widgets {
 		override protected function addChildren():void {
 			super.addChildren();
 
-			_textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, borderColor:_debugColor, border:(_debugLevel == DebugLevel.ALWAYS)}, contentSpr);
+			textField = new QTextField({width:2880, autoSize:(_isWidthOverriden) ? TextFieldAutoSize.NONE : Align.LEFT, multiline:false, borderColor:_debugColor, border:(_debugLevel == DebugLevel.ALWAYS)}, contentSpr);
 		}
 
 
@@ -358,7 +418,7 @@ package com.falanxia.moderatrix.widgets {
 		override protected function removeChildren():void {
 			super.removeChildren();
 
-			DisplayUtils.removeChildren(contentSpr, _textField);
+			DisplayUtils.removeChildren(contentSpr, textField);
 		}
 
 
@@ -367,7 +427,7 @@ package com.falanxia.moderatrix.widgets {
 			super.onDebugOver(e);
 
 			if(_debugLevel == DebugLevel.HOVER) {
-				_textField.border = true;
+				textField.border = true;
 			}
 		}
 
@@ -377,7 +437,7 @@ package com.falanxia.moderatrix.widgets {
 			super.onDebugOut(e);
 
 			if(_debugLevel == DebugLevel.HOVER) {
-				_textField.border = false;
+				textField.border = false;
 			}
 		}
 	}
