@@ -73,6 +73,9 @@ package com.falanxia.moderatrix.enums {
 		/** Input bar skin */
 		public static const INPUT_BAR:String = "inputBar";
 
+		/** Count badge skin */
+		public static const COUNT_BADGE:String = "countBadge";
+
 
 	}
 }

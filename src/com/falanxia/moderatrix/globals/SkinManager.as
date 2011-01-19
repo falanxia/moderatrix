@@ -36,6 +36,7 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.ImageSkin;
 	import com.falanxia.moderatrix.skin.LabelSkin;
 	import com.falanxia.moderatrix.skin.meta.CheckButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.CountBadgeSkin;
 	import com.falanxia.moderatrix.skin.meta.GlyphButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.GlyphLabelButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.GlyphSkin;
@@ -147,6 +148,10 @@ package com.falanxia.moderatrix.globals {
 
 						case SkinType.INPUT_BAR:
 							skin = new InputBarSkin(config, null, asset);
+							break;
+
+						case SkinType.COUNT_BADGE:
+							skin = new CountBadgeSkin(config, null, asset);
 							break;
 
 						default:
