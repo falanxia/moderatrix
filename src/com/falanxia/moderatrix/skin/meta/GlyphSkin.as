@@ -47,9 +47,9 @@ package com.falanxia.moderatrix.skin.meta {
 	public class GlyphSkin extends Skin implements ISkin {
 
 
-		protected var _glyphOutSkin:ImageSkin;
-		protected var _glyphHoverSkin:ImageSkin;
-		protected var _glyphFocusSkin:ImageSkin;
+		public var glyphOutSkin:ImageSkin;
+		public var glyphHoverSkin:ImageSkin;
+		public var glyphFocusSkin:ImageSkin;
 
 
 
@@ -61,9 +61,9 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @param asset Asset (optional)
 		 */
 		public function GlyphSkin(displayConfig:Object, id:String = null, asset:Asset = null) {
-			_glyphOutSkin = new ImageSkin(displayConfig, id + "#glyphOut");
-			_glyphHoverSkin = new ImageSkin(displayConfig, id + "#glyphHover");
-			_glyphFocusSkin = new ImageSkin(displayConfig, id + "#glyphFocus");
+			glyphOutSkin = new ImageSkin(displayConfig, id + "#glyphOut");
+			glyphHoverSkin = new ImageSkin(displayConfig, id + "#glyphHover");
+			glyphFocusSkin = new ImageSkin(displayConfig, id + "#glyphFocus");
 
 			super(SkinType.GLYPH, displayConfig, id);
 
@@ -78,13 +78,13 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function destroy():void {
 			super.destroy();
 
-			_glyphOutSkin.destroy();
-			_glyphHoverSkin.destroy();
-			_glyphFocusSkin.destroy();
+			glyphOutSkin.destroy();
+			glyphHoverSkin.destroy();
+			glyphFocusSkin.destroy();
 
-			_glyphOutSkin = null;
-			_glyphHoverSkin = null;
-			_glyphFocusSkin = null;
+			glyphOutSkin = null;
+			glyphHoverSkin = null;
+			glyphFocusSkin = null;
 		}
 
 
@@ -114,9 +114,9 @@ package com.falanxia.moderatrix.skin.meta {
 			_bitmapSize.width = bitmap.width / 3;
 			_bitmapSize.height = bitmap.height;
 
-			_glyphOutSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height))]);
-			_glyphHoverSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height))]);
-			_glyphFocusSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width << 1, 0, _bitmapSize.width, _bitmapSize.height))]);
+			glyphOutSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(0, 0, _bitmapSize.width, _bitmapSize.height))]);
+			glyphHoverSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width, 0, _bitmapSize.width, _bitmapSize.height))]);
+			glyphFocusSkin.getBitmapsFromAtlas(new <BitmapData>[BitmapUtils.crop(bitmap, new Rectangle(_bitmapSize.width << 1, 0, _bitmapSize.width, _bitmapSize.height))]);
 		}
 
 
@@ -128,9 +128,9 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			_glyphOutSkin.parseConfig(value);
-			_glyphHoverSkin.parseConfig(value);
-			_glyphFocusSkin.parseConfig(value);
+			glyphOutSkin.parseConfig(value);
+			glyphHoverSkin.parseConfig(value);
+			glyphFocusSkin.parseConfig(value);
 		}
 
 
@@ -141,69 +141,9 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_glyphOutSkin.revertConfig();
-			_glyphHoverSkin.revertConfig();
-			_glyphFocusSkin.revertConfig();
-		}
-
-
-
-		/**
-		 * Get out glyph skin.
-		 * @return Out glyph skin
-		 */
-		public function get glyphOutSkin():ImageSkin {
-			return _glyphOutSkin;
-		}
-
-
-
-		/**
-		 * Set out glyph skin.
-		 * @param source Out glyph skin
-		 */
-		public function set glyphOutSkin(source:ImageSkin):void {
-			_glyphOutSkin = source;
-		}
-
-
-
-		/**
-		 * Get hover glyph skin.
-		 * @return Hover glyph skin
-		 */
-		public function get glyphHoverSkin():ImageSkin {
-			return _glyphHoverSkin;
-		}
-
-
-
-		/**
-		 * Set hover glyph skin.
-		 * @param source Hover glyph skin
-		 */
-		public function set glyphHoverSkin(source:ImageSkin):void {
-			_glyphHoverSkin = source;
-		}
-
-
-
-		/**
-		 * Get focus glyph skin.
-		 * @return Focus glyph skin
-		 */
-		public function get glyphFocusSkin():ImageSkin {
-			return _glyphFocusSkin;
-		}
-
-
-
-		/**
-		 * Set focus glyph skin.
-		 * @param source Focus glyph skin
-		 */
-		public function set glyphFocusSkin(source:ImageSkin):void {
-			_glyphFocusSkin = source;
+			glyphOutSkin.revertConfig();
+			glyphHoverSkin.revertConfig();
+			glyphFocusSkin.revertConfig();
 		}
 	}
 }

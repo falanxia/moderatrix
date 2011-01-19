@@ -46,8 +46,8 @@ package com.falanxia.moderatrix.skin.meta {
 	public class InputBarSkin extends Skin implements ISkin {
 
 
-		protected var _barSkin:BarSkin;
-		protected var _labelSkin:LabelSkin;
+		public var barSkin:BarSkin;
+		public var labelSkin:LabelSkin;
 
 
 
@@ -59,8 +59,8 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @param asset Asset (optional)
 		 */
 		public function InputBarSkin(displayConfig:Object = null, id:String = null, asset:Asset = null) {
-			_barSkin = new BarSkin(displayConfig, id + "#bar");
-			_labelSkin = new LabelSkin(displayConfig, id + "#label");
+			barSkin = new BarSkin(displayConfig, id + "#bar");
+			labelSkin = new LabelSkin(displayConfig, id + "#label");
 
 			super(SkinType.INPUT_BAR, displayConfig, id);
 
@@ -75,11 +75,11 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function destroy():void {
 			super.destroy();
 
-			_barSkin.destroy();
-			_labelSkin.destroy();
+			barSkin.destroy();
+			labelSkin.destroy();
 
-			_barSkin = null;
-			_labelSkin = null;
+			barSkin = null;
+			labelSkin = null;
 		}
 
 
@@ -90,9 +90,7 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			_barSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.bar.image).bitmap.bitmapData
-			]);
+			barSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.bar.image).bitmap.bitmapData]);
 		}
 
 
@@ -104,8 +102,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			if(value.bar != undefined) _barSkin.parseConfig(value.bar);
-			if(value.label != undefined) _labelSkin.parseConfig(value.label);
+			if(value.bar != undefined) barSkin.parseConfig(value.bar);
+			if(value.label != undefined) labelSkin.parseConfig(value.label);
 		}
 
 
@@ -116,48 +114,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_barSkin.revertConfig();
-			_labelSkin.revertConfig();
-		}
-
-
-
-		/**
-		 * Get bar skin.
-		 * @return Bar skin
-		 */
-		public function get barSkin():BarSkin {
-			return _barSkin;
-		}
-
-
-
-		/**
-		 * Set bar skin.
-		 * @param source Bar skin
-		 */
-		public function set barSkin(source:BarSkin):void {
-			_barSkin = source;
-		}
-
-
-
-		/**
-		 * Get label skin.
-		 * @return Label skin
-		 */
-		public function get labelSkin():LabelSkin {
-			return _labelSkin;
-		}
-
-
-
-		/**
-		 * Set label skin.
-		 * @param source Label skin
-		 */
-		public function set labelSkin(source:LabelSkin):void {
-			_labelSkin = source;
+			barSkin.revertConfig();
+			labelSkin.revertConfig();
 		}
 	}
 }

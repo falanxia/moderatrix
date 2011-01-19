@@ -23,7 +23,6 @@
  */
 
 package com.falanxia.moderatrix.skin {
-
 	import com.falanxia.emitor.Asset;
 	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.moderatrix.interfaces.IBitmapSkin;
@@ -95,9 +94,7 @@ package com.falanxia.moderatrix.skin {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.image).bitmap.bitmapData
-			]);
+			getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.image).bitmap.bitmapData]);
 		}
 
 

@@ -42,9 +42,10 @@ package com.falanxia.moderatrix.widgets.meta {
 	public class CheckButton extends MorphSprite implements IWidget {
 
 
+		public var buttonOff:StaticButton;
+		public var buttonOn:StaticButton;
+
 		protected var _skin:CheckButtonSkin;
-		protected var _buttonOff:StaticButton;
-		protected var _buttonOn:StaticButton;
 
 		private var _debugLevel:String;
 		private var _isChecked:Boolean;
@@ -57,11 +58,11 @@ package com.falanxia.moderatrix.widgets.meta {
 			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 			var dc:RGBA = DisplayUtils.RED;
 
-			_buttonOff = new StaticButton(skin.buttonOffSkin, {}, this, dl);
-			_buttonOn = new StaticButton(skin.buttonOnSkin, {visible:false}, this, dl);
+			buttonOff = new StaticButton(skin.buttonOffSkin, {}, this, dl);
+			buttonOn = new StaticButton(skin.buttonOnSkin, {visible:false}, this, dl);
 
-			_buttonOff.debugColor = dc;
-			_buttonOn.debugColor = dc;
+			buttonOff.debugColor = dc;
+			buttonOn.debugColor = dc;
 
 			this.buttonMode = true;
 			this.useHandCursor = true;
@@ -69,8 +70,8 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.isMorphHeightEnabled = false;
 			this.isMorphWidthEnabled = false;
 
-			_buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
-			_buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 
 			if(c.width == undefined) c.width = skin.buttonOffSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonOffSkin.bitmapSize.height;
@@ -86,38 +87,39 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys CheckButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			_buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
-			_buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			buttonOff.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
+			buttonOn.removeEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 			removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
 			forceRelease();
 
-			_buttonOff.destroy();
-			_buttonOn.destroy();
+			buttonOff.destroy();
+			buttonOn.destroy();
 
 			super.destroy();
 
+			buttonOff = null;
+			buttonOn = null;
+
 			_skin = null;
-			_buttonOff = null;
-			_buttonOn = null;
 			_debugLevel = null;
 		}
 
 
 
 		public function draw():void {
-			_buttonOff.visible = !_isChecked;
-			_buttonOn.visible = _isChecked;
+			buttonOff.visible = !_isChecked;
+			buttonOn.visible = _isChecked;
 
-			_buttonOff.draw();
-			_buttonOn.draw();
+			buttonOff.draw();
+			buttonOn.draw();
 		}
 
 
 
 		public function forceRelease():void {
-			_buttonOff.forceRelease();
-			_buttonOn.forceRelease();
+			buttonOff.forceRelease();
+			buttonOn.forceRelease();
 		}
 
 
@@ -129,31 +131,31 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		override public function get tabEnabled():Boolean {
-			return button.tabEnabled;
+			return buttonOff.tabEnabled;
 		}
 
 
 
 		override public function set tabEnabled(enabled:Boolean):void {
-			button.tabEnabled = enabled;
+			buttonOff.tabEnabled = enabled;
 		}
 
 
 
 		override public function get tabIndex():int {
-			return button.tabIndex;
+			return buttonOff.tabIndex;
 		}
 
 
 
 		override public function set tabIndex(index:int):void {
-			button.tabIndex = index;
+			buttonOff.tabIndex = index;
 		}
 
 
 
 		override public function get width():Number {
-			return _buttonOff.width;
+			return buttonOff.width;
 		}
 
 
@@ -164,7 +166,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		override public function get height():Number {
-			return _buttonOff.height;
+			return buttonOff.height;
 		}
 
 
@@ -175,8 +177,8 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		public function set areEventsEnabled(value:Boolean):void {
-			_buttonOff.areEventsEnabled = value;
-			_buttonOn.areEventsEnabled = value;
+			buttonOff.areEventsEnabled = value;
+			buttonOn.areEventsEnabled = value;
 
 			this.buttonMode = value;
 			this.useHandCursor = value;
@@ -185,19 +187,19 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		public function get areEventsEnabled():Boolean {
-			return _buttonOff.areEventsEnabled;
+			return buttonOff.areEventsEnabled;
 		}
 
 
 
 		public function get mouseStatus():String {
-			return button.mouseStatus;
+			return currentButton.mouseStatus;
 		}
 
 
 
 		public function set mouseStatus(value:String):void {
-			button.mouseStatus = value;
+			currentButton.mouseStatus = value;
 		}
 
 
@@ -211,8 +213,8 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 
-			_buttonOff.debugLevel = value;
-			_buttonOn.debugLevel = value;
+			buttonOff.debugLevel = value;
+			buttonOn.debugLevel = value;
 		}
 
 
@@ -249,27 +251,15 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(value != null) {
 				_skin = CheckButtonSkin(value);
 
-				_buttonOff.skin = _skin.buttonOffSkin;
-				_buttonOn.skin = _skin.buttonOnSkin;
+				buttonOff.skin = _skin.buttonOffSkin;
+				buttonOn.skin = _skin.buttonOnSkin;
 			}
 		}
 
 
 
-		public function get button():StaticButton {
-			return (_isChecked) ? _buttonOn : _buttonOff;
-		}
-
-
-
-		public function get buttonOff():StaticButton {
-			return _buttonOff;
-		}
-
-
-
-		public function get buttonOn():StaticButton {
-			return _buttonOn;
+		public function get currentButton():StaticButton {
+			return (_isChecked) ? buttonOn : buttonOff;
 		}
 
 

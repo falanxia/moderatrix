@@ -40,9 +40,10 @@ package com.falanxia.moderatrix.widgets.meta {
 	public class InputBar extends MorphSprite implements IWidget {
 
 
+		public var bar:Bar;
+		public var label:Label;
+
 		protected var _skin:InputBarSkin;
-		protected var _bar:Bar;
-		protected var _label:Label;
 
 		private var _debugLevel:String;
 
@@ -54,12 +55,12 @@ package com.falanxia.moderatrix.widgets.meta {
 			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 			var dc:RGBA = DisplayUtils.RED;
 
-			_bar = new Bar(skin.barSkin, {}, this, dl);
-			_label = new Label(skin.labelSkin, {}, "", this, dl);
+			bar = new Bar(skin.barSkin, {}, this, dl);
+			label = new Label(skin.labelSkin, {}, "", this, dl);
 
-			_bar.debugColor = dc;
-			_label.debugColor = dc;
-			_label.isInput = true;
+			bar.debugColor = dc;
+			label.debugColor = dc;
+			label.isInput = true;
 
 			this.isMorphHeightEnabled = true;
 			this.isMorphWidthEnabled = false;
@@ -80,67 +81,68 @@ package com.falanxia.moderatrix.widgets.meta {
 		override public function destroy():void {
 			removeChildren();
 
-			_bar.destroy();
-			_label.destroy();
+			bar.destroy();
+			label.destroy();
 
 			super.destroy();
 
+			bar = null;
+			label = null;
+
 			_skin = null;
-			_bar = null;
-			_label = null;
 			_debugLevel = null;
 		}
 
 
 
 		public function draw():void {
-			_bar.draw();
-			_label.draw();
+			bar.draw();
+			label.draw();
 
-			_label.height = _bar.height;
+			label.height = bar.height;
 		}
 
 
 
 		override public function get tabEnabled():Boolean {
-			return _label.tabEnabled;
+			return label.tabEnabled;
 		}
 
 
 
 		override public function set tabEnabled(enabled:Boolean):void {
-			_label.tabEnabled = enabled;
+			label.tabEnabled = enabled;
 		}
 
 
 
 		override public function get tabIndex():int {
-			return _label.tabIndex;
+			return label.tabIndex;
 		}
 
 
 
 		override public function set tabIndex(index:int):void {
-			_label.tabIndex = index;
+			label.tabIndex = index;
 		}
 
 
 
 		override public function get width():Number {
-			return _bar.width;
+			return bar.width;
 		}
 
 
 
 		override public function set width(value:Number):void {
-			_bar.width = value;
-			_label.width = value;
+			bar.width = value;
+			label.width = value;
 		}
 
 
 
 		override public function get height():Number {
-			return _bar.height;
+			return bar.height;
 		}
 
 
@@ -151,14 +153,14 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		public function set areEventsEnabled(value:Boolean):void {
-			_label.isInput = value;
-			_label.alpha = (value) ? 1 : 0.5;
+			label.isInput = value;
+			label.alpha = (value) ? 1 : 0.5;
 		}
 
 
 
 		public function get areEventsEnabled():Boolean {
-			return _label.isInput;
+			return label.isInput;
 		}
 
 
@@ -172,32 +174,20 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
 
-			_bar.debugLevel = value;
-			_label.debugLevel = value;
-		}
-
-
-
-		public function get bar():Bar {
-			return _bar;
-		}
-
-
-
-		public function get label():Label {
-			return _label;
+			bar.debugLevel = value;
+			label.debugLevel = value;
 		}
 
 
 
 		public function get text():String {
-			return _label.text;
+			return label.text;
 		}
 
 
 
 		public function set text(value:String):void {
-			_label.text = value;
+			label.text = value;
 		}
 
 
@@ -220,15 +210,15 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(value != null) {
 				_skin = InputBarSkin(value);
 
-				_bar.skin = _skin.barSkin;
-				_label.skin = _skin.labelSkin;
+				bar.skin = _skin.barSkin;
+				label.skin = _skin.labelSkin;
 			}
 		}
 
 
 
 		private function removeChildren():void {
-			DisplayUtils.removeChildren(this, _bar, _label);
+			DisplayUtils.removeChildren(this, bar, label);
 		}
 	}
 }

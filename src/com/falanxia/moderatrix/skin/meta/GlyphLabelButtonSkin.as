@@ -46,11 +46,11 @@ package com.falanxia.moderatrix.skin.meta {
 	public class GlyphLabelButtonSkin extends Skin implements ISkin {
 
 
-		protected var _buttonSkin:ButtonSkin;
-		protected var _glyphSkin:GlyphSkin;
-		protected var _labelOutSkin:LabelSkin;
-		protected var _labelHoverSkin:LabelSkin;
-		protected var _labelFocusSkin:LabelSkin;
+		public var buttonSkin:ButtonSkin;
+		public var glyphSkin:GlyphSkin;
+		public var labelOutSkin:LabelSkin;
+		public var labelHoverSkin:LabelSkin;
+		public var labelFocusSkin:LabelSkin;
 
 
 
@@ -62,11 +62,11 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @param asset Asset (optional)
 		 */
 		public function GlyphLabelButtonSkin(displayConfig:Object = null, id:String = null, asset:Asset = null) {
-			_buttonSkin = new ButtonSkin(displayConfig, id + "#button");
-			_glyphSkin = new GlyphSkin(displayConfig, id + "#glyphs");
-			_labelOutSkin = new LabelSkin(displayConfig, id + "#labelOut");
-			_labelHoverSkin = new LabelSkin(displayConfig, id + "#labelHover");
-			_labelFocusSkin = new LabelSkin(displayConfig, id + "#labelFocus");
+			buttonSkin = new ButtonSkin(displayConfig, id + "#button");
+			glyphSkin = new GlyphSkin(displayConfig, id + "#glyphs");
+			labelOutSkin = new LabelSkin(displayConfig, id + "#labelOut");
+			labelHoverSkin = new LabelSkin(displayConfig, id + "#labelHover");
+			labelFocusSkin = new LabelSkin(displayConfig, id + "#labelFocus");
 
 			super(SkinType.GLYPH_BUTTON, displayConfig, id);
 
@@ -81,17 +81,17 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function destroy():void {
 			super.destroy();
 
-			_buttonSkin.destroy();
-			_glyphSkin.destroy();
-			_labelOutSkin.destroy();
-			_labelHoverSkin.destroy();
-			_labelFocusSkin.destroy();
+			buttonSkin.destroy();
+			glyphSkin.destroy();
+			labelOutSkin.destroy();
+			labelHoverSkin.destroy();
+			labelFocusSkin.destroy();
 
-			_buttonSkin = null;
-			_glyphSkin = null;
-			_labelOutSkin = null;
-			_labelHoverSkin = null;
-			_labelFocusSkin = null;
+			buttonSkin = null;
+			glyphSkin = null;
+			labelOutSkin = null;
+			labelHoverSkin = null;
+			labelFocusSkin = null;
 		}
 
 
@@ -102,13 +102,8 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			_buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.button.image).bitmap.bitmapData
-			]);
-
-			_glyphSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.glyph.image).bitmap.bitmapData
-			]);
+			buttonSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.button.image).bitmap.bitmapData]);
+			glyphSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.glyph.image).bitmap.bitmapData]);
 		}
 
 
@@ -120,11 +115,11 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			if(value.button != undefined) _buttonSkin.parseConfig(value.button);
-			if(value.glyph != undefined) _glyphSkin.parseConfig(value.glyph);
-			if(value.labelOut != undefined) _labelOutSkin.parseConfig(value.labelOut);
-			if(value.labelHover != undefined) _labelHoverSkin.parseConfig(value.labelHover);
-			if(value.labelFocus != undefined) _labelFocusSkin.parseConfig(value.labelFocus);
+			if(value.button != undefined) buttonSkin.parseConfig(value.button);
+			if(value.glyph != undefined) glyphSkin.parseConfig(value.glyph);
+			if(value.labelOut != undefined) labelOutSkin.parseConfig(value.labelOut);
+			if(value.labelHover != undefined) labelHoverSkin.parseConfig(value.labelHover);
+			if(value.labelFocus != undefined) labelFocusSkin.parseConfig(value.labelFocus);
 		}
 
 
@@ -135,111 +130,11 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_buttonSkin.revertConfig();
-			_glyphSkin.revertConfig();
-			_labelOutSkin.revertConfig();
-			_labelHoverSkin.revertConfig();
-			_labelFocusSkin.revertConfig();
-		}
-
-
-
-		/**
-		 * Get button skin.
-		 * @return Button skin
-		 */
-		public function get buttonSkin():ButtonSkin {
-			return _buttonSkin;
-		}
-
-
-
-		/**
-		 * Set button skin.
-		 * @param source
-		 */
-		public function set buttonSkin(source:ButtonSkin):void {
-			_buttonSkin = source;
-		}
-
-
-
-		/**
-		 * Get glyph skin.
-		 * @return Glyph skin
-		 */
-		public function get glyphSkin():GlyphSkin {
-			return _glyphSkin;
-		}
-
-
-
-		/**
-		 * Set glyph skin.
-		 * @param source Glyph skin
-		 */
-		public function set glyphSkin(source:GlyphSkin):void {
-			_glyphSkin = source;
-		}
-
-
-
-		/**
-		 * Get out label skin.
-		 * @return Out label skin
-		 */
-		public function get labelOutSkin():LabelSkin {
-			return _labelOutSkin;
-		}
-
-
-
-		/**
-		 * Set out label skin.
-		 * @param source Out label skin
-		 */
-		public function set labelOutSkin(source:LabelSkin):void {
-			_labelOutSkin = source;
-		}
-
-
-
-		/**
-		 * Get hover label skin.
-		 * @return Hover label skin
-		 */
-		public function get labelHoverSkin():LabelSkin {
-			return _labelHoverSkin;
-		}
-
-
-
-		/**
-		 * Set hover label skin.
-		 * @param source Hover label skin
-		 */
-		public function set labelHoverSkin(source:LabelSkin):void {
-			_labelHoverSkin = source;
-		}
-
-
-
-		/**
-		 * Get focus label skin.
-		 * @return Focus label skin
-		 */
-		public function get labelFocusSkin():LabelSkin {
-			return _labelFocusSkin;
-		}
-
-
-
-		/**
-		 * Set focus label skin.
-		 * @param source Focus label skin
-		 */
-		public function set labelFocusSkin(source:LabelSkin):void {
-			_labelFocusSkin = source;
+			buttonSkin.revertConfig();
+			glyphSkin.revertConfig();
+			labelOutSkin.revertConfig();
+			labelHoverSkin.revertConfig();
+			labelFocusSkin.revertConfig();
 		}
 	}
 }

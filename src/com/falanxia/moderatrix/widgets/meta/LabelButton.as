@@ -47,11 +47,12 @@ package com.falanxia.moderatrix.widgets.meta {
 	public class LabelButton extends MorphSprite implements IWidget {
 
 
+		public var button:ScaleButton;
+		public var labelOut:Label;
+		public var labelHover:Label;
+		public var labelFocus:Label;
+
 		protected var _skin:LabelButtonSkin;
-		protected var _button:ScaleButton;
-		protected var _labelOut:Label;
-		protected var _labelHover:Label;
-		protected var _labelFocus:Label;
 
 		private var _debugLevel:String;
 
@@ -63,25 +64,26 @@ package com.falanxia.moderatrix.widgets.meta {
 			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 			var dc:RGBA = DisplayUtils.RED;
 
-			_button = new ScaleButton(skin.buttonSkin, {}, this, dl);
-			_labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dl);
-			_labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
-			_labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
-			_button.debugColor = dc;
-			_labelOut.debugColor = dc;
-			_labelHover.debugColor = dc;
-			_labelFocus.debugColor = dc;
+			button = new ScaleButton(skin.buttonSkin, {}, this, dl);
+			labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
+			labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this, dl);
+
+			button.debugColor = dc;
+			labelOut.debugColor = dc;
+			labelHover.debugColor = dc;
+			labelFocus.debugColor = dc;
 
 			this.skin = skin;
 			this.text = text;
 			this.focusRect = false;
 
-			_button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
-			_button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
-			_button.addEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
-			_button.addEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
-			_button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
-			_button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+			button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			button.addEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			button.addEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
@@ -97,45 +99,46 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys LabelButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			_button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
-			_button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
-			_button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
-			_button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
-			_button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
+			button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
+			button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
+			button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
+			button.removeEventListener(ButtonEvent.DRAG_CONFIRMED_TWEEN, onButtonDragConfirmedTween);
+			button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
+			button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
-			DisplayUtils.removeChildren(this, _button, _labelOut, _labelHover, _labelFocus);
+			DisplayUtils.removeChildren(this, button, labelOut, labelHover, labelFocus);
 
 			forceRelease();
 
-			_button.destroy();
-			_labelOut.destroy();
-			_labelHover.destroy();
-			_labelFocus.destroy();
+			button.destroy();
+			labelOut.destroy();
+			labelHover.destroy();
+			labelFocus.destroy();
 
 			super.destroy();
 
+			button = null;
+			labelOut = null;
+			labelHover = null;
+			labelFocus = null;
+
 			_skin = null;
-			_button = null;
-			_labelOut = null;
-			_labelHover = null;
-			_labelFocus = null;
 			_debugLevel = null;
 		}
 
 
 
 		public function draw():void {
-			_button.draw();
-			_labelOut.draw();
-			_labelHover.draw();
-			_labelFocus.draw();
+			button.draw();
+			labelOut.draw();
+			labelHover.draw();
+			labelFocus.draw();
 		}
 
 
 
 		public function forceRelease():void {
-			_button.forceRelease();
+			button.forceRelease();
 		}
 
 
@@ -172,25 +175,25 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		override public function get tabEnabled():Boolean {
-			return _button.tabEnabled;
+			return button.tabEnabled;
 		}
 
 
 
 		override public function set tabEnabled(enabled:Boolean):void {
-			_button.tabEnabled = enabled;
+			button.tabEnabled = enabled;
 		}
 
 
 
 		override public function get tabIndex():int {
-			return _button.tabIndex;
+			return button.tabIndex;
 		}
 
 
 
 		override public function set tabIndex(index:int):void {
-			_button.tabIndex = index;
+			button.tabIndex = index;
 		}
 
 
@@ -225,47 +228,47 @@ package com.falanxia.moderatrix.widgets.meta {
 					_skin.labelFocusSkin.settings["hAlign"] = Align.CENTER;
 				}
 
-				_button.skin = _skin.buttonSkin;
-				_labelOut.skin = _skin.labelOutSkin;
-				_labelHover.skin = _skin.labelHoverSkin;
-				_labelFocus.skin = _skin.labelFocusSkin;
+				button.skin = _skin.buttonSkin;
+				labelOut.skin = _skin.labelOutSkin;
+				labelHover.skin = _skin.labelHoverSkin;
+				labelFocus.skin = _skin.labelFocusSkin;
 			}
 		}
 
 
 
 		override public function get width():Number {
-			return _button.width;
+			return button.width;
 		}
 
 
 
 		override public function set width(value:Number):void {
-			_button.width = value;
-			_labelOut.width = value;
-			_labelHover.width = value;
-			_labelFocus.width = value;
+			button.width = value;
+			labelOut.width = value;
+			labelHover.width = value;
+			labelFocus.width = value;
 		}
 
 
 
 		override public function get height():Number {
-			return _button.height;
+			return button.height;
 		}
 
 
 
 		override public function set height(value:Number):void {
-			_button.height = value;
-			_labelOut.y = Math.round((value - _labelOut.height) / 2);
-			_labelHover.y = Math.round((value - _labelHover.height) / 2);
-			_labelFocus.y = Math.round((value - _labelFocus.height) / 2);
+			button.height = value;
+			labelOut.y = Math.round((value - labelOut.height) / 2);
+			labelHover.y = Math.round((value - labelHover.height) / 2);
+			labelFocus.y = Math.round((value - labelFocus.height) / 2);
 		}
 
 
 
 		public function set areEventsEnabled(value:Boolean):void {
-			_button.areEventsEnabled = value;
+			button.areEventsEnabled = value;
 			this.buttonMode = value;
 			this.useHandCursor = value;
 		}
@@ -273,19 +276,19 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		public function get areEventsEnabled():Boolean {
-			return _button.areEventsEnabled;
+			return button.areEventsEnabled;
 		}
 
 
 
 		public function get mouseStatus():String {
-			return _button.mouseStatus;
+			return button.mouseStatus;
 		}
 
 
 
 		public function set mouseStatus(value:String):void {
-			_button.mouseStatus = value;
+			button.mouseStatus = value;
 		}
 
 
@@ -298,24 +301,25 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		public function set debugLevel(value:String):void {
 			_debugLevel = value;
-			_button.debugLevel = value;
-			_labelOut.debugLevel = value;
-			_labelHover.debugLevel = value;
-			_labelFocus.debugLevel = value;
+
+			button.debugLevel = value;
+			labelOut.debugLevel = value;
+			labelHover.debugLevel = value;
+			labelFocus.debugLevel = value;
 		}
 
 
 
 		public function get text():String {
-			return _labelOut.text;
+			return labelOut.text;
 		}
 
 
 
 		public function set text(value:String):void {
-			_labelOut.text = value;
-			_labelHover.text = value;
-			_labelFocus.text = value;
+			labelOut.text = value;
+			labelHover.text = value;
+			labelFocus.text = value;
 		}
 
 
@@ -323,35 +327,11 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function get label():Label {
 			var out:Label;
 
-			if(_button.mouseStatus == MouseStatus.OUT) out = _labelOut;
-			if(_button.mouseStatus == MouseStatus.HOVER) out = _labelHover;
-			if(_button.mouseStatus == MouseStatus.FOCUS) out = _labelFocus;
+			if(button.mouseStatus == MouseStatus.OUT) out = labelOut;
+			if(button.mouseStatus == MouseStatus.HOVER) out = labelHover;
+			if(button.mouseStatus == MouseStatus.FOCUS) out = labelFocus;
 
 			return out;
-		}
-
-
-
-		public function get labelOut():Label {
-			return _labelOut;
-		}
-
-
-
-		public function get labelHover():Label {
-			return _labelHover;
-		}
-
-
-
-		public function get labelFocus():Label {
-			return _labelFocus;
-		}
-
-
-
-		public function get button():ScaleButton {
-			return _button;
 		}
 
 
@@ -360,9 +340,9 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-				new TweenMax(_labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(_labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
 			}
 		}
 
@@ -372,9 +352,9 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var hoverOutDuration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
 
-				new TweenMax(_labelOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(_labelHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(labelHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
 			}
 		}
 
@@ -384,9 +364,9 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var focusInDuration:Number = _skin.buttonSkin.settings["focusInDuration"];
 
-				new TweenMax(_labelOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(labelOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
 			}
 		}
 
@@ -396,9 +376,9 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-				new TweenMax(_labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(_labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(labelFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
 			}
 		}
 
@@ -408,9 +388,9 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-				new TweenMax(_labelOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 			}
 		}
 
@@ -420,9 +400,9 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-				new TweenMax(_labelOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(_labelHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(_labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
+				new TweenMax(labelHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				new TweenMax(labelFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
 			}
 		}
 	}

@@ -45,8 +45,8 @@ package com.falanxia.moderatrix.skin.meta {
 	public class CheckButtonSkin extends Skin implements ISkin {
 
 
-		protected var _buttonOffSkin:ButtonSkin;
-		protected var _buttonOnSkin:ButtonSkin;
+		public var buttonOffSkin:ButtonSkin;
+		public var buttonOnSkin:ButtonSkin;
 
 
 
@@ -58,8 +58,8 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @param asset Asset (optional)
 		 */
 		public function CheckButtonSkin(displayConfig:Object = null, id:String = null, asset:Asset = null) {
-			_buttonOffSkin = new ButtonSkin(displayConfig, id + "#buttonOff");
-			_buttonOnSkin = new ButtonSkin(displayConfig, id + "#buttonOn");
+			buttonOffSkin = new ButtonSkin(displayConfig, id + "#buttonOff");
+			buttonOnSkin = new ButtonSkin(displayConfig, id + "#buttonOn");
 
 			super(SkinType.CHECK_BUTTON, displayConfig, id);
 
@@ -74,11 +74,11 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function destroy():void {
 			super.destroy();
 
-			_buttonOffSkin.destroy();
-			_buttonOnSkin.destroy();
+			buttonOffSkin.destroy();
+			buttonOnSkin.destroy();
 
-			_buttonOffSkin = null;
-			_buttonOnSkin = null;
+			buttonOffSkin = null;
+			buttonOnSkin = null;
 		}
 
 
@@ -89,13 +89,8 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			_buttonOffSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.buttonOff.image).bitmap.bitmapData
-			]);
-
-			_buttonOnSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.buttonOn.image).bitmap.bitmapData
-			]);
+			buttonOffSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.buttonOff.image).bitmap.bitmapData]);
+			buttonOnSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.buttonOn.image).bitmap.bitmapData]);
 		}
 
 
@@ -107,8 +102,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			if(value.buttonOff != undefined) _buttonOffSkin.parseConfig(value.buttonOff);
-			if(value.buttonOn != undefined) _buttonOnSkin.parseConfig(value.buttonOn);
+			if(value.buttonOff != undefined) buttonOffSkin.parseConfig(value.buttonOff);
+			if(value.buttonOn != undefined) buttonOnSkin.parseConfig(value.buttonOn);
 		}
 
 
@@ -119,48 +114,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_buttonOffSkin.revertConfig();
-			_buttonOnSkin.revertConfig();
-		}
-
-
-
-		/**
-		 * Get off button skin.
-		 * @return Off button skin
-		 */
-		public function get buttonOffSkin():ButtonSkin {
-			return _buttonOffSkin;
-		}
-
-
-
-		/**
-		 * Set off button skin.
-		 * @param source Off button skin
-		 */
-		public function set buttonOffSkin(source:ButtonSkin):void {
-			_buttonOffSkin = source;
-		}
-
-
-
-		/**
-		 * Get on button skin.
-		 * @return On button skin
-		 */
-		public function get buttonOnSkin():ButtonSkin {
-			return _buttonOnSkin;
-		}
-
-
-
-		/**
-		 * Set on button skin.
-		 * @param source On button skin
-		 */
-		public function set buttonOnSkin(source:ButtonSkin):void {
-			_buttonOnSkin = source;
+			buttonOffSkin.revertConfig();
+			buttonOnSkin.revertConfig();
 		}
 	}
 }

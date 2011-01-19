@@ -45,8 +45,8 @@ package com.falanxia.moderatrix.skin.meta {
 	public class GlyphButtonSkin extends Skin implements ISkin {
 
 
-		protected var _buttonSkin:ButtonSkin;
-		protected var _glyphSkin:GlyphSkin;
+		public var buttonSkin:ButtonSkin;
+		public var glyphSkin:GlyphSkin;
 
 
 
@@ -58,8 +58,8 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @param asset Asset (optional)
 		 */
 		public function GlyphButtonSkin(displayConfig:Object = null, id:String = null, asset:Asset = null) {
-			_buttonSkin = new ButtonSkin(displayConfig, id + "#button");
-			_glyphSkin = new GlyphSkin(displayConfig, id + "#glyph");
+			buttonSkin = new ButtonSkin(displayConfig, id + "#button");
+			glyphSkin = new GlyphSkin(displayConfig, id + "#glyph");
 
 			super(SkinType.GLYPH_BUTTON, displayConfig, id);
 
@@ -74,11 +74,11 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function destroy():void {
 			super.destroy();
 
-			_buttonSkin.destroy();
-			_glyphSkin.destroy();
+			buttonSkin.destroy();
+			glyphSkin.destroy();
 
-			_buttonSkin = null;
-			_glyphSkin = null;
+			buttonSkin = null;
+			glyphSkin = null;
 		}
 
 
@@ -89,13 +89,8 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			_buttonSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.button.image).bitmap.bitmapData
-			]);
-
-			_glyphSkin.getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.glyph.image).bitmap.bitmapData
-			]);
+			buttonSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.button.image).bitmap.bitmapData]);
+			glyphSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.glyph.image).bitmap.bitmapData]);
 		}
 
 
@@ -107,8 +102,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			if(value.button != undefined) _buttonSkin.parseConfig(value.button);
-			if(value.glyphs != undefined) _glyphSkin.parseConfig(value.glyphs);
+			if(value.button != undefined) buttonSkin.parseConfig(value.button);
+			if(value.glyphs != undefined) glyphSkin.parseConfig(value.glyphs);
 		}
 
 
@@ -119,48 +114,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			_buttonSkin.revertConfig();
-			_glyphSkin.revertConfig();
-		}
-
-
-
-		/**
-		 * Get button skin.
-		 * @return Button skin
-		 */
-		public function get buttonSkin():ButtonSkin {
-			return _buttonSkin;
-		}
-
-
-
-		/**
-		 * Set button skin.
-		 * @param source
-		 */
-		public function set buttonSkin(source:ButtonSkin):void {
-			_buttonSkin = source;
-		}
-
-
-
-		/**
-		 * Get glyph skin.
-		 * @return Glyph skin
-		 */
-		public function get glyphSkin():GlyphSkin {
-			return _glyphSkin;
-		}
-
-
-
-		/**
-		 * Set glyph skin.
-		 * @param source Glyph skin
-		 */
-		public function set glyphSkin(source:GlyphSkin):void {
-			_glyphSkin = source;
+			buttonSkin.revertConfig();
+			glyphSkin.revertConfig();
 		}
 	}
 }

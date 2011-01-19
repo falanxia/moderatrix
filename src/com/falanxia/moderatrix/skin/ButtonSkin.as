@@ -100,9 +100,7 @@ package com.falanxia.moderatrix.skin {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			getBitmapsFromAtlas(new <BitmapData>[
-				value.getChunkByURL(_config.image).bitmap.bitmapData
-			]);
+			getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.image).bitmap.bitmapData]);
 		}
 
 
