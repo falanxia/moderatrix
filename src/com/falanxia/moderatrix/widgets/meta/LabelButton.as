@@ -44,6 +44,13 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
+	/**
+	 * Label button.
+	 *
+	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
+	 * @since 1.0
+	 */
 	public class LabelButton extends MorphSprite implements IWidget {
 
 
@@ -58,6 +65,16 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
+		/**
+		 * Constructor.
+		 * @param skin Widget skin
+		 * @param displayConfig (optional) Display config
+		 * @param text (optional) Text
+		 * @param displayParent (optional) Display parent
+		 * @param debugLevel (optional) Debug level
+		 * @see ISkin
+		 * @see DebugLevel
+		 */
 		public function LabelButton(skin:LabelButtonSkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
@@ -91,6 +108,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			super(c, displayParent);
 
 			_skin = skin;
+			_debugLevel = dl;
 		}
 
 
@@ -128,6 +146,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
+		/**
+		 * Draw the widget.
+		 */
 		public function draw():void {
 			button.draw();
 			labelOut.draw();
@@ -137,12 +158,18 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
+		/**
+		 * Force release the button.
+		 */
 		public function forceRelease():void {
 			button.forceRelease();
 		}
 
 
 
+		/**
+		 * Release all buttons everywhere.
+		 */
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
 		}
@@ -176,12 +203,20 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
+		/**
+		 * Get tab enabled flag for the widget.
+		 * @return true if tab is enabled
+		 */
 		override public function get tabEnabled():Boolean {
 			return button.tabEnabled;
 		}
 
 
 
+		/**
+		 * Set tab enabled flag for the widget.
+		 * @param enabled true if tab is enabled
+		 */
 		override public function set tabEnabled(enabled:Boolean):void {
 			button.tabEnabled = enabled;
 		}

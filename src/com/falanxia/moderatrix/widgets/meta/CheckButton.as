@@ -79,6 +79,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			super(c, displayParent);
 
 			_skin = skin;
+			_debugLevel = dl;
 		}
 
 
