@@ -29,12 +29,9 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.moderatrix.skin.ContainerSkin;
 	import com.falanxia.utilitaris.display.QSprite;
 	import com.falanxia.utilitaris.enums.Align;
-	import com.falanxia.utilitaris.types.Size;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
-	import flash.geom.Rectangle;
 	import flash.utils.Dictionary;
 
 
@@ -55,7 +52,7 @@ package com.falanxia.moderatrix.widgets {
 	public class Container extends Widget implements IWidget {
 
 
-		private var innerSpr:QSprite;
+		public var innerSpr:QSprite;
 
 
 
@@ -107,8 +104,6 @@ package com.falanxia.moderatrix.widgets {
 			super.draw();
 
 			if(_skin != null && _skin.settings != null && _size != null) {
-				_size = new Size(innerSpr.width, innerSpr.height);
-
 				var settings:Dictionary = _skin.settings;
 				var paddingLeft:Number = settings["paddingLeft"];
 				var paddingTop:Number = settings["paddingTop"];
@@ -116,187 +111,40 @@ package com.falanxia.moderatrix.widgets {
 				var paddingBottom:Number = settings["paddingBottom"];
 				var hAlign:String = settings["hAlign"];
 				var vAlign:String = settings["vAlign"];
-				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight, _size.height - paddingTop - paddingBottom);
-
-				// draw debug rectangle
-				if(_debugLevel != DebugLevel.NONE) {
-					DisplayUtils.strokeBounds(debugSpr, rect, _debugColor, 5);
-				}
 
 				// align inner sprite horizontally
-				if(hAlign == Align.RIGHT) { // right
-					innerSpr.x = _size.width - paddingRight;
-				} else if(hAlign == Align.CENTER) { // center
-					innerSpr.x = rect.x + (rect.width >> 1);
-				} else { // left
-					innerSpr.x = rect.x;
+				switch(hAlign) {
+					case Align.RIGHT:
+						innerSpr.x = _size.width - paddingRight - innerSpr.width;
+						break;
+
+					case Align.CENTER:
+						innerSpr.x = int(((_size.width - paddingLeft - paddingRight) / 2) + paddingLeft - (innerSpr.width / 2));
+						break;
+
+					default:
+						innerSpr.x = paddingLeft;
 				}
 
 				// align inner sprite vertically
-				if(vAlign == Align.BOTTOM) { // bottom
-					innerSpr.y = _size.height - paddingBottom;
-				} else if(vAlign == Align.CENTER) { // center
-					innerSpr.y = rect.y + (rect.height >> 1);
-				} else { // top
-					innerSpr.y = rect.y;
+				switch(vAlign) {
+					case Align.BOTTOM:
+						innerSpr.y = _size.height - paddingBottom - innerSpr.height;
+						break;
+
+					case Align.CENTER:
+						innerSpr.y = int(((_size.height - paddingTop - paddingBottom) / 2) + paddingTop - (innerSpr.height / 2));
+						break;
+
+					default:
+						innerSpr.y = paddingTop;
+				}
+
+				// draw debug rectangle
+				if(_debugLevel != DebugLevel.NONE) {
+					DisplayUtils.strokeBounds(debugSpr, innerSpr.positionAndSize, _debugColor, 5);
 				}
 			}
-		}
-
-
-
-		override public function addChild(child:DisplayObject):DisplayObject {
-			var out:DisplayObject;
-
-			if(innerSpr == null) {
-				out = super.addChild(child);
-			} else {
-				out = innerSpr.addChild(child);
-			}
-
-			invalidate();
-
-			return out;
-		}
-
-
-
-		override public function removeChild(child:DisplayObject):DisplayObject {
-			var out:DisplayObject;
-
-			if(innerSpr == null) {
-				out = super.removeChild(child);
-			} else {
-				out = innerSpr.removeChild(child);
-			}
-
-			invalidate();
-
-			return out;
-		}
-
-
-
-		override public function contains(child:DisplayObject):Boolean {
-			var out:Boolean;
-
-			if(innerSpr == null) {
-				out = super.contains(child);
-			} else {
-				out = innerSpr.contains(child);
-			}
-
-			return out;
-		}
-
-
-
-		override public function swapChildrenAt(index1:int, index2:int):void {
-			if(innerSpr == null) {
-				super.swapChildrenAt(index1, index2);
-			} else {
-				innerSpr.swapChildrenAt(index1, index2);
-			}
-
-			invalidate();
-		}
-
-
-
-		override public function getChildByName(name:String):DisplayObject {
-			var out:DisplayObject;
-
-			if(innerSpr == null) {
-				out = super.getChildByName(name);
-			} else {
-				out = innerSpr.getChildByName(name);
-			}
-
-			return out;
-		}
-
-
-
-		override public function removeChildAt(index:int):DisplayObject {
-			var out:DisplayObject;
-
-			if(innerSpr == null) {
-				out = super.removeChildAt(index);
-			} else {
-				out = innerSpr.removeChildAt(index);
-			}
-
-			invalidate();
-
-			return out;
-		}
-
-
-
-		override public function getChildIndex(child:DisplayObject):int {
-			var out:int;
-
-			if(innerSpr == null) {
-				out = super.getChildIndex(child);
-			} else {
-				out = innerSpr.getChildIndex(child);
-			}
-
-			return out;
-		}
-
-
-
-		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
-			var out:DisplayObject;
-
-			if(innerSpr == null) {
-				out = super.addChildAt(child, index);
-			} else {
-				out = innerSpr.addChildAt(child, index);
-			}
-
-			invalidate();
-
-			return out;
-		}
-
-
-
-		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
-			if(innerSpr == null) {
-				super.swapChildren(child1, child2);
-			} else {
-				innerSpr.swapChildren(child1, child2);
-			}
-
-			invalidate();
-		}
-
-
-
-		override public function getChildAt(index:int):DisplayObject {
-			var out:DisplayObject;
-
-			if(innerSpr == null) {
-				out = super.getChildAt(index);
-			} else {
-				out = innerSpr.getChildAt(index);
-			}
-
-			return out;
-		}
-
-
-
-		override public function setChildIndex(child:DisplayObject, index:int):void {
-			if(innerSpr == null) {
-				super.setChildIndex(child, index);
-			} else {
-				innerSpr.setChildIndex(child, index);
-			}
-
-			invalidate();
 		}
 
 
