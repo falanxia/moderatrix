@@ -22,32 +22,32 @@
  * THE SOFTWARE.
  */
 
-package com.falanxia.moderatrix.skin {
+package com.falanxia.moderatrix.skin.meta {
 	import com.falanxia.emitor.Asset;
 	import com.falanxia.moderatrix.enums.SkinType;
-	import com.falanxia.moderatrix.interfaces.IBitmapSkin;
 	import com.falanxia.moderatrix.interfaces.ISkin;
+	import com.falanxia.moderatrix.skin.ButtonSkin;
+	import com.falanxia.moderatrix.skin.Skin;
+	import com.falanxia.moderatrix.skin.combos.ImageComboSkin;
 
 	import flash.display.BitmapData;
-	import flash.utils.Dictionary;
 
 
 
 	/**
-	 * Image skin.
+	 * Image button skin.
 	 *
-	 * Image skin to be used with the Image widget.
+	 * Image button skin to be used with the ImageButton widget.
 	 *
 	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class ImageSkin extends Skin implements ISkin, IBitmapSkin {
+	public class ImageButtonSkin extends Skin implements ISkin {
 
 
-		public static const IMAGE_BITMAP:uint = 0;
-
-		protected var _bitmapSources:Vector.<BitmapData>;
+		public var buttonSkin:ButtonSkin;
+		public var imageComboSkin:ImageComboSkin;
 
 
 
@@ -58,12 +58,11 @@ package com.falanxia.moderatrix.skin {
 		 * @param id Skin ID (optional)
 		 * @param asset Asset (optional)
 		 */
-		public function ImageSkin(config:Object = null, id:String = null, asset:Asset = null) {
-			super(SkinType.IMAGE, config, id);
+		public function ImageButtonSkin(config:Object = null, id:String = null, asset:Asset = null) {
+			buttonSkin = new ButtonSkin(config, id + "#button");
+			imageComboSkin = new ImageComboSkin(config, id + "#imageCombo");
 
-			_bitmapSources = new Vector.<BitmapData>();
-
-			_bitmapSources[IMAGE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
+			super(SkinType.IMAGE_BUTTON, config, id);
 
 			if(asset != null) parseAsset(asset);
 		}
@@ -71,14 +70,16 @@ package com.falanxia.moderatrix.skin {
 
 
 		/**
-		 * Destroys the ImageSkin instance and frees it for GC.
+		 * Destroys the ImageButtonSkin instance and frees it for GC.
 		 */
 		override public function destroy():void {
 			super.destroy();
 
-			_bitmapSources[IMAGE_BITMAP].dispose();
+			buttonSkin.destroy();
+			imageComboSkin.destroy();
 
-			_bitmapSources = null;
+			buttonSkin = null;
+			imageComboSkin = null;
 		}
 
 
@@ -89,55 +90,33 @@ package com.falanxia.moderatrix.skin {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.image).bitmap.bitmapData]);
+			buttonSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.button.image).bitmap.bitmapData]);
+			imageComboSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.imageCombo.image).bitmap.bitmapData]);
 		}
 
 
 
 		/**
-		 * Get bitmaps from vector of BitmapData.
-		 * @param value Source vector of BitmapData
+		 * Parse config Object.
+		 * @param value Config Object
 		 */
-		public function getBitmapsFromAtlas(value:Vector.<BitmapData>):void {
-			var bitmap:BitmapData = value[0];
+		override public function parseConfig(value:Object):void {
+			super.parseConfig(value);
 
-			_bitmapSize.width = bitmap.width;
-			_bitmapSize.height = bitmap.height;
-
-			_bitmapSources[IMAGE_BITMAP] = value[0];
+			if(value.button != undefined) buttonSkin.parseConfig(value.button);
+			if(value.imageCombo != undefined) imageComboSkin.parseConfig(value.imageCombo);
 		}
 
 
 
 		/**
-		 * Set bitmap sources BitmapData.
-		 * @param value Vector of bitmap sources
+		 * Revert config to the last known state.
 		 */
-		public function set bitmapSources(value:Vector.<BitmapData>):void {
-			checkSize(value[IMAGE_BITMAP]);
+		override public function revertConfig():void {
+			super.revertConfig();
 
-			_bitmapSources = value;
-		}
-
-
-
-		/**
-		 * Get bitmap sources BitmapData.
-		 * @return Vector of bitmap sources
-		 */
-		public function get bitmapSources():Vector.<BitmapData> {
-			return _bitmapSources;
-		}
-
-
-
-		override protected function resetSettings():Dictionary {
-			var set:Dictionary = new Dictionary();
-
-			set["paddingTop"] = 0;
-			set["paddingLeft"] = 0;
-
-			return set;
+			buttonSkin.revertConfig();
+			imageComboSkin.revertConfig();
 		}
 	}
 }

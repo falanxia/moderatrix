@@ -46,32 +46,29 @@ package com.falanxia.moderatrix.widgets.meta {
 		protected var _skin:InputBarSkin;
 
 		private var _debugLevel:String;
+		private var _debugColor:RGBA;
 
 
 
 		public function InputBar(skin:InputBarSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                         debugLevel:String = null) {
-			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			var dc:RGBA = DisplayUtils.RED;
+			bar = new Bar(skin.barSkin, {}, this);
+			label = new Label(skin.labelSkin, {}, "", this);
 
-			bar = new Bar(skin.barSkin, {}, this, dl);
-			label = new Label(skin.labelSkin, {}, "", this, dl);
-
-			bar.debugColor = dc;
-			label.debugColor = dc;
 			label.isInput = true;
 
+			this.skin = skin;
 			this.isMorphHeightEnabled = true;
 			this.isMorphWidthEnabled = false;
+			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
+			this.debugColor = DisplayUtils.RED;
+
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 
 			if(c.width == undefined) c.width = skin.barSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.barSkin.bitmapSize.height;
 
 			super(c, displayParent);
-
-			_skin = skin;
-			_debugLevel = dl;
 		}
 
 
@@ -80,7 +77,7 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys InputBar instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			removeChildren();
+			DisplayUtils.removeChildren(this, bar, label);
 
 			bar.destroy();
 			label.destroy();
@@ -92,6 +89,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 			_skin = null;
 			_debugLevel = null;
+			_debugColor = null;
 		}
 
 
@@ -105,50 +103,27 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		override public function get tabEnabled():Boolean {
-			return label.tabEnabled;
+		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		public function get skin():ISkin {
+			return _skin;
 		}
 
 
 
-		override public function set tabEnabled(enabled:Boolean):void {
-			label.tabEnabled = enabled;
-		}
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		public function set skin(value:ISkin):void {
+			if(value != null) {
+				_skin = InputBarSkin(value);
 
-
-
-		override public function get tabIndex():int {
-			return label.tabIndex;
-		}
-
-
-
-		override public function set tabIndex(index:int):void {
-			label.tabIndex = index;
-		}
-
-
-
-		override public function get width():Number {
-			return bar.width;
-		}
-
-
-
-		override public function set width(value:Number):void {
-			bar.width = value;
-			label.width = value;
-		}
-
-
-
-		override public function get height():Number {
-			return bar.height;
-		}
-
-
-
-		override public function set height(value:Number):void {
+				bar.skin = _skin.barSkin;
+				label.skin = _skin.labelSkin;
+			}
 		}
 
 
@@ -181,45 +156,41 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function get text():String {
-			return label.text;
+		public function get debugColor():RGBA {
+			return _debugColor;
 		}
 
 
 
-		public function set text(value:String):void {
-			label.text = value;
+		public function set debugColor(value:RGBA):void {
+			_debugColor = value;
+
+			bar.debugColor = value;
+			label.debugColor = value;
 		}
 
 
 
-		/**
-		 * Get current skin.
-		 * @return Current skin
-		 */
-		public function get skin():ISkin {
-			return _skin;
+		override public function get width():Number {
+			return bar.width;
 		}
 
 
 
-		/**
-		 * Set skin.
-		 * @param value Skin
-		 */
-		public function set skin(value:ISkin):void {
-			if(value != null) {
-				_skin = InputBarSkin(value);
-
-				bar.skin = _skin.barSkin;
-				label.skin = _skin.labelSkin;
-			}
+		override public function set width(value:Number):void {
+			bar.width = value;
+			label.width = value;
 		}
 
 
 
-		private function removeChildren():void {
-			DisplayUtils.removeChildren(this, bar, label);
+		override public function get height():Number {
+			return bar.height;
+		}
+
+
+
+		override public function set height(value:Number):void {
 		}
 	}
 }

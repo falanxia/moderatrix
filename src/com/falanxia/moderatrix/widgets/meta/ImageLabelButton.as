@@ -27,9 +27,10 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.events.ButtonEvent;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
-	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.ImageLabelButtonSkin;
 	import com.falanxia.moderatrix.widgets.ButtonCore;
 	import com.falanxia.moderatrix.widgets.ScaleButton;
+	import com.falanxia.moderatrix.widgets.combos.ImageCombo;
 	import com.falanxia.moderatrix.widgets.combos.LabelCombo;
 	import com.falanxia.utilitaris.display.MorphSprite;
 	import com.falanxia.utilitaris.enums.Align;
@@ -41,20 +42,14 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-	/**
-	 * Label button.
-	 *
-	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
-	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
-	 * @since 1.0
-	 */
-	public class LabelButton extends MorphSprite implements IWidget {
+	public class ImageLabelButton extends MorphSprite implements IWidget {
 
 
 		public var button:ScaleButton;
+		public var imageCombo:ImageCombo;
 		public var labelCombo:LabelCombo;
 
-		protected var _skin:LabelButtonSkin;
+		protected var _skin:ImageLabelButtonSkin;
 
 		private var _debugLevel:String;
 		private var _debugColor:RGBA;
@@ -62,19 +57,23 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		/**
-		 * Constructor.
-		 * @param skin Widget skin
-		 * @param displayConfig (optional) Display config
-		 * @param text (optional) Text
-		 * @param displayParent (optional) Display parent
-		 * @param debugLevel (optional) Debug level
-		 * @see ISkin
-		 * @see DebugLevel
+		 * Create a new glyph label button instance.
+		 * @param skin Skin to be used (use ImageLabelButtonSkin)
+		 * @param displayConfig Configuration Object
+		 * @param text Initial text
+		 * @param displayParent Parent DisplayObjectContainer
+		 * @param debugLevel Debug level ({@see DebugLevel})
+		 * @throws Error if no skin defined
 		 */
-		public function LabelButton(skin:LabelButtonSkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
-		                            debugLevel:String = null) {
+		public function ImageLabelButton(skin:ImageLabelButtonSkin, displayConfig:Object = null, text:String = "",
+		                                 displayParent:DisplayObjectContainer = null, debugLevel:String = null) {
 			button = new ScaleButton(skin.buttonSkin, {}, this);
+			imageCombo = new ImageCombo(skin.imageComboSkin, {mouseEnabled:false, mouseChildren:false}, this);
 			labelCombo = new LabelCombo(skin.labelComboSkin, {mouseEnabled:false, mouseChildren:false}, text, this);
+
+			labelCombo.labelOut.textField.wordWrap = false;
+			labelCombo.labelHover.textField.wordWrap = false;
+			labelCombo.labelFocus.textField.wordWrap = false;
 
 			this.skin = skin;
 			this.focusRect = false;
@@ -88,7 +87,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
 			button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
-			var c:Object = displayConfig == null ? new Object() : displayConfig;
+			var c:Object = (displayConfig == null) ? new Object() : displayConfig;
 
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
@@ -99,10 +98,10 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		/**
-		 * Destroys LabelButton instance and frees it for GC.
+		 * Destroys ImageLabelButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
-			DisplayUtils.removeChildren(this, button, labelCombo);
+			DisplayUtils.removeChildren(this, button, imageCombo, labelCombo);
 
 			button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
@@ -111,14 +110,16 @@ package com.falanxia.moderatrix.widgets.meta {
 			button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
 			button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
-			forceRelease();
+			button.forceRelease();
 
 			button.destroy();
+			imageCombo.destroy();
 			labelCombo.destroy();
 
 			super.destroy();
 
 			button = null;
+			imageCombo = null;
 			labelCombo = null;
 
 			_skin = null;
@@ -133,22 +134,15 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function draw():void {
 			button.draw();
+			imageCombo.draw();
 			labelCombo.draw();
 		}
 
 
 
 		/**
-		 * Force release the button.
-		 */
-		public function forceRelease():void {
-			button.forceRelease();
-		}
-
-
-
-		/**
-		 * Release all buttons everywhere.
+		 * Release all buttons.
+		 * Useful when dragging outside the main Stage.
 		 */
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
@@ -157,11 +151,13 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		/**
-		 * Automatically set width of the button.
+		 * Automagically set width.
 		 * @param padding Padding
-		 * @param max Maximal width (then text will be split in more lines)
+		 * @param max Max width before button gets wrapped
+		 * @param morph true to use morphing (see {@see MorphSprite})
+		 * @param morphAddons Additional parameters for morphing (see {@see MorphSprite})
 		 */
-		public function autoWidth(padding:Number = 0, max:Number = 500, morph:Boolean = false, morphAddons:Object = null):void {
+		public function autoWidth(padding:Number, max:Number = 500, morph:Boolean = false, morphAddons:Object = null):void {
 			var s:Number = this.width;
 
 			this.width = 2000;
@@ -201,23 +197,73 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function set skin(value:ISkin):void {
 			if(value != null) {
-				_skin = LabelButtonSkin(value);
+				_skin = ImageLabelButtonSkin(value);
 
 				if(_skin.labelComboSkin.labelOutSkin.settings != null) {
-					_skin.labelComboSkin.labelOutSkin.settings["hAlign"] = Align.CENTER;
+					_skin.labelComboSkin.labelOutSkin.settings["hAlign"] = Align.LEFT;
 				}
 
 				if(_skin.labelComboSkin.labelHoverSkin.settings != null) {
-					_skin.labelComboSkin.labelHoverSkin.settings["hAlign"] = Align.CENTER;
+					_skin.labelComboSkin.labelHoverSkin.settings["hAlign"] = Align.LEFT;
 				}
 
 				if(_skin.labelComboSkin.labelFocusSkin.settings != null) {
-					_skin.labelComboSkin.labelFocusSkin.settings["hAlign"] = Align.CENTER;
+					_skin.labelComboSkin.labelFocusSkin.settings["hAlign"] = Align.LEFT;
 				}
 
 				button.skin = _skin.buttonSkin;
+				imageCombo.skin = _skin.imageComboSkin;
 				labelCombo.skin = _skin.labelComboSkin;
 			}
+		}
+
+
+
+		override public function get width():Number {
+			return button.width;
+		}
+
+
+
+		override public function set width(value:Number):void {
+			labelCombo.width = 2000;
+
+			var w:Number = labelCombo.width + imageCombo.width;
+
+			labelCombo.width = w;
+			button.width = value;
+			imageCombo.x = Math.round((value - w) / 2);
+			labelCombo.x = imageCombo.x + imageCombo.width;
+		}
+
+
+
+		override public function get height():Number {
+			return button.height;
+		}
+
+
+
+		override public function set height(value:Number):void {
+			button.height = value;
+
+			imageCombo.y = Math.round((value - imageCombo.height) / 2);
+			labelCombo.y = Math.round((value - labelCombo.height) / 2);
+		}
+
+
+
+		public function set areEventsEnabled(value:Boolean):void {
+			button.areEventsEnabled = value;
+
+			this.buttonMode = value;
+			this.useHandCursor = value;
+		}
+
+
+
+		public function get areEventsEnabled():Boolean {
+			return button.areEventsEnabled;
 		}
 
 
@@ -232,6 +278,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			_debugLevel = value;
 
 			button.debugLevel = value;
+			imageCombo.debugLevel = value;
 			labelCombo.debugLevel = value;
 		}
 
@@ -247,34 +294,8 @@ package com.falanxia.moderatrix.widgets.meta {
 			_debugColor = value;
 
 			button.debugColor = value;
+			imageCombo.debugColor = value;
 			labelCombo.debugColor = value;
-		}
-
-
-
-		override public function get width():Number {
-			return button.width;
-		}
-
-
-
-		override public function set width(value:Number):void {
-			button.width = value;
-			labelCombo.width = value;
-		}
-
-
-
-		override public function get height():Number {
-			return button.height;
-		}
-
-
-
-		override public function set height(value:Number):void {
-			button.height = value;
-
-			labelCombo.y = Math.round((value - labelCombo.height) / 2);
 		}
 
 
@@ -283,6 +304,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var duration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
+				imageCombo.animateHoverIn(duration);
 				labelCombo.animateHoverIn(duration);
 			}
 		}
@@ -293,6 +315,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var duration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
 
+				imageCombo.animateHoverOut(duration);
 				labelCombo.animateHoverOut(duration);
 			}
 		}
@@ -303,6 +326,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var duration:Number = _skin.buttonSkin.settings["focusInDuration"];
 
+				imageCombo.animateFocusIn(duration);
 				labelCombo.animateFocusIn(duration);
 			}
 		}
@@ -313,6 +337,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var duration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
+				imageCombo.animateHoverIn(duration);
 				labelCombo.animateHoverIn(duration);
 			}
 		}
@@ -323,6 +348,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var duration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
+				imageCombo.animateFocusOut(duration);
 				labelCombo.animateFocusOut(duration);
 			}
 		}
@@ -333,6 +359,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
 				var duration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
+				imageCombo.animateFocusOut(duration);
 				labelCombo.animateFocusOut(duration);
 			}
 		}

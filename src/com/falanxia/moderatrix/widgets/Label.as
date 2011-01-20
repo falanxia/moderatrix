@@ -148,50 +148,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Get the tab enabled status.
-		 * @return true if tab is enabled for this widget
-		 */
-		override public function get tabEnabled():Boolean {
-			return textField.tabEnabled;
-		}
-
-
-
-		/**
-		 * Set tab enabled status.
-		 * @param value true if tab is enabled for this widget
-		 */
-		override public function set tabEnabled(value:Boolean):void {
-			textField.tabEnabled = value;
-
-			invalidate();
-		}
-
-
-
-		/**
-		 * Get the tab index.
-		 * @return Tab index for this widget
-		 */
-		override public function get tabIndex():int {
-			return textField.tabIndex;
-		}
-
-
-
-		/**
-		 * Set the tab index.
-		 * @param value Tab index for this widget
-		 */
-		override public function set tabIndex(value:int):void {
-			textField.tabIndex = value;
-
-			invalidate();
-		}
-
-
-
-		/**
 		 * Set the debug level.
 		 * @param value Debug level
 		 * @see DebugLevel

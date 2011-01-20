@@ -77,7 +77,7 @@ package com.falanxia.moderatrix.widgets {
 
 
 		/**
-		 * Create a new glyph label button instance.
+		 * Create a new widget instance.
 		 * @param displayConfig Configuration Object
 		 * @param displayParent Parent DisplayObjectContainer
 		 * @param debugLevel Debug level ({@see DebugLevel})

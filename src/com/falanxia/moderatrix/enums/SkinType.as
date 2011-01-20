@@ -58,14 +58,11 @@ package com.falanxia.moderatrix.enums {
 		/** Label button skin */
 		public static const LABEL_BUTTON:String = "labelButton";
 
-		/** Glyph button skin */
-		public static const GLYPH_BUTTON:String = "glyphButton";
+		/** Image button skin */
+		public static const IMAGE_BUTTON:String = "imageButton";
 
-		/** Glyph label button skin */
-		public static const GLYPH_LABEL_BUTTON:String = "glyphLabelButton";
-
-		/** Glyph skin */
-		public static const GLYPH:String = "glyph";
+		/** Image label button skin */
+		public static const IMAGE_LABEL_BUTTON:String = "imageLabelButton";
 
 		/** Check button skin */
 		public static const CHECK_BUTTON:String = "checkButton";
@@ -75,6 +72,12 @@ package com.falanxia.moderatrix.enums {
 
 		/** Count badge skin */
 		public static const COUNT_BADGE:String = "countBadge";
+
+		/** Image combo */
+		public static const IMAGE_COMBO:String = "imageCombo";
+
+		/** Label combo */
+		public static const LABEL_COMBO:String = "labelCombo";
 
 
 	}

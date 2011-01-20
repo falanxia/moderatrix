@@ -138,35 +138,6 @@ package com.falanxia.moderatrix.widgets {
 
 
 
-		override public function get tabEnabled():Boolean {
-			return activeSpr.tabEnabled;
-		}
-
-
-
-		override public function set tabEnabled(enabled:Boolean):void {
-			activeSpr.tabEnabled = enabled;
-			super.tabEnabled = enabled;
-
-			invalidate();
-		}
-
-
-
-		override public function set tabIndex(index:int):void {
-			activeSpr.tabIndex = index;
-
-			invalidate();
-		}
-
-
-
-		override public function get tabIndex():int {
-			return activeSpr.tabIndex;
-		}
-
-
-
 		/**
 		 * Set skin.
 		 * @param value Skin

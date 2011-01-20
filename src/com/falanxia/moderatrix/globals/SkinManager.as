@@ -35,11 +35,12 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.ContainerSkin;
 	import com.falanxia.moderatrix.skin.ImageSkin;
 	import com.falanxia.moderatrix.skin.LabelSkin;
+	import com.falanxia.moderatrix.skin.combos.ImageComboSkin;
+	import com.falanxia.moderatrix.skin.combos.LabelComboSkin;
 	import com.falanxia.moderatrix.skin.meta.CheckButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.CountBadgeSkin;
-	import com.falanxia.moderatrix.skin.meta.GlyphButtonSkin;
-	import com.falanxia.moderatrix.skin.meta.GlyphLabelButtonSkin;
-	import com.falanxia.moderatrix.skin.meta.GlyphSkin;
+	import com.falanxia.moderatrix.skin.meta.ImageButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.ImageLabelButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
 	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
 
@@ -126,20 +127,18 @@ package com.falanxia.moderatrix.globals {
 							skin = new LabelSkin(config, null);
 							break;
 
+						// metas
+
 						case SkinType.LABEL_BUTTON:
 							skin = new LabelButtonSkin(config, null, asset);
 							break;
 
-						case SkinType.GLYPH_BUTTON:
-							skin = new GlyphButtonSkin(config, null, asset);
+						case SkinType.IMAGE_BUTTON:
+							skin = new ImageButtonSkin(config, null, asset);
 							break;
 
-						case SkinType.GLYPH_LABEL_BUTTON:
-							skin = new GlyphLabelButtonSkin(config, null, asset);
-							break;
-
-						case SkinType.GLYPH:
-							skin = new GlyphSkin(config, null, asset);
+						case SkinType.IMAGE_LABEL_BUTTON:
+							skin = new ImageLabelButtonSkin(config, null, asset);
 							break;
 
 						case SkinType.CHECK_BUTTON:
@@ -152,6 +151,16 @@ package com.falanxia.moderatrix.globals {
 
 						case SkinType.COUNT_BADGE:
 							skin = new CountBadgeSkin(config, null, asset);
+							break;
+
+						// combos
+
+						case SkinType.IMAGE_COMBO:
+							skin = new ImageComboSkin(config, null, asset);
+							break;
+
+						case SkinType.LABEL_COMBO:
+							skin = new LabelComboSkin(config, null);
 							break;
 
 						default:

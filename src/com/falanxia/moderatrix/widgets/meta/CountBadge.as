@@ -56,6 +56,7 @@ package com.falanxia.moderatrix.widgets.meta {
 		protected var _skin:CountBadgeSkin;
 
 		private var _debugLevel:String;
+		private var _debugColor:RGBA;
 		private var _value:uint;
 
 
@@ -69,28 +70,22 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function CountBadge(skin:CountBadgeSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                           debugLevel:String = null) {
-			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			var dc:RGBA = DisplayUtils.RED;
+			infinityBack = new Image(skin.infinityBackSkin, {visible:false}, this);
+			valueBack = new Image(skin.valueBackSkin, {visible:false}, this);
+			valueLabel = new Label(skin.valueLabelSkin, {width:infinityBack.width, y:1}, "", valueBack);
 
-			infinityBack = new Image(skin.infinityBackSkin, {visible:false}, this, dl);
-			valueBack = new Image(skin.valueBackSkin, {visible:false}, this, dl);
-			valueLabel = new Label(skin.valueLabelSkin, {width:infinityBack.width, y:1}, "", valueBack, dl);
-
-			infinityBack.debugColor = dc;
-			valueBack.debugColor = dc;
-			valueLabel.debugColor = dc;
-
+			this.skin = skin;
 			this.isMorphHeightEnabled = false;
 			this.isMorphWidthEnabled = false;
+			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
+			this.debugColor = DisplayUtils.RED;
+
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
 
 			if(c.width == undefined) c.width = skin.infinityBackSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.infinityBackSkin.bitmapSize.height;
 
 			super(c, displayParent);
-
-			_skin = skin;
-			_debugLevel = dl;
 		}
 
 
@@ -99,6 +94,8 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Destroys CheckButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
+			DisplayUtils.removeChildren(this, infinityBack, valueBack, valueLabel);
+
 			infinityBack.destroy();
 			valueBack.destroy();
 			valueLabel.destroy();
@@ -111,6 +108,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 			_skin = null;
 			_debugLevel = null;
+			_debugColor = null;
 		}
 
 
@@ -141,6 +139,32 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 		/**
+		 * Get current skin.
+		 * @return Current skin
+		 */
+		public function get skin():ISkin {
+			return _skin;
+		}
+
+
+
+		/**
+		 * Set skin.
+		 * @param value Skin
+		 */
+		public function set skin(value:ISkin):void {
+			if(value != null) {
+				_skin = CountBadgeSkin(value);
+
+				infinityBack.skin = _skin.infinityBackSkin;
+				valueBack.skin = _skin.valueBackSkin;
+				valueLabel.skin = _skin.valueLabelSkin;
+			}
+		}
+
+
+
+		/**
 		 * Get the value.
 		 * @return Value
 		 */
@@ -158,26 +182,6 @@ package com.falanxia.moderatrix.widgets.meta {
 			_value = value;
 
 			invalidate();
-		}
-
-
-
-		/**
-		 * Set widget width.
-		 * Placeholder, width of the CountBadge can't be set.
-		 * @param value Width
-		 */
-		override public function set width(value:Number):void {
-		}
-
-
-
-		/**
-		 * Set widget height.
-		 * Placeholder, height of the CountBadge can't be set.
-		 * @param value Height
-		 */
-		override public function set height(value:Number):void {
 		}
 
 
@@ -208,28 +212,38 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		/**
-		 * Get current skin.
-		 * @return Current skin
-		 */
-		public function get skin():ISkin {
-			return _skin;
+		public function get debugColor():RGBA {
+			return _debugColor;
+		}
+
+
+
+		public function set debugColor(value:RGBA):void {
+			_debugColor = value;
+
+			infinityBack.debugColor = value;
+			valueBack.debugColor = value;
+			valueLabel.debugColor = value;
 		}
 
 
 
 		/**
-		 * Set skin.
-		 * @param value Skin
+		 * Set widget width.
+		 * Placeholder, width of the CountBadge can't be set.
+		 * @param value Width
 		 */
-		public function set skin(value:ISkin):void {
-			if(value != null) {
-				_skin = CountBadgeSkin(value);
+		override public function set width(value:Number):void {
+		}
 
-				infinityBack.skin = _skin.infinityBackSkin;
-				valueBack.skin = _skin.valueBackSkin;
-				valueLabel.skin = _skin.valueLabelSkin;
-			}
+
+
+		/**
+		 * Set widget height.
+		 * Placeholder, height of the CountBadge can't be set.
+		 * @param value Height
+		 */
+		override public function set height(value:Number):void {
 		}
 
 

@@ -24,58 +24,45 @@
 
 package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.enums.DebugLevel;
-	import com.falanxia.moderatrix.enums.MouseStatus;
 	import com.falanxia.moderatrix.events.ButtonEvent;
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
-	import com.falanxia.moderatrix.skin.meta.GlyphButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.ImageButtonSkin;
 	import com.falanxia.moderatrix.widgets.ButtonCore;
-	import com.falanxia.moderatrix.widgets.Image;
 	import com.falanxia.moderatrix.widgets.ScaleButton;
+	import com.falanxia.moderatrix.widgets.combos.ImageCombo;
 	import com.falanxia.utilitaris.display.MorphSprite;
 	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
-	import com.greensock.TweenMax;
-	import com.greensock.easing.Cubic;
 
 	import flash.display.DisplayObjectContainer;
 
 
 
-	public class GlyphButton extends MorphSprite implements IWidget {
+	public class ImageButton extends MorphSprite implements IWidget {
 
 
 		public var button:ScaleButton;
-		public var glyphOut:Image;
-		public var glyphHover:Image;
-		public var glyphFocus:Image;
+		public var imageCombo:ImageCombo;
 
-		protected var _skin:GlyphButtonSkin;
+		protected var _skin:ImageButtonSkin;
 
 		private var _debugLevel:String;
+		private var _debugColor:RGBA;
 
 
 
-		public function GlyphButton(skin:GlyphButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
+		public function ImageButton(skin:ImageButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
-			var c:Object = displayConfig == null ? new Object() : displayConfig;
-			var dl:String = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			var dc:RGBA = DisplayUtils.RED;
-
-			button = new ScaleButton(skin.buttonSkin, {}, this, dl);
-			glyphOut = new Image(skin.glyphSkin.glyphOutSkin, {mouseEnabled:false, mouseChildren:false}, this, dl);
-			glyphHover = new Image(skin.glyphSkin.glyphHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
-			glyphFocus = new Image(skin.glyphSkin.glyphFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this, dl);
-
-			button.debugColor = dc;
-			glyphOut.debugColor = dc;
-			glyphHover.debugColor = dc;
-			glyphFocus.debugColor = dc;
+			button = new ScaleButton(skin.buttonSkin, {}, this);
+			imageCombo = new ImageCombo(skin.imageComboSkin, {mouseEnabled:false, mouseChildren:false}, this);
 
 			this.skin = skin;
 			this.buttonMode = true;
 			this.useHandCursor = true;
 			this.focusRect = false;
+			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
+			this.debugColor = DisplayUtils.RED;
 
 			button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
@@ -84,21 +71,22 @@ package com.falanxia.moderatrix.widgets.meta {
 			button.addEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
 			button.addEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
+			var c:Object = displayConfig == null ? new Object() : displayConfig;
+
 			if(c.width == undefined) c.width = skin.buttonSkin.bitmapSize.width;
 			if(c.height == undefined) c.height = skin.buttonSkin.bitmapSize.height;
 
 			super(c, displayParent);
-
-			_skin = skin;
-			_debugLevel = dl;
 		}
 
 
 
 		/**
-		 * Destroys GlyphButton instance and frees it for GC.
+		 * Destroys ImageButton instance and frees it for GC.
 		 */
 		override public function destroy():void {
+			DisplayUtils.removeChildren(this, button, imageCombo);
+
 			button.removeEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			button.removeEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);
 			button.removeEventListener(ButtonEvent.FOCUS_IN_TWEEN, onButtonFocusInTween);
@@ -106,33 +94,26 @@ package com.falanxia.moderatrix.widgets.meta {
 			button.removeEventListener(ButtonEvent.RELEASED_INSIDE_TWEEN, onButtonReleasedInsideTween);
 			button.removeEventListener(ButtonEvent.RELEASED_OUTSIDE_TWEEN, onButtonReleasedOutsideTween);
 
-			DisplayUtils.removeChildren(this, button, glyphOut, glyphHover, glyphFocus);
-
 			forceRelease();
 
 			button.destroy();
-			glyphOut.destroy();
-			glyphHover.destroy();
-			glyphFocus.destroy();
+			imageCombo.destroy();
 
 			super.destroy();
 
 			button = null;
-			glyphOut = null;
-			glyphHover = null;
-			glyphFocus = null;
+			imageCombo = null;
 
 			_skin = null;
 			_debugLevel = null;
+			_debugColor = null;
 		}
 
 
 
 		public function draw():void {
 			button.draw();
-			glyphOut.draw();
-			glyphHover.draw();
-			glyphFocus.draw();
+			imageCombo.draw();
 		}
 
 
@@ -145,30 +126,6 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		public static function releaseAll():void {
 			ButtonCore.releaseAll();
-		}
-
-
-
-		override public function get tabEnabled():Boolean {
-			return button.tabEnabled;
-		}
-
-
-
-		override public function set tabEnabled(enabled:Boolean):void {
-			button.tabEnabled = enabled;
-		}
-
-
-
-		override public function get tabIndex():int {
-			return button.tabIndex;
-		}
-
-
-
-		override public function set tabIndex(index:int):void {
-			button.tabIndex = index;
 		}
 
 
@@ -189,14 +146,12 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function set skin(value:ISkin):void {
 			if(value != null) {
-				_skin = GlyphButtonSkin(value);
+				_skin = ImageButtonSkin(value);
 
 				button.skin = _skin.buttonSkin;
 
-				if(_skin.glyphSkin != null) {
-					glyphOut.skin = _skin.glyphSkin.glyphOutSkin;
-					glyphHover.skin = _skin.glyphSkin.glyphHoverSkin;
-					glyphFocus.skin = _skin.glyphSkin.glyphFocusSkin;
+				if(_skin.imageComboSkin != null) {
+					imageCombo.skin = _skin.imageComboSkin;
 				}
 			}
 		}
@@ -211,9 +166,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		override public function set width(value:Number):void {
 			button.width = value;
-			glyphOut.x = Math.round((value - glyphOut.width) / 2);
-			glyphHover.x = Math.round((value - glyphHover.width) / 2);
-			glyphFocus.x = Math.round((value - glyphFocus.width) / 2);
+			imageCombo.x = Math.round((value - imageCombo.width) / 2);
 		}
 
 
@@ -226,9 +179,7 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		override public function set height(value:Number):void {
 			button.height = value;
-			glyphOut.y = Math.round((value - glyphOut.height) / 2);
-			glyphHover.y = Math.round((value - glyphHover.height) / 2);
-			glyphFocus.y = Math.round((value - glyphFocus.height) / 2);
+			imageCombo.y = Math.round((value - imageCombo.height) / 2);
 		}
 
 
@@ -248,18 +199,6 @@ package com.falanxia.moderatrix.widgets.meta {
 
 
 
-		public function get mouseStatus():String {
-			return button.mouseStatus;
-		}
-
-
-
-		public function set mouseStatus(value:String):void {
-			button.mouseStatus = value;
-		}
-
-
-
 		public function get debugLevel():String {
 			return _debugLevel;
 		}
@@ -270,32 +209,32 @@ package com.falanxia.moderatrix.widgets.meta {
 			_debugLevel = value;
 
 			button.debugLevel = value;
-			glyphOut.debugLevel = value;
-			glyphHover.debugLevel = value;
-			glyphFocus.debugLevel = value;
+			imageCombo.debugLevel = value;
 		}
 
 
 
-		public function get currentGlyph():Image {
-			var out:Image;
+		public function get debugColor():RGBA {
+			return _debugColor;
+		}
 
-			if(button.mouseStatus == MouseStatus.OUT) out = glyphOut;
-			if(button.mouseStatus == MouseStatus.HOVER) out = glyphHover;
-			if(button.mouseStatus == MouseStatus.FOCUS) out = glyphFocus;
 
-			return out;
+
+		public function set debugColor(value:RGBA):void {
+			_debugColor = value;
+
+			button.debugColor = value;
+			button.debugColor = value;
+			button.debugColor = value;
 		}
 
 
 
 		private function onButtonHoverInTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
-				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
+				var duration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-				new TweenMax(glyphOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(glyphFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				imageCombo.animateHoverIn(duration);
 			}
 		}
 
@@ -303,11 +242,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function onButtonHoverOutTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
-				var hoverOutDuration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
+				var duration:Number = _skin.buttonSkin.settings["hoverOutDuration"];
 
-				new TweenMax(glyphOut, hoverOutDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(glyphHover, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphFocus, hoverOutDuration, {alpha:0, ease:Cubic.easeIn});
+				imageCombo.animateHoverOut(duration);
 			}
 		}
 
@@ -315,11 +252,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function onButtonFocusInTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
-				var focusInDuration:Number = _skin.buttonSkin.settings["focusInDuration"];
+				var duration:Number = _skin.buttonSkin.settings["focusInDuration"];
 
-				new TweenMax(glyphOut, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphHover, focusInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphFocus, focusInDuration, {alpha:1, ease:Cubic.easeOut});
+				imageCombo.animateFocusIn(duration);
 			}
 		}
 
@@ -327,11 +262,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function onButtonDragConfirmedTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
-				var hoverInDuration:Number = _skin.buttonSkin.settings["hoverInDuration"];
+				var duration:Number = _skin.buttonSkin.settings["hoverInDuration"];
 
-				new TweenMax(glyphOut, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphHover, hoverInDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(glyphFocus, hoverInDuration, {alpha:0, ease:Cubic.easeIn});
+				imageCombo.animateHoverIn(duration);
 			}
 		}
 
@@ -339,11 +272,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function onButtonReleasedInsideTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
-				var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
+				var duration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-				new TweenMax(glyphOut, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphHover, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(glyphFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				imageCombo.animateHoverOut(duration);
 			}
 		}
 
@@ -351,11 +282,9 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		private function onButtonReleasedOutsideTween(e:ButtonEvent):void {
 			if(_skin != null && _skin.buttonSkin != null && _skin.buttonSkin.settings != null) {
-				var focusOutDuration:Number = _skin.buttonSkin.settings["focusOutDuration"];
+				var duration:Number = _skin.buttonSkin.settings["focusOutDuration"];
 
-				new TweenMax(glyphOut, focusOutDuration, {alpha:1, ease:Cubic.easeOut});
-				new TweenMax(glyphHover, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
-				new TweenMax(glyphFocus, focusOutDuration, {alpha:0, ease:Cubic.easeIn});
+				imageCombo.animateFocusOut(duration);
 			}
 		}
 	}
