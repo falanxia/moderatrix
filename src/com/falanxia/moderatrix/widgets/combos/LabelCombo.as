@@ -66,7 +66,7 @@ package com.falanxia.moderatrix.widgets.combos {
 			this.useHandCursor = true;
 			this.focusRect = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			this.debugColor = DisplayUtils.RED;
+			this.debugColor = DisplayUtils.DEBUG_BLUE;
 
 			var c:Object = displayConfig == null ? new Object() : displayConfig;
 

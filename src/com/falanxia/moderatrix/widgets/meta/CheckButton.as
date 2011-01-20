@@ -65,7 +65,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.isMorphHeightEnabled = false;
 			this.isMorphWidthEnabled = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			this.debugColor = DisplayUtils.RED;
+			this.debugColor = DisplayUtils.DEBUG_BLUE;
 
 			buttonOff.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);
 			buttonOn.addEventListener(ButtonEvent.RELEASE_INSIDE, onToggle);

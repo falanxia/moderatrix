@@ -79,7 +79,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.skin = skin;
 			this.focusRect = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			this.debugColor = DisplayUtils.RED;
+			this.debugColor = DisplayUtils.DEBUG_BLUE;
 
 			button.addEventListener(ButtonEvent.HOVER_IN_TWEEN, onButtonHoverInTween);
 			button.addEventListener(ButtonEvent.HOVER_OUT_TWEEN, onButtonHoverOutTween);

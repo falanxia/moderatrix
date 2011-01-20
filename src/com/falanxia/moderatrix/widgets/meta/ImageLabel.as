@@ -71,7 +71,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			this.skin = skin;
 			this.focusRect = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
-			this.debugColor = DisplayUtils.RED;
+			this.debugColor = DisplayUtils.DEBUG_BLUE;
 
 			var c:Object = (displayConfig == null) ? new Object() : displayConfig;
 
