@@ -74,6 +74,8 @@ package com.falanxia.moderatrix.widgets {
 		protected var debugSpr:QSprite;
 		protected var contentSpr:QSprite;
 
+		private var isInvalidated:Boolean;
+
 
 
 		/**
@@ -474,14 +476,20 @@ package com.falanxia.moderatrix.widgets {
 
 		protected function invalidate():void {
 			addEventListener(Event.ENTER_FRAME, onInvalidate);
+
+			isInvalidated = true;
 		}
 
 
 
 		private function onInvalidate(e:Event):void {
-			removeEventListener(Event.ENTER_FRAME, onInvalidate);
+			if(isInvalidated) {
+				removeEventListener(Event.ENTER_FRAME, onInvalidate);
 
-			draw();
+				isInvalidated = false;
+
+				draw();
+			}
 		}
 	}
 }
