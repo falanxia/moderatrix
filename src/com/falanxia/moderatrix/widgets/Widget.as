@@ -34,7 +34,6 @@ package com.falanxia.moderatrix.widgets {
 	import com.falanxia.utilitaris.types.Size;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
-	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -87,7 +86,7 @@ package com.falanxia.moderatrix.widgets {
 		public function Widget(displayConfig:Object = null, displayParent:DisplayObjectContainer = null, debugLevel:String = null):void {
 			_config = (displayConfig == null) ? new Object() : displayConfig;
 			_skinManager = SkinManager.getInstance();
-			_debugColor = DisplayUtils.RED;
+			_debugColor = DisplayUtils.DEBUG_BLUE;
 
 			super(_config, displayParent);
 
@@ -141,98 +140,6 @@ package com.falanxia.moderatrix.widgets {
 				}
 
 				dispatchEvent(new Event(Widget.DRAW));
-			}
-		}
-
-
-
-		override public function addChild(child:DisplayObject):DisplayObject {
-			return (contentSpr == null) ? super.addChild(child) : contentSpr.addChild(child);
-		}
-
-
-
-		override public function removeChild(child:DisplayObject):DisplayObject {
-			if(super.getChildByName(child.name)) {
-				super.removeChild(child);
-			} else if(child.parent.getChildByName(child.name)) {
-				child.parent.removeChild(child);
-			}
-
-			return child;
-		}
-
-
-
-		override public function contains(child:DisplayObject):Boolean {
-			return (contentSpr == null) ? super.contains(child) : contentSpr.contains(child);
-		}
-
-
-
-		override public function swapChildrenAt(index1:int, index2:int):void {
-			if(contentSpr == null) {
-				super.swapChildrenAt(index1, index2);
-			} else {
-				contentSpr.swapChildrenAt(index1, index2);
-			}
-		}
-
-
-
-		override public function getChildByName(name:String):DisplayObject {
-			return (contentSpr == null) ? super.getChildByName(name) : contentSpr.getChildByName(name);
-		}
-
-
-
-		override public function removeChildAt(index:int):DisplayObject {
-			return (contentSpr == null) ? super.removeChildAt(index) : contentSpr.removeChildAt(index);
-		}
-
-
-
-		override public function getChildIndex(child:DisplayObject):int {
-			return (contentSpr == null) ? super.getChildIndex(child) : contentSpr.getChildIndex(child);
-		}
-
-
-
-		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
-			return (contentSpr == null) ? super.addChildAt(child, index) : contentSpr.addChildAt(child, index);
-		}
-
-
-
-		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
-			if(contentSpr == null) {
-				super.swapChildren(child1, child2);
-			} else {
-				contentSpr.swapChildren(child1, child2);
-			}
-		}
-
-
-
-		override public function getChildAt(index:int):DisplayObject {
-			var out:DisplayObject;
-
-			if(contentSpr == null) {
-				out = super.getChildAt(index);
-			} else {
-				contentSpr.getChildAt(index);
-			}
-
-			return out;
-		}
-
-
-
-		override public function setChildIndex(child:DisplayObject, index:int):void {
-			if(contentSpr == null) {
-				super.setChildIndex(child, index);
-			} else {
-				contentSpr.setChildIndex(child, index);
 			}
 		}
 
