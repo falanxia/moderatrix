@@ -26,30 +26,28 @@ package com.falanxia.moderatrix.skin.meta {
 	import com.falanxia.emitor.Asset;
 	import com.falanxia.moderatrix.enums.SkinType;
 	import com.falanxia.moderatrix.interfaces.ISkin;
-	import com.falanxia.moderatrix.skin.ButtonSkin;
+	import com.falanxia.moderatrix.skin.ImageSkin;
+	import com.falanxia.moderatrix.skin.LabelSkin;
 	import com.falanxia.moderatrix.skin.Skin;
-	import com.falanxia.moderatrix.skin.combos.ImageComboSkin;
-	import com.falanxia.moderatrix.skin.combos.LabelComboSkin;
 
 	import flash.display.BitmapData;
 
 
 
 	/**
-	 * Image label button skin.
+	 * Image label skin.
 	 *
-	 * Image label button skin to be used with the ImageLabelButton widget.
+	 * Image label skin to be used with the ImageLabel widget.
 	 *
 	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
-	public class ImageLabelButtonSkin extends Skin implements ISkin {
+	public class ImageLabelSkin extends Skin implements ISkin {
 
 
-		public var buttonSkin:ButtonSkin;
-		public var imageComboSkin:ImageComboSkin;
-		public var labelComboSkin:LabelComboSkin;
+		public var imageSkin:ImageSkin;
+		public var labelSkin:LabelSkin;
 
 
 
@@ -60,12 +58,11 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @param id Skin ID (optional)
 		 * @param asset Asset (optional)
 		 */
-		public function ImageLabelButtonSkin(config:Object = null, id:String = null, asset:Asset = null) {
-			buttonSkin = new ButtonSkin(config, id + "#button");
-			imageComboSkin = new ImageComboSkin(config, id + "#imageCombo");
-			labelComboSkin = new LabelComboSkin(config, id + "#labelCombo");
+		public function ImageLabelSkin(config:Object = null, id:String = null, asset:Asset = null) {
+			imageSkin = new ImageSkin(config, id + "#image");
+			labelSkin = new LabelSkin(config, id + "#label");
 
-			super(SkinType.IMAGE_LABEL_BUTTON, config, id);
+			super(SkinType.IMAGE_LABEL, config, id);
 
 			if(asset != null) parseAsset(asset);
 		}
@@ -78,13 +75,11 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function destroy():void {
 			super.destroy();
 
-			buttonSkin.destroy();
-			imageComboSkin.destroy();
-			labelComboSkin.destroy();
+			imageSkin.destroy();
+			labelSkin.destroy();
 
-			buttonSkin = null;
-			imageComboSkin = null;
-			labelComboSkin = null;
+			imageSkin = null;
+			labelSkin = null;
 		}
 
 
@@ -95,8 +90,7 @@ package com.falanxia.moderatrix.skin.meta {
 		 * @see Asset
 		 */
 		public function parseAsset(value:Asset):void {
-			buttonSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.button.image).bitmap.bitmapData]);
-			imageComboSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.imageCombo.image).bitmap.bitmapData]);
+			imageSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.image.image).bitmap.bitmapData]);
 		}
 
 
@@ -108,9 +102,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function parseConfig(value:Object):void {
 			super.parseConfig(value);
 
-			if(value.button != undefined) buttonSkin.parseConfig(value.button);
-			if(value.imageCombo != undefined) imageComboSkin.parseConfig(value.imageCombo);
-			if(value.labelCombo != undefined) labelComboSkin.parseConfig(value.labelCombo);
+			if(value.image != undefined) imageSkin.parseConfig(value.image);
+			if(value.label != undefined) labelSkin.parseConfig(value.label);
 		}
 
 
@@ -121,9 +114,8 @@ package com.falanxia.moderatrix.skin.meta {
 		override public function revertConfig():void {
 			super.revertConfig();
 
-			buttonSkin.revertConfig();
-			imageComboSkin.revertConfig();
-			labelComboSkin.revertConfig();
+			imageSkin.revertConfig();
+			labelSkin.revertConfig();
 		}
 	}
 }

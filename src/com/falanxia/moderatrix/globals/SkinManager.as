@@ -41,6 +41,7 @@ package com.falanxia.moderatrix.globals {
 	import com.falanxia.moderatrix.skin.meta.CountBadgeSkin;
 	import com.falanxia.moderatrix.skin.meta.ImageButtonSkin;
 	import com.falanxia.moderatrix.skin.meta.ImageLabelButtonSkin;
+	import com.falanxia.moderatrix.skin.meta.ImageLabelSkin;
 	import com.falanxia.moderatrix.skin.meta.InputBarSkin;
 	import com.falanxia.moderatrix.skin.meta.LabelButtonSkin;
 
@@ -128,6 +129,10 @@ package com.falanxia.moderatrix.globals {
 							break;
 
 						// metas
+
+						case SkinType.IMAGE_LABEL:
+							skin = new ImageLabelSkin(config, null, asset);
+							break;
 
 						case SkinType.LABEL_BUTTON:
 							skin = new LabelButtonSkin(config, null, asset);

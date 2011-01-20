@@ -55,6 +55,9 @@ package com.falanxia.moderatrix.enums {
 		/** Label skin */
 		public static const LABEL:String = "label";
 
+		/** Image label */
+		public static const IMAGE_LABEL:String = "imageLabel";
+
 		/** Label button skin */
 		public static const LABEL_BUTTON:String = "labelButton";
 
