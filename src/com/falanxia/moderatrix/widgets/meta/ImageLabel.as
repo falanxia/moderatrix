@@ -27,7 +27,6 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.interfaces.ISkin;
 	import com.falanxia.moderatrix.interfaces.IWidget;
 	import com.falanxia.moderatrix.skin.meta.ImageLabelSkin;
-	import com.falanxia.moderatrix.widgets.ButtonCore;
 	import com.falanxia.moderatrix.widgets.Image;
 	import com.falanxia.moderatrix.widgets.Label;
 	import com.falanxia.utilitaris.display.MorphSprite;
@@ -111,16 +110,7 @@ package com.falanxia.moderatrix.widgets.meta {
 			label.draw();
 
 			label.x = image.width;
-		}
-
-
-
-		/**
-		 * Release all buttons.
-		 * Useful when dragging outside the main Stage.
-		 */
-		public static function releaseAll():void {
-			ButtonCore.releaseAll();
+			label.height = image.height;
 		}
 
 
