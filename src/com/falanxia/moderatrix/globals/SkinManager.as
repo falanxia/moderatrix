@@ -183,7 +183,7 @@ package com.falanxia.moderatrix.globals {
 
 
 		/**
-		 * Get asset from the asset collection.
+		 * Get asset from the asset collection and convert it to a SkinManager-supported skin.
 		 * If no asset collection ID is provided, default one is used instead.
 		 * @param assetID Asset ID
 		 * @param collectionID (optional) Asset collection ID
@@ -191,6 +191,21 @@ package com.falanxia.moderatrix.globals {
 		 * @see ISkin
 		 */
 		public function a2s(assetID:String, collectionID:String = null):ISkin {
+			var asset:Asset = getAsset(assetID, collectionID);
+
+			return (asset == null) ? null : assetToSkin(asset);
+		}
+
+
+
+		/**
+		 * Get asset from the asset collection.
+		 * If no asset collection ID is provided, default one is used instead.
+		 * @param assetID Asset ID
+		 * @param collectionID (optional) Asset collection ID
+		 * @return Asset
+		 */
+		public function getAsset(assetID:String, collectionID:String = null):Asset {
 			if(assetManager == null) {
 				assetManager = AssetManager.getInstance();
 			}
@@ -201,7 +216,7 @@ package com.falanxia.moderatrix.globals {
 
 			var collection:AssetCollection = (collectionID == null) ? defaultCollection : assetManager.getCollection(collectionID);
 
-			return (collection == null) ? null : assetToSkin(collection.getAsset(assetID));
+			return (collection == null) ? null : collection.getAsset(assetID);
 		}
 	}
 }
