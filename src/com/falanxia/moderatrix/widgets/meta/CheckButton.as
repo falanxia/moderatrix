@@ -76,6 +76,8 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.height == undefined) c.height = skin.buttonOffSkin.bitmapSize.height;
 
 			super(c, displayParent);
+
+			draw();
 		}
 
 

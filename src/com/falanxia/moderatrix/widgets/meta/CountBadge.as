@@ -86,6 +86,8 @@ package com.falanxia.moderatrix.widgets.meta {
 			if(c.height == undefined) c.height = skin.infinityBackSkin.bitmapSize.height;
 
 			super(c, displayParent);
+
+			draw();
 		}
 
 

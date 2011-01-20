@@ -76,6 +76,8 @@ package com.falanxia.moderatrix.widgets.meta {
 			var c:Object = (displayConfig == null) ? new Object() : displayConfig;
 
 			super(c, displayParent);
+
+			draw();
 		}
 
 
@@ -107,6 +109,8 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function draw():void {
 			image.draw();
 			label.draw();
+
+			label.x = image.width;
 		}
 
 
