@@ -75,8 +75,6 @@ package com.falanxia.moderatrix.widgets {
 			super(c, displayParent, dl);
 
 			this.skin = skin;
-
-			draw();
 		}
 
 

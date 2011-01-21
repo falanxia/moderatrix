@@ -84,8 +84,6 @@ package com.falanxia.moderatrix.widgets {
 
 			this.skin = skin;
 			this.text = text;
-
-			draw();
 		}
 
 

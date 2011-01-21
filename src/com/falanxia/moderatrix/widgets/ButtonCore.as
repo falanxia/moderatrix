@@ -82,8 +82,6 @@ package com.falanxia.moderatrix.widgets {
 			this.skin = skin;
 
 			_mouseStatus = MouseStatus.OUT;
-
-			draw();
 		}
 
 

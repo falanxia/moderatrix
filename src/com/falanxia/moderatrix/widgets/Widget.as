@@ -99,6 +99,8 @@ package com.falanxia.moderatrix.widgets {
 			} else {
 				this.debugLevel = debugLevel;
 			}
+
+			draw();
 		}
 
 

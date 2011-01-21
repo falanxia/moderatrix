@@ -55,8 +55,6 @@ package com.falanxia.moderatrix.widgets {
 			if(c.height == undefined) c.height = skin.bitmapSize.height;
 
 			super(skin, c, displayParent, dl);
-
-			draw();
 		}
 
 
