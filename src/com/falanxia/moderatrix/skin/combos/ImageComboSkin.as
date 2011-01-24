@@ -67,7 +67,7 @@ package com.falanxia.moderatrix.skin.combos {
 
 			super(SkinType.IMAGE_COMBO, config, id);
 
-			if(asset != null) parseAsset(asset);
+			if(asset != null) parseAsset(asset, _config);
 		}
 
 
@@ -91,11 +91,12 @@ package com.falanxia.moderatrix.skin.combos {
 
 		/**
 		 * Parse asset.
-		 * @param value Asset
+		 * @param asset Asset
+		 * @param config Config
 		 * @see Asset
 		 */
-		public function parseAsset(value:Asset):void {
-			getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.image).bitmap.bitmapData]);
+		public function parseAsset(asset:Asset, config:Object):void {
+			getBitmapsFromAtlas(new <BitmapData>[asset.getChunkByURL(config.image).bitmap.bitmapData]);
 		}
 
 

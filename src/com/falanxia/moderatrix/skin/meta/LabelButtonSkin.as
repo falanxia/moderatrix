@@ -30,8 +30,6 @@ package com.falanxia.moderatrix.skin.meta {
 	import com.falanxia.moderatrix.skin.Skin;
 	import com.falanxia.moderatrix.skin.combos.LabelComboSkin;
 
-	import flash.display.BitmapData;
-
 
 
 	/**
@@ -64,7 +62,7 @@ package com.falanxia.moderatrix.skin.meta {
 
 			super(SkinType.LABEL_BUTTON, config, id);
 
-			if(asset != null) parseAsset(asset);
+			if(asset != null) parseAsset(asset, _config);
 		}
 
 
@@ -86,11 +84,12 @@ package com.falanxia.moderatrix.skin.meta {
 
 		/**
 		 * Parse asset.
-		 * @param value Asset2
+		 * @param asset Asset2
+		 * @param config Config
 		 * @see Asset
 		 */
-		public function parseAsset(value:Asset):void {
-			buttonSkin.getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.button.image).bitmap.bitmapData]);
+		public function parseAsset(asset:Asset, config:Object):void {
+			buttonSkin.parseAsset(asset, config.button);
 		}
 
 

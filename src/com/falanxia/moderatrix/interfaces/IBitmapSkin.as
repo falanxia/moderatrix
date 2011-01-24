@@ -44,9 +44,10 @@ package com.falanxia.moderatrix.interfaces {
 		/**
 		 * Parse asset.
 		 * @param value Asset
+		 * @param config Config
 		 * @see Asset
 		 */
-		function parseAsset(value:Asset):void;
+		function parseAsset(value:Asset, config:Object):void;
 
 
 

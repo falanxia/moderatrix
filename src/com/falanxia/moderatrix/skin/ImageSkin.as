@@ -65,7 +65,7 @@ package com.falanxia.moderatrix.skin {
 
 			_bitmapSources[IMAGE_BITMAP] = new BitmapData(1, 1, true, 0x00000000);
 
-			if(asset != null) parseAsset(asset);
+			if(asset != null) parseAsset(asset, _config);
 		}
 
 
@@ -85,11 +85,12 @@ package com.falanxia.moderatrix.skin {
 
 		/**
 		 * Parse asset.
-		 * @param value Asset
+		 * @param asset Asset
+		 * @param config Config
 		 * @see Asset
 		 */
-		public function parseAsset(value:Asset):void {
-			getBitmapsFromAtlas(new <BitmapData>[value.getChunkByURL(_config.image).bitmap.bitmapData]);
+		public function parseAsset(asset:Asset, config:Object):void {
+			getBitmapsFromAtlas(new <BitmapData>[asset.getChunkByURL(config.image).bitmap.bitmapData]);
 		}
 
 
