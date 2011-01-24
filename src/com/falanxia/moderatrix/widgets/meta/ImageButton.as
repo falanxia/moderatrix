@@ -54,10 +54,11 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		public function ImageButton(skin:ImageButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
+			_skin = skin;
+
 			button = new ScaleButton(skin.buttonSkin, {}, this);
 			imageCombo = new ImageCombo(skin.imageComboSkin, {mouseEnabled:false, mouseChildren:false}, this);
 
-			this.skin = skin;
 			this.buttonMode = true;
 			this.useHandCursor = true;
 			this.focusRect = false;

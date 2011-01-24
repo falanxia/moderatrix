@@ -52,12 +52,13 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		public function InputBar(skin:InputBarSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                         debugLevel:String = null) {
+			_skin = skin;
+
 			bar = new Bar(skin.barSkin, {}, this);
 			label = new Label(skin.labelSkin, {}, "", this);
 
 			label.isInput = true;
 
-			this.skin = skin;
 			this.isMorphHeightEnabled = true;
 			this.isMorphWidthEnabled = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;

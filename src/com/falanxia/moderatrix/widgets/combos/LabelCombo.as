@@ -56,11 +56,12 @@ package com.falanxia.moderatrix.widgets.combos {
 
 		public function LabelCombo(skin:LabelComboSkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                           debugLevel:String = null) {
+			_skin = skin;
+
 			labelOut = new Label(skin.labelOutSkin, {mouseEnabled:false, mouseChildren:false}, "", this);
 			labelHover = new Label(skin.labelHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this);
 			labelFocus = new Label(skin.labelFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, "", this);
 
-			this.skin = skin;
 			this.text = text;
 			this.buttonMode = true;
 			this.useHandCursor = true;

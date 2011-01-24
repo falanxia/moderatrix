@@ -55,11 +55,12 @@ package com.falanxia.moderatrix.widgets.combos {
 
 		public function ImageCombo(skin:ImageComboSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                           debugLevel:String = null) {
+			_skin = skin;
+
 			imageOut = new Image(skin.imageOutSkin, {mouseEnabled:false, mouseChildren:false}, this);
 			imageHover = new Image(skin.imageHoverSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this);
 			imageFocus = new Image(skin.imageFocusSkin, {alpha:0, mouseEnabled:false, mouseChildren:false}, this);
 
-			this.skin = skin;
 			this.buttonMode = true;
 			this.useHandCursor = true;
 			this.focusRect = false;

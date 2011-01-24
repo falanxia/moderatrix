@@ -55,10 +55,11 @@ package com.falanxia.moderatrix.widgets.meta {
 
 		public function CheckButton(skin:CheckButtonSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
+			_skin = skin;
+
 			buttonOff = new StaticButton(skin.buttonOffSkin, {}, this);
 			buttonOn = new StaticButton(skin.buttonOnSkin, {visible:false}, this);
 
-			this.skin = skin;
 			this.buttonMode = true;
 			this.useHandCursor = true;
 			this.focusRect = false;

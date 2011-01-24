@@ -73,10 +73,11 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function LabelButton(skin:LabelButtonSkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                            debugLevel:String = null) {
+			_skin = skin;
+
 			button = new ScaleButton(skin.buttonSkin, {}, this);
 			labelCombo = new LabelCombo(skin.labelComboSkin, {mouseEnabled:false, mouseChildren:false}, text, this);
 
-			this.skin = skin;
 			this.focusRect = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 			this.debugColor = DisplayUtils.DEBUG_BLUE;

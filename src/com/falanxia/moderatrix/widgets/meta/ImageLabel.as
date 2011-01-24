@@ -62,12 +62,13 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function ImageLabel(skin:ImageLabelSkin, displayConfig:Object = null, text:String = "", displayParent:DisplayObjectContainer = null,
 		                           debugLevel:String = null) {
+			_skin = skin;
+
 			image = new Image(skin.imageSkin, {mouseEnabled:false, mouseChildren:false}, this);
 			label = new Label(skin.labelSkin, {mouseEnabled:false, mouseChildren:false}, text, this);
 
 			label.textField.wordWrap = false;
 
-			this.skin = skin;
 			this.focusRect = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 			this.debugColor = DisplayUtils.DEBUG_BLUE;

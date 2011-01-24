@@ -70,11 +70,12 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function CountBadge(skin:CountBadgeSkin, displayConfig:Object = null, displayParent:DisplayObjectContainer = null,
 		                           debugLevel:String = null) {
+			_skin = skin;
+
 			infinityBack = new Image(skin.infinityBackSkin, {visible:false}, this);
 			valueBack = new Image(skin.valueBackSkin, {visible:false}, this);
 			valueLabel = new Label(skin.valueLabelSkin, {width:infinityBack.width, y:1}, "", valueBack);
 
-			this.skin = skin;
 			this.isMorphHeightEnabled = false;
 			this.isMorphWidthEnabled = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;

@@ -67,6 +67,8 @@ package com.falanxia.moderatrix.widgets.meta {
 		 */
 		public function ImageLabelButton(skin:ImageLabelButtonSkin, displayConfig:Object = null, text:String = "",
 		                                 displayParent:DisplayObjectContainer = null, debugLevel:String = null) {
+			_skin = skin;
+
 			button = new ScaleButton(skin.buttonSkin, {}, this);
 			imageCombo = new ImageCombo(skin.imageComboSkin, {mouseEnabled:false, mouseChildren:false}, this);
 			labelCombo = new LabelCombo(skin.labelComboSkin, {mouseEnabled:false, mouseChildren:false}, text, this);
@@ -75,7 +77,6 @@ package com.falanxia.moderatrix.widgets.meta {
 			labelCombo.labelHover.textField.wordWrap = false;
 			labelCombo.labelFocus.textField.wordWrap = false;
 
-			this.skin = skin;
 			this.focusRect = false;
 			this.debugLevel = (debugLevel == null) ? DebugLevel.NONE : debugLevel;
 			this.debugColor = DisplayUtils.DEBUG_BLUE;
