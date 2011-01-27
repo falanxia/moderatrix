@@ -120,16 +120,19 @@ package com.falanxia.moderatrix.widgets.meta {
 		 * Draw the widget.
 		 */
 		public function draw():void {
-			if(value > 0 && value < 100) {
+			if(_value > 0 && _value < 100) {
 				infinityBack.visible = false;
 				valueBack.visible = true;
-				valueLabel.text = String(value);
-				valueLabel.width = value > 9 ? infinityBack.width + 1 : infinityBack.width;
+				valueLabel.text = String(_value);
+				valueLabel.width = _value > 9 ? infinityBack.width + 1 : infinityBack.width;
 			}
 
 			else {
-				if(value >= 100) {
+				if(_value >= 100) {
 					infinityBack.visible = true;
+					valueBack.visible = false;
+				} else if(_value == 0) {
+					infinityBack.visible = false;
 					valueBack.visible = false;
 				}
 			}
