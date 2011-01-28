@@ -121,7 +121,9 @@ package com.falanxia.moderatrix.widgets {
 				var paddingBottom:Number = skinSettings["paddingBottom"];
 				var rect:Rectangle = new Rectangle(paddingLeft, paddingTop, _size.width - paddingLeft - paddingRight, _size.height - paddingTop - paddingBottom);
 
-				if(_size.width != 0) textField.width = rect.width;
+				if(_size.width != 0) {
+					textField.width = rect.width;
+				}
 
 				if(_size.height != 0) {
 					// set label height
