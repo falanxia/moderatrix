@@ -33,7 +33,6 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.widgets.combos.ImageCombo;
 	import com.falanxia.moderatrix.widgets.combos.LabelCombo;
 	import com.falanxia.utilitaris.display.MorphSprite;
-	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.falanxia.utilitaris.utils.ObjectUtils;
@@ -201,18 +200,6 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function set skin(value:ISkin):void {
 			if(value != null) {
 				_skin = ImageLabelButtonSkin(value);
-
-				if(_skin.labelComboSkin.labelOutSkin.settings != null) {
-					_skin.labelComboSkin.labelOutSkin.settings["hAlign"] = Align.LEFT;
-				}
-
-				if(_skin.labelComboSkin.labelHoverSkin.settings != null) {
-					_skin.labelComboSkin.labelHoverSkin.settings["hAlign"] = Align.LEFT;
-				}
-
-				if(_skin.labelComboSkin.labelFocusSkin.settings != null) {
-					_skin.labelComboSkin.labelFocusSkin.settings["hAlign"] = Align.LEFT;
-				}
 
 				button.skin = _skin.buttonSkin;
 				imageCombo.skin = _skin.imageComboSkin;

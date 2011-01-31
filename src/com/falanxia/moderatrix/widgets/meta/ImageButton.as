@@ -152,10 +152,7 @@ package com.falanxia.moderatrix.widgets.meta {
 				_skin = ImageButtonSkin(value);
 
 				button.skin = _skin.buttonSkin;
-
-				if(_skin.imageComboSkin != null) {
-					imageCombo.skin = _skin.imageComboSkin;
-				}
+				imageCombo.skin = _skin.imageComboSkin;
 			}
 		}
 

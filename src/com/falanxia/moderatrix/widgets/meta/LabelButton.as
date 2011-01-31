@@ -32,7 +32,6 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.widgets.ScaleButton;
 	import com.falanxia.moderatrix.widgets.combos.LabelCombo;
 	import com.falanxia.utilitaris.display.MorphSprite;
-	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 	import com.falanxia.utilitaris.utils.ObjectUtils;
@@ -205,18 +204,6 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function set skin(value:ISkin):void {
 			if(value != null) {
 				_skin = LabelButtonSkin(value);
-
-				if(_skin.labelComboSkin.labelOutSkin.settings != null) {
-					_skin.labelComboSkin.labelOutSkin.settings["hAlign"] = Align.CENTER;
-				}
-
-				if(_skin.labelComboSkin.labelHoverSkin.settings != null) {
-					_skin.labelComboSkin.labelHoverSkin.settings["hAlign"] = Align.CENTER;
-				}
-
-				if(_skin.labelComboSkin.labelFocusSkin.settings != null) {
-					_skin.labelComboSkin.labelFocusSkin.settings["hAlign"] = Align.CENTER;
-				}
 
 				button.skin = _skin.buttonSkin;
 				labelCombo.skin = _skin.labelComboSkin;

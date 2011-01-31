@@ -30,7 +30,6 @@ package com.falanxia.moderatrix.widgets.meta {
 	import com.falanxia.moderatrix.widgets.Image;
 	import com.falanxia.moderatrix.widgets.Label;
 	import com.falanxia.utilitaris.display.MorphSprite;
-	import com.falanxia.utilitaris.enums.Align;
 	import com.falanxia.utilitaris.types.RGBA;
 	import com.falanxia.utilitaris.utils.DisplayUtils;
 
@@ -133,10 +132,6 @@ package com.falanxia.moderatrix.widgets.meta {
 		public function set skin(value:ISkin):void {
 			if(value != null) {
 				_skin = ImageLabelSkin(value);
-
-				if(_skin.labelSkin.settings != null) {
-					_skin.labelSkin.settings["hAlign"] = Align.LEFT;
-				}
 
 				image.skin = _skin.imageSkin;
 				label.skin = _skin.labelSkin;
