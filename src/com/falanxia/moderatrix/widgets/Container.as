@@ -45,7 +45,7 @@ package com.falanxia.moderatrix.widgets {
 	 * need to override inner sprite size, specify it via innerWidth and innerHeight setters (with corresponding
 	 * getters of course).
 	 *
-	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Vaclav Vancura / Falanxia a.s.
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */

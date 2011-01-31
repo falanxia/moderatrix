@@ -37,7 +37,7 @@ package com.falanxia.moderatrix.skin.meta {
 	 *
 	 * Label button skin to be used with the Label button widget.
 	 *
-	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Vaclav Vancura / Falanxia a.s.
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */

@@ -42,7 +42,7 @@ package com.falanxia.moderatrix.widgets.meta {
 	 * Count badge.
 	 * Circle with a counter.
 	 *
-	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Vaclav Vancura / Falanxia a.s.
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 2.0
 	 */

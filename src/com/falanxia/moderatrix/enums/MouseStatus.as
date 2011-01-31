@@ -30,7 +30,7 @@ package com.falanxia.moderatrix.enums {
 	 *
 	 * Select one of three modes of simulated mouse state.
 	 *
-	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Vaclav Vancura / Falanxia a.s.
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */

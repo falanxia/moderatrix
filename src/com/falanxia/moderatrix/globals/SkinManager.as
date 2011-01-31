@@ -52,7 +52,7 @@ package com.falanxia.moderatrix.globals {
 	 *
 	 * Skin manager manages all widget skins used in the loaded skin.
 	 *
-	 * @author Vaclav Vancura @ Falanxia a.s. <vaclav@falanxia.com>
+	 * @author Vaclav Vancura / Falanxia a.s.
 	 * @author Falanxia (<a href="http://falanxia.com">falanxia.com</a>, <a href="http://twitter.com/falanxia">@falanxia</a>)
 	 * @since 1.0
 	 */
